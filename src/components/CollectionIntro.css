@@ -1,0 +1,111 @@
+.collection {
+  padding: clamp(4.5rem, 9vw, 7.5rem) clamp(1.25rem, 5vw, 4.5rem);
+}
+
+.collection--dark {
+  color: #f3eee7;
+  background: linear-gradient(165deg, #6a5341 0%, #3d2e24 52%, #241910 100%);
+}
+
+.collection--light {
+  color: var(--color-ink);
+  background: linear-gradient(180deg, #ebe4d9 0%, #ddd2c4 100%);
+}
+
+.collection--mist {
+  color: var(--color-ink-soft);
+  background: #e8e0d5;
+}
+
+.collection__grid {
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(240px, 0.95fr) minmax(280px, 1.05fr);
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: center;
+}
+
+.collection__media {
+  display: flex;
+  justify-content: center;
+}
+
+.collection__media img {
+  width: min(100%, 380px);
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.32);
+}
+
+.collection--light .collection__media img,
+.collection--mist .collection__media img {
+  box-shadow: 0 22px 48px rgba(40, 28, 16, 0.16);
+}
+
+.collection__copy {
+  max-width: 30rem;
+  justify-self: center;
+  text-align: center;
+}
+
+.collection__eyebrow {
+  font-size: 0.62rem;
+  font-weight: 200;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+  opacity: 0.85;
+}
+
+.collection__title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 4.5vw, 3.35rem);
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1.35rem;
+  line-height: 1.05;
+}
+
+.collection__body {
+  font-family: var(--font-serif);
+  font-size: clamp(0.98rem, 1.5vw, 1.12rem);
+  font-weight: 400;
+  line-height: 1.7;
+  margin-bottom: 0.95rem;
+  opacity: 0.92;
+}
+
+.collection__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 2.1rem;
+}
+
+.collection__links a {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 0.5em;
+  text-decoration-thickness: 1px;
+  transition: opacity 0.2s var(--ease);
+}
+
+.collection__links a:hover {
+  opacity: 0.55;
+}
+
+@media (max-width: 860px) {
+  .collection__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .collection__media img {
+    width: min(100%, 280px);
+  }
+}

@@ -1,0 +1,11 @@
+.sale-banner {
+  background: #4a392c;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.sale-banner__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,23 @@
+.explore {
+  background: var(--color-paper);
+  flex-shrink: 0;
+}
+
+.explore__stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: var(--color-paper);
+}
+
+.explore__panel {
+  display: block;
+  line-height: 0;
+  background: #1c1612;
+}
+
+.explore__panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,30 @@
+/*
+  RH motion modules:
+  - desktop ≈ 1425×956 (h/w ≈ 0.67)
+  - mobile  ≈ 390×599  (h/w ≈ 1.54)
+*/
+.full-bleed {
+  margin: 0;
+  width: 100%;
+  aspect-ratio: 1425 / 956;
+  overflow: hidden;
+  background: #1c1612;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.full-bleed__media,
+.full-bleed img,
+.full-bleed video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+@media (max-width: 768px) {
+  .full-bleed {
+    aspect-ratio: 390 / 599;
+  }
+}

@@ -1,0 +1,480 @@
+.admin {
+  min-height: 100vh;
+  padding: 2rem clamp(1rem, 4vw, 2.5rem) 3rem;
+  background: #f3f1ed;
+  color: #111;
+  font-family: var(--font-sans);
+}
+
+.admin__login {
+  max-width: 360px;
+  margin: 12vh auto 0;
+  display: grid;
+  gap: 0.85rem;
+  padding: 2rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.admin__login h1,
+.admin__header h1 {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.75rem;
+}
+
+.admin__login p,
+.admin__header p {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.admin__login label,
+.admin-card label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin__login input,
+.admin-card input[type='text'],
+.admin-card input[type='url'],
+.admin-text input,
+.admin-text textarea {
+  padding: 0.7rem 0.8rem;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  font: inherit;
+  text-transform: none;
+  letter-spacing: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.admin-text textarea {
+  resize: vertical;
+  min-height: 5.5rem;
+}
+
+.admin__login button,
+.admin-card__btns button,
+.admin__actions button,
+.admin__actions a,
+.admin__login a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0 1rem;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.admin__login a,
+.admin__actions a,
+.admin-card__btns button:last-child {
+  background: transparent;
+  color: #111;
+}
+
+.admin__error {
+  color: #a03d39;
+  font-size: 0.85rem;
+}
+
+.admin__banner {
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  background: rgba(160, 61, 57, 0.08);
+  border: 1px solid rgba(160, 61, 57, 0.25);
+}
+
+.admin__hint {
+  font-size: 0.75rem !important;
+}
+
+.admin__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.admin__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.admin__danger {
+  border-color: #a03d39 !important;
+  background: #a03d39 !important;
+}
+
+.admin__section {
+  margin-bottom: 2.5rem;
+}
+
+.admin__section h2 {
+  margin: 0 0 1rem;
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.35rem;
+}
+
+.admin__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.admin-card {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.admin-card h3 {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.admin-card__preview {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: #1c1612;
+}
+
+.admin-card__preview img,
+.admin-card__preview video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.admin-card__file {
+  cursor: pointer;
+}
+
+.admin-card__file input {
+  margin-top: 0.35rem;
+  font-size: 0.8rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.admin-card__btns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-card__btns button {
+  flex: 1;
+}
+
+.admin-card__btns button:disabled,
+.admin__actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.admin-card__busy,
+.admin__loading {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.6;
+}
+
+.admin__tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin__tabs button {
+  min-height: 40px;
+  padding: 0 1.15rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: transparent;
+  color: #111;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin__tabs button.is-active {
+  background: #111;
+  border-color: #111;
+  color: #fff;
+}
+
+.admin__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+}
+
+.admin__toolbar button {
+  min-height: 40px;
+  padding: 0 1rem;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin__toolbar button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.admin__toolbar .admin__danger {
+  background: #a03d39;
+  border-color: #a03d39;
+}
+
+.admin__dirty {
+  font-size: 0.8rem;
+  color: #8a5a2b;
+}
+
+.admin__ok {
+  color: #2f6b3a;
+  background: rgba(47, 107, 58, 0.08);
+  border: 1px solid rgba(47, 107, 58, 0.25);
+}
+
+.admin__text-list {
+  display: grid;
+  gap: 1rem;
+  max-width: 720px;
+}
+
+.admin-text {
+  display: grid;
+  gap: 0.4rem;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.admin-text__label {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-text__label em {
+  font-style: normal;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: #8a5a2b;
+}
+
+.admin-text__reset {
+  justify-self: start;
+  min-height: 34px;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: transparent;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin-text__reset:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.admin-news-form {
+  display: grid;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+  padding: 1.25rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.admin-news-form h2 {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.admin-news-form__grid {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.admin-news-form label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-news-form input,
+.admin-news-form textarea,
+.admin-news-form select {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  font: inherit;
+  font-size: 0.95rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.admin-news-form__file input[type='file'] {
+  padding: 0.35rem 0;
+  border: 0;
+  font-size: 0.85rem;
+}
+
+.admin-news-form__preview {
+  width: min(280px, 100%);
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: #f3f1ed;
+}
+
+.admin-news-form__check {
+  display: flex !important;
+  align-items: center;
+  gap: 0.55rem;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.95rem;
+}
+
+.admin-news-form__check input {
+  width: auto;
+}
+
+.admin-news-form__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+}
+
+.admin-news-form__actions button {
+  min-height: 40px;
+  padding: 0 1rem;
+  border: 1px solid #111;
+  background: #111;
+  color: #fff;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin-news-form__actions button[type='button'] {
+  background: transparent;
+  color: #111;
+}
+
+.admin-news-form__actions button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.admin-news-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.admin-news-list__item {
+  display: grid;
+  grid-template-columns: 96px 1fr auto;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.admin-news-list__item img,
+.admin-news-list__item > div:first-child {
+  width: 96px;
+  height: 72px;
+  object-fit: cover;
+  background: #f3f1ed;
+}
+
+.admin-news-list__meta {
+  margin: 0 0 0.25rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6b6560;
+}
+
+.admin-news-list__item h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+.admin-news-list__item p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #3a3531;
+}
+
+.admin-news-list__actions {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.admin-news-list__actions button {
+  min-height: 34px;
+  padding: 0 0.85rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  background: transparent;
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.admin-news-list__actions .admin__danger {
+  border-color: #a03d39;
+  color: #a03d39;
+}
+
+@media (max-width: 720px) {
+  .admin-news-list__item {
+    grid-template-columns: 1fr;
+  }
+}

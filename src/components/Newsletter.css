@@ -1,0 +1,69 @@
+.newsletter {
+  padding: clamp(3.5rem, 7vw, 5.5rem) 1.5rem;
+  background: var(--color-paper-deep);
+  text-align: center;
+}
+
+.newsletter h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 400;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+
+.newsletter > p {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--color-ink-soft);
+  margin-bottom: 1.75rem;
+}
+
+.newsletter__form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.65rem;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.newsletter__form input {
+  flex: 1 1 220px;
+  min-height: 48px;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.22);
+  background: var(--color-white);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  outline: none;
+}
+
+.newsletter__form input:focus {
+  border-color: var(--color-ink);
+}
+
+.newsletter__form button {
+  min-height: 48px;
+  padding: 0 1.5rem;
+  background: var(--color-black);
+  color: var(--color-white);
+  font-size: 0.68rem;
+  font-weight: 300;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: opacity 0.2s var(--ease);
+}
+
+.newsletter__form button:hover {
+  opacity: 0.82;
+}
+
+.newsletter__thanks {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--color-ink-soft);
+}

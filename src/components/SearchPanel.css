@@ -1,0 +1,136 @@
+.search-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 210;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  color: var(--color-ink);
+  padding: 1rem clamp(1.25rem, 4vw, 3rem) 2rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.35s var(--ease), visibility 0.35s var(--ease);
+}
+
+.search-panel.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.search-panel__top {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1.5rem;
+}
+
+.search-panel__icon-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+}
+
+.search-panel__form {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto 1.75rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+}
+
+.search-panel__form input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 3vw, 1.85rem);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: inherit;
+}
+
+.search-panel__form input::placeholder {
+  color: rgba(17, 17, 17, 0.35);
+}
+
+.search-panel__body {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.search-panel__hint {
+  margin: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+.search-panel__results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-panel__results button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 7.5rem 1fr;
+  column-gap: 1rem;
+  row-gap: 0.15rem;
+  padding: 0.95rem 0;
+  border: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  transition: opacity 0.2s var(--ease);
+}
+
+.search-panel__results button:hover {
+  opacity: 0.65;
+}
+
+.search-panel__type {
+  grid-row: 1 / span 2;
+  align-self: center;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.45;
+}
+
+.search-panel__title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+}
+
+.search-panel__meta {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+@media (max-width: 560px) {
+  .search-panel__results button {
+    grid-template-columns: 1fr;
+  }
+
+  .search-panel__type {
+    grid-row: auto;
+  }
+}

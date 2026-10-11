@@ -1,0 +1,11 @@
+.sourcebooks {
+  background: #1c1612;
+  flex-shrink: 0;
+  line-height: 0;
+}
+
+.sourcebooks__img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
