@@ -1,0 +1,90 @@
+.ig-placeholder {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  min-height: 8rem;
+  background: linear-gradient(160deg, #3a3530 0%, var(--color-ink) 100%);
+  color: var(--color-ivory);
+}
+
+.ig-placeholder__noise {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  pointer-events: none;
+  background-size: 180px 180px;
+}
+
+.ig-placeholder__frame {
+  position: absolute;
+  inset: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--color-ivory) 12%, transparent);
+  pointer-events: none;
+}
+
+.ig-placeholder__mono {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.3;
+  user-select: none;
+}
+
+.ig-placeholder__badge {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 2;
+  padding: 0.2rem 0.45rem;
+  font-family: var(--font-display);
+  font-size: 0.55rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--color-ink);
+  color: var(--color-ivory);
+}
+
+/* Плитка mega-menu: без рамки-в-рамке, монограмма 28px / 25% */
+.ig-placeholder--menu {
+  min-height: 0;
+  background: rgba(242, 240, 235, 0.06);
+  border: 1px solid rgba(242, 240, 235, 0.1);
+}
+
+.ig-placeholder--menu .ig-placeholder__noise,
+.ig-placeholder--menu .ig-placeholder__frame {
+  display: none;
+}
+
+.ig-placeholder--menu .ig-placeholder__mono {
+  font-size: 28px;
+  letter-spacing: 0.12em;
+  opacity: 0.25;
+}
+
+/* Светлый плейсхолдер для карточек на Snow Ivory */
+.ig-placeholder--light {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+.ig-placeholder--light .ig-placeholder__noise {
+  opacity: 0.04;
+}
+
+.ig-placeholder--light .ig-placeholder__frame {
+  display: none;
+}
+
+.ig-placeholder--light .ig-placeholder__mono {
+  opacity: 0.18;
+  color: var(--color-ink);
+}

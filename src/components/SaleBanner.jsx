@@ -1,9 +1,9 @@
 import './SaleBanner.css'
 
 export default function SaleBanner({
-  src = '/images/outdoor.jpg',
-  title = 'Товары в наличии и outdoor-коллекции',
-  alt = 'Outdoor и товары в наличии — ID Gallery',
+  src = '/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg',
+  title = 'Позиции в экспозиции',
+  alt = 'Интерьерная экспозиция ID Gallery',
 }) {
   return (
     <section className="sale-banner" id="sale" aria-label={title}>

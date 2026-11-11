@@ -1,16 +1,27 @@
 .page {
   position: relative;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background: var(--color-paper);
 }
 
-/* Оригинал: ~10px промежутки между медиа-панелями */
+/* Оригинал: ~10px промежужки между медиа-панелями.
+   Футер вне #main — без светлой полосы перед ним. */
 #main,
 #collections {
   display: flex;
   flex-direction: column;
   gap: 10px;
   background: var(--color-paper);
+}
+
+#main > :last-child {
+  margin-bottom: 0;
+}
+
+.page > .footer {
+  margin-top: 0;
 }
 
 .skip-link {
@@ -31,7 +42,7 @@
 }
 
 .rh-panel {
-  background: #3d2e24;
+  background: var(--color-olive);
   line-height: 0;
 }
 

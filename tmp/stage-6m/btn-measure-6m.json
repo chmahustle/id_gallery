@@ -1,0 +1,26 @@
+[
+  {
+    "text": "Все бренды",
+    "height": "40px",
+    "fontSize": "16px",
+    "id": "brands"
+  },
+  {
+    "text": "Перейти в каталог",
+    "height": "40px",
+    "fontSize": "16px",
+    "id": "catalog"
+  },
+  {
+    "text": "Смотреть интерьеры",
+    "height": "40px",
+    "fontSize": "16px",
+    "id": "interiors"
+  },
+  {
+    "text": "Для профессионалов",
+    "height": "40px",
+    "fontSize": "16px",
+    "id": "partners"
+  }
+]

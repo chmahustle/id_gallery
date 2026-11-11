@@ -1,6 +1,6 @@
 .hero {
   width: 100%;
-  background: #1a1510;
+  background: var(--color-ink);
   flex-shrink: 0;
   line-height: 0;
 }

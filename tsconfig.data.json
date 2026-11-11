@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/types/**/*",
+    "src/data/**/*",
+    "src/lib/catalog.ts",
+    "src/lib/catalog.test.ts",
+    "src/vite-env.d.ts"
+  ],
+  "exclude": ["node_modules", "dist", "server", "src/**/*.test.ts"]
+}

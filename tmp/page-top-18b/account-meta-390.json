@@ -1,0 +1,9 @@
+{
+  "path": "/account/",
+  "viewport": 390,
+  "headerToH1": 56,
+  "pageTopOffset": "3.5rem",
+  "firstPadTop": "56px",
+  "hasShell": true,
+  "h1": "Личный кабинет"
+}

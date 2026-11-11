@@ -1,4 +1,5 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { resolveBrandName } from '../lib/catalog'
 
 const STORAGE_KEY = 'id-gallery-cart'
 const CartContext = createContext(null)
@@ -75,7 +76,7 @@ export function CartProvider({ children }) {
         {
           id,
           name: product.name,
-          brand: product.brand,
+          brand: resolveBrandName(product) || product.brand,
           price: product.price || '',
           image: product.image || '',
           qty: 1,

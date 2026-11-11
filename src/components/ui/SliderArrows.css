@@ -1,0 +1,40 @@
+.slider-arrows {
+  display: flex;
+  gap: 8px;
+}
+
+.slider-arrows__btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 40px;
+  width: 40px;
+  height: 40px;
+  min-width: 0;
+  padding: 0;
+  border: 1px solid var(--color-ink);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-ink);
+  cursor: pointer;
+  transition:
+    background-color 300ms var(--ease),
+    color 300ms var(--ease);
+}
+
+.slider-arrows__btn:hover {
+  background-color: var(--color-ink);
+  color: var(--color-snow);
+}
+
+.slider-arrows__btn:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slider-arrows__btn {
+    transition: none;
+  }
+}

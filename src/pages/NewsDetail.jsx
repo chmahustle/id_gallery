@@ -1,39 +1,43 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { toIsoDate } from '../content'
 import { useContent } from '../content/ContentContext'
 import { useNews } from '../news/NewsContext'
 import SiteShell from '../components/SiteShell'
+import { Button } from '../components/ui'
 import './News.css'
 
-function NewsGallery({ images, title }) {
-  const [activeImage, setActiveImage] = useState(0)
-  const current = images[activeImage] || images[0]
-  if (!current) return null
+function normalizeGallery(item) {
+  if (item.images?.length) {
+    return item.images.map((photo) =>
+      typeof photo === 'string'
+        ? { src: photo, caption: '' }
+        : { src: photo.src, caption: photo.caption || '' },
+    )
+  }
+  if (item.image) return [{ src: item.image, caption: item.title }]
+  return []
+}
 
+function CtaButton({ item }) {
+  const label = `${item.ctaLabel || 'Записаться на встречу'} →`
+  if (item.ctaHref && /^https?:\/\//i.test(item.ctaHref)) {
+    return (
+      <Button
+        as="a"
+        variant="primary"
+        href={item.ctaHref}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {label}
+      </Button>
+    )
+  }
   return (
-    <>
-      <figure className="news-detail__hero">
-        <img src={current.src} alt={current.caption || title} />
-        {current.caption ? <figcaption>{current.caption}</figcaption> : null}
-      </figure>
-      {images.length > 1 ? (
-        <ul className="news-detail__thumbs">
-          {images.map((photo, index) => (
-            <li key={`${index}-${photo.src}`}>
-              <button
-                type="button"
-                className={index === activeImage ? 'is-active' : undefined}
-                onClick={() => setActiveImage(index)}
-                aria-label={photo.caption || `Фото ${index + 1}`}
-              >
-                <img src={photo.src} alt="" />
-              </button>
-            </li>
-          ))}
-        </ul>
-      ) : null}
-    </>
+    <Button as="link" variant="primary" to={item.ctaHref || '/contacts'}>
+      {label}
+    </Button>
   )
 }
 
@@ -61,6 +65,11 @@ export default function NewsDetail() {
     }
   }, [item])
 
+  const gallery = useMemo(
+    () => (item ? normalizeGallery(item) : []),
+    [item],
+  )
+
   if (!ready) {
     return <div className="page" aria-busy="true" />
   }
@@ -70,99 +79,158 @@ export default function NewsDetail() {
   }
 
   const { prev, next } = getAdjacentNews(item.slug)
-  const gallery = item.images?.length
-    ? item.images
-    : item.image
-      ? [{ src: item.image, caption: item.title }]
-      : []
+  const hero = gallery[0] || null
+  const restPhotos = gallery.slice(1)
+  const secondary =
+    restPhotos.length >= 2 ? restPhotos[restPhotos.length - 1] : null
+  const stripSource = secondary
+    ? restPhotos.filter((photo) => photo.src !== secondary.src)
+    : restPhotos
+  const stripImages = [...stripSource]
+  const fillers = [
+    '/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg',
+    '/placeholders/product-02.jpg',
+    '/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg',
+    '/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg',
+    '/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg',
+    '/images/hero.jpg',
+  ]
+  let fillIndex = 0
+  while (stripImages.length < 4) {
+    const src = fillers[fillIndex % fillers.length]
+    fillIndex += 1
+    if (
+      src === hero?.src ||
+      src === secondary?.src ||
+      stripImages.some((photo) => photo.src === src)
+    ) {
+      if (fillIndex > fillers.length * 2) break
+      continue
+    }
+    stripImages.push({ src, caption: '' })
+  }
+
+  const paragraphs = item.body || []
+  const beforeStrip = paragraphs.slice(0, 2)
+  const afterStrip = paragraphs.slice(2)
 
   return (
     <SiteShell variant="solid">
       <article className="news-detail">
-        <nav className="news-detail__crumbs" aria-label="Хлебные крошки">
-          <Link to="/news">Новости</Link>
-          <span>/</span>
-          <span>{item.category}</span>
-        </nav>
+        <div className="news-detail__intro">
+          <nav className="news-crumbs" aria-label="Хлебные крошки">
+            <Link to="/">Главная</Link>
+            <span aria-hidden="true">-</span>
+            <Link to="/news">События</Link>
+            <span aria-hidden="true">-</span>
+            <span>{item.title}</span>
+          </nav>
 
-        <header className="news-detail__head">
-          <div className="news-detail__meta">
-            <time dateTime={toIsoDate(item.date)}>{item.date}</time>
-            <span>{item.category}</span>
-          </div>
-          <h1>{item.title}</h1>
-          <p className="news-detail__excerpt">{item.excerpt}</p>
-        </header>
-
-        <NewsGallery key={item.slug} images={gallery} title={item.title} />
-
-        <div className="news-detail__body">
-          {item.body?.map((paragraph, index) => (
-            <p key={`${index}-${paragraph.slice(0, 24)}`}>{paragraph}</p>
-          ))}
+          <header className="news-detail__head">
+            <h1>{item.title}</h1>
+            <p className="news-detail__meta">
+              <time dateTime={toIsoDate(item.date)}>{item.date}</time>
+              <span aria-hidden="true"> • </span>
+              <span>{item.category}</span>
+            </p>
+          </header>
         </div>
 
-        {item.videoUrl ? (
-          <div className="news-detail__video">
-            <iframe
-              src={item.videoUrl}
-              title={`Видео: ${item.title}`}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
+        {hero ? (
+          <figure className="news-detail__hero">
+            <img src={hero.src} alt={hero.caption || item.title} />
+          </figure>
         ) : null}
 
-        <div className="news-detail__actions">
-          {item.ctaHref ? (
-            /^https?:\/\//i.test(item.ctaHref) ? (
+        <div className="news-detail__column">
+          {beforeStrip.map((paragraph, index) => (
+            <p key={`before-${index}`}>{paragraph}</p>
+          ))}
+
+          <div className="news-detail__actions">
+            <CtaButton item={item} />
+          </div>
+
+          {stripImages.length ? (
+            <ul className="news-detail__strip" aria-label="Галерея">
+              {stripImages.slice(0, 4).map((photo, index) => (
+                <li key={`${index}-${photo.src}`}>
+                  <img
+                    src={photo.src}
+                    alt={photo.caption || ''}
+                    loading="lazy"
+                  />
+                </li>
+              ))}
+            </ul>
+          ) : null}
+
+          {afterStrip.map((paragraph, index) => (
+            <p key={`after-${index}`}>{paragraph}</p>
+          ))}
+
+          {item.videoUrl ? (
+            <div className="news-detail__video">
+              <iframe
+                src={item.videoUrl}
+                title={`Видео: ${item.title}`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+              />
+            </div>
+          ) : null}
+
+          {item.externalUrl ? (
+            <p className="news-detail__external">
               <a
-                href={item.ctaHref}
-                className="news-btn news-btn--solid"
+                href={item.externalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {item.ctaLabel || 'Оставить заявку'}
+                Внешний материал →
               </a>
-            ) : (
-              <Link to={item.ctaHref} className="news-btn news-btn--solid">
-                {item.ctaLabel || 'Оставить заявку'}
-              </Link>
-            )
-          ) : null}
-          {item.externalUrl ? (
-            <a
-              className="news-btn"
-              href={item.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Внешний материал
-            </a>
+            </p>
           ) : null}
         </div>
 
+        {secondary && secondary.src !== hero?.src ? (
+          <figure className="news-detail__secondary">
+            <img
+              src={secondary.src}
+              alt={secondary.caption || item.title}
+              loading="lazy"
+            />
+          </figure>
+        ) : null}
+
         <nav className="news-detail__nav" aria-label="Соседние новости">
-          {prev ? (
-            <Link to={newsPath(prev.slug)} className="news-detail__nav-link">
-              <span>Предыдущая</span>
-              <strong>{prev.title}</strong>
-            </Link>
-          ) : (
-            <span />
-          )}
-          {next ? (
-            <Link
-              to={newsPath(next.slug)}
-              className="news-detail__nav-link news-detail__nav-link--next"
-            >
-              <span>Следующая</span>
-              <strong>{next.title}</strong>
-            </Link>
-          ) : (
-            <span />
-          )}
+          <div className="news-detail__nav-side">
+            {prev ? (
+              <>
+                <p className="news-detail__nav-title">{prev.title}</p>
+                <Link
+                  to={newsPath(prev.slug)}
+                  className="news-detail__nav-btn"
+                >
+                  ← К предыдущей
+                </Link>
+              </>
+            ) : null}
+          </div>
+          <div className="news-detail__nav-side news-detail__nav-side--next">
+            {next ? (
+              <>
+                <p className="news-detail__nav-title">{next.title}</p>
+                <Link
+                  to={newsPath(next.slug)}
+                  className="news-detail__nav-btn"
+                >
+                  К следующей →
+                </Link>
+              </>
+            ) : null}
+          </div>
         </nav>
       </article>
     </SiteShell>

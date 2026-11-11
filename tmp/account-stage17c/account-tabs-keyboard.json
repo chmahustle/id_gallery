@@ -1,0 +1,6 @@
+{
+  "url": "http://127.0.0.1:5173/account/?tab=register",
+  "tab": "register",
+  "active": "register",
+  "accountFormsVisible": 1
+}

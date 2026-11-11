@@ -1,0 +1,3 @@
+src/App.jsx:41:                    <Route path="/partners" element={<Navigate to="/trade" replace />} />
+src/data/forbidden-strings.mjs:24:  'Партнёрам',
+src/data/forbidden-strings.mjs:25:  'Партнерам',

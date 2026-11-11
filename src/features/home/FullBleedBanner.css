@@ -1,0 +1,172 @@
+.ff-banner {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 92svh;
+  max-height: 1100px;
+  overflow: hidden;
+  color: var(--color-snow);
+  content-visibility: auto;
+  contain-intrinsic-size: 100vh;
+  scroll-margin-top: calc(var(--header-offset, 110px) + 0.5rem);
+}
+
+@media (max-width: 760px) {
+  .ff-banner {
+    min-height: 80svh;
+    max-height: none;
+  }
+}
+
+.ff-banner__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.ff-banner__img,
+.ff-banner__ph {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 45%;
+}
+
+.ff-banner__ph.ig-placeholder {
+  min-height: 100%;
+}
+
+.ff-banner__scrim {
+  position: absolute;
+  inset: 0;
+  /* снизу вверх, чёрный — не тёпло-серый ink */
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.72) 0%,
+    rgba(0, 0, 0, 0.45) 40%,
+    rgba(0, 0, 0, 0) 78%
+  );
+  pointer-events: none;
+}
+
+.ff-banner__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 0 clamp(1.25rem, 4vw, 3.5rem) 12vh;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1)),
+    transform 600ms var(--ease, cubic-bezier(0.22, 1, 0.36, 1));
+}
+
+.ff-banner--left .ff-banner__content {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.ff-banner.is-revealed .ff-banner__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ff-banner__title {
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-display);
+  font-size: var(--banner-title-size);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-wrap: balance;
+  color: var(--color-snow);
+}
+
+@media (min-width: 1024px) {
+  .ff-banner__title {
+    white-space: nowrap;
+  }
+}
+
+/* ритм: заголовок → 20px → описание */
+.ff-banner__desc {
+  margin: 1.25rem 0 0; /* 20px */
+  max-width: 560px;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  font-weight: 300;
+  line-height: 1.4;
+  color: color-mix(in srgb, var(--color-snow) 90%, transparent);
+}
+
+@media (max-width: 760px) {
+  .ff-banner__desc {
+    font-size: clamp(0.9375rem, 3.5vw, 1rem);
+  }
+}
+
+/* ритм: описание → 28px → кнопка */
+.ff-banner__cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.85rem 1.5rem;
+  margin-top: 1.75rem; /* 28px */
+  max-width: 100%;
+}
+
+.ff-banner--left .ff-banner__cta {
+  justify-content: flex-start;
+}
+
+.ff-banner__cta .ui-btn--inverse:focus-visible {
+  outline-color: var(--color-snow);
+}
+
+.ff-banner__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.85rem 2.5rem;
+  max-width: 100%;
+}
+
+.ff-banner--left .ff-banner__links {
+  justify-content: flex-start;
+}
+
+.ff-banner__links .ui-btn--link {
+  color: var(--color-snow);
+}
+
+.ff-banner__links .ui-btn--link:focus-visible {
+  outline-color: var(--color-snow);
+}
+
+/* ритм: кнопка → 24px → второй ряд */
+.ff-banner__links--subtle {
+  margin-top: 1.5rem; /* 24px */
+  gap: 0.65rem 1.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ff-banner__content {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

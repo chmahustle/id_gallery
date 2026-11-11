@@ -1,0 +1,129 @@
+/**
+ * ID Gallery design tokens — единственное место с хекс/rgb значениями палитры.
+ * См. docs/brand-guide.md
+ */
+
+:root {
+  /* Core palette (brand-guide) */
+  --color-ivory: #f2f0eb;
+  --color-ink: #2c2929;
+  --color-olive: #4a412a;
+  --color-cream: #d7d2cb;
+  --color-champagne: #84754e;
+
+  /* Semantic surfaces / text */
+  --color-bg-page: var(--color-ivory);
+  --color-bg-elevated: var(--color-cream);
+  --color-bg-inverse: var(--color-ink);
+  --color-text-primary: var(--color-ink);
+  --color-text-secondary: rgba(44, 41, 41, 0.68);
+  --color-text-muted: rgba(44, 41, 41, 0.52);
+  --color-text-on-dark: var(--color-ivory);
+  --color-border-subtle: rgba(44, 41, 41, 0.14);
+  --color-border-strong: rgba(44, 41, 41, 0.28);
+  --color-accent: var(--color-olive);
+  --color-accent-hover: #3f3724;
+  --color-focus-ring: var(--color-olive);
+  --color-error: #8b2e2e;
+  --color-success: #2f6b3a;
+
+  /* Overlays / glass (ink or ivory at fixed opacity) */
+  --color-ink-glass: color-mix(in srgb, var(--color-ink) 52%, transparent);
+  --color-ink-header-solid: color-mix(in srgb, var(--color-ink) 92%, transparent);
+  --color-ink-glass-soft: color-mix(in srgb, var(--color-ink) 28%, transparent);
+  --color-ink-overlay: color-mix(in srgb, var(--color-ink) 35%, transparent);
+  --color-ink-wash: color-mix(in srgb, var(--color-ink) 6%, transparent);
+  --color-cream-wash: color-mix(in srgb, var(--color-cream) 35%, transparent);
+  --color-on-dark-soft: color-mix(in srgb, var(--color-ivory) 68%, transparent);
+  --color-on-dark-muted: color-mix(in srgb, var(--color-ivory) 55%, transparent);
+  --color-on-dark-line: color-mix(in srgb, var(--color-ivory) 12%, transparent);
+  --color-error-wash: color-mix(in srgb, var(--color-error) 8%, transparent);
+  --color-error-border: color-mix(in srgb, var(--color-error) 25%, transparent);
+  --color-success-wash: color-mix(in srgb, var(--color-success) 8%, transparent);
+  --color-success-border: color-mix(in srgb, var(--color-success) 25%, transparent);
+
+  /* Swatch / media fallbacks (nearest brand neutrals) */
+  --color-swatch-fallback: var(--color-cream);
+
+  /* Legacy aliases (existing CSS) */
+  --color-snow: var(--color-ivory);
+  --color-foil: var(--color-champagne);
+  --color-ink-soft: var(--color-text-secondary);
+  --color-muted: var(--color-text-muted);
+  --color-line: var(--color-border-subtle);
+  --color-line-strong: var(--color-border-strong);
+  --color-paper: var(--color-ivory);
+  --color-paper-deep: var(--color-cream);
+  --color-bronze: var(--color-olive);
+  --color-bronze-deep: var(--color-ink);
+  --color-taupe: var(--color-champagne);
+  --color-white: var(--color-ivory);
+  --color-black: var(--color-ink);
+  --color-on-dark: var(--color-ivory);
+
+  /* Typography families — woff2 preferred; otf/ttf temporary until conversion */
+  --font-display: 'LT Amber Condensed', system-ui, 'Segoe UI', sans-serif;
+  --font-body: 'Pliant', system-ui, 'Segoe UI', sans-serif;
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
+
+  /*
+   * Заголовки секций:
+   *  - главная и витринные страницы: H2 (LT Amber Medium, капс, 40–56px);
+   *  - внутренние страницы (бренд, товар, интерьеры): подпись секции с линией
+   *    (компонент SectionLabel, LT Amber Regular, капс, 14px);
+   *  - H1 страницы всегда LT Amber Medium, капс.
+   */
+
+  /* Type scale (brand-guide: desktop/mobile via clamp) */
+  --text-h1: clamp(2.625rem, 5vw, 4.5rem); /* 42–72px band within 42–88 */
+  --text-h2: clamp(1.875rem, 3.5vw, 3rem); /* 30–48 within 30–56 */
+  --text-h3: clamp(1.25rem, 2vw, 1.875rem); /* 20–30 within 20–34 */
+  --text-label: clamp(0.6875rem, 1vw, 0.875rem); /* 11–14 within 11–18 */
+  --text-body-lg: clamp(1rem, 1.2vw, 1.125rem); /* 16–18: подзаголовки */
+  --text-body: clamp(0.9375rem, 1.1vw, 1.0625rem); /* 15–17 within 15–18 */
+  --text-caption: clamp(0.6875rem, 0.9vw, 0.8125rem); /* 11–13 */
+
+  /* Каталог: фиксированные размеры брендбука */
+  --text-subtitle: 0.9375rem; /* 15px, Pliant Light */
+  --text-label-md: 0.875rem; /* 14px, LT Amber Regular caps */
+  --text-caption-md: 0.875rem; /* 14px, Pliant Light */
+  --text-model-title: 1.5rem; /* 24px, LT Amber Medium caps */
+  --leading-label: 1.1;
+  --leading-caption: 1.4;
+
+  --tracking-label: 0.06em;
+  --leading-body: 1.45;
+
+  /* Layout */
+  --header-h: 108px;
+  /* Общая линия шапки и меню (54px на ≥1024 / 1920) */
+  --layout-inline: 54px;
+  /* Страницы без hero: шапка → H1 (mobile → tablet → desktop) */
+  --page-top-offset: 3.5rem; /* 56px */
+  --page-gutter: clamp(1.25rem, 4vw, 3.5rem);
+  --page-max: 80rem;
+  --page-title-size: var(--text-h1);
+  --page-crumbs-size: var(--text-caption);
+  --btn-height: 2.5rem; /* 40px */
+  --btn-font-size: 1rem; /* 16px */
+  --btn-padding-x: 1.5rem; /* 24px */
+  --section-space: clamp(4.5rem, 10vw, 10rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-media: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --text-h2-section: clamp(2rem, 2.8vw, 2.5rem);
+  /* FullBleedBanner H2 — /trade/, /showrooms/, /account/ */
+  --banner-title-size: clamp(2.75rem, 6vw, 5.5rem); /* 44–88px */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-top-offset: 4.5rem; /* 72px tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-top-offset: 6rem; /* 96px desktop */
+  }
+}

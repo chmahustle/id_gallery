@@ -2,9 +2,9 @@ import AppLink from './AppLink'
 import './Explore.css'
 
 export default function Explore({
-  gallery = '/images/gallery.jpg',
-  restaurant = '/images/restaurant.jpg',
-  guesthouse = '/images/guesthouse.jpg',
+  gallery = '/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg',
+  restaurant = '/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg',
+  guesthouse = '/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg',
   items,
 }) {
   const resolved = items?.length

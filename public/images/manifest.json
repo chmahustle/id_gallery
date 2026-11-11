@@ -1,0 +1,210 @@
+{
+  "generatedAt": "2026-10-20",
+  "notes": "Этап 9b. RH-баннеры удалены. Неизвестное происхождение → approved:false. interior-01 = красная картина + зелёный диван (git: Initial commit, exif недоступен). product-01/hero* = белая гостиная с рогами (удалены). Gemini_* = generated. Этап 12b: sourceId — идентификатор исходного кадра (кропы одного источника делят sourceId).",
+  "files": [
+    {
+      "file": "public/apple-touch-icon.png",
+      "source": "client",
+      "approved": true,
+      "sourceId": "apple-touch-icon"
+    },
+    {
+      "file": "public/favicon.svg",
+      "source": "client",
+      "approved": true,
+      "sourceId": "favicon"
+    },
+    {
+      "file": "public/favicon-32.png",
+      "source": "client",
+      "approved": true,
+      "sourceId": "favicon-32"
+    },
+    {
+      "file": "public/favicon-192.png",
+      "source": "client",
+      "approved": true,
+      "sourceId": "favicon-192"
+    },
+    {
+      "file": "public/for_footer.svg",
+      "source": "client",
+      "approved": true,
+      "sourceId": "for-footer"
+    },
+    {
+      "file": "public/icons.svg",
+      "source": "client",
+      "approved": true,
+      "sourceId": "icons"
+    },
+    {
+      "file": "public/brand/logo-full-dark.svg",
+      "source": "client",
+      "approved": true,
+      "sourceId": "brand-logo-full-dark"
+    },
+    {
+      "file": "public/brand/logo-full-dark.webp",
+      "source": "client",
+      "approved": true,
+      "sourceId": "brand-logo-full-dark"
+    },
+    {
+      "file": "public/brand/logo-full-light.svg",
+      "source": "client",
+      "approved": true,
+      "sourceId": "brand-logo-full-light"
+    },
+    {
+      "file": "public/brand/logo-full-light.webp",
+      "source": "client",
+      "approved": true,
+      "sourceId": "brand-logo-full-light"
+    },
+    {
+      "file": "public/brand/logo-mark-dark.svg",
+      "source": "client",
+      "approved": true,
+      "sourceId": "brand-logo-mark-dark"
+    },
+    {
+      "file": "public/brand/logo-mark-light.svg",
+      "source": "client",
+      "approved": true,
+      "sourceId": "brand-logo-mark-light"
+    },
+    {
+      "file": "public/brand/logo-mark-light.webp",
+      "source": "client",
+      "approved": true,
+      "sourceId": "brand-logo-mark-light"
+    },
+    {
+      "file": "public/brand/logos/baxter.webp",
+      "source": "client",
+      "approved": true,
+      "sourceId": "brand-logos-baxter"
+    },
+    {
+      "file": "public/brand/logos/bonaldo.webp",
+      "source": "client",
+      "approved": true,
+      "sourceId": "brand-logos-bonaldo"
+    },
+    {
+      "file": "public/brand/logos/visionnaire.webp",
+      "source": "client",
+      "approved": true,
+      "sourceId": "brand-logos-visionnaire"
+    },
+    {
+      "file": "public/images/brand-baxter.jpg",
+      "source": "placeholder",
+      "approved": true,
+      "sourceId": "images-brand-baxter"
+    },
+    {
+      "file": "public/images/brand-molteni.jpg",
+      "source": "placeholder",
+      "approved": true,
+      "sourceId": "images-brand-molteni"
+    },
+    {
+      "file": "public/images/brand-visionnaire.jpg",
+      "source": "placeholder",
+      "approved": true,
+      "sourceId": "images-brand-visionnaire"
+    },
+    {
+      "file": "public/images/partners.jpg",
+      "source": "placeholder",
+      "approved": true,
+      "sourceId": "images-partners"
+    },
+    {
+      "file": "public/images/Gemini_Generated_Image_sq76gsq76gsq76gs.jpg",
+      "source": "generated",
+      "approved": true,
+      "sourceId": "images-gemini-generated-image-sq76gsq76gsq76gs"
+    },
+    {
+      "file": "public/images/hero.jpg",
+      "source": "placeholder",
+      "approved": true,
+      "sourceId": "images-hero"
+    },
+    {
+      "file": "public/images/interior-01.png",
+      "source": "placeholder",
+      "approved": false,
+      "sourceId": "images-interior-01"
+    },
+    {
+      "file": "public/images/interior-02.png",
+      "source": "placeholder",
+      "approved": false,
+      "sourceId": "images-interior-02"
+    },
+    {
+      "file": "public/images/interior-03.png",
+      "source": "placeholder",
+      "approved": false,
+      "sourceId": "images-interior-03"
+    },
+    {
+      "file": "public/placeholders/brand.svg",
+      "source": "placeholder",
+      "approved": true,
+      "sourceId": "placeholders-brand"
+    },
+    {
+      "file": "public/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg",
+      "source": "generated",
+      "approved": true,
+      "sourceId": "placeholders-gemini-generated-image-9eqvhh9eqvhh9eqv"
+    },
+    {
+      "file": "public/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg",
+      "source": "generated",
+      "approved": true,
+      "sourceId": "placeholders-gemini-generated-image-9wrdx89wrdx89wrd"
+    },
+    {
+      "file": "public/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg",
+      "source": "generated",
+      "approved": true,
+      "sourceId": "placeholders-gemini-generated-image-bts5zcbts5zcbts5"
+    },
+    {
+      "file": "public/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg",
+      "source": "generated",
+      "approved": true,
+      "sourceId": "placeholders-gemini-generated-image-ty7owqty7owqty7o"
+    },
+    {
+      "file": "public/placeholders/product-02.jpg",
+      "source": "placeholder",
+      "approved": false,
+      "sourceId": "placeholders-product-02"
+    },
+    {
+      "file": "public/placeholders/product-10.jpg",
+      "source": "placeholder",
+      "approved": false,
+      "sourceId": "placeholders-product-10"
+    },
+    {
+      "file": "src/assets/react.svg",
+      "source": "generated",
+      "approved": true,
+      "sourceId": "assets-react"
+    },
+    {
+      "file": "src/assets/vite.svg",
+      "source": "generated",
+      "approved": true,
+      "sourceId": "assets-vite"
+    }
+  ]
+}

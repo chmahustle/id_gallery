@@ -1,0 +1,840 @@
+{
+  "iw": 390,
+  "ih": 844,
+  "sw": 390,
+  "hScroll": false,
+  "offenders": [],
+  "smallTaps": [
+    {
+      "sel": "#root > div.page > a.skip-link",
+      "w": 186,
+      "h": 41,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1)",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2)",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "#root > div.page > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo",
+      "w": 160,
+      "h": 38,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn",
+      "w": 40,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1)",
+      "w": 59,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2)",
+      "w": 47,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(3)",
+      "w": 45,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(4)",
+      "w": 45,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(5)",
+      "w": 43,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(6)",
+      "w": 94,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(7)",
+      "w": 58,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(1) > a",
+      "w": 85,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(2) > a",
+      "w": 58,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(3) > a",
+      "w": 55,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(4) > a",
+      "w": 55,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(5) > a",
+      "w": 48,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(6) > a",
+      "w": 159,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(7) > a",
+      "w": 88,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-бренды > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(1) > a",
+      "w": 80,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-бренды > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(2) > a",
+      "w": 74,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-бренды > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(3) > a",
+      "w": 51,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-бренды > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(4) > a",
+      "w": 60,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-о-галерее > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(1) > a",
+      "w": 92,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-о-галерее > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(2) > a",
+      "w": 72,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-услуги > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(1) > a",
+      "w": 185,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-услуги > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(2) > a",
+      "w": 170,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-вдохновение > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(1) > a",
+      "w": 84,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-вдохновение > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(2) > a",
+      "w": 76,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-контакты > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(1) > a",
+      "w": 183,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#mega-col-контакты > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(2) > a",
+      "w": 116,
+      "h": 32,
+      "tag": "a"
+    },
+    {
+      "sel": "#_r_0_ > div.menu__shell > nav.menu__mobile-utils > a.menu__mobile-util:nth-child(1)",
+      "w": 358,
+      "h": 25,
+      "tag": "a"
+    },
+    {
+      "sel": "#_r_0_ > div.menu__shell > nav.menu__mobile-utils > a.menu__mobile-util:nth-child(2)",
+      "w": 358,
+      "h": 25,
+      "tag": "a"
+    },
+    {
+      "sel": "#top > div.home-hero__content:nth-child(2) > div.home-hero__actions > a.ui-btn.ui-btn--primary:nth-child(1)",
+      "w": 350,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "#top > div.home-hero__content:nth-child(2) > div.home-hero__actions > a.ui-btn.ui-btn--inverse:nth-child(2)",
+      "w": 350,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "#brands > div.ff-banner__content:nth-child(2) > div.ff-banner__cta:nth-child(3) > a.ui-btn.ui-btn--inverse",
+      "w": 144,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "#brands > div.ff-banner__content:nth-child(2) > div.ff-banner__links.ff-banner__links--subtle:nth-child(4) > a.ui-btn.ui-btn--link:nth-child(1)",
+      "w": 54,
+      "h": 18,
+      "tag": "a"
+    },
+    {
+      "sel": "#brands > div.ff-banner__content:nth-child(2) > div.ff-banner__links.ff-banner__links--subtle:nth-child(4) > a.ui-btn.ui-btn--link:nth-child(2)",
+      "w": 48,
+      "h": 18,
+      "tag": "a"
+    },
+    {
+      "sel": "#brands > div.ff-banner__content:nth-child(2) > div.ff-banner__links.ff-banner__links--subtle:nth-child(4) > a.ui-btn.ui-btn--link:nth-child(3)",
+      "w": 32,
+      "h": 18,
+      "tag": "a"
+    }
+  ],
+  "smallText": [
+    {
+      "sel": "#root > div.page > a.skip-link",
+      "px": 12,
+      "sample": "Перейти к содержимому"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1)",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2)",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3)",
+      "px": 13,
+      "sample": "Стулья"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Стулья"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Стулья"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(4)",
+      "px": 13,
+      "sample": "Столы"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Столы"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Столы"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(5)",
+      "px": 13,
+      "sample": "Мебель для хранения"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(5) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Мебель для хранения"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(5) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Мебель для хранения"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(6)",
+      "px": 13,
+      "sample": "Освещение"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(6) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Освещение"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(6) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Освещение"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(1)",
+      "px": 13,
+      "sample": "Visionnaire"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Visionnaire"
+    },
+    {
+      "sel": "div.footer__col:nth-child(2) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Visionnaire"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(2)",
+      "px": 13,
+      "sample": "Molteni&C"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Molteni&C"
+    },
+    {
+      "sel": "div.footer__col:nth-child(2) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Molteni&C"
+    }
+  ],
+  "longLines": [
+    {
+      "sel": "#brands > div.ff-banner__content:nth-child(2) > p.ff-banner__desc",
+      "chars": 76,
+      "sample": "Четыре производителя с собственным подходом к форме, материалам и интерьеру."
+    },
+    {
+      "sel": "#showrooms > div.ff-banner__content:nth-child(2) > p.ff-banner__desc",
+      "chars": 116,
+      "sample": "Познакомьтесь с коллекциями и материалами лично. Наличие конкретной модели в экс"
+    },
+    {
+      "sel": "#partners > div.home-partners > div.home-partners__copy:nth-child(1) > p.home-section__desc",
+      "chars": 81,
+      "sample": "Подбор моделей для проектов и запрос технической информации у команды ID Gallery"
+    }
+  ],
+  "images": [
+    {
+      "src": "http://127.0.0.1:5173/images/Gemini_Generated_Image_sq76gsq76gsq76gs.jpg",
+      "nw": 2752,
+      "nh": 1536,
+      "rw": 390,
+      "rh": 844,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg",
+      "nw": 546,
+      "nh": 731,
+      "rw": 390,
+      "rh": 675,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/images/interior-01.png",
+      "nw": 438,
+      "nh": 545,
+      "rw": 390,
+      "rh": 675,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/images/interior-03.png",
+      "nw": 0,
+      "nh": 0,
+      "rw": 390,
+      "rh": 844,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg",
+      "nw": 1792,
+      "nh": 2400,
+      "rw": 273,
+      "rh": 341,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg",
+      "nw": 1792,
+      "nh": 2400,
+      "rw": 273,
+      "rh": 341,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg",
+      "nw": 1792,
+      "nh": 2400,
+      "rw": 273,
+      "rh": 341,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg",
+      "nw": 1792,
+      "nh": 2400,
+      "rw": 273,
+      "rh": 341,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/images/hero.jpg",
+      "nw": 0,
+      "nh": 0,
+      "rw": 390,
+      "rh": 844,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/images/partners.jpg",
+      "nw": 0,
+      "nh": 0,
+      "rw": 390,
+      "rh": 244,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    }
+  ],
+  "headings": [
+    {
+      "tag": "H2",
+      "text": "Вход",
+      "px": 20,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H1",
+      "text": "ID Gallery",
+      "px": 42,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Бренды ID Gallery",
+      "px": 44,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Каталог",
+      "px": 44,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Интерьеры",
+      "px": 44,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Избранные модели",
+      "px": 32,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Шоурумы",
+      "px": 44,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Дизайнерам и архитекторам",
+      "px": 32,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    }
+  ],
+  "sticky": [
+    {
+      "sel": "#root > div.page > header.header.header--overlay",
+      "pos": "fixed",
+      "h": 109,
+      "top": 0,
+      "pctH": 12.9,
+      "z": "200"
+    },
+    {
+      "sel": "#root > div.page > button.menu-backdrop.is-open:nth-child(4)",
+      "pos": "fixed",
+      "h": 844,
+      "top": 0,
+      "pctH": 100,
+      "z": "190"
+    },
+    {
+      "sel": "#root > div.page > div.menu-clip.is-open:nth-child(5)",
+      "pos": "fixed",
+      "h": 844,
+      "top": 0,
+      "pctH": 100,
+      "z": "195"
+    }
+  ],
+  "focusVisible": {
+    "sel": "#root > div.page > a.skip-link",
+    "visible": false,
+    "outline": "rgb(44, 41, 41) none 3px",
+    "boxShadow": "none"
+  },
+  "hoverOnly": [
+    ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover",
+    ".auth-modal__close:hover",
+    ".auth-modal__submit:hover:not(:disabled)",
+    ".cart-panel__remove:hover",
+    ".cart-panel__order:hover",
+    ".search-panel__results button:hover",
+    ".header__icon-btn:hover:not(:disabled)",
+    ".newsletter__form button:hover",
+    ".catalog-drawer__body:hover::-webkit-scrollbar-thumb",
+    ".catalog-drawer__close:hover",
+    ".catalog-sidebar__brands button:hover, .catalog-sidebar__brands button.is-active",
+    ".catalog-sidebar__tree a:hover, .catalog-sidebar__cat-row > a:hover",
+    ".catalog-sidebar__chevron:hover",
+    ".catalog-sidebar__tree ul a:hover",
+    ".catalog-toolbar__views button.is-active, .catalog-toolbar__views button:hover",
+    ".product-grid__card:hover .product-grid__media img",
+    ".product-grid__swatch:hover",
+    ".product-grid__name a:hover",
+    ".catalog-select__list button:hover, .catalog-select__list button.is-active",
+    ".product-page__swatch:hover",
+    ".product-page__swatch-all:hover",
+    ".finishes-drawer__close:hover",
+    ".finishes-drawer__swatch:hover .finishes-drawer__chip",
+    ".brand-page__crumbs a:hover",
+    ".news-filters button:hover"
+  ],
+  "lowContrast": [
+    {
+      "sel": "#root > div.page > a.skip-link",
+      "ratio": 1,
+      "sample": "Перейти к содержимому",
+      "color": "rgb(44, 41, 41)"
+    },
+    {
+      "sel": "#root > div.page > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo",
+      "ratio": 1,
+      "sample": "ID Gallery",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo > span.header__logo-stack",
+      "ratio": 1,
+      "sample": "ID Gallery",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1)",
+      "ratio": 1,
+      "sample": "Дизайнерам",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2)",
+      "ratio": 1,
+      "sample": "Контакты",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1)",
+      "ratio": 1,
+      "sample": "Все товары",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2)",
+      "ratio": 1,
+      "sample": "Диваны",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(3)",
+      "ratio": 1,
+      "sample": "Кресла",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(4)",
+      "ratio": 1,
+      "sample": "Стулья",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(5)",
+      "ratio": 1,
+      "sample": "Столы",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(6)",
+      "ratio": 1,
+      "sample": "Мебель для хранения",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(7)",
+      "ratio": 1,
+      "sample": "Освещение",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#_r_0_ > div.menu__shell > div.menu__columns.menu__columns--accordion > div.menu__col.menu__col--accordion:nth-child(1) > button.menu__acc-trigger",
+      "ratio": 1,
+      "sample": "Каталог−",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.menu__shell > div.menu__columns.menu__columns--accordion > div.menu__col.menu__col--accordion:nth-child(1) > button.menu__acc-trigger > span:nth-child(1)",
+      "ratio": 1,
+      "sample": "Каталог",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(1)",
+      "ratio": 1,
+      "sample": "Все товары",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(2)",
+      "ratio": 1,
+      "sample": "Диваны",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(3)",
+      "ratio": 1,
+      "sample": "Кресла",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(4)",
+      "ratio": 1,
+      "sample": "Стулья",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(5)",
+      "ratio": 1,
+      "sample": "Столы",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(6)",
+      "ratio": 1,
+      "sample": "Мебель для хранения",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-каталог > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(7)",
+      "ratio": 1,
+      "sample": "Освещение",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#_r_0_ > div.menu__shell > div.menu__columns.menu__columns--accordion > div.menu__col.menu__col--accordion:nth-child(2) > button.menu__acc-trigger",
+      "ratio": 1,
+      "sample": "Бренды+",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.menu__shell > div.menu__columns.menu__columns--accordion > div.menu__col.menu__col--accordion:nth-child(2) > button.menu__acc-trigger > span:nth-child(1)",
+      "ratio": 1,
+      "sample": "Бренды",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-бренды > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(1)",
+      "ratio": 1,
+      "sample": "Visionnaire",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-бренды > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(2)",
+      "ratio": 1,
+      "sample": "Molteni&C",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-бренды > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(3)",
+      "ratio": 1,
+      "sample": "Baxter",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-бренды > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(4)",
+      "ratio": 1,
+      "sample": "Bonaldo",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#_r_0_ > div.menu__shell > div.menu__columns.menu__columns--accordion > div.menu__col.menu__col--accordion:nth-child(3) > button.menu__acc-trigger",
+      "ratio": 1,
+      "sample": "О галерее+",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.menu__shell > div.menu__columns.menu__columns--accordion > div.menu__col.menu__col--accordion:nth-child(3) > button.menu__acc-trigger > span:nth-child(1)",
+      "ratio": 1,
+      "sample": "О галерее",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#mega-col-о-галерее > div.menu__acc-panel-inner > ul.menu__col-links > li:nth-child(1)",
+      "ratio": 1,
+      "sample": "Об ID Gallery",
+      "color": "rgb(242, 240, 235)"
+    }
+  ],
+  "heavyImages": [
+    {
+      "src": "http://127.0.0.1:5173/images/Gemini_Generated_Image_sq76gsq76gsq76gs.jpg",
+      "kb": 3323
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg",
+      "kb": 2894
+    },
+    {
+      "src": "http://127.0.0.1:5173/images/interior-01.png",
+      "kb": 3308
+    },
+    {
+      "src": "http://127.0.0.1:5173/images/interior-03.png",
+      "kb": 657
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg",
+      "kb": 3119
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg",
+      "kb": 2760
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg",
+      "kb": 3192
+    }
+  ]
+}

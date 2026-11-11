@@ -15,10 +15,12 @@ import {
   sessionCookieOptions,
 } from './auth.js'
 import { initDb } from './db.js'
+import { ensureEmbeddedPostgres } from './embedded-pg.js'
 import brandsRouter from './brands.js'
 import mediaRouter, { UPLOAD_ROOT, ensureUploadsDir } from './media.js'
 import newsRouter from './news.js'
 import textsRouter from './texts.js'
+import usersRouter from './users.js'
 
 const PORT = Number(process.env.PORT || 3001)
 
@@ -92,6 +94,7 @@ app.use('/api/texts', textsRouter)
 app.use('/api/media', mediaRouter)
 app.use('/api/news', newsRouter)
 app.use('/api/brands', brandsRouter)
+app.use('/api/account', usersRouter)
 
 app.use((err, _req, res, _next) => {
   console.error(err)
@@ -100,6 +103,7 @@ app.use((err, _req, res, _next) => {
 })
 
 await ensureUploadsDir()
+await ensureEmbeddedPostgres()
 await initDb()
 
 app.listen(PORT, () => {

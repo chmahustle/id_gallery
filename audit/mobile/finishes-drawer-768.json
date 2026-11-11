@@ -1,0 +1,545 @@
+{
+  "iw": 768,
+  "ih": 1024,
+  "sw": 768,
+  "hScroll": false,
+  "offenders": [],
+  "smallTaps": [
+    {
+      "sel": "#root > div.page.page--solid > a.skip-link",
+      "w": 186,
+      "h": 41,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1)",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2)",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "#root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo",
+      "w": 160,
+      "h": 38,
+      "tag": "a"
+    },
+    {
+      "sel": "header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1)",
+      "w": 50,
+      "h": 22,
+      "tag": "a"
+    },
+    {
+      "sel": "header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2)",
+      "w": 39,
+      "h": 22,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn",
+      "w": 40,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1)",
+      "w": 45,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(2)",
+      "w": 33,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(3)",
+      "w": 31,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(4)",
+      "w": 30,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(5)",
+      "w": 28,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(6)",
+      "w": 79,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(7)",
+      "w": 44,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "#main > div.product-page > nav.product-page__crumbs > a:nth-child(1)",
+      "w": 40,
+      "h": 15,
+      "tag": "a"
+    },
+    {
+      "sel": "#main > div.product-page > nav.product-page__crumbs > a:nth-child(3)",
+      "w": 41,
+      "h": 15,
+      "tag": "a"
+    },
+    {
+      "sel": "#main > div.product-page > nav.product-page__crumbs > a:nth-child(5)",
+      "w": 38,
+      "h": 15,
+      "tag": "a"
+    },
+    {
+      "sel": "div.product-page__layout > div.product-page__info:nth-child(2) > div.product-page__stack > div.product-page__actions:nth-child(2) > a.ui-btn.ui-btn--primary",
+      "w": 707,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "#product-finishes > div.product-page__swatches",
+      "w": 707,
+      "h": 33,
+      "tag": "div"
+    },
+    {
+      "sel": "#product-finishes > div.product-page__swatches > button.product-page__swatch.is-active:nth-child(1)",
+      "w": 27,
+      "h": 27,
+      "tag": "button"
+    },
+    {
+      "sel": "#product-finishes > div.product-page__swatches > button.product-page__swatch:nth-child(2)",
+      "w": 27,
+      "h": 27,
+      "tag": "button"
+    },
+    {
+      "sel": "#product-finishes > div.product-page__swatches > button.product-page__swatch:nth-child(3)",
+      "w": 27,
+      "h": 27,
+      "tag": "button"
+    },
+    {
+      "sel": "#product-finishes > div.product-page__swatches > button.product-page__swatch:nth-child(4)",
+      "w": 27,
+      "h": 27,
+      "tag": "button"
+    },
+    {
+      "sel": "#product-finishes > div.product-page__swatches > button.product-page__swatch-all:nth-child(5)",
+      "w": 50,
+      "h": 27,
+      "tag": "button"
+    },
+    {
+      "sel": "#product-specs > div.product-acc.is-open > button.product-acc__trigger",
+      "w": 707,
+      "h": 31,
+      "tag": "button"
+    },
+    {
+      "sel": "div.product-page > section.product-related > div.product-related__head:nth-child(1) > div.product-related__cta:nth-child(2) > a.ui-btn.ui-btn--secondary",
+      "w": 185,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "div.product-page > section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(1) > div.product-grid__swatches:nth-child(2)",
+      "w": 344,
+      "h": 20,
+      "tag": "div"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(1) > div.product-grid__swatches:nth-child(2) > button.product-grid__swatch.is-active:nth-child(1)",
+      "w": 14,
+      "h": 14,
+      "tag": "button"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(1) > div.product-grid__swatches:nth-child(2) > button.product-grid__swatch:nth-child(2)",
+      "w": 14,
+      "h": 14,
+      "tag": "button"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(1) > div.product-grid__swatches:nth-child(2) > button.product-grid__swatch:nth-child(3)",
+      "w": 14,
+      "h": 14,
+      "tag": "button"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(1) > div.product-grid__swatches:nth-child(2) > button.product-grid__swatch:nth-child(4)",
+      "w": 14,
+      "h": 14,
+      "tag": "button"
+    },
+    {
+      "sel": "div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(1) > div.product-grid__info:nth-child(3) > h3.product-grid__name > a",
+      "w": 71,
+      "h": 20,
+      "tag": "a"
+    },
+    {
+      "sel": "div.product-page > section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(2) > div.product-grid__swatches:nth-child(2)",
+      "w": 344,
+      "h": 20,
+      "tag": "div"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(2) > div.product-grid__swatches:nth-child(2) > button.product-grid__swatch.is-active:nth-child(1)",
+      "w": 14,
+      "h": 14,
+      "tag": "button"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(2) > div.product-grid__swatches:nth-child(2) > button.product-grid__swatch:nth-child(2)",
+      "w": 14,
+      "h": 14,
+      "tag": "button"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(2) > div.product-grid__swatches:nth-child(2) > button.product-grid__swatch:nth-child(3)",
+      "w": 14,
+      "h": 14,
+      "tag": "button"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(2) > div.product-grid__swatches:nth-child(2) > button.product-grid__swatch:nth-child(4)",
+      "w": 14,
+      "h": 14,
+      "tag": "button"
+    },
+    {
+      "sel": "div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(2) > div.product-grid__info:nth-child(3) > h3.product-grid__name > a",
+      "w": 68,
+      "h": 20,
+      "tag": "a"
+    },
+    {
+      "sel": "#main > aside.finishes-drawer.is-open > div.finishes-drawer__head:nth-child(1) > button.finishes-drawer__close",
+      "w": 32,
+      "h": 32,
+      "tag": "button"
+    }
+  ],
+  "smallText": [
+    {
+      "sel": "#root > div.page.page--solid > a.skip-link",
+      "px": 12,
+      "sample": "Перейти к содержимому"
+    },
+    {
+      "sel": "#main > div.product-page > nav.product-page__crumbs > a:nth-child(1)",
+      "px": 11,
+      "sample": "Главная"
+    },
+    {
+      "sel": "#main > div.product-page > nav.product-page__crumbs > a:nth-child(3)",
+      "px": 11,
+      "sample": "Каталог"
+    },
+    {
+      "sel": "#main > div.product-page > nav.product-page__crumbs > a:nth-child(5)",
+      "px": 11,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "#main > div.product-page > nav.product-page__crumbs > span:nth-child(7)",
+      "px": 11,
+      "sample": "Модель 01"
+    },
+    {
+      "sel": "#product-finishes > p.product-page__finishes-current",
+      "px": 13,
+      "sample": "Образец A"
+    },
+    {
+      "sel": "#specs-panel > div.product-acc__panel-inner > dl.product-page__specs > div:nth-child(1) > dd",
+      "px": 13,
+      "sample": "240 × 105 × 80 см"
+    },
+    {
+      "sel": "#specs-panel > div.product-acc__panel-inner > dl.product-page__specs > div:nth-child(2) > dd",
+      "px": 13,
+      "sample": "Кожа, массив дерева"
+    },
+    {
+      "sel": "#specs-panel > div.product-acc__panel-inner > dl.product-page__specs > div:nth-child(3) > dd",
+      "px": 13,
+      "sample": "Образец A, Образец B"
+    },
+    {
+      "sel": "#specs-panel > div.product-acc__panel-inner > dl.product-page__specs > div:nth-child(4) > dd",
+      "px": 13,
+      "sample": "BX-0211"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(1) > div.product-grid__info:nth-child(3) > p.product-grid__category:nth-child(1)",
+      "px": 12,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(1) > div.product-grid__info:nth-child(3) > p.product-grid__brand:nth-child(3)",
+      "px": 12,
+      "sample": "Visionnaire"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(2) > div.product-grid__info:nth-child(3) > p.product-grid__category:nth-child(1)",
+      "px": 12,
+      "sample": "Освещение"
+    },
+    {
+      "sel": "section.product-related > div.product-related__grid:nth-child(2) > article.product-grid__card:nth-child(2) > div.product-grid__info:nth-child(3) > p.product-grid__brand:nth-child(3)",
+      "px": 12,
+      "sample": "Visionnaire"
+    },
+    {
+      "sel": "section.finishes-drawer__group > div.finishes-drawer__material > div.finishes-drawer__grid > button.finishes-drawer__swatch.is-active:nth-child(1) > span.finishes-drawer__name:nth-child(2)",
+      "px": 11,
+      "sample": "Образец A"
+    },
+    {
+      "sel": "section.finishes-drawer__group > div.finishes-drawer__material > div.finishes-drawer__grid > button.finishes-drawer__swatch:nth-child(2) > span.finishes-drawer__name:nth-child(2)",
+      "px": 11,
+      "sample": "Образец B"
+    },
+    {
+      "sel": "section.finishes-drawer__group > div.finishes-drawer__material > div.finishes-drawer__grid > button.finishes-drawer__swatch:nth-child(3) > span.finishes-drawer__name:nth-child(2)",
+      "px": 11,
+      "sample": "Образец C"
+    },
+    {
+      "sel": "section.finishes-drawer__group > div.finishes-drawer__material > div.finishes-drawer__grid > button.finishes-drawer__swatch:nth-child(4) > span.finishes-drawer__name:nth-child(2)",
+      "px": 11,
+      "sample": "Образец D"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1)",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2)",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3)",
+      "px": 13,
+      "sample": "Стулья"
+    }
+  ],
+  "longLines": [],
+  "images": [
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg",
+      "nw": 1792,
+      "nh": 2400,
+      "rw": 1307,
+      "rh": 871,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg",
+      "nw": 1792,
+      "nh": 2400,
+      "rw": 163,
+      "rh": 163,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg",
+      "nw": 1792,
+      "nh": 2400,
+      "rw": 176,
+      "rh": 176,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg",
+      "nw": 1792,
+      "nh": 2400,
+      "rw": 167,
+      "rh": 167,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg",
+      "nw": 1792,
+      "nh": 2400,
+      "rw": 167,
+      "rh": 167,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg",
+      "nw": 1792,
+      "nh": 2400,
+      "rw": 344,
+      "rh": 258,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    }
+  ],
+  "headings": [
+    {
+      "tag": "H2",
+      "text": "Вход",
+      "px": 20,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H1",
+      "text": "Visionnaire · Модель 01",
+      "px": 28,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Варианты исполнения",
+      "px": 12.5,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Другие модели Visionnaire",
+      "px": 24,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    }
+  ],
+  "sticky": [
+    {
+      "sel": "#root > div.page.page--solid > header.header.header--solid",
+      "pos": "fixed",
+      "h": 110,
+      "top": 0,
+      "pctH": 10.7,
+      "z": "200"
+    },
+    {
+      "sel": "#main > button.finishes-drawer__backdrop.is-open",
+      "pos": "fixed",
+      "h": 1024,
+      "top": 0,
+      "pctH": 100,
+      "z": "240"
+    },
+    {
+      "sel": "#main > aside.finishes-drawer.is-open",
+      "pos": "fixed",
+      "h": 1024,
+      "top": 0,
+      "pctH": 100,
+      "z": "250"
+    }
+  ],
+  "focusVisible": {
+    "sel": "#root > div.page.page--solid > a.skip-link",
+    "visible": false,
+    "outline": "rgb(44, 41, 41) none 3px",
+    "boxShadow": "none"
+  },
+  "hoverOnly": [
+    ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover",
+    ".auth-modal__close:hover",
+    ".auth-modal__submit:hover:not(:disabled)",
+    ".cart-panel__remove:hover",
+    ".cart-panel__order:hover",
+    ".search-panel__results button:hover",
+    ".header__icon-btn:hover:not(:disabled)",
+    ".newsletter__form button:hover",
+    ".catalog-drawer__body:hover::-webkit-scrollbar-thumb",
+    ".catalog-drawer__close:hover",
+    ".catalog-sidebar__brands button:hover, .catalog-sidebar__brands button.is-active",
+    ".catalog-sidebar__tree a:hover, .catalog-sidebar__cat-row > a:hover",
+    ".catalog-sidebar__chevron:hover",
+    ".catalog-sidebar__tree ul a:hover",
+    ".catalog-toolbar__views button.is-active, .catalog-toolbar__views button:hover",
+    ".product-grid__card:hover .product-grid__media img",
+    ".product-grid__swatch:hover",
+    ".product-grid__name a:hover",
+    ".catalog-select__list button:hover, .catalog-select__list button.is-active",
+    ".product-page__swatch:hover",
+    ".product-page__swatch-all:hover",
+    ".finishes-drawer__close:hover",
+    ".finishes-drawer__swatch:hover .finishes-drawer__chip",
+    ".brand-page__crumbs a:hover",
+    ".news-filters button:hover"
+  ],
+  "lowContrast": [
+    {
+      "sel": "#root > div.page.page--solid > a.skip-link",
+      "ratio": 1,
+      "sample": "Перейти к содержимому",
+      "color": "rgb(44, 41, 41)"
+    }
+  ],
+  "heavyImages": []
+}

@@ -1,172 +1,184 @@
-import { useEffect, useMemo } from 'react'
-import { Navigate, useParams, useSearchParams } from 'react-router-dom'
-import {
-  collectBrands,
-  collectStatuses,
-  filterProducts,
-  getCategoryBySlug,
-  paginate,
-  parseCatalogSearch,
-  priceBounds,
-  sortProducts,
-} from '../catalog/catalog'
-import { products } from '../content'
-import { useContent } from '../content/ContentContext'
-import CatalogFilters from '../components/catalog/CatalogFilters'
-import CatalogSidebar from '../components/catalog/CatalogSidebar'
+import { Link, Navigate } from 'react-router-dom'
+import { CatalogFiltersDrawer } from '../components/catalog/CatalogFiltersDrawer'
+import { RoomTabs } from '../components/catalog/RoomTabs'
 import CatalogToolbar from '../components/catalog/CatalogToolbar'
 import Pagination from '../components/catalog/Pagination'
 import ProductGrid from '../components/catalog/ProductGrid'
 import SiteShell from '../components/SiteShell'
+import { Reveal } from '../components/ui'
+import { categories } from '../data/categories'
+import { getRoomBySlug } from '../data/rooms'
+import { getBrandBySlug } from '../lib/catalog'
+import SearchNotFound from '../components/search/SearchNotFound'
+import { useCatalogFilters } from '../features/catalog/useCatalogFilters'
 import './Catalog.css'
 
 export default function Catalog() {
-  const { content, ready } = useContent()
-  const { categorySlug } = useParams()
-  const [searchParams, setSearchParams] = useSearchParams()
-  const queryKey = searchParams.toString()
-  const filters = useMemo(
-    () => parseCatalogSearch(new URLSearchParams(queryKey)),
-    [queryKey],
-  )
+  const catalog = useCatalogFilters()
 
-  const category = categorySlug
-    ? getCategoryBySlug(categorySlug, content.catalogCategories)
-    : null
-
-  const scoped = useMemo(() => {
-    if (!categorySlug) return products
-    if (!category) return []
-    return products.filter((item) => item.categorySlug === category.slug)
-  }, [category, categorySlug])
-
-  const brands = useMemo(() => collectBrands(scoped), [scoped])
-  const statuses = useMemo(() => collectStatuses(scoped), [scoped])
-  const bounds = useMemo(() => priceBounds(scoped), [scoped])
-
-  // Категория уже отфильтрована по slug — не фильтруем по label
-  // (иначе переименование категории в админке обнулит выдачу).
-  const filtered = useMemo(
-    () =>
-      filterProducts(scoped, {
-        sub: filters.sub,
-        brand: filters.brand,
-        status: filters.status,
-        priceMin: filters.priceMin,
-        priceMax: filters.priceMax,
-      }),
-    [
-      scoped,
-      filters.sub,
-      filters.brand,
-      filters.status,
-      filters.priceMin,
-      filters.priceMax,
-    ],
-  )
-
-  const sorted = useMemo(
-    () => sortProducts(filtered, filters.sort),
-    [filtered, filters.sort],
-  )
-
-  const pageData = useMemo(
-    () => paginate(sorted, filters.page),
-    [sorted, filters.page],
-  )
-
-  function updateParams(patch) {
-    const merged = { ...filters, ...patch }
-    const next = new URLSearchParams()
-
-    if (merged.sub) next.set('sub', merged.sub)
-    if (merged.brand) next.set('brand', merged.brand)
-    if (merged.status) next.set('status', merged.status)
-    if (merged.sort && merged.sort !== 'popular') next.set('sort', merged.sort)
-    if (merged.page && merged.page > 1) next.set('page', String(merged.page))
-    if (merged.priceMin != null && Number.isFinite(merged.priceMin)) {
-      next.set('priceMin', String(merged.priceMin))
-    }
-    if (merged.priceMax != null && Number.isFinite(merged.priceMax)) {
-      next.set('priceMax', String(merged.priceMax))
-    }
-
-    setSearchParams(next, { replace: true })
-  }
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [categorySlug, queryKey])
-
-  useEffect(() => {
-    if (filters.page === pageData.page) return
-    const next = new URLSearchParams(queryKey)
-    if (pageData.page <= 1) next.delete('page')
-    else next.set('page', String(pageData.page))
-    setSearchParams(next, { replace: true })
-  }, [filters.page, pageData.page, queryKey, setSearchParams])
-
-  useEffect(() => {
-    const title = category?.label || 'Каталог'
-    document.title = `${title} — ID Gallery`
-    return () => {
-      document.title = 'ID Gallery'
-    }
-  }, [category?.label])
-
-  if (!ready) {
-    return <div className="page" aria-busy="true" />
-  }
-
-  if (categorySlug && !category) {
+  if (catalog.invalidCategory) {
     return <Navigate to="/catalog" replace />
   }
 
-  const title = category?.label || 'Каталог'
+  const { filters } = catalog
+  const searching = catalog.searching
+  const brandInfo =
+    filters.brandSlug && !catalog.category && !searching
+      ? getBrandBySlug(filters.brandSlug)
+      : null
+  const roomInfo = filters.room ? getRoomBySlug(filters.room) : null
 
   return (
     <SiteShell variant="solid">
       <div className="catalog-page">
-        <header className="catalog-page__head">
-          <h1>{title}</h1>
-          {filters.sub ? (
-            <p className="catalog-page__sub">{filters.sub}</p>
+        <nav className="catalog-page__crumbs" aria-label="Хлебные крошки">
+          <Link to="/">Главная</Link>
+          <span aria-hidden="true">-</span>
+          {searching ? (
+            <>
+              <Link to="/catalog">Каталог</Link>
+              <span aria-hidden="true">-</span>
+              <span>Поиск</span>
+            </>
+          ) : brandInfo ? (
+            <>
+              <Link to="/brands">Бренды</Link>
+              <span aria-hidden="true">-</span>
+              <Link to={`/brands/${brandInfo.slug}`}>{brandInfo.name}</Link>
+              {roomInfo ? (
+                <>
+                  <span aria-hidden="true">-</span>
+                  <span>{roomInfo.label}</span>
+                </>
+              ) : null}
+            </>
+          ) : catalog.category ? (
+            <>
+              <Link to="/catalog">Каталог</Link>
+              <span aria-hidden="true">-</span>
+              <span>{catalog.category.label}</span>
+            </>
+          ) : roomInfo ? (
+            <>
+              <Link to="/catalog">Каталог</Link>
+              <span aria-hidden="true">-</span>
+              <span>{roomInfo.label}</span>
+            </>
+          ) : (
+            <span>Каталог</span>
+          )}
+        </nav>
+
+        <Reveal as="header" className="catalog-page__head">
+          <h1>{brandInfo ? brandInfo.name : catalog.title}</h1>
+          {searching ? (
+            <>
+              <p className="catalog-page__lead">
+                {`Результаты по запросу «${filters.q}»: ${catalog.filteredCount}.`}
+              </p>
+              <Link to="/catalog" className="catalog-page__all-link">
+                Весь каталог ID Gallery
+              </Link>
+            </>
+          ) : brandInfo ? (
+            <p className="catalog-page__lead">
+              {`Товары ${brandInfo.name} в каталоге ID Gallery.`}
+            </p>
+          ) : catalog.category?.description ? (
+            <p className="catalog-page__lead">{catalog.category.description}</p>
           ) : (
             <p className="catalog-page__lead">
-              Мебель, свет и декор ведущих фабрик — в наличии и под заказ
+              Весь представленный в ID Gallery ассортимент четырёх брендов.
             </p>
           )}
-        </header>
+        </Reveal>
 
-        <div className="catalog-page__layout">
-          <CatalogSidebar
-            categories={content.catalogCategories}
-            activeSlug={category?.slug || ''}
-            activeSub={filters.sub}
-          />
-
-          <div className="catalog-page__main">
-            <CatalogFilters
-              brands={brands}
-              statuses={statuses}
-              bounds={bounds}
-              filters={filters}
-              onChange={updateParams}
-            />
+        <Reveal className="catalog-page__layout" stagger>
+          <div className="catalog-page__tools">
+            {catalog.availableRooms.length > 0 ? (
+              <RoomTabs
+                rooms={catalog.availableRooms}
+                value={filters.room}
+                onChange={(room) => catalog.updateParams({ room, page: 1 })}
+              />
+            ) : null}
             <CatalogToolbar
-              total={pageData.total}
               sort={filters.sort}
-              onSortChange={(sort) => updateParams({ sort, page: 1 })}
-            />
-            <ProductGrid products={pageData.items} />
-            <Pagination
-              page={pageData.page}
-              totalPages={pageData.totalPages}
-              onChange={(page) => updateParams({ page })}
+              view={catalog.view}
+              count={catalog.filteredCount}
+              onSortChange={(sort) => catalog.updateParams({ sort, page: 1 })}
+              onViewChange={catalog.setView}
             />
           </div>
-        </div>
+
+          <div className="catalog-page__main">
+            {catalog.filteredCount === 0 && searching ? (
+              <SearchNotFound query={filters.q} />
+            ) : catalog.filteredCount === 0 ? (
+              <div className="catalog-empty" role="status">
+                <p>По выбранным условиям товаров нет.</p>
+                <button
+                  type="button"
+                  className="catalog-empty__reset"
+                  onClick={catalog.resetFilters}
+                >
+                  Сбросить условия
+                </button>
+              </div>
+            ) : null}
+            <ProductGrid
+              products={catalog.pageData.items}
+              view={catalog.view}
+            />
+            <Pagination
+              page={catalog.pageData.page}
+              totalPages={catalog.pageData.totalPages}
+              onChange={(page) => catalog.updateParams({ page })}
+            />
+          </div>
+        </Reveal>
       </div>
+
+      <CatalogFiltersDrawer
+        open={catalog.filtersOpen}
+        drawerRef={catalog.drawerRef}
+        closeBtnRef={catalog.closeBtnRef}
+        resultCount={catalog.filteredCount}
+        q={filters.q}
+        categories={categories}
+        brands={catalog.brands}
+        rooms={catalog.availableRooms}
+        materials={catalog.materials}
+        sizes={catalog.sizes}
+        colors={catalog.colors}
+        activeSlug={catalog.activeCategorySlug}
+        activeSub={filters.sub}
+        activeBrand={filters.brand}
+        activeRoom={filters.room}
+        activeMaterials={filters.materials}
+        activeSizes={filters.sizes}
+        activeColors={filters.colors}
+        linkParams={{
+          room: filters.room,
+          brand: filters.brand,
+          material: filters.materials,
+          size: filters.sizes,
+          color: filters.colors,
+          q: filters.q,
+          sort: filters.sort !== 'default' ? filters.sort : '',
+        }}
+        onOpen={catalog.openFilters}
+        onClose={catalog.closeFilters}
+        onReset={catalog.resetFilters}
+        onQueryChange={(q) => catalog.updateParams({ q, page: 1 })}
+        onBrandChange={(brand) => catalog.updateParams({ brand, page: 1 })}
+        onRoomChange={(room) => catalog.updateParams({ room, page: 1 })}
+        onMaterialsChange={(materials) =>
+          catalog.updateParams({ materials, page: 1 })
+        }
+        onSizesChange={(sizes) => catalog.updateParams({ sizes, page: 1 })}
+        onColorsChange={(colors) => catalog.updateParams({ colors, page: 1 })}
+      />
     </SiteShell>
   )
 }

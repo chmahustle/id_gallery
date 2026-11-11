@@ -1,0 +1,21 @@
+{
+  "h1": "Запросить предложение",
+  "crumbs": false,
+  "type": "offer",
+  "modelValue": "Visionnaire · Модель 01",
+  "brandValue": "",
+  "tabs": [
+    {
+      "text": "Запросить предложение",
+      "selected": "true",
+      "type": "offer"
+    },
+    {
+      "text": "Запросить посещение",
+      "selected": "false",
+      "type": "visit"
+    }
+  ],
+  "forbidden": [],
+  "consent": false
+}

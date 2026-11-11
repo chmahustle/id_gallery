@@ -1,0 +1,19 @@
+{
+  "h1": "Об ID Gallery",
+  "brands": [
+    "Visionnaire",
+    "Molteni&C",
+    "Baxter",
+    "Bonaldo"
+  ],
+  "imgs": [
+    "/images/brand-baxter.jpg",
+    "/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg"
+  ],
+  "imgDupes": [],
+  "forbiddenHits": [
+    "Шоурум"
+  ],
+  "crumbs": false,
+  "brokenImgs": 0
+}

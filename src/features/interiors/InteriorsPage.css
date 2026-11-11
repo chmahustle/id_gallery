@@ -1,0 +1,442 @@
+/* Интерьеры — docs/content-brief.md §11; ось как BrandPage */
+
+.interiors-page {
+  --int-gutter: clamp(1.25rem, 5vw, 6rem);
+  --int-section-y: 7.5rem; /* 120px */
+  --int-row-gap: 7.5rem; /* 120px между рядами */
+  --int-grid-gap: 4rem; /* 64px между фото и текстом */
+  --axis: calc(var(--int-gutter) + (100% - 2 * var(--int-gutter)) * 0.5);
+  background: var(--color-snow);
+  color: var(--color-ink);
+}
+
+.interiors-page__band {
+  display: grid;
+  grid-template-columns:
+    var(--int-gutter)
+    minmax(0, 1fr)
+    minmax(0, 1fr)
+    var(--int-gutter);
+  column-gap: 0;
+  align-items: start;
+}
+
+.interiors-page__left {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.interiors-page__right {
+  grid-column: 3;
+  min-width: 0;
+}
+
+/* —— Hero —— */
+.interiors-page__hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100svh;
+  min-height: 640px;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: var(--color-snow);
+}
+
+.interiors-page__hero--detail {
+  height: 80svh;
+  min-height: 480px;
+}
+
+.interiors-page__hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Hero: cover без scale > 1:1 — иначе пикселизация на 1920 */
+.interiors-page__hero-img,
+.interiors-page__hero-ph {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 55%;
+}
+
+.interiors-page__hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-ink) 72%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 28%, transparent) 45%,
+    color-mix(in srgb, var(--color-ink) 12%, transparent) 100%
+  );
+}
+
+.interiors-page__hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--int-gutter) clamp(3rem, 8vh, 5.5rem);
+  max-width: 42rem;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms var(--ease),
+    transform 700ms var(--ease);
+}
+
+.interiors-page__hero.is-ready .interiors-page__hero-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.interiors-page__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--color-snow);
+}
+
+.interiors-page__lead {
+  margin: 1rem 0 0;
+  max-width: 34rem;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-body);
+  color: color-mix(in srgb, var(--color-snow) 90%, transparent);
+}
+
+.interiors-page__scroll-cue {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: max(1.25rem, 2.5vh);
+  width: 1px;
+  height: 48px;
+  background: color-mix(in srgb, var(--color-snow) 55%, transparent);
+  transform: translateX(-50%) scaleY(0.45);
+  transform-origin: top center;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 500ms var(--ease),
+    transform 500ms var(--ease);
+}
+
+.interiors-page__scroll-cue.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) scaleY(1);
+}
+
+/* —— Ввод —— */
+.interiors-page__intro {
+  padding-top: var(--int-section-y);
+  padding-bottom: var(--int-section-y);
+  background: var(--color-snow);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms var(--ease),
+    transform 600ms var(--ease);
+}
+
+.interiors-page__intro.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.interiors-page__intro-label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.45rem;
+}
+
+.interiors-page__intro-rule {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 1px;
+  background: var(--color-champagne);
+}
+
+.interiors-page__intro-label {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--color-ink);
+}
+
+.interiors-page__intro-text {
+  margin: 0;
+  max-width: 36rem;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: var(--leading-body);
+  color: var(--color-ink);
+}
+
+/* —— Ряды подборок: 7fr | 4fr, gap 64px; поля контейнера — --int-gutter (до 96px) —— */
+.interiors-page__rooms {
+  /* линия → сетка, как в каталоге: 20 + 28 (строка вида) + 20 */
+  padding: 0 var(--int-gutter) 4.25rem;
+}
+
+.interiors-page__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  font-family: var(--font-body);
+  font-weight: 300;
+  color: var(--color-text-muted);
+}
+
+.interiors-page__empty p {
+  margin: 0;
+}
+
+.interiors-page__rows {
+  padding: 0 var(--int-gutter) var(--int-section-y);
+  display: flex;
+  flex-direction: column;
+  gap: var(--int-row-gap);
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 700ms var(--ease),
+    transform 700ms var(--ease);
+}
+
+.interiors-page__rows.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.interiors-page__row {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  column-gap: var(--int-grid-gap);
+  align-items: end;
+}
+
+.interiors-page__row-media {
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-cream);
+  aspect-ratio: 3 / 2;
+}
+
+.interiors-page__row-copy {
+  justify-self: start;
+  min-width: 0;
+  max-width: 26.25rem; /* 420px */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.85rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Чётный: 4fr | 7fr — текст слева, прижат к фото */
+.interiors-page__row--mirror {
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+}
+
+.interiors-page__row--mirror .interiors-page__row-copy {
+  order: 1;
+  justify-self: end;
+}
+
+.interiors-page__row--mirror .interiors-page__row-media {
+  order: 2;
+}
+
+.interiors-page__row-crop {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: unset;
+  transition: transform 900ms var(--ease);
+  will-change: transform;
+}
+
+.interiors-page__row-crop .crop-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.interiors-page__row:hover .interiors-page__row-crop,
+.interiors-page__row:focus-within .interiors-page__row-crop {
+  transform: scale(1.03);
+}
+
+.interiors-page__row-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem); /* ~28–40px */
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.interiors-page__row-caption {
+  margin: 0;
+  max-width: 28rem;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: color-mix(in srgb, var(--color-ink) 68%, transparent);
+}
+
+/* —— Деталь: модели (голова как product-related: CTA справа) —— */
+.interiors-page__models {
+  padding: var(--int-section-y) var(--int-gutter) 0;
+}
+
+.interiors-page__models-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.interiors-page__models-intro {
+  min-width: 0;
+  flex: 1 1 16rem;
+}
+
+.interiors-page__models-title {
+  margin: 0 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.interiors-page__models-lead {
+  margin: 0;
+  max-width: 36rem;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--color-text-secondary);
+}
+
+.interiors-page__models-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  flex-shrink: 0;
+  margin: 0.15rem 0 0;
+}
+
+.interiors-page__models-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem 1.1rem;
+  justify-content: start;
+}
+
+.interiors-page__models-grid .product-grid__card {
+  min-width: 0;
+}
+
+/* Fallback, если productIds пуст — ссылка справа */
+.interiors-page__back {
+  display: flex;
+  justify-content: flex-end;
+  padding: 3rem var(--int-gutter) 0;
+}
+
+.interiors-page__footer-gap {
+  height: 14px;
+  background: var(--color-snow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interiors-page__hero-content,
+  .interiors-page__intro,
+  .interiors-page__rows,
+  .interiors-page__row-crop {
+    transition: none;
+  }
+
+  .interiors-page__row:hover .interiors-page__row-crop,
+  .interiors-page__row:focus-within .interiors-page__row-crop {
+    transform: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .interiors-page__row,
+  .interiors-page__row--mirror {
+    grid-template-columns: 1fr;
+  }
+
+  .interiors-page__row-media,
+  .interiors-page__row--mirror .interiors-page__row-media,
+  .interiors-page__row-copy,
+  .interiors-page__row--mirror .interiors-page__row-copy {
+    order: unset;
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  .interiors-page__models-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .interiors-page__band {
+    grid-template-columns: var(--int-gutter) minmax(0, 1fr) var(--int-gutter);
+  }
+
+  .interiors-page__left,
+  .interiors-page__right {
+    grid-column: 2;
+  }
+
+  .interiors-page__intro-label-wrap {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .interiors-page__models-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .interiors-page {
+    --int-section-y: 4rem;
+    --int-row-gap: 4rem;
+  }
+}

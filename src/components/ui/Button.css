@@ -1,0 +1,198 @@
+.ui-btn {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* 8px — стрелка */
+  margin: 0;
+  height: var(--btn-height);
+  padding: 0 var(--btn-padding-x);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0;
+  font-family: var(--font-display);
+  font-size: var(--btn-font-size);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background-color 200ms var(--ease),
+    border-color 200ms var(--ease),
+    color 200ms var(--ease),
+    transform 200ms var(--ease);
+}
+
+.ui-btn:focus-visible {
+  outline: 2px solid var(--color-olive);
+  outline-offset: 3px;
+}
+
+.ui-btn:disabled,
+.ui-btn[aria-disabled='true'] {
+  opacity: 0.52;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+/* —— primary —— заливка hover left→right поверх olive —— */
+.ui-btn--primary {
+  border-color: var(--color-olive);
+  background-color: var(--color-olive);
+  background-image: linear-gradient(var(--color-ink), var(--color-ink));
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  color: var(--color-snow);
+  transition:
+    background-size 0.45s var(--ease-media, var(--ease)),
+    border-color 200ms var(--ease),
+    color 200ms var(--ease),
+    transform 200ms var(--ease);
+}
+
+.ui-btn--primary:hover:not(:disabled):not([aria-disabled='true']),
+.ui-btn--primary:focus-visible {
+  background-size: 100% 100%;
+  border-color: var(--color-ink);
+  color: var(--color-snow);
+}
+
+.ui-btn--primary:active:not(:disabled):not([aria-disabled='true']) {
+  background-size: 100% 100%;
+  border-color: var(--color-ink);
+  color: var(--color-snow);
+  transform: translateY(1px);
+}
+
+/* —— secondary —— заливка left→right как у черточек —— */
+.ui-btn--secondary {
+  border-color: var(--color-ink);
+  background-color: transparent;
+  background-image: linear-gradient(var(--color-ink), var(--color-ink));
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  color: var(--color-ink);
+  transition:
+    background-size 0.45s var(--ease-media, var(--ease)),
+    color 200ms var(--ease),
+    border-color 200ms var(--ease),
+    transform 200ms var(--ease);
+}
+
+.ui-btn--secondary:hover:not(:disabled):not([aria-disabled='true']),
+.ui-btn--secondary:focus-visible {
+  background-size: 100% 100%;
+  color: var(--color-snow);
+}
+
+.ui-btn--secondary:active:not(:disabled):not([aria-disabled='true']) {
+  transform: translateY(1px);
+}
+
+/* —— inverse (тёмные секции / фото) — заливка left→right —— */
+.ui-btn--inverse {
+  border-color: var(--color-snow);
+  background-color: transparent;
+  background-image: linear-gradient(var(--color-snow), var(--color-snow));
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  color: var(--color-snow);
+  transition:
+    background-size 0.45s var(--ease-media, var(--ease)),
+    color 200ms var(--ease),
+    border-color 200ms var(--ease),
+    transform 200ms var(--ease);
+}
+
+.ui-btn--inverse:hover:not(:disabled):not([aria-disabled='true']),
+.ui-btn--inverse:focus-visible {
+  background-size: 100% 100%;
+  color: var(--color-ink);
+}
+
+.ui-btn--inverse:active:not(:disabled):not([aria-disabled='true']) {
+  transform: translateY(1px);
+}
+
+.ui-btn--inverse:focus-visible {
+  outline-color: var(--color-snow);
+}
+
+/* —— link (текстовая ссылка с underline-grow left→right) —— */
+.ui-btn--link {
+  height: auto;
+  padding: 0;
+  padding-bottom: 0.5rem; /* 8px offset подчёркивания */
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  /* 0% (не 0): иначе transition px↔% не интерполируется */
+  background-size: 0% 1px;
+  color: inherit;
+  font-size: var(--btn-font-size);
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+  transition:
+    background-size 0.45s var(--ease-media, var(--ease)),
+    color 200ms var(--ease);
+}
+
+.ui-btn--link:hover:not(:disabled):not([aria-disabled='true']),
+.ui-btn--link:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Второй ряд: те же grow, чуть легче типографика */
+.ui-btn--link-subtle {
+  opacity: 0.88;
+  font-size: clamp(0.7rem, 0.95vw, 0.8125rem);
+  letter-spacing: 0.1em;
+  padding-bottom: 5px;
+}
+
+.ui-btn--link-subtle:hover:not(:disabled):not([aria-disabled='true']),
+.ui-btn--link-subtle:focus-visible,
+.ui-btn--link-subtle[aria-current='page'],
+.ui-btn--link-subtle.is-current {
+  background-size: 100% 1px;
+}
+
+.ui-btn__arrow {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  transition: transform 200ms var(--ease);
+}
+
+.ui-btn:hover:not(:disabled):not([aria-disabled='true']) .ui-btn__arrow,
+.ui-btn:focus-visible .ui-btn__arrow {
+  transform: translateX(4px);
+}
+
+@media (max-width: 760px) {
+  .ui-btn--block-sm {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-btn,
+  .ui-btn__arrow,
+  .ui-btn--link,
+  .ui-btn--primary,
+  .ui-btn--secondary,
+  .ui-btn--inverse {
+    transition: none;
+  }
+}

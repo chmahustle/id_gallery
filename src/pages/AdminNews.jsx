@@ -301,7 +301,7 @@ export default function AdminNews({ onMessage, onChanged }) {
               onChange={(e) =>
                 setForm((prev) => ({ ...prev, gallery: e.target.value }))
               }
-              placeholder="/images/photo.jpg | Подпись"
+              placeholder="/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg | Подпись"
             />
           </label>
 

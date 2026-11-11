@@ -1,0 +1,50 @@
+[
+  {
+    "tab": "login",
+    "viewport": 1920,
+    "topGap": 269,
+    "bottomGap": 270,
+    "gapDelta": 1,
+    "panelH": 428,
+    "accountFormsVisible": 1,
+    "bannerTitleLines": 1,
+    "bannerTitleSize": "88px",
+    "vp": "1920"
+  },
+  {
+    "tab": "login",
+    "viewport": 1440,
+    "topGap": 179,
+    "bottomGap": 180,
+    "gapDelta": 1,
+    "panelH": 428,
+    "accountFormsVisible": 1,
+    "bannerTitleLines": 1,
+    "bannerTitleSize": "86.4px",
+    "vp": "1440"
+  },
+  {
+    "tab": "register",
+    "viewport": 1920,
+    "topGap": 181,
+    "bottomGap": 182,
+    "gapDelta": 1,
+    "panelH": 604,
+    "accountFormsVisible": 1,
+    "bannerTitleLines": 1,
+    "bannerTitleSize": "88px",
+    "vp": "1920"
+  },
+  {
+    "tab": "register",
+    "viewport": 1440,
+    "topGap": 93,
+    "bottomGap": 93,
+    "gapDelta": 0,
+    "panelH": 601,
+    "accountFormsVisible": 1,
+    "bannerTitleLines": 1,
+    "bannerTitleSize": "86.4px",
+    "vp": "1440"
+  }
+]

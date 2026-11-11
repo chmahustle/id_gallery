@@ -1,8 +1,8 @@
 .admin {
   min-height: 100vh;
   padding: 2rem clamp(1rem, 4vw, 2.5rem) 3rem;
-  background: #f3f1ed;
-  color: #111;
+  background: var(--color-snow);
+  color: var(--color-ink);
   font-family: var(--font-sans);
 }
 
@@ -12,15 +12,15 @@
   display: grid;
   gap: 0.85rem;
   padding: 2rem;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--color-snow);
+  border: 1px solid var(--color-border-subtle);
 }
 
 .admin__login h1,
 .admin__header h1 {
   margin: 0;
   font-family: var(--font-serif);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.75rem;
 }
 
@@ -46,7 +46,7 @@
 .admin-text input,
 .admin-text textarea {
   padding: 0.7rem 0.8rem;
-  border: 1px solid rgba(0, 0, 0, 0.18);
+  border: 1px solid var(--color-border-subtle);
   font: inherit;
   text-transform: none;
   letter-spacing: 0;
@@ -64,15 +64,11 @@
 .admin__actions button,
 .admin__actions a,
 .admin__login a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 42px;
-  padding: 0 1rem;
-  border: 1px solid #111;
-  background: #111;
-  color: #fff;
-  font-size: 0.72rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-snow);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   text-decoration: none;
@@ -83,19 +79,19 @@
 .admin__actions a,
 .admin-card__btns button:last-child {
   background: transparent;
-  color: #111;
+  color: var(--color-ink);
 }
 
 .admin__error {
-  color: #a03d39;
+  color: var(--color-error);
   font-size: 0.85rem;
 }
 
 .admin__banner {
   margin: 0 0 1.25rem;
   padding: 0.75rem 1rem;
-  background: rgba(160, 61, 57, 0.08);
-  border: 1px solid rgba(160, 61, 57, 0.25);
+  background: var(--color-error-wash);
+  border: 1px solid var(--color-error-border);
 }
 
 .admin__hint {
@@ -118,8 +114,8 @@
 }
 
 .admin__danger {
-  border-color: #a03d39 !important;
-  background: #a03d39 !important;
+  border-color: var(--color-error) !important;
+  background: var(--color-error) !important;
 }
 
 .admin__section {
@@ -129,7 +125,7 @@
 .admin__section h2 {
   margin: 0 0 1rem;
   font-family: var(--font-serif);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 1.35rem;
 }
 
@@ -143,8 +139,8 @@
   display: grid;
   gap: 0.75rem;
   padding: 1rem;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--color-snow);
+  border: 1px solid var(--color-border-subtle);
 }
 
 .admin-card h3 {
@@ -158,7 +154,7 @@
 .admin-card__preview {
   aspect-ratio: 16 / 10;
   overflow: hidden;
-  background: #1c1612;
+  background: var(--color-ink);
 }
 
 .admin-card__preview img,
@@ -209,21 +205,20 @@
 }
 
 .admin__tabs button {
-  min-height: 40px;
-  padding: 0 1.15rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding-left: 1.15rem;
+  padding-right: 1.15rem;
+  border: 1px solid var(--color-border-subtle);
   background: transparent;
-  color: #111;
-  font-size: 0.72rem;
+  color: var(--color-ink);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
 }
 
 .admin__tabs button.is-active {
-  background: #111;
-  border-color: #111;
-  color: #fff;
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: var(--color-snow);
 }
 
 .admin__toolbar {
@@ -235,12 +230,11 @@
 }
 
 .admin__toolbar button {
-  min-height: 40px;
-  padding: 0 1rem;
-  border: 1px solid #111;
-  background: #111;
-  color: #fff;
-  font-size: 0.72rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-snow);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
@@ -252,19 +246,19 @@
 }
 
 .admin__toolbar .admin__danger {
-  background: #a03d39;
-  border-color: #a03d39;
+  background: var(--color-error);
+  border-color: var(--color-error);
 }
 
 .admin__dirty {
   font-size: 0.8rem;
-  color: #8a5a2b;
+  color: var(--color-champagne);
 }
 
 .admin__ok {
-  color: #2f6b3a;
-  background: rgba(47, 107, 58, 0.08);
-  border: 1px solid rgba(47, 107, 58, 0.25);
+  color: var(--color-success);
+  background: var(--color-success-wash);
+  border: 1px solid var(--color-success-border);
 }
 
 .admin__text-list {
@@ -277,8 +271,8 @@
   display: grid;
   gap: 0.4rem;
   padding: 1rem;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--color-snow);
+  border: 1px solid var(--color-border-subtle);
 }
 
 .admin-text__label {
@@ -295,16 +289,15 @@
   font-style: normal;
   font-size: 0.68rem;
   letter-spacing: 0.08em;
-  color: #8a5a2b;
+  color: var(--color-champagne);
 }
 
 .admin-text__reset {
   justify-self: start;
-  min-height: 34px;
-  padding: 0 0.85rem;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+  border: 1px solid var(--color-border-strong);
   background: transparent;
-  font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
@@ -320,8 +313,8 @@
   gap: 0.85rem;
   margin-bottom: 2rem;
   padding: 1.25rem;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--color-snow);
+  border: 1px solid var(--color-border-subtle);
 }
 
 .admin-news-form h2 {
@@ -348,7 +341,7 @@
 .admin-news-form select {
   width: 100%;
   padding: 0.55rem 0.7rem;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--color-border-subtle);
   font: inherit;
   font-size: 0.95rem;
   letter-spacing: 0;
@@ -365,7 +358,7 @@
   width: min(280px, 100%);
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  background: #f3f1ed;
+  background: var(--color-snow);
 }
 
 .admin-news-form__check {
@@ -388,12 +381,11 @@
 }
 
 .admin-news-form__actions button {
-  min-height: 40px;
-  padding: 0 1rem;
-  border: 1px solid #111;
-  background: #111;
-  color: #fff;
-  font-size: 0.72rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-snow);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
@@ -401,7 +393,7 @@
 
 .admin-news-form__actions button[type='button'] {
   background: transparent;
-  color: #111;
+  color: var(--color-ink);
 }
 
 .admin-news-form__actions button:disabled {
@@ -420,8 +412,8 @@
   gap: 1rem;
   align-items: start;
   padding: 1rem;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--color-snow);
+  border: 1px solid var(--color-border-subtle);
 }
 
 .admin-news-list__item img,
@@ -429,7 +421,7 @@
   width: 96px;
   height: 72px;
   object-fit: cover;
-  background: #f3f1ed;
+  background: var(--color-snow);
 }
 
 .admin-news-list__meta {
@@ -437,7 +429,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #6b6560;
+  color: var(--color-text-muted);
 }
 
 .admin-news-list__item h3 {
@@ -448,7 +440,7 @@
 .admin-news-list__item p {
   margin: 0;
   font-size: 0.9rem;
-  color: #3a3531;
+  color: var(--color-ink);
 }
 
 .admin-news-list__actions {
@@ -457,11 +449,10 @@
 }
 
 .admin-news-list__actions button {
-  min-height: 34px;
-  padding: 0 0.85rem;
-  border: 1px solid rgba(0, 0, 0, 0.25);
+  padding-left: 0.85rem;
+  padding-right: 0.85rem;
+  border: 1px solid var(--color-border-strong);
   background: transparent;
-  font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   cursor: pointer;
@@ -469,8 +460,8 @@
 }
 
 .admin-news-list__actions .admin__danger {
-  border-color: #a03d39;
-  color: #a03d39;
+  border-color: var(--color-error);
+  color: var(--color-error);
 }
 
 @media (max-width: 720px) {

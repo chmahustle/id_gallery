@@ -1,0 +1,6 @@
+{
+  "url": "http://127.0.0.1:5173/request/?type=visit",
+  "type": "visit",
+  "active": "offer",
+  "focused": "visit"
+}

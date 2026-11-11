@@ -1,0 +1,44 @@
+/**
+ * Font faces. Prefer woff2 when available (see README TODO).
+ * Temporary: OTF/TTF from public/fonts. Fallback stack excludes Arial/Helvetica.
+ */
+
+@font-face {
+  font-family: 'LT Amber Condensed';
+  src:
+    local('LT Amber Condensed'),
+    url('/fonts/LTAmberCond-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'LT Amber Condensed';
+  src:
+    local('LT Amber Condensed Medium'),
+    url('/fonts/LTAmberCond-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pliant';
+  src:
+    local('Pliant Light'),
+    url('/fonts/Pliant-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Pliant';
+  src:
+    local('Pliant'),
+    url('/fonts/Pliant-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

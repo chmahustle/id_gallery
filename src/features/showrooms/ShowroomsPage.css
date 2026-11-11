@@ -1,0 +1,379 @@
+/* Шоурумы — docs/content-brief.md §12; сетка рядов как /interiors/ */
+
+.showrooms-page {
+  --sr-gutter: clamp(1.25rem, 5vw, 6rem); /* до 96px */
+  --sr-section-y: 7.5rem; /* 120px */
+  --sr-row-gap: 7.5rem;
+  --sr-grid-gap: 4rem; /* 64px */
+  background: var(--color-snow);
+  color: var(--color-ink);
+}
+
+.showrooms-page__band {
+  display: grid;
+  grid-template-columns:
+    var(--sr-gutter)
+    minmax(0, 1fr)
+    minmax(0, 1fr)
+    var(--sr-gutter);
+  column-gap: 0;
+  align-items: start;
+}
+
+.showrooms-page__left {
+  grid-column: 2;
+  min-width: 0;
+}
+
+/* —— Hero 80svh —— */
+.showrooms-page__hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 80svh;
+  min-height: 480px;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: var(--color-snow);
+}
+
+.showrooms-page__hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.showrooms-page__hero-img,
+.showrooms-page__hero-ph {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showrooms-page__hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-ink) 72%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 28%, transparent) 45%,
+    color-mix(in srgb, var(--color-ink) 12%, transparent) 100%
+  );
+}
+
+.showrooms-page__hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--sr-gutter) clamp(3rem, 8vh, 5.5rem);
+  max-width: 42rem;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms var(--ease),
+    transform 700ms var(--ease);
+}
+
+.showrooms-page__hero.is-ready .showrooms-page__hero-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.showrooms-page__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--color-snow);
+}
+
+.showrooms-page__lead {
+  margin: 1rem 0 0;
+  max-width: 36rem;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-body);
+  color: color-mix(in srgb, var(--color-snow) 90%, transparent);
+}
+
+/* —— Наши шоурумы —— */
+.showrooms-page__list {
+  padding-top: var(--sr-section-y);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms var(--ease),
+    transform 600ms var(--ease);
+}
+
+.showrooms-page__list.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.showrooms-page__list-head {
+  margin-bottom: 3rem;
+}
+
+.showrooms-page__label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.showrooms-page__label-rule {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 1px;
+  background: var(--color-champagne);
+}
+
+.showrooms-page__label {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--color-ink);
+}
+
+.showrooms-page__rows {
+  padding: 0 var(--sr-gutter) var(--sr-section-y);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sr-row-gap);
+}
+
+.showrooms-page__row {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  column-gap: var(--sr-grid-gap);
+  align-items: end;
+}
+
+.showrooms-page__row-media {
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+  background: var(--color-cream);
+  aspect-ratio: 3 / 2;
+}
+
+/*
+ * Ширина по контенту (≤420px), иначе width:100% растягивает блок на всю 4fr
+ * и в зеркальном ряду текст уезжает к внешнему краю (~205px до фото).
+ */
+.showrooms-page__row-copy {
+  justify-self: start;
+  min-width: 0;
+  width: max-content;
+  max-width: min(34rem, 100%); /* вмещает кнопку и ссылку действий */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.85rem;
+  padding-bottom: 0.25rem;
+}
+
+.showrooms-page__row--mirror {
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+}
+
+.showrooms-page__row--mirror .showrooms-page__row-copy {
+  order: 1;
+  /* текст у левого края контейнера, как заголовки страницы */
+  justify-self: start;
+}
+
+.showrooms-page__row--mirror .showrooms-page__row-media {
+  order: 2;
+}
+
+.showrooms-page__row-crop {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: unset;
+  transition: transform 900ms var(--ease);
+  will-change: transform;
+}
+
+.showrooms-page__row-crop .crop-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.showrooms-page__row:hover .showrooms-page__row-crop,
+.showrooms-page__row:focus-within .showrooms-page__row-crop {
+  transform: scale(1.03);
+}
+
+.showrooms-page__row-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2vw, 2rem); /* 28–32px */
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+/* Placeholder «[…] · […]»: скобки 52% Warm Black, слова Warm Black */
+.showrooms-page__bracket {
+  color: color-mix(in srgb, var(--color-ink) 52%, var(--color-snow));
+}
+
+.showrooms-page__bracket-word {
+  color: var(--color-ink);
+}
+
+.showrooms-page__footer-gap {
+  height: 14px;
+  background: var(--color-snow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showrooms-page__hero-content,
+  .showrooms-page__list,
+  .showrooms-page__row-crop {
+    transition: none;
+  }
+
+  .showrooms-page__row:hover .showrooms-page__row-crop,
+  .showrooms-page__row:focus-within .showrooms-page__row-crop {
+    transform: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .showrooms-page__row,
+  .showrooms-page__row--mirror {
+    grid-template-columns: 1fr;
+  }
+
+  .showrooms-page__row-media,
+  .showrooms-page__row--mirror .showrooms-page__row-media,
+  .showrooms-page__row-copy,
+  .showrooms-page__row--mirror .showrooms-page__row-copy {
+    order: unset;
+    justify-self: stretch;
+    max-width: none;
+  }
+
+  .showrooms-page__band {
+    grid-template-columns: var(--sr-gutter) minmax(0, 1fr) var(--sr-gutter);
+  }
+
+  .showrooms-page__left {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .showrooms-page {
+    --sr-section-y: 4rem;
+    --sr-row-gap: 4rem;
+  }
+}
+
+/* Карточка шоурума: данные и два действия */
+.showrooms-page__facts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--color-ink);
+}
+
+.showrooms-page__fact-link {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+  text-underline-offset: 3px;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 0.45s var(--ease-media, var(--ease));
+}
+
+.showrooms-page__fact-link:hover,
+.showrooms-page__fact-link:focus-visible {
+  background-size: 100% 1px;
+}
+
+.showrooms-page__row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+}
+
+/* текстовая ссылка (маршрут, подробности) */
+.showrooms-page__link {
+  padding: 0 0 4px;
+  border: 0;
+  background-color: transparent;
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-ink);
+  text-decoration: none;
+  cursor: pointer;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 0.45s var(--ease-media, var(--ease));
+}
+
+.showrooms-page__link:hover,
+.showrooms-page__link:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* Карта на месте фото шоурума */
+.showrooms-page__row-map {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.showrooms-page__row-map-template {
+  margin: 0;
+  padding: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--color-text-secondary);
+}

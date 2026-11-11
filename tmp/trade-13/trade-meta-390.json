@@ -1,0 +1,18 @@
+{
+  "h1": "Дизайнерам и архитекторам",
+  "cards": [
+    "Модели для проекта",
+    "Техническая информация"
+  ],
+  "coop": "Сотрудничество",
+  "coopHref": "/contact/?topic=trade",
+  "imgs": [
+    "/images/brand-baxter.jpg",
+    "/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg",
+    "/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg",
+    "/images/brand-molteni.jpg"
+  ],
+  "imgDupes": [],
+  "forbiddenHits": null,
+  "crumbs": false
+}

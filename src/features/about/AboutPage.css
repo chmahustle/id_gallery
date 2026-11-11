@@ -1,0 +1,350 @@
+/* /about/ — docs/content-brief.md §14 */
+
+.about-page {
+  --about-gutter: clamp(1.25rem, 5vw, 6rem);
+  --about-section-y: 7.5rem; /* 120px */
+  --about-gap: 4rem; /* 64px */
+  background: var(--color-snow);
+  color: var(--color-ink);
+}
+
+.about-page__label-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.about-page__label-rule {
+  flex: 0 0 auto;
+  width: 40px;
+  height: 1px;
+  background: var(--color-champagne);
+}
+
+.about-page__label {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1.3;
+  color: var(--color-ink);
+}
+
+/* —— Hero 80svh —— */
+.about-page__hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 80svh;
+  min-height: 480px;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: var(--color-snow);
+}
+
+.about-page__hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.about-page__hero-img,
+.about-page__hero-ph {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-page__hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-ink) 72%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 28%, transparent) 45%,
+    color-mix(in srgb, var(--color-ink) 12%, transparent) 100%
+  );
+}
+
+.about-page__hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--about-gutter) clamp(3rem, 8vh, 5.5rem);
+  max-width: 42rem;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms var(--ease),
+    transform 700ms var(--ease);
+}
+
+.about-page__hero.is-ready .about-page__hero-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-page__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--color-snow);
+}
+
+.about-page__lead {
+  margin: 1rem 0 0;
+  max-width: 36rem;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-body);
+  color: color-mix(in srgb, var(--color-snow) 90%, transparent);
+}
+
+/* —— Наш подход: 5fr | 6fr (экв. 12 кол.), gap 64px —— */
+.about-page__approach {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  column-gap: var(--about-gap);
+  align-items: end;
+  padding: var(--about-section-y) var(--about-gutter);
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms var(--ease),
+    transform 600ms var(--ease);
+}
+
+.about-page__approach.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-page__approach-media {
+  min-width: 0;
+  overflow: hidden;
+  background: var(--color-cream);
+  aspect-ratio: 4 / 5;
+}
+
+.about-page__approach-crop {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: unset;
+}
+
+.about-page__approach-crop .crop-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.about-page__approach-copy {
+  justify-self: start;
+  min-width: 0;
+  /* было 36rem — иначе текст не шире 576px и при 30px не сходится в 3 строки */
+  max-width: 40rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding-bottom: 0.25rem;
+}
+
+.about-page__approach-text {
+  margin: 0;
+  /* 40rem (640px): при 30px / 560px Pliant даёт 5 строк; для 3 строк на 1920 нужно ≥635px */
+  max-width: 40rem;
+  font-family: var(--font-body);
+  font-size: clamp(1.375rem, 1.6vw, 1.875rem); /* ≈22–30px */
+  font-weight: 300;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+
+.about-page__approach-copy .ui-btn {
+  margin-top: calc(2.5rem - 1rem); /* 40px от текста с учётом gap 1rem */
+}
+
+/* —— Бренды —— */
+.about-page__brands {
+  /* без боковых полей: список/линии/заливка на всю ширину окна */
+  padding: 0 0 var(--about-section-y);
+  overflow-x: clip;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms var(--ease),
+    transform 600ms var(--ease);
+}
+
+.about-page__brands.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-page__brands > .about-page__label-wrap {
+  margin-bottom: 2rem;
+  padding-inline: var(--about-gutter); /* = --page-gutter band → 96px */
+}
+
+.about-page__brand-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border-top: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
+}
+
+.about-page__brand-item {
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 14%, transparent);
+}
+
+.about-page__brand-item:last-child {
+  border-bottom: none;
+}
+
+.about-page__brand-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 7.5rem; /* 120px */
+  padding-block: 0.5rem;
+  padding-inline: var(--about-gutter); /* текст/стрелка по полям 96px */
+  text-decoration: none;
+  color: var(--color-ink);
+  background: transparent;
+  outline: none;
+  transition: background-color 150ms var(--ease);
+}
+
+.about-page__brand-link:hover,
+.about-page__brand-link:focus-visible {
+  background: var(--color-cream); /* Cream Ivory на всю ширину строки */
+  color: var(--color-ink);
+}
+
+.about-page__brand-link:focus-visible {
+  outline: 2px solid var(--color-olive);
+  outline-offset: -2px;
+}
+
+.about-page__brand-name {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  transition: transform 300ms var(--ease);
+}
+
+.about-page__brand-link:hover .about-page__brand-name,
+.about-page__brand-link:focus-visible .about-page__brand-name {
+  transform: translateX(1rem); /* 16px от поля gutter */
+}
+
+.about-page__brand-arrow {
+  flex-shrink: 0;
+  width: 2rem; /* 32px */
+  height: 2rem;
+  opacity: 0;
+  transform: translateX(0);
+  transition:
+    opacity 300ms var(--ease),
+    transform 300ms var(--ease);
+}
+
+.about-page__brand-link:hover .about-page__brand-arrow,
+.about-page__brand-link:focus-visible .about-page__brand-arrow {
+  opacity: 1;
+  transform: translateX(0.75rem); /* 12px */
+}
+
+.about-page__brands-cta {
+  margin-top: 3rem; /* 48px */
+  padding-inline: var(--about-gutter);
+}
+
+.about-page__footer-gap {
+  height: 14px;
+  background: var(--color-snow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-page__hero-content,
+  .about-page__approach,
+  .about-page__brands {
+    transition: none;
+  }
+
+  .about-page__brand-name,
+  .about-page__brand-arrow {
+    transition: none;
+  }
+
+  .about-page__brand-link {
+    transition: background-color 150ms var(--ease);
+  }
+
+  .about-page__brand-link:hover .about-page__brand-name,
+  .about-page__brand-link:focus-visible .about-page__brand-name,
+  .about-page__brand-link:hover .about-page__brand-arrow,
+  .about-page__brand-link:focus-visible .about-page__brand-arrow {
+    transform: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .about-page__approach {
+    grid-template-columns: 1fr;
+    row-gap: 2rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .about-page {
+    --about-section-y: 4rem;
+  }
+
+  .about-page__brand-name {
+    font-size: 2.5rem; /* 40px */
+  }
+
+  /* мобильный: заливка edge-to-edge не обязательна; стрелка всегда; tap 100ms */
+  .about-page__brand-link {
+    transition: background-color 100ms var(--ease);
+  }
+
+  .about-page__brand-arrow {
+    opacity: 1;
+  }
+
+  .about-page__brand-link:hover .about-page__brand-name,
+  .about-page__brand-link:focus-visible .about-page__brand-name {
+    transform: none;
+  }
+
+  .about-page__brand-link:hover .about-page__brand-arrow,
+  .about-page__brand-link:focus-visible .about-page__brand-arrow {
+    transform: none;
+  }
+}

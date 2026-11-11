@@ -1,0 +1,16 @@
+{
+  "title": "Baxter · Модель 02",
+  "titleFs": "40px",
+  "gallery": {
+    "w": 350,
+    "h": 438,
+    "top": 158,
+    "aspect": 0.8
+  },
+  "maxH": "none",
+  "demoBadges": [],
+  "specs": [],
+  "related": true,
+  "relatedCount": 2,
+  "scrollH": 2997
+}

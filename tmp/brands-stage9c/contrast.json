@@ -1,0 +1,8 @@
+{
+  "method": "WCAG 2.1: scrim .72 + underlay .55 over white; Snow Ivory opacities.",
+  "combined_scrim_alpha": 0.874,
+  "title_100_over_white": 8.47,
+  "lead_90_over_white": 7.24,
+  "crumbs_68_over_white": 4.93,
+  "pass_aa_4_5": true
+}

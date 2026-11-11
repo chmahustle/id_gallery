@@ -1,0 +1,37 @@
+{
+  "viewport": {
+    "w": 390,
+    "h": 844
+  },
+  "columnGap": "64px",
+  "rows": [
+    {
+      "index": 1,
+      "mirrored": false,
+      "mediaX": 20,
+      "copyRight": 314,
+      "copyLeft": 20,
+      "copyW": 294,
+      "gapPx": -294,
+      "title": "[Название шоурума] · [Город]"
+    },
+    {
+      "index": 2,
+      "mirrored": true,
+      "mediaX": 20,
+      "copyRight": 314,
+      "copyLeft": 20,
+      "copyW": 294,
+      "gapPx": -294,
+      "title": "[Название шоурума] · [Город]"
+    }
+  ],
+  "imgs": [
+    "/images/Gemini_Generated_Image_sq76gsq76gsq76gs.jpg",
+    "/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg",
+    "/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg",
+    "/images/brand-molteni.jpg"
+  ],
+  "imgDupes": [],
+  "openHint": "Подтверждённый адрес и часы работы"
+}

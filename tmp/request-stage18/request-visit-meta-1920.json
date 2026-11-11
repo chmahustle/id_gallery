@@ -1,0 +1,21 @@
+{
+  "h1": "Запросить предложение",
+  "crumbs": false,
+  "type": "visit",
+  "modelValue": "",
+  "brandValue": "",
+  "tabs": [
+    {
+      "text": "Запросить предложение",
+      "selected": "false",
+      "type": "offer"
+    },
+    {
+      "text": "Запросить посещение",
+      "selected": "true",
+      "type": "visit"
+    }
+  ],
+  "forbidden": [],
+  "consent": false
+}

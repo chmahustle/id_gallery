@@ -1,0 +1,4 @@
+/* Первая секция без hero: только editorial-зазор под шапкой (не суммировать с intro). */
+.page-shell > :first-child {
+  padding-top: var(--page-top-offset);
+}

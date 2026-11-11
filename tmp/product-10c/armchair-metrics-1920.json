@@ -1,0 +1,21 @@
+{
+  "viewport": {
+    "w": 1920,
+    "h": 1080
+  },
+  "galleryBottom": 1055,
+  "mainH": 788,
+  "thumbsH": 91,
+  "galleryFitsFirstScreen": true,
+  "h1": "Baxter · Модель 11",
+  "h1FontSize": "56px",
+  "gridCols": "106.656px 106.656px 106.656px 106.656px 106.656px 106.656px 106.656px 106.656px 106.656px 106.656px 106.656px 106.656px",
+  "relatedCards": 4,
+  "brandLabels": [
+    "Baxter",
+    "Baxter",
+    "Baxter",
+    "Baxter"
+  ],
+  "lowerBrandHits": []
+}

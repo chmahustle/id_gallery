@@ -58,7 +58,9 @@ export function MediaProvider({ children }) {
           /^https?:\/\//i.test(trimmed)
         )
       ) {
-        throw new Error('Разрешены только http(s) URL или путь вида /images/...')
+        throw new Error(
+          'Разрешены только http(s) URL или путь вида /placeholders/...',
+        )
       }
       const data = await api(`/api/media/${encodeURIComponent(id)}/url`, {
         method: 'PUT',

@@ -1,0 +1,10 @@
+.banner-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--color-snow);
+}
+
+.banner-stack > * {
+  margin: 0;
+}

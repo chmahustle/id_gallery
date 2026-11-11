@@ -1,0 +1,82 @@
+.circ {
+  --circ-gap: 1.25rem; /* как в сетке каталога */
+}
+
+.circ__viewport {
+  overflow-x: clip;
+}
+
+.circ__track {
+  --circ-step: calc(
+    (100% - (var(--circ-cols) - 1) * var(--circ-gap)) / var(--circ-cols) +
+      var(--circ-gap)
+  );
+  display: flex;
+  gap: var(--circ-gap);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.circ__track:not(.is-active) {
+  flex-wrap: wrap;
+  row-gap: 2rem;
+}
+
+.circ__track.is-active {
+  transform: translateX(calc(var(--circ-step) * var(--shift, -1)));
+}
+
+.circ__track.is-animating {
+  transition: transform 450ms ease;
+}
+
+.circ__track .circ__item {
+  flex: 0 0
+    calc((100% - (var(--circ-cols) - 1) * var(--circ-gap)) / var(--circ-cols));
+  min-width: 0;
+}
+
+.circ__scroller {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 1023px) {
+  .circ__track {
+    --circ-cols: var(--circ-cols-tablet, 2);
+  }
+}
+
+@media (max-width: 767px) {
+  .circ__viewport {
+    display: none;
+  }
+
+  .circ__scroller {
+    display: flex;
+    gap: 1.1rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .circ__scroller::-webkit-scrollbar {
+    display: none;
+  }
+
+  .circ__scroller .circ__item {
+    flex: 0 0 var(--circ-mobile, 78%);
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circ__track.is-animating {
+    transition: none;
+  }
+}

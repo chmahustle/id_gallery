@@ -1,0 +1,27 @@
+{
+  "url": "http://127.0.0.1:5173/account/?tab=register",
+  "tab": "register",
+  "panelH": 604,
+  "formsTotal": 3,
+  "formsVisible": 2,
+  "formsHiddenFlags": [
+    false,
+    true,
+    false
+  ],
+  "tabs": [
+    {
+      "text": "Вход",
+      "selected": "false",
+      "tab": "login"
+    },
+    {
+      "text": "Регистрация",
+      "selected": "true",
+      "tab": "register"
+    }
+  ],
+  "h1": "Личный кабинет",
+  "hasBanner": true,
+  "hasPageShell": false
+}

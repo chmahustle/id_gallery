@@ -1,30 +1,68 @@
-import { Search, X } from 'lucide-react'
+import { ArrowRight, Search, X } from 'lucide-react'
 import { useEffect, useId, useMemo, useRef, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { searchSite } from '../content'
-import { useBrands } from '../brands/BrandsContext'
-import { useContent } from '../content/ContentContext'
-import { useNews } from '../news/NewsContext'
+import { Link, useNavigate } from 'react-router-dom'
+import { products } from '../data/products'
+import { resolveBrandName } from '../lib/catalog'
+import { searchBrands, searchProducts } from '../lib/search'
+import SearchNotFound from './search/SearchNotFound'
 import './SearchPanel.css'
 
+const DEBOUNCE_MS = 150
+const BRANDS_LIMIT = 4
+const PRODUCTS_LIMIT = 6
+
 export default function SearchPanel({ open, onClose }) {
-  const { content } = useContent()
-  const { items: newsItems } = useNews()
-  const { items: brandItems } = useBrands()
   const navigate = useNavigate()
   const [query, setQuery] = useState('')
+  const [term, setTerm] = useState('')
+  const [active, setActive] = useState(-1)
   const inputRef = useRef(null)
-  const closeRef = useRef(null)
   const panelId = useId()
-  const results = useMemo(
-    () => searchSite(query, 12, content, newsItems, brandItems),
-    [query, content, newsItems, brandItems],
-  )
+  const listId = `${panelId}-list`
 
+  /* задержка 150ms перед поиском */
+  useEffect(() => {
+    const id = window.setTimeout(() => setTerm(query.trim()), DEBOUNCE_MS)
+    return () => window.clearTimeout(id)
+  }, [query])
+
+  const found = useMemo(() => {
+    if (!term) return { brands: [], items: [], total: 0 }
+    const all = searchProducts(products, term)
+    return {
+      brands: searchBrands(term).slice(0, BRANDS_LIMIT),
+      items: all.slice(0, PRODUCTS_LIMIT),
+      total: all.length,
+    }
+  }, [term])
+
+  const rows = useMemo(
+    () => [
+      ...found.brands.map((brand) => ({
+        id: `${panelId}-b-${brand.slug}`,
+        href: `/brands/${brand.slug}`,
+      })),
+      ...found.items.map((item) => ({
+        id: `${panelId}-p-${item.slug}`,
+        href: `/product/${item.slug}`,
+      })),
+    ],
+    [found, panelId],
+  )
+  const hasAny = rows.length > 0
+  const empty = Boolean(term) && !hasAny
+
+  useEffect(() => setActive(-1), [term])
+
+  /* фокус при открытии, блокировка прокрутки страницы под панелью */
   useEffect(() => {
     if (!open) return undefined
-
     const t = window.setTimeout(() => inputRef.current?.focus(), 40)
+    const scrollbar = window.innerWidth - document.documentElement.clientWidth
+    const prevOverflow = document.body.style.overflow
+    const prevPad = document.body.style.paddingRight
+    document.body.style.overflow = 'hidden'
+    if (scrollbar > 0) document.body.style.paddingRight = `${scrollbar}px`
 
     const onKeyDown = (event) => {
       if (event.key === 'Escape') {
@@ -33,29 +71,50 @@ export default function SearchPanel({ open, onClose }) {
       }
     }
     window.addEventListener('keydown', onKeyDown)
-
     return () => {
       window.clearTimeout(t)
       window.removeEventListener('keydown', onKeyDown)
+      document.body.style.overflow = prevOverflow
+      document.body.style.paddingRight = prevPad
     }
   }, [open, onClose])
 
-  function goTo(href) {
+  function close() {
     setQuery('')
+    setTerm('')
     onClose()
-    window.requestAnimationFrame(() => {
-      if (href.startsWith('/') && !href.includes('#')) {
-        navigate(href)
-        return
-      }
-      const target = href.startsWith('#') ? `/${href}` : href
-      window.location.assign(target)
-    })
   }
 
-  function handleClose() {
-    setQuery('')
-    onClose()
+  function goTo(href) {
+    close()
+    window.requestAnimationFrame(() => navigate(href))
+  }
+
+  function onInputKeyDown(event) {
+    if (event.key === 'ArrowDown' && rows.length) {
+      event.preventDefault()
+      setActive((value) => (value + 1) % rows.length)
+    } else if (event.key === 'ArrowUp' && rows.length) {
+      event.preventDefault()
+      setActive((value) => (value <= 0 ? rows.length - 1 : value - 1))
+    } else if (event.key === 'Enter') {
+      event.preventDefault()
+      if (active >= 0 && rows[active]) goTo(rows[active].href)
+      else if (term && found.total > 0) {
+        goTo(`/catalog?q=${encodeURIComponent(term)}`)
+      }
+    }
+  }
+
+  let rowIndex = -1
+  const rowProps = (id) => {
+    rowIndex += 1
+    return {
+      id,
+      role: 'option',
+      'aria-selected': rowIndex === active,
+      className: rowIndex === active ? 'is-active' : undefined,
+    }
   }
 
   return (
@@ -73,8 +132,7 @@ export default function SearchPanel({ open, onClose }) {
           type="button"
           className="search-panel__icon-btn"
           aria-label="Закрыть поиск"
-          ref={closeRef}
-          onClick={handleClose}
+          onClick={close}
         >
           <X strokeWidth={1} size={26} />
         </button>
@@ -83,47 +141,111 @@ export default function SearchPanel({ open, onClose }) {
       <form
         className="search-panel__form"
         role="search"
-        onSubmit={(event) => {
-          event.preventDefault()
-          if (results[0]) goTo(results[0].href)
-        }}
+        onSubmit={(event) => event.preventDefault()}
       >
         <Search strokeWidth={1} size={22} aria-hidden="true" />
-        <label className="sr-only" htmlFor="site-search">
+        <label className="sr-only" htmlFor={`${panelId}-input`}>
           Поиск
         </label>
         <input
-          id="site-search"
+          id={`${panelId}-input`}
           ref={inputRef}
-          type="search"
+          type="text"
+          role="combobox"
+          aria-expanded={hasAny}
+          aria-controls={listId}
+          aria-autocomplete="list"
+          aria-activedescendant={active >= 0 ? rows[active]?.id : undefined}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder="Поиск: товары, бренды, категории…"
+          onKeyDown={onInputKeyDown}
+          placeholder="Модель, бренд или предмет"
           autoComplete="off"
           enterKeyHint="search"
         />
+        {query ? (
+          <button
+            type="button"
+            className="search-panel__clear"
+            aria-label="Очистить поиск"
+            onClick={() => {
+              setQuery('')
+              inputRef.current?.focus()
+            }}
+          >
+            <X strokeWidth={1} size={20} />
+          </button>
+        ) : null}
       </form>
 
       <div className="search-panel__body" aria-live="polite">
-        {query.trim().length < 2 ? (
-          <p className="search-panel__hint">Введите минимум 2 символа</p>
-        ) : results.length === 0 ? (
-          <p className="search-panel__hint">Ничего не найдено</p>
-        ) : (
-          <ul className="search-panel__results">
-            {results.map((item) => (
-              <li key={`${item.type}-${item.title}-${item.href}`}>
-                <button type="button" onClick={() => goTo(item.href)}>
-                  <span className="search-panel__type">{item.type}</span>
-                  <span className="search-panel__title">{item.title}</span>
-                  {item.meta ? (
-                    <span className="search-panel__meta">{item.meta}</span>
-                  ) : null}
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
+        {empty ? (
+          <SearchNotFound query={term} onNavigate={close} />
+        ) : hasAny ? (
+          <div id={listId} role="listbox" aria-label="Результаты поиска">
+            {found.brands.length > 0 ? (
+              <section className="search-panel__group" aria-label="Бренды">
+                <h2 className="search-panel__group-title">Бренды</h2>
+                <ul role="group" aria-label="Бренды">
+                  {found.brands.map((brand) => (
+                    <li key={brand.slug} {...rowProps(`${panelId}-b-${brand.slug}`)}>
+                      <Link
+                        className="search-panel__row"
+                        to={`/brands/${brand.slug}`}
+                        tabIndex={-1}
+                        onClick={close}
+                      >
+                        <span className="search-panel__row-title">{brand.name}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
+
+            {found.items.length > 0 ? (
+              <section className="search-panel__group" aria-label="Товары">
+                <h2 className="search-panel__group-title">Товары</h2>
+                <ul role="group" aria-label="Товары">
+                  {found.items.map((item) => (
+                    <li key={item.slug} {...rowProps(`${panelId}-p-${item.slug}`)}>
+                      <Link
+                        className="search-panel__row search-panel__row--product"
+                        to={`/product/${item.slug}`}
+                        tabIndex={-1}
+                        onClick={close}
+                      >
+                        <span className="search-panel__thumb">
+                          {item.image ? <img src={item.image} alt="" /> : null}
+                        </span>
+                        <span className="search-panel__row-text">
+                          <span className="search-panel__row-title">
+                            {`${resolveBrandName(item)} · ${item.name}`}
+                          </span>
+                          <span className="search-panel__row-meta">
+                            {item.subcategory || item.category}
+                          </span>
+                        </span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
+
+            {found.total > 0 ? (
+              <Link
+                className="search-panel__all"
+                to={`/catalog?q=${encodeURIComponent(term)}`}
+                tabIndex={-1}
+                onClick={close}
+              >
+                <span>{`Все результаты (${found.total})`}</span>
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            ) : null}
+          </div>
+        ) : null}
       </div>
     </div>
   )

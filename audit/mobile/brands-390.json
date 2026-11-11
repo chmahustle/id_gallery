@@ -1,0 +1,600 @@
+{
+  "iw": 390,
+  "ih": 844,
+  "sw": 390,
+  "hScroll": false,
+  "offenders": [],
+  "smallTaps": [
+    {
+      "sel": "#root > div.page.page--solid > a.skip-link",
+      "w": 186,
+      "h": 41,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1)",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2)",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "#root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo",
+      "w": 160,
+      "h": 38,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn",
+      "w": 40,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1)",
+      "w": 59,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2)",
+      "w": 47,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(3)",
+      "w": 45,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(4)",
+      "w": 45,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(5)",
+      "w": 43,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(6)",
+      "w": 94,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(7)",
+      "w": 58,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "#main > div.brands-page:nth-child(1) > nav.page-crumbs > a",
+      "w": 40,
+      "h": 15,
+      "tag": "a"
+    },
+    {
+      "sel": "#main > div.brands-page:nth-child(1) > header.brands-page__head > nav.brands-page__anchors > a:nth-child(1)",
+      "w": 64,
+      "h": 24,
+      "tag": "a"
+    },
+    {
+      "sel": "#main > div.brands-page:nth-child(1) > header.brands-page__head > nav.brands-page__anchors > a:nth-child(2)",
+      "w": 58,
+      "h": 24,
+      "tag": "a"
+    },
+    {
+      "sel": "#main > div.brands-page:nth-child(1) > header.brands-page__head > nav.brands-page__anchors > a:nth-child(3)",
+      "w": 39,
+      "h": 24,
+      "tag": "a"
+    },
+    {
+      "sel": "#main > div.brands-page:nth-child(1) > header.brands-page__head > nav.brands-page__anchors > a:nth-child(4)",
+      "w": 48,
+      "h": 24,
+      "tag": "a"
+    },
+    {
+      "sel": "#brand-visionnaire > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse",
+      "w": 206,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "#brand-molteni > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse",
+      "w": 200,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "#brand-baxter > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse",
+      "w": 179,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "#brand-bonaldo > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse",
+      "w": 190,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "w": 45,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "w": 42,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link",
+      "w": 42,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link",
+      "w": 38,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(5) > a.ui-btn.ui-btn--link",
+      "w": 123,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(6) > a.ui-btn.ui-btn--link",
+      "w": 68,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "w": 62,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "w": 58,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link",
+      "w": 39,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link",
+      "w": 46,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(3) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "w": 65,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(3) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "w": 56,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(3) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link",
+      "w": 73,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(3) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link",
+      "w": 59,
+      "h": 26,
+      "tag": "a"
+    }
+  ],
+  "smallText": [
+    {
+      "sel": "#root > div.page.page--solid > a.skip-link",
+      "px": 12,
+      "sample": "Перейти к содержимому"
+    },
+    {
+      "sel": "#main > div.brands-page:nth-child(1) > nav.page-crumbs > a",
+      "px": 11,
+      "sample": "Главная"
+    },
+    {
+      "sel": "#main > div.brands-page:nth-child(1) > nav.page-crumbs > span:nth-child(3)",
+      "px": 11,
+      "sample": "Бренды"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1)",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2)",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3)",
+      "px": 13,
+      "sample": "Стулья"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Стулья"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Стулья"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(4)",
+      "px": 13,
+      "sample": "Столы"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Столы"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Столы"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(5)",
+      "px": 13,
+      "sample": "Мебель для хранения"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(5) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Мебель для хранения"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(5) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Мебель для хранения"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(6)",
+      "px": 13,
+      "sample": "Освещение"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(6) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Освещение"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(6) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Освещение"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(1)",
+      "px": 13,
+      "sample": "Visionnaire"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Visionnaire"
+    },
+    {
+      "sel": "div.footer__col:nth-child(2) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Visionnaire"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(2)",
+      "px": 13,
+      "sample": "Molteni&C"
+    }
+  ],
+  "longLines": [
+    {
+      "sel": "#main > div.brands-page:nth-child(1) > header.brands-page__head > p.brands-page__lead",
+      "chars": 96,
+      "sample": "Visionnaire, Molteni&C, Baxter и Bonaldo — четыре направления современного интер"
+    },
+    {
+      "sel": "#brand-visionnaire > div.ff-banner__content:nth-child(2) > p.ff-banner__desc",
+      "chars": 83,
+      "sample": "Выразительные интерьерные коллекции с вниманием к композиции, материалам и детал"
+    },
+    {
+      "sel": "#brand-molteni > div.ff-banner__content:nth-child(2) > p.ff-banner__desc",
+      "chars": 90,
+      "sample": "Современная мебель с архитектурным подходом к пространству, пропорциям и функцио"
+    },
+    {
+      "sel": "#brand-baxter > div.ff-banner__content:nth-child(2) > p.ff-banner__desc",
+      "chars": 77,
+      "sample": "Итальянская мебель, в которой материал, фактура и форма играют ключевую роль."
+    },
+    {
+      "sel": "#brand-bonaldo > div.ff-banner__content:nth-child(2) > p.ff-banner__desc",
+      "chars": 83,
+      "sample": "Современная мебель и освещение с выразительными формами и продуманными пропорция"
+    }
+  ],
+  "images": [
+    {
+      "src": "http://127.0.0.1:5173/images/brand-visionnaire.jpg",
+      "nw": 344,
+      "nh": 404,
+      "rw": 390,
+      "rh": 675,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/images/brand-molteni.jpg",
+      "nw": 1774,
+      "nh": 994,
+      "rw": 390,
+      "rh": 675,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/images/brand-baxter.jpg",
+      "nw": 1638,
+      "nh": 1092,
+      "rw": 390,
+      "rh": 675,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    }
+  ],
+  "headings": [
+    {
+      "tag": "H2",
+      "text": "Вход",
+      "px": 20,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H1",
+      "text": "Бренды ID Gallery",
+      "px": 42,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Visionnaire",
+      "px": 44,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Molteni&C",
+      "px": 44,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Baxter",
+      "px": 44,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Bonaldo",
+      "px": 44,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    }
+  ],
+  "sticky": [
+    {
+      "sel": "#root > div.page.page--solid > header.header.header--solid",
+      "pos": "fixed",
+      "h": 110,
+      "top": 0,
+      "pctH": 13,
+      "z": "200"
+    }
+  ],
+  "focusVisible": {
+    "sel": "#root > div.page.page--solid > a.skip-link",
+    "visible": false,
+    "outline": "rgb(44, 41, 41) none 3px",
+    "boxShadow": "none"
+  },
+  "hoverOnly": [
+    ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover",
+    ".auth-modal__close:hover",
+    ".auth-modal__submit:hover:not(:disabled)",
+    ".cart-panel__remove:hover",
+    ".cart-panel__order:hover",
+    ".search-panel__results button:hover",
+    ".header__icon-btn:hover:not(:disabled)",
+    ".newsletter__form button:hover",
+    ".catalog-drawer__body:hover::-webkit-scrollbar-thumb",
+    ".catalog-drawer__close:hover",
+    ".catalog-sidebar__brands button:hover, .catalog-sidebar__brands button.is-active",
+    ".catalog-sidebar__tree a:hover, .catalog-sidebar__cat-row > a:hover",
+    ".catalog-sidebar__chevron:hover",
+    ".catalog-sidebar__tree ul a:hover",
+    ".catalog-toolbar__views button.is-active, .catalog-toolbar__views button:hover",
+    ".product-grid__card:hover .product-grid__media img",
+    ".product-grid__swatch:hover",
+    ".product-grid__name a:hover",
+    ".catalog-select__list button:hover, .catalog-select__list button.is-active",
+    ".product-page__swatch:hover",
+    ".product-page__swatch-all:hover",
+    ".finishes-drawer__close:hover",
+    ".finishes-drawer__swatch:hover .finishes-drawer__chip",
+    ".brand-page__crumbs a:hover",
+    ".news-filters button:hover"
+  ],
+  "lowContrast": [
+    {
+      "sel": "#root > div.page.page--solid > a.skip-link",
+      "ratio": 1,
+      "sample": "Перейти к содержимому",
+      "color": "rgb(44, 41, 41)"
+    },
+    {
+      "sel": "#_r_3_",
+      "ratio": 1,
+      "sample": "Visionnaire",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#brand-visionnaire > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse",
+      "ratio": 1,
+      "sample": "Смотреть Visionnaire",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#brand-visionnaire > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse > span.ui-btn__label",
+      "ratio": 1,
+      "sample": "Смотреть Visionnaire",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#_r_4_",
+      "ratio": 1,
+      "sample": "Molteni&C",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#brand-molteni > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse",
+      "ratio": 1,
+      "sample": "Смотреть Molteni&C",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#brand-molteni > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse > span.ui-btn__label",
+      "ratio": 1,
+      "sample": "Смотреть Molteni&C",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#_r_5_",
+      "ratio": 1,
+      "sample": "Baxter",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#brand-baxter > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse",
+      "ratio": 1,
+      "sample": "Смотреть Baxter",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#brand-baxter > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse > span.ui-btn__label",
+      "ratio": 1,
+      "sample": "Смотреть Baxter",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#_r_6_",
+      "ratio": 1,
+      "sample": "Bonaldo",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#brand-bonaldo > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse",
+      "ratio": 1,
+      "sample": "Смотреть Bonaldo",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#brand-bonaldo > div.ff-banner__content:nth-child(2) > div.ff-banner__cta > a.ui-btn.ui-btn--inverse > span.ui-btn__label",
+      "ratio": 1,
+      "sample": "Смотреть Bonaldo",
+      "color": "rgb(242, 240, 235)"
+    }
+  ],
+  "heavyImages": [
+    {
+      "src": "http://127.0.0.1:5173/images/brand-molteni.jpg",
+      "kb": 5565
+    },
+    {
+      "src": "http://127.0.0.1:5173/images/brand-baxter.jpg",
+      "kb": 3485
+    }
+  ]
+}

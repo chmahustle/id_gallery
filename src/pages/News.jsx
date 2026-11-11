@@ -19,7 +19,7 @@ export default function News() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-    document.title = 'Новости — ID Gallery'
+    document.title = 'События — ID Gallery'
     return () => {
       document.title = 'ID Gallery'
     }
@@ -32,21 +32,24 @@ export default function News() {
   return (
     <SiteShell variant="solid">
       <div className="news-page">
+        <nav className="news-crumbs" aria-label="Хлебные крошки">
+          <Link to="/">Главная</Link>
+          <span aria-hidden="true">-</span>
+          <span>События</span>
+        </nav>
+
         <header className="news-page__head">
-          <h1>Новости и события</h1>
-          <p>
-            Обновления шоурумов, закрытые показы, эксклюзивы и материалы для
-            партнёров.
-          </p>
+          <h1>События</h1>
         </header>
 
-        <div className="news-filters" role="group" aria-label="Категории новостей">
+        <div className="news-filters" role="tablist" aria-label="Категории новостей">
           {categories.map((name) => (
             <button
               key={name}
               type="button"
+              role="tab"
               className={category === name ? 'is-active' : undefined}
-              aria-pressed={category === name}
+              aria-selected={category === name}
               onClick={() => setCategory(name)}
             >
               {name}
@@ -63,23 +66,21 @@ export default function News() {
             {filtered.map((item) => (
               <article key={item.slug} className="news-card">
                 <Link to={newsPath(item.slug)} className="news-card__media">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    loading="lazy"
-                  />
+                  <img src={item.image} alt="" loading="lazy" />
                 </Link>
                 <div className="news-card__body">
-                  <div className="news-card__meta">
-                    <time dateTime={toIsoDate(item.date)}>{item.date}</time>
-                    <span>{item.category}</span>
-                  </div>
+                  <time
+                    className="news-card__date"
+                    dateTime={toIsoDate(item.date)}
+                  >
+                    {item.date}
+                  </time>
                   <h2>
                     <Link to={newsPath(item.slug)}>{item.title}</Link>
                   </h2>
                   <p>{item.excerpt}</p>
                   <Link to={newsPath(item.slug)} className="news-card__more">
-                    Читать
+                    Читать →
                   </Link>
                 </div>
               </article>

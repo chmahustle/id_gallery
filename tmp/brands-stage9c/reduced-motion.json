@@ -1,0 +1,7 @@
+{
+  "heroTransform": "matrix(1, 0, 0, 1, 0, 0)",
+  "heroTransition": "1e-05s",
+  "contentOpacity": "1",
+  "contentTransform": "matrix(1, 0, 0, 1, 0, 0)",
+  "runningAnims": 0
+}

@@ -1,5 +1,5 @@
 .sourcebooks {
-  background: #1c1612;
+  background: var(--color-ink);
   flex-shrink: 0;
   line-height: 0;
 }

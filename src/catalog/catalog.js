@@ -1,12 +1,17 @@
-import { catalogCategories, products } from '../content'
+import { categories as catalogCategories } from '../data/categories'
+import { getRoomBySlug } from '../data/rooms'
+import { products } from '../data/products'
+import { getProductBySlug as getProductBySlugFromData, getRelatedProducts as getRelatedFromData } from '../lib/catalog'
 
 export const PAGE_SIZE = 12
 
 export const SORT_OPTIONS = [
-  { value: 'popular', label: 'По популярности' },
+  { value: 'default', label: 'По умолчанию' },
+  { value: 'name', label: 'По названию' },
+  { value: 'brand', label: 'По бренду' },
   { value: 'newest', label: 'По новизне' },
-  { value: 'price-asc', label: 'Цена по возрастанию' },
-  { value: 'price-desc', label: 'Цена по убыванию' },
+  { value: 'price-asc', label: 'Цена: по возрастанию' },
+  { value: 'price-desc', label: 'Цена: по убыванию' },
 ]
 
 export function slugify(value) {
@@ -21,20 +26,23 @@ export function getCategoryBySlug(slug, categories = catalogCategories) {
   return categories.find((cat) => cat.slug === slug) || null
 }
 
-export function getProductBySlug(slug, list = products) {
-  return list.find((item) => item.slug === slug) || null
+export function getProductBySlug(slug, list) {
+  if (list) return list.find((item) => item.slug === slug) || null
+  return getProductBySlugFromData(slug)
 }
 
-export function getRelatedProducts(product, limit = 4, list = products) {
-  if (!product) return []
-  return list
-    .filter(
-      (item) =>
-        item.slug !== product.slug &&
-        (item.category === product.category || item.brand === product.brand),
-    )
-    .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
-    .slice(0, limit)
+export function getRelatedProducts(product, limit = 4, list) {
+  if (list) {
+    if (!product) return []
+    return list
+      .filter(
+        (item) =>
+          item.slug !== product.slug && item.brandSlug === product.brandSlug,
+      )
+      .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
+      .slice(0, limit)
+  }
+  return getRelatedFromData(product, limit)
 }
 
 export function catalogPath(categorySlug, params = {}) {
@@ -58,25 +66,102 @@ function parseOptionalNumber(value) {
   return Number.isFinite(n) ? n : null
 }
 
+export const STATUS_TOGGLES = [
+  { label: 'В наличии', status: 'В наличии' },
+  { label: 'В пути', status: 'В пути' },
+  { label: 'Спецпредложение', status: 'Эксклюзив' },
+]
+
+function parseListParam(searchParams, key) {
+  const all = searchParams.getAll(key).flatMap((value) =>
+    String(value)
+      .split('|')
+      .map((part) => part.trim())
+      .filter(Boolean),
+  )
+  return [...new Set(all)]
+}
+
 export function parseCatalogSearch(searchParams) {
-  const sort = searchParams.get('sort') || 'popular'
-  const allowedSort = new Set(['popular', 'newest', 'price-asc', 'price-desc'])
+  const sort = searchParams.get('sort') || 'default'
+  const allowedSort = new Set(['default', 'name', 'brand', 'newest', 'price-asc', 'price-desc'])
   return {
+    q: searchParams.get('q') || '',
+    category: searchParams.get('category') || '',
     sub: searchParams.get('sub') || '',
+    room: searchParams.get('room') || '',
     brand: searchParams.get('brand') || '',
+    materials: parseListParam(searchParams, 'material'),
+    sizes: parseListParam(searchParams, 'size'),
+    colors: parseListParam(searchParams, 'color'),
     status: searchParams.get('status') || '',
-    sort: allowedSort.has(sort) ? sort : 'popular',
+    sort: allowedSort.has(sort) ? sort : 'default',
     page: Math.max(1, Number.parseInt(searchParams.get('page') || '1', 10) || 1),
     priceMin: parseOptionalNumber(searchParams.get('priceMin')),
     priceMax: parseOptionalNumber(searchParams.get('priceMax')),
   }
 }
 
-export function filterProducts(list, { categoryLabel, sub, brand, status, priceMin, priceMax }) {
+export function filterProducts(
+  list,
+  {
+    categoryLabel,
+    categorySlug,
+    sub,
+    room,
+    brand,
+    materials,
+    sizes,
+    colors,
+    status,
+    priceMin,
+    priceMax,
+    q,
+  },
+) {
+  const query = String(q || '')
+    .trim()
+    .toLowerCase()
+  const materialList = materials || []
+  const sizeList = sizes || []
+  const colorList = colors || []
+
   return list.filter((item) => {
+    if (categorySlug) {
+      const match =
+        item.categorySlug === categorySlug ||
+        item.categorySlug === String(categorySlug).toLowerCase()
+      if (!match) return false
+    }
     if (categoryLabel && item.category !== categoryLabel) return false
     if (sub && item.subcategory !== sub) return false
-    if (brand && item.brand !== brand) return false
+    if (room) {
+      const roomDef = getRoomBySlug(room)
+      const inRoom = item.rooms?.length
+        ? item.rooms.includes(room)
+        : roomDef?.categorySlugs.includes(item.categorySlug)
+      if (!inRoom) return false
+    }
+    if (brand) {
+      const matchBrand =
+        item.brand === brand ||
+        item.brandSlug === brand ||
+        item.brandSlug === String(brand).toLowerCase()
+      if (!matchBrand) return false
+    }
+    if (materialList.length) {
+      const raw = item.characteristics?.materials?.value || ''
+      if (!materialList.some((value) => raw === value)) return false
+    }
+    if (sizeList.length) {
+      const raw = item.characteristics?.dimensions?.value || ''
+      if (!sizeList.some((value) => raw === value)) return false
+    }
+    if (colorList.length) {
+      const variants = item.variants || item.colors || []
+      const names = variants.map((variant) => variant.name)
+      if (!colorList.some((value) => names.includes(value))) return false
+    }
     if (status && item.status !== status) return false
     if (priceMin != null && Number.isFinite(priceMin)) {
       if (item.priceAmount == null || item.priceAmount < priceMin) return false
@@ -84,8 +169,37 @@ export function filterProducts(list, { categoryLabel, sub, brand, status, priceM
     if (priceMax != null && Number.isFinite(priceMax)) {
       if (item.priceAmount == null || item.priceAmount > priceMax) return false
     }
+    if (query) {
+      const hay = `${item.name} ${item.brand} ${item.category} ${item.subcategory} ${item.sku || ''}`
+        .toLowerCase()
+      if (!hay.includes(query)) return false
+    }
     return true
   })
+}
+
+export function collectCategoryChips(categories = catalogCategories) {
+  const chips = []
+  for (const cat of categories) {
+    if (!cat.label?.trim() || !cat.slug) continue
+    chips.push({
+      key: `cat-${cat.slug}`,
+      label: cat.label,
+      href: catalogPath(cat.slug),
+      slug: cat.slug,
+      sub: '',
+    })
+    for (const child of cat.children || []) {
+      chips.push({
+        key: `sub-${cat.slug}-${child}`,
+        label: child,
+        href: catalogPath(cat.slug, { sub: child }),
+        slug: cat.slug,
+        sub: child,
+      })
+    }
+  }
+  return chips
 }
 
 export function sortProducts(list, sort) {
@@ -105,11 +219,18 @@ export function sortProducts(list, sort) {
         const bv = b.priceAmount ?? -1
         return bv - av || a.name.localeCompare(b.name, 'ru')
       })
-    case 'popular':
-    default:
+    case 'name':
+      return items.sort((a, b) => a.name.localeCompare(b.name, 'ru'))
+    case 'brand':
       return items.sort(
-        (a, b) => (b.popularity || 0) - (a.popularity || 0) || a.name.localeCompare(b.name, 'ru'),
+        (a, b) =>
+          String(a.brand).localeCompare(String(b.brand), 'ru') ||
+          a.name.localeCompare(b.name, 'ru'),
       )
+    case 'default':
+    default:
+      /* порядок как в данных — без ранжирования по популярности */
+      return items
   }
 }
 
@@ -162,8 +283,5 @@ export function buildWhatsAppLeadUrl(phone, message) {
 
 export function formatPrice(product) {
   if (!product) return ''
-  if (product.priceAmount != null && Number.isFinite(product.priceAmount)) {
-    return `${product.priceAmount.toLocaleString('ru-RU')} ₽`
-  }
-  return product.price || 'по запросу'
+  return product.price || 'Стоимость — по запросу'
 }

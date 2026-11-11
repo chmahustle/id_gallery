@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { promoSlides, site } from '../content'
 import './PromoSlider.css'
+import { Button } from './ui'
 
 const INTERVAL_MS = 6000
 
@@ -47,9 +48,9 @@ export default function PromoSlider() {
         <p className="promo__eyebrow">{site.name}</p>
         <h1>{slide.title}</h1>
         <p className="promo__text">{slide.text}</p>
-        <a className="promo__cta" href={slide.href}>
+        <Button as="a" variant="primary" href={slide.href}>
           {slide.cta}
-        </a>
+        </Button>
       </div>
       <div className="promo__dots" role="tablist" aria-label="Слайды">
         {promoSlides.map((item, i) => (

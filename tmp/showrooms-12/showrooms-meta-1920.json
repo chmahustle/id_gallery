@@ -1,0 +1,15 @@
+{
+  "h1": "Шоурумы ID Gallery",
+  "rows": 2,
+  "openDetails": "Подтверждённый адрес и часы работы",
+  "visitTitle": "Посещение",
+  "visitHref": "/contact/?topic=visit",
+  "imgs": [
+    "/images/Gemini_Generated_Image_sq76gsq76gsq76gs.jpg",
+    "/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg",
+    "/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg",
+    "/images/brand-molteni.jpg"
+  ],
+  "imgDupes": [],
+  "forbiddenHits": null
+}

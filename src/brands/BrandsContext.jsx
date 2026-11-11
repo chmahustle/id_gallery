@@ -8,7 +8,18 @@ import {
   useState,
 } from 'react'
 import { api } from '../api'
-import { brandLogos as defaultBrands } from '../content'
+import { getBrands } from '../lib/catalog'
+
+const defaultBrands = getBrands().map((brand) => ({
+  name: brand.name,
+  filter: brand.filter,
+  logo: brand.logo,
+  slug: brand.slug,
+  description: brand.description,
+  ctaLabel: brand.ctaLabel,
+  heroImage: brand.heroImage,
+  image: brand.image,
+}))
 
 const BrandsContext = createContext(null)
 

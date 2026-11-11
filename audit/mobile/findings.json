@@ -1,0 +1,2822 @@
+{
+  "top10": [
+    {
+      "problem": "Контраст <4.5:1",
+      "count": 60,
+      "maxSev": "блокирует",
+      "samples": [
+        "home@390",
+        "home@768",
+        "home@1440",
+        "catalog@390"
+      ],
+      "routeCount": 20
+    },
+    {
+      "problem": "Тап <44×44",
+      "count": 60,
+      "maxSev": "портит вид",
+      "samples": [
+        "home@390",
+        "home@768",
+        "home@1440",
+        "catalog@390"
+      ],
+      "routeCount": 20
+    },
+    {
+      "problem": "Фокус Tab слабо/не виден",
+      "count": 60,
+      "maxSev": "портит вид",
+      "samples": [
+        "home@390",
+        "home@768",
+        "home@1440",
+        "catalog@390"
+      ],
+      "routeCount": 20
+    },
+    {
+      "problem": "Картинки >400KB",
+      "count": 20,
+      "maxSev": "портит вид",
+      "samples": [
+        "home@390",
+        "catalog@390",
+        "catalog-divany@390",
+        "brands@390"
+      ],
+      "routeCount": 20
+    },
+    {
+      "problem": "Крупный fixed перекрывает экран",
+      "count": 18,
+      "maxSev": "портит вид",
+      "samples": [
+        "menu-open@390",
+        "menu-open@390",
+        "menu-open@768",
+        "menu-open@768"
+      ],
+      "routeCount": 3
+    },
+    {
+      "problem": "Hover-only CSS",
+      "count": 40,
+      "maxSev": "мелочь",
+      "samples": [
+        "home@390",
+        "home@768",
+        "catalog@390",
+        "catalog@768"
+      ],
+      "routeCount": 20
+    },
+    {
+      "problem": "Текст <14px",
+      "count": 20,
+      "maxSev": "мелочь",
+      "samples": [
+        "home@390",
+        "catalog@390",
+        "catalog-divany@390",
+        "brands@390"
+      ],
+      "routeCount": 20
+    },
+    {
+      "problem": "Длинные строки >75",
+      "count": 16,
+      "maxSev": "мелочь",
+      "samples": [
+        "home@390",
+        "brands@390",
+        "brand-visionnaire@390",
+        "brand-molteni@390"
+      ],
+      "routeCount": 16
+    }
+  ],
+  "allFindings": [
+    {
+      "route": "home",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page > a.skip-link 186×41; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "home",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "home",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (3)",
+      "detail": "76ch, 116ch, 81ch"
+    },
+    {
+      "route": "home",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (7)",
+      "detail": "3323KB Gemini_Generated_Image_sq76gsq76gsq76gs.jpg; 2894KB Gemini_Generated_Image_ty7owqty7owqty7o.jpg; 3308KB interior-01.png; 657KB interior-03.png; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg"
+    },
+    {
+      "route": "home",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page > a.skip-link"
+    },
+    {
+      "route": "home",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "home",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (30)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "home",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page > a.skip-link 186×41; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "home",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page > a.skip-link"
+    },
+    {
+      "route": "home",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "home",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (30)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "home",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page > a.skip-link 186×41; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "home",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page > a.skip-link"
+    },
+    {
+      "route": "home",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (30)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "catalog",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "catalog",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 11px Главная; 11px Каталог; 12px Диваны; 12px Visionnaire"
+    },
+    {
+      "route": "catalog",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (4)",
+      "detail": "2894KB Gemini_Generated_Image_ty7owqty7owqty7o.jpg; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg; 3192KB Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg; 2760KB Gemini_Generated_Image_bts5zcbts5zcbts5.jpg"
+    },
+    {
+      "route": "catalog",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "catalog",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "catalog",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "catalog",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "catalog",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "catalog",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "catalog",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "catalog",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "catalog",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "catalog",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 11px Главная; 11px Каталог; 11px Диваны; 12px Диваны"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (2)",
+      "detail": "2894KB Gemini_Generated_Image_ty7owqty7owqty7o.jpg; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "catalog-divany",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "brands",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (36)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "brands",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 11px Главная; 11px Бренды; 13px Диваны; 13px Диваны"
+    },
+    {
+      "route": "brands",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (5)",
+      "detail": "96ch, 83ch, 90ch"
+    },
+    {
+      "route": "brands",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (2)",
+      "detail": "5565KB brand-molteni.jpg; 3485KB brand-baxter.jpg"
+    },
+    {
+      "route": "brands",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "brands",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "brands",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 Visionnaire; 1:1 Смотреть Visionnaire; 1:1 Смотреть Visionnaire; 1:1 Molteni&C; 1:1 Смотреть Molteni&C"
+    },
+    {
+      "route": "brands",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (38)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "brands",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "brands",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "brands",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 Visionnaire; 1:1 Смотреть Visionnaire; 1:1 Смотреть Visionnaire; 1:1 Molteni&C; 1:1 Смотреть Molteni&C"
+    },
+    {
+      "route": "brands",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (37)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "brands",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "brands",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 Visionnaire; 1:1 Смотреть Visionnaire; 1:1 Смотреть Visionnaire; 1:1 Molteni&C; 1:1 Смотреть Molteni&C"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (29)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (2)",
+      "detail": "108ch, 154ch"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (1)",
+      "detail": "5565KB brand-molteni.jpg"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (31)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (30)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-visionnaire",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (29)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (2)",
+      "detail": "90ch, 132ch"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (2)",
+      "detail": "5565KB brand-molteni.jpg; 3485KB brand-baxter.jpg"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (31)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (30)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-molteni",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (29)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (2)",
+      "detail": "77ch, 101ch"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (1)",
+      "detail": "3485KB brand-baxter.jpg"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (31)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (30)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-baxter",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (29)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (3)",
+      "detail": "83ch, 111ch, 78ch"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (1)",
+      "detail": "2760KB Gemini_Generated_Image_bts5zcbts5zcbts5.jpg"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (31)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (30)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "brand-bonaldo",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (13)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "product-sofa",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "product-sofa",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 11px Главная; 11px Каталог; 11px Диваны; 11px Модель 01"
+    },
+    {
+      "route": "product-sofa",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (1)",
+      "detail": "83ch"
+    },
+    {
+      "route": "product-sofa",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (4)",
+      "detail": "2894KB Gemini_Generated_Image_ty7owqty7owqty7o.jpg; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg; 2760KB Gemini_Generated_Image_bts5zcbts5zcbts5.jpg; 3192KB Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg"
+    },
+    {
+      "route": "product-sofa",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "product-sofa",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "product-sofa",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "product-sofa",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "product-sofa",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "product-sofa",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "product-sofa",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "product-sofa",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "product-sofa",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "product-sofa",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 11px Главная; 11px Каталог; 11px Диваны; 11px Модель 01"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (1)",
+      "detail": "76ch"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (4)",
+      "detail": "2894KB Gemini_Generated_Image_ty7owqty7owqty7o.jpg; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg; 2760KB Gemini_Generated_Image_bts5zcbts5zcbts5.jpg; 3192KB Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "product-sofa-preview",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "interiors",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (30)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "interiors",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "interiors",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (1)",
+      "detail": "92ch"
+    },
+    {
+      "route": "interiors",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (4)",
+      "detail": "3323KB Gemini_Generated_Image_sq76gsq76gsq76gs.jpg; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg; 2760KB Gemini_Generated_Image_bts5zcbts5zcbts5.jpg; 2894KB Gemini_Generated_Image_ty7owqty7owqty7o.jpg"
+    },
+    {
+      "route": "interiors",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "interiors",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "interiors",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "interiors",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (32)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "interiors",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "interiors",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "interiors",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "interiors",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (31)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "interiors",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "interiors",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 12px Диваны; 12px Visionnaire; 12px Диваны; 12px Baxter"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (3)",
+      "detail": "3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg; 2894KB Gemini_Generated_Image_ty7owqty7owqty7o.jpg; 2760KB Gemini_Generated_Image_bts5zcbts5zcbts5.jpg"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "interior-gostinaya",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "showrooms",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (30)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "showrooms",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "showrooms",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (2)",
+      "detail": "133ch, 98ch"
+    },
+    {
+      "route": "showrooms",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (4)",
+      "detail": "3323KB Gemini_Generated_Image_sq76gsq76gsq76gs.jpg; 2760KB Gemini_Generated_Image_bts5zcbts5zcbts5.jpg; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg; 5565KB brand-molteni.jpg"
+    },
+    {
+      "route": "showrooms",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "showrooms",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "showrooms",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (15)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "showrooms",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (32)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "showrooms",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "showrooms",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "showrooms",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (15)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "showrooms",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (31)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "showrooms",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "showrooms",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (15)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "trade",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (30)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "trade",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "trade",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (3)",
+      "detail": "105ch, 91ch, 80ch"
+    },
+    {
+      "route": "trade",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (4)",
+      "detail": "3485KB brand-baxter.jpg; 3192KB Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg; 2894KB Gemini_Generated_Image_ty7owqty7owqty7o.jpg; 5565KB brand-molteni.jpg"
+    },
+    {
+      "route": "trade",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "trade",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "trade",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (15)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "trade",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (32)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "trade",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "trade",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "trade",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (15)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "trade",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (31)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "trade",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "trade",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (15)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "about",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (29)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "about",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "about",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (2)",
+      "detail": "111ch, 125ch"
+    },
+    {
+      "route": "about",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (2)",
+      "detail": "3485KB brand-baxter.jpg; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg"
+    },
+    {
+      "route": "about",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "about",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "about",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "about",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (31)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "about",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "about",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "about",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "about",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (30)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "about",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "about",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "contact",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (31)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "contact",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "contact",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (1)",
+      "detail": "87ch"
+    },
+    {
+      "route": "contact",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (2)",
+      "detail": "5565KB brand-molteni.jpg; 3485KB brand-baxter.jpg"
+    },
+    {
+      "route": "contact",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "contact",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "contact",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "contact",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (33)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "contact",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "contact",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "contact",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "contact",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (32)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "contact",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "contact",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "menu-open",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page > a.skip-link 186×41; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "menu-open",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "menu-open",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (3)",
+      "detail": "76ch, 116ch, 81ch"
+    },
+    {
+      "route": "menu-open",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (7)",
+      "detail": "3323KB Gemini_Generated_Image_sq76gsq76gsq76gs.jpg; 2894KB Gemini_Generated_Image_ty7owqty7owqty7o.jpg; 3308KB interior-01.png; 657KB interior-03.png; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg"
+    },
+    {
+      "route": "menu-open",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#root > div.page > button.menu-backdrop.is-open:nth-child(4) 100% высоты (844px)"
+    },
+    {
+      "route": "menu-open",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#root > div.page > div.menu-clip.is-open:nth-child(5) 100% высоты (844px)"
+    },
+    {
+      "route": "menu-open",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page > a.skip-link"
+    },
+    {
+      "route": "menu-open",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "menu-open",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (30)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "menu-open",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page > a.skip-link 186×41; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "menu-open",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#root > div.page > button.menu-backdrop.is-open:nth-child(4) 100% высоты (1024px)"
+    },
+    {
+      "route": "menu-open",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#root > div.page > div.menu-clip.is-open:nth-child(5) 100% высоты (1024px)"
+    },
+    {
+      "route": "menu-open",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page > a.skip-link"
+    },
+    {
+      "route": "menu-open",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "menu-open",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (30)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "menu-open",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page > a.skip-link 186×41; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "menu-open",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#root > div.page > button.menu-backdrop.is-open:nth-child(4) 87.7% высоты (789px)"
+    },
+    {
+      "route": "menu-open",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#root > div.page > div.menu-clip.is-open:nth-child(5) 87.7% высоты (789px)"
+    },
+    {
+      "route": "menu-open",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page > a.skip-link"
+    },
+    {
+      "route": "menu-open",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (30)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 11px Главная; 11px Каталог; 12px Диваны; 12px Visionnaire"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (4)",
+      "detail": "2894KB Gemini_Generated_Image_ty7owqty7owqty7o.jpg; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg; 3192KB Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg; 2760KB Gemini_Generated_Image_bts5zcbts5zcbts5.jpg"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#main > button.catalog-drawer__backdrop.is-open:nth-child(3) 100% высоты (844px)"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#catalog-filters 100% высоты (844px)"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#main > button.catalog-drawer__backdrop.is-open:nth-child(3) 100% высоты (1024px)"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#catalog-filters 100% высоты (1024px)"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#main > button.catalog-drawer__backdrop.is-open:nth-child(3) 100% высоты (900px)"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#catalog-filters 100% высоты (900px)"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "catalog-filters",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(1) 59×26; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats.header__cats--scroll > a.header__cat:nth-child(2) 47×26"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 11px Главная; 11px Каталог; 11px Диваны; 11px Модель 01"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (1)",
+      "detail": "83ch"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (4)",
+      "detail": "2894KB Gemini_Generated_Image_ty7owqty7owqty7o.jpg; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg; 2760KB Gemini_Generated_Image_bts5zcbts5zcbts5.jpg; 3192KB Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#main > button.finishes-drawer__backdrop.is-open 100% высоты (844px)"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#main > aside.finishes-drawer.is-open 100% высоты (844px)"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; #root > div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > a.header__logo 160×38; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#main > button.finishes-drawer__backdrop.is-open 100% высоты (1024px)"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#main > aside.finishes-drawer.is-open 100% высоты (1024px)"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (40)",
+      "detail": "#root > div.page.page--solid > a.skip-link 186×41; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1) 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2) 40×40; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1) 50×22; header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2) 39×22; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn 40×40; div.page.page--solid > header.header.header--solid > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1) 55×30"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#main > button.finishes-drawer__backdrop.is-open 100% высоты (900px)"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Крупный fixed перекрывает экран",
+      "detail": "#main > aside.finishes-drawer.is-open 100% высоты (900px)"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--solid > a.skip-link"
+    },
+    {
+      "route": "finishes-drawer",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (1)",
+      "detail": "1:1 Перейти к содержимому"
+    },
+    {
+      "route": "footer",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (18)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 104×25; #main > article.about-page > section.about-page__approach.is-in:nth-child(2) > div.about-page__approach-copy:nth-child(2) > a.ui-btn.ui-btn--secondary 188×40; #main > article.about-page > section.about-page__brands.is-in:nth-child(3) > div.about-page__brands-cta:nth-child(3) > a.ui-btn.ui-btn--secondary 175×40; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link 45×26; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link 42×26; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link 42×26; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link 38×26"
+    },
+    {
+      "route": "footer",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Текст <14px (25)",
+      "detail": "12px Перейти к содержимому; 13px Диваны; 13px Диваны; 13px Диваны; 13px Кресла"
+    },
+    {
+      "route": "footer",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Длинные строки >75 (2)",
+      "detail": "111ch, 125ch"
+    },
+    {
+      "route": "footer",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Картинки >400KB (2)",
+      "detail": "3485KB brand-baxter.jpg; 3119KB Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg"
+    },
+    {
+      "route": "footer",
+      "width": "390",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "footer",
+      "width": "390",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "footer",
+      "width": "390",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (3)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery"
+    },
+    {
+      "route": "footer",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (18)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 104×25; #main > article.about-page > section.about-page__approach.is-in:nth-child(2) > div.about-page__approach-copy:nth-child(2) > a.ui-btn.ui-btn--secondary 188×40; #main > article.about-page > section.about-page__brands.is-in:nth-child(3) > div.about-page__brands-cta:nth-child(3) > a.ui-btn.ui-btn--secondary 175×40; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link 45×26; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link 42×26; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link 42×26; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link 38×26"
+    },
+    {
+      "route": "footer",
+      "width": "768",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "footer",
+      "width": "768",
+      "severity": "мелочь",
+      "problem": "Hover-only CSS (25)",
+      "detail": ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover | .auth-modal__close:hover | .auth-modal__submit:hover:not(:disabled) | .cart-panel__remove:hover | .cart-panel__order:hover"
+    },
+    {
+      "route": "footer",
+      "width": "768",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (3)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery"
+    },
+    {
+      "route": "footer",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Тап <44×44 (18)",
+      "detail": "#root > div.page.page--overlay > a.skip-link 186×41; #root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo 140×34; #main > article.about-page > section.about-page__approach.is-in:nth-child(2) > div.about-page__approach-copy:nth-child(2) > a.ui-btn.ui-btn--secondary 188×40; #main > article.about-page > section.about-page__brands.is-in:nth-child(3) > div.about-page__brands-cta:nth-child(3) > a.ui-btn.ui-btn--secondary 175×40; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link 45×26; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link 42×26; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link 42×26; div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link 38×26"
+    },
+    {
+      "route": "footer",
+      "width": "1440",
+      "severity": "портит вид",
+      "problem": "Фокус Tab слабо/не виден",
+      "detail": "#root > div.page.page--overlay > a.skip-link"
+    },
+    {
+      "route": "footer",
+      "width": "1440",
+      "severity": "блокирует",
+      "problem": "Контраст <4.5:1 (12)",
+      "detail": "1:1 Перейти к содержимому; 1:1 ID Gallery; 1:1 ID Gallery; 1:1 Дизайнерам; 1:1 Контакты; 1:1 Все товары"
+    }
+  ],
+  "summaryRows": [
+    {
+      "id": "home",
+      "path": "/",
+      "width": "390",
+      "file": "home-390.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 30,
+      "heavy": 7,
+      "findings": 7
+    },
+    {
+      "id": "home",
+      "path": "/",
+      "width": "768",
+      "file": "home-768.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 30,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "home",
+      "path": "/",
+      "width": "1440",
+      "file": "home-1440.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 30,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "catalog",
+      "path": "/catalog/",
+      "width": "390",
+      "file": "catalog-390.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 4,
+      "findings": 6
+    },
+    {
+      "id": "catalog",
+      "path": "/catalog/",
+      "width": "768",
+      "file": "catalog-768.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "catalog",
+      "path": "/catalog/",
+      "width": "1440",
+      "file": "catalog-1440.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "catalog-divany",
+      "path": "/catalog/divany/",
+      "width": "390",
+      "file": "catalog-divany-390.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 2,
+      "findings": 6
+    },
+    {
+      "id": "catalog-divany",
+      "path": "/catalog/divany/",
+      "width": "768",
+      "file": "catalog-divany-768.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "catalog-divany",
+      "path": "/catalog/divany/",
+      "width": "1440",
+      "file": "catalog-divany-1440.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "brands",
+      "path": "/brands/",
+      "width": "390",
+      "file": "brands-390.png",
+      "hScroll": false,
+      "smallTaps": 36,
+      "lowContrast": 13,
+      "heavy": 2,
+      "findings": 7
+    },
+    {
+      "id": "brands",
+      "path": "/brands/",
+      "width": "768",
+      "file": "brands-768.png",
+      "hScroll": false,
+      "smallTaps": 38,
+      "lowContrast": 13,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "brands",
+      "path": "/brands/",
+      "width": "1440",
+      "file": "brands-1440.png",
+      "hScroll": false,
+      "smallTaps": 37,
+      "lowContrast": 13,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "brand-visionnaire",
+      "path": "/brands/visionnaire/",
+      "width": "390",
+      "file": "brand-visionnaire-390.png",
+      "hScroll": false,
+      "smallTaps": 29,
+      "lowContrast": 13,
+      "heavy": 1,
+      "findings": 7
+    },
+    {
+      "id": "brand-visionnaire",
+      "path": "/brands/visionnaire/",
+      "width": "768",
+      "file": "brand-visionnaire-768.png",
+      "hScroll": false,
+      "smallTaps": 31,
+      "lowContrast": 13,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "brand-visionnaire",
+      "path": "/brands/visionnaire/",
+      "width": "1440",
+      "file": "brand-visionnaire-1440.png",
+      "hScroll": false,
+      "smallTaps": 30,
+      "lowContrast": 13,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "brand-molteni",
+      "path": "/brands/molteni/",
+      "width": "390",
+      "file": "brand-molteni-390.png",
+      "hScroll": false,
+      "smallTaps": 29,
+      "lowContrast": 13,
+      "heavy": 2,
+      "findings": 7
+    },
+    {
+      "id": "brand-molteni",
+      "path": "/brands/molteni/",
+      "width": "768",
+      "file": "brand-molteni-768.png",
+      "hScroll": false,
+      "smallTaps": 31,
+      "lowContrast": 13,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "brand-molteni",
+      "path": "/brands/molteni/",
+      "width": "1440",
+      "file": "brand-molteni-1440.png",
+      "hScroll": false,
+      "smallTaps": 30,
+      "lowContrast": 13,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "brand-baxter",
+      "path": "/brands/baxter/",
+      "width": "390",
+      "file": "brand-baxter-390.png",
+      "hScroll": false,
+      "smallTaps": 29,
+      "lowContrast": 13,
+      "heavy": 1,
+      "findings": 7
+    },
+    {
+      "id": "brand-baxter",
+      "path": "/brands/baxter/",
+      "width": "768",
+      "file": "brand-baxter-768.png",
+      "hScroll": false,
+      "smallTaps": 31,
+      "lowContrast": 13,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "brand-baxter",
+      "path": "/brands/baxter/",
+      "width": "1440",
+      "file": "brand-baxter-1440.png",
+      "hScroll": false,
+      "smallTaps": 30,
+      "lowContrast": 13,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "brand-bonaldo",
+      "path": "/brands/bonaldo/",
+      "width": "390",
+      "file": "brand-bonaldo-390.png",
+      "hScroll": false,
+      "smallTaps": 29,
+      "lowContrast": 13,
+      "heavy": 1,
+      "findings": 7
+    },
+    {
+      "id": "brand-bonaldo",
+      "path": "/brands/bonaldo/",
+      "width": "768",
+      "file": "brand-bonaldo-768.png",
+      "hScroll": false,
+      "smallTaps": 31,
+      "lowContrast": 13,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "brand-bonaldo",
+      "path": "/brands/bonaldo/",
+      "width": "1440",
+      "file": "brand-bonaldo-1440.png",
+      "hScroll": false,
+      "smallTaps": 30,
+      "lowContrast": 13,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "product-sofa",
+      "path": "/product/model-01-sofa/",
+      "width": "390",
+      "file": "product-sofa-390.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 4,
+      "findings": 7
+    },
+    {
+      "id": "product-sofa",
+      "path": "/product/model-01-sofa/",
+      "width": "768",
+      "file": "product-sofa-768.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "product-sofa",
+      "path": "/product/model-01-sofa/",
+      "width": "1440",
+      "file": "product-sofa-1440.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "product-sofa-preview",
+      "path": "/product/model-01-sofa/?preview=full",
+      "width": "390",
+      "file": "product-sofa-preview-390.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 4,
+      "findings": 7
+    },
+    {
+      "id": "product-sofa-preview",
+      "path": "/product/model-01-sofa/?preview=full",
+      "width": "768",
+      "file": "product-sofa-preview-768.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "product-sofa-preview",
+      "path": "/product/model-01-sofa/?preview=full",
+      "width": "1440",
+      "file": "product-sofa-preview-1440.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "interiors",
+      "path": "/interiors/",
+      "width": "390",
+      "file": "interiors-390.png",
+      "hScroll": false,
+      "smallTaps": 30,
+      "lowContrast": 12,
+      "heavy": 4,
+      "findings": 7
+    },
+    {
+      "id": "interiors",
+      "path": "/interiors/",
+      "width": "768",
+      "file": "interiors-768.png",
+      "hScroll": false,
+      "smallTaps": 32,
+      "lowContrast": 12,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "interiors",
+      "path": "/interiors/",
+      "width": "1440",
+      "file": "interiors-1440.png",
+      "hScroll": false,
+      "smallTaps": 31,
+      "lowContrast": 12,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "interior-gostinaya",
+      "path": "/interiors/gostinaya/",
+      "width": "390",
+      "file": "interior-gostinaya-390.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 12,
+      "heavy": 3,
+      "findings": 6
+    },
+    {
+      "id": "interior-gostinaya",
+      "path": "/interiors/gostinaya/",
+      "width": "768",
+      "file": "interior-gostinaya-768.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 12,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "interior-gostinaya",
+      "path": "/interiors/gostinaya/",
+      "width": "1440",
+      "file": "interior-gostinaya-1440.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 12,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "showrooms",
+      "path": "/showrooms/",
+      "width": "390",
+      "file": "showrooms-390.png",
+      "hScroll": false,
+      "smallTaps": 30,
+      "lowContrast": 15,
+      "heavy": 4,
+      "findings": 7
+    },
+    {
+      "id": "showrooms",
+      "path": "/showrooms/",
+      "width": "768",
+      "file": "showrooms-768.png",
+      "hScroll": false,
+      "smallTaps": 32,
+      "lowContrast": 15,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "showrooms",
+      "path": "/showrooms/",
+      "width": "1440",
+      "file": "showrooms-1440.png",
+      "hScroll": false,
+      "smallTaps": 31,
+      "lowContrast": 15,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "trade",
+      "path": "/trade/",
+      "width": "390",
+      "file": "trade-390.png",
+      "hScroll": false,
+      "smallTaps": 30,
+      "lowContrast": 15,
+      "heavy": 4,
+      "findings": 7
+    },
+    {
+      "id": "trade",
+      "path": "/trade/",
+      "width": "768",
+      "file": "trade-768.png",
+      "hScroll": false,
+      "smallTaps": 32,
+      "lowContrast": 15,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "trade",
+      "path": "/trade/",
+      "width": "1440",
+      "file": "trade-1440.png",
+      "hScroll": false,
+      "smallTaps": 31,
+      "lowContrast": 15,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "about",
+      "path": "/about/",
+      "width": "390",
+      "file": "about-390.png",
+      "hScroll": false,
+      "smallTaps": 29,
+      "lowContrast": 12,
+      "heavy": 2,
+      "findings": 7
+    },
+    {
+      "id": "about",
+      "path": "/about/",
+      "width": "768",
+      "file": "about-768.png",
+      "hScroll": false,
+      "smallTaps": 31,
+      "lowContrast": 12,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "about",
+      "path": "/about/",
+      "width": "1440",
+      "file": "about-1440.png",
+      "hScroll": false,
+      "smallTaps": 30,
+      "lowContrast": 12,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "contact",
+      "path": "/contact/",
+      "width": "390",
+      "file": "contact-390.png",
+      "hScroll": false,
+      "smallTaps": 31,
+      "lowContrast": 12,
+      "heavy": 2,
+      "findings": 7
+    },
+    {
+      "id": "contact",
+      "path": "/contact/",
+      "width": "768",
+      "file": "contact-768.png",
+      "hScroll": false,
+      "smallTaps": 33,
+      "lowContrast": 12,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "contact",
+      "path": "/contact/",
+      "width": "1440",
+      "file": "contact-1440.png",
+      "hScroll": false,
+      "smallTaps": 32,
+      "lowContrast": 12,
+      "heavy": 0,
+      "findings": 3
+    },
+    {
+      "id": "menu-open",
+      "path": "/",
+      "width": "390",
+      "file": "menu-open-390.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 30,
+      "heavy": 7,
+      "findings": 9
+    },
+    {
+      "id": "menu-open",
+      "path": "/",
+      "width": "768",
+      "file": "menu-open-768.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 30,
+      "heavy": 0,
+      "findings": 6
+    },
+    {
+      "id": "menu-open",
+      "path": "/",
+      "width": "1440",
+      "file": "menu-open-1440.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 30,
+      "heavy": 0,
+      "findings": 5
+    },
+    {
+      "id": "catalog-filters",
+      "path": "/catalog/",
+      "width": "390",
+      "file": "catalog-filters-390.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 4,
+      "findings": 8
+    },
+    {
+      "id": "catalog-filters",
+      "path": "/catalog/",
+      "width": "768",
+      "file": "catalog-filters-768.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 6
+    },
+    {
+      "id": "catalog-filters",
+      "path": "/catalog/",
+      "width": "1440",
+      "file": "catalog-filters-1440.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 5
+    },
+    {
+      "id": "finishes-drawer",
+      "path": "/product/model-01-sofa/",
+      "width": "390",
+      "file": "finishes-drawer-390.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 4,
+      "findings": 9
+    },
+    {
+      "id": "finishes-drawer",
+      "path": "/product/model-01-sofa/",
+      "width": "768",
+      "file": "finishes-drawer-768.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 6
+    },
+    {
+      "id": "finishes-drawer",
+      "path": "/product/model-01-sofa/",
+      "width": "1440",
+      "file": "finishes-drawer-1440.png",
+      "hScroll": false,
+      "smallTaps": 40,
+      "lowContrast": 1,
+      "heavy": 0,
+      "findings": 5
+    },
+    {
+      "id": "footer",
+      "path": "/about/",
+      "width": "390",
+      "file": "footer-390.png",
+      "hScroll": false,
+      "smallTaps": 18,
+      "lowContrast": 3,
+      "heavy": 2,
+      "findings": 7
+    },
+    {
+      "id": "footer",
+      "path": "/about/",
+      "width": "768",
+      "file": "footer-768.png",
+      "hScroll": false,
+      "smallTaps": 18,
+      "lowContrast": 3,
+      "heavy": 0,
+      "findings": 4
+    },
+    {
+      "id": "footer",
+      "path": "/about/",
+      "width": "1440",
+      "file": "footer-1440.png",
+      "hScroll": false,
+      "smallTaps": 18,
+      "lowContrast": 12,
+      "heavy": 0,
+      "findings": 3
+    }
+  ]
+}

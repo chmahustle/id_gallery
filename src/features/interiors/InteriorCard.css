@@ -1,0 +1,56 @@
+/* Карточка интерьера (страница бренда, «Подбор и комплектация») */
+.interior-card {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.interior-card__media {
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-cream);
+}
+
+.interior-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* scale — отдельное свойство: не конфликтует с inline-transform кропа */
+  scale: 1;
+  transition: scale 0.45s var(--ease);
+}
+
+.interior-card:hover .interior-card__media img,
+.interior-card:focus-visible .interior-card__media img {
+  scale: 1.02;
+}
+
+.interior-card__room {
+  display: block;
+  margin-top: 0.85rem;
+  font-family: var(--font-body);
+  font-size: var(--text-caption-md);
+  font-weight: 300;
+  line-height: var(--leading-caption);
+  color: var(--color-text-secondary);
+}
+
+.interior-card__title {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--font-display);
+  font-size: var(--text-model-title);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .interior-card__media img {
+    transition: none;
+  }
+}

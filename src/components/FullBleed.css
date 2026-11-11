@@ -1,5 +1,5 @@
 /*
-  RH motion modules:
+  Motion modules:
   - desktop ≈ 1425×956 (h/w ≈ 0.67)
   - mobile  ≈ 390×599  (h/w ≈ 1.54)
 */
@@ -8,7 +8,7 @@
   width: 100%;
   aspect-ratio: 1425 / 956;
   overflow: hidden;
-  background: #1c1612;
+  background: var(--color-ink);
   flex-shrink: 0;
   line-height: 0;
 }

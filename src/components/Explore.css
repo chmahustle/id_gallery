@@ -13,7 +13,7 @@
 .explore__panel {
   display: block;
   line-height: 0;
-  background: #1c1612;
+  background: var(--color-ink);
 }
 
 .explore__panel img {

@@ -1,5 +1,5 @@
 .sale-banner {
-  background: #4a392c;
+  background: var(--color-olive);
   flex-shrink: 0;
   line-height: 0;
 }

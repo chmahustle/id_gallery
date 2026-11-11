@@ -1,0 +1,530 @@
+{
+  "iw": 1440,
+  "ih": 900,
+  "sw": 1440,
+  "hScroll": false,
+  "offenders": [],
+  "smallTaps": [
+    {
+      "sel": "#root > div.page.page--overlay > a.skip-link",
+      "w": 186,
+      "h": 41,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(1)",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__left:nth-child(1) > button.header__icon-btn:nth-child(2)",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1)",
+      "w": 50,
+      "h": 22,
+      "tag": "a"
+    },
+    {
+      "sel": "header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2)",
+      "w": 39,
+      "h": 22,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > button.header__icon-btn.header__profile-btn",
+      "w": 40,
+      "h": 40,
+      "tag": "button"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > a.header__icon-btn.header__cart-btn",
+      "w": 40,
+      "h": 40,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1)",
+      "w": 55,
+      "h": 30,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(2)",
+      "w": 40,
+      "h": 30,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(3)",
+      "w": 37,
+      "h": 30,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(4)",
+      "w": 37,
+      "h": 30,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(5)",
+      "w": 34,
+      "h": 30,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(6)",
+      "w": 99,
+      "h": 30,
+      "tag": "a"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(7)",
+      "w": 54,
+      "h": 30,
+      "tag": "a"
+    },
+    {
+      "sel": "article.brand-page > section.brand-page__hero.is-ready:nth-child(1) > div.brand-page__hero-content:nth-child(3) > nav.brand-page__crumbs > a:nth-child(1)",
+      "w": 51,
+      "h": 18,
+      "tag": "a"
+    },
+    {
+      "sel": "article.brand-page > section.brand-page__hero.is-ready:nth-child(1) > div.brand-page__hero-content:nth-child(3) > nav.brand-page__crumbs > a:nth-child(3)",
+      "w": 48,
+      "h": 18,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "w": 45,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "w": 42,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link",
+      "w": 42,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link",
+      "w": 38,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(5) > a.ui-btn.ui-btn--link",
+      "w": 123,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(6) > a.ui-btn.ui-btn--link",
+      "w": 68,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "w": 62,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "w": 58,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link",
+      "w": 39,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link",
+      "w": 46,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(3) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "w": 65,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(3) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "w": 56,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(3) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link",
+      "w": 73,
+      "h": 26,
+      "tag": "a"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(3) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link",
+      "w": 59,
+      "h": 26,
+      "tag": "a"
+    }
+  ],
+  "smallText": [
+    {
+      "sel": "#root > div.page.page--overlay > a.skip-link",
+      "px": 12,
+      "sample": "Перейти к содержимому"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1)",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Диваны"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2)",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Кресла"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3)",
+      "px": 13,
+      "sample": "Стулья"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Стулья"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(3) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Стулья"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(4)",
+      "px": 13,
+      "sample": "Столы"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Столы"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(4) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Столы"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(5)",
+      "px": 13,
+      "sample": "Мебель для хранения"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(5) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Мебель для хранения"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(5) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Мебель для хранения"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(6)",
+      "px": 13,
+      "sample": "Освещение"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(1) > ul > li:nth-child(6) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Освещение"
+    },
+    {
+      "sel": "div.footer__col:nth-child(1) > ul > li:nth-child(6) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Освещение"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(1)",
+      "px": 13,
+      "sample": "Visionnaire"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Visionnaire"
+    },
+    {
+      "sel": "div.footer__col:nth-child(2) > ul > li:nth-child(1) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Visionnaire"
+    },
+    {
+      "sel": "div.footer__top:nth-child(1) > div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(2)",
+      "px": 13,
+      "sample": "Molteni&C"
+    },
+    {
+      "sel": "div.footer__grid.footer__grid--3 > div.footer__col:nth-child(2) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link",
+      "px": 13,
+      "sample": "Molteni&C"
+    },
+    {
+      "sel": "div.footer__col:nth-child(2) > ul > li:nth-child(2) > a.ui-btn.ui-btn--link > span.ui-btn__label",
+      "px": 13,
+      "sample": "Molteni&C"
+    }
+  ],
+  "longLines": [],
+  "images": [
+    {
+      "src": "http://127.0.0.1:5173/images/brand-baxter.jpg",
+      "nw": 4032,
+      "nh": 2688,
+      "rw": 1440,
+      "rh": 900,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/images/brand-baxter.jpg",
+      "nw": 5376,
+      "nh": 3584,
+      "rw": 1083,
+      "rh": 1066,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/images/brand-baxter.jpg",
+      "nw": 5376,
+      "nh": 3584,
+      "rw": 572,
+      "rh": 666,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    },
+    {
+      "src": "http://127.0.0.1:5173/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg",
+      "nw": 1792,
+      "nh": 2400,
+      "rw": 900,
+      "rh": 946,
+      "stretched": false,
+      "noDims": false,
+      "objectFit": "cover"
+    }
+  ],
+  "headings": [
+    {
+      "tag": "H2",
+      "text": "Вход",
+      "px": 20,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H1",
+      "text": "Baxter",
+      "px": 88,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "О бренде",
+      "px": 14,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Каталог Baxter",
+      "px": 40,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    },
+    {
+      "tag": "H2",
+      "text": "Запрос по Baxter",
+      "px": 40,
+      "overflow": "visible",
+      "textOverflow": "clip",
+      "clipped": false,
+      "wraps": false
+    }
+  ],
+  "sticky": [
+    {
+      "sel": "#root > div.page.page--overlay > header.header.header--overlay",
+      "pos": "fixed",
+      "h": 112,
+      "top": 0,
+      "pctH": 12.5,
+      "z": "200"
+    }
+  ],
+  "focusVisible": {
+    "sel": "#root > div.page.page--overlay > a.skip-link",
+    "visible": false,
+    "outline": "rgb(44, 41, 41) none 3px",
+    "boxShadow": "none"
+  },
+  "hoverOnly": [
+    ".page-crumbs a:hover, .news-crumbs a:hover, .catalog-page__crumbs a:hover, .product-page__crumbs a:hover",
+    ".auth-modal__close:hover",
+    ".auth-modal__submit:hover:not(:disabled)",
+    ".cart-panel__remove:hover",
+    ".cart-panel__order:hover",
+    ".search-panel__results button:hover",
+    ".header__icon-btn:hover:not(:disabled)",
+    ".newsletter__form button:hover",
+    ".catalog-drawer__body:hover::-webkit-scrollbar-thumb",
+    ".catalog-drawer__close:hover",
+    ".catalog-sidebar__brands button:hover, .catalog-sidebar__brands button.is-active",
+    ".catalog-sidebar__tree a:hover, .catalog-sidebar__cat-row > a:hover",
+    ".catalog-sidebar__chevron:hover",
+    ".catalog-sidebar__tree ul a:hover",
+    ".catalog-toolbar__views button.is-active, .catalog-toolbar__views button:hover",
+    ".product-grid__card:hover .product-grid__media img",
+    ".product-grid__swatch:hover",
+    ".product-grid__name a:hover",
+    ".catalog-select__list button:hover, .catalog-select__list button.is-active",
+    ".product-page__swatch:hover",
+    ".product-page__swatch-all:hover",
+    ".finishes-drawer__close:hover",
+    ".finishes-drawer__swatch:hover .finishes-drawer__chip",
+    ".brand-page__crumbs a:hover",
+    ".news-filters button:hover"
+  ],
+  "lowContrast": [
+    {
+      "sel": "#root > div.page.page--overlay > a.skip-link",
+      "ratio": 1,
+      "sample": "Перейти к содержимому",
+      "color": "rgb(44, 41, 41)"
+    },
+    {
+      "sel": "#root > div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo",
+      "ratio": 1,
+      "sample": "ID Gallery",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__top:nth-child(1) > a.header__logo > span.header__logo-stack",
+      "ratio": 1,
+      "sample": "ID Gallery",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(1)",
+      "ratio": 1,
+      "sample": "Дизайнерам",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "header.header.header--overlay > div.header__top:nth-child(1) > div.header__right:nth-child(3) > div.header__utility > a.header__util:nth-child(2)",
+      "ratio": 1,
+      "sample": "Контакты",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(1)",
+      "ratio": 1,
+      "sample": "Все товары",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(2)",
+      "ratio": 1,
+      "sample": "Диваны",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(3)",
+      "ratio": 1,
+      "sample": "Кресла",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(4)",
+      "ratio": 1,
+      "sample": "Стулья",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(5)",
+      "ratio": 1,
+      "sample": "Столы",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(6)",
+      "ratio": 1,
+      "sample": "Мебель для хранения",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "div.page.page--overlay > header.header.header--overlay > div.header__cats-wrap:nth-child(2) > nav.header__cats > a.header__cat:nth-child(7)",
+      "ratio": 1,
+      "sample": "Освещение",
+      "color": "rgb(242, 240, 235)"
+    },
+    {
+      "sel": "#main > article.brand-page > a.brand-page__next-banner",
+      "ratio": 1,
+      "sample": "IDСледующий брендBonaldo",
+      "color": "rgb(44, 41, 41)"
+    }
+  ],
+  "heavyImages": []
+}

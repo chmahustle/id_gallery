@@ -1,0 +1,20 @@
+{
+  "slug": "molteni",
+  "label": "1920-next",
+  "cardsSectionHeight": 532,
+  "cardsGridHeight": 340,
+  "maxCardHeight": 340,
+  "cardHeights": [
+    340,
+    340
+  ],
+  "cardsPass": true,
+  "arrow": {
+    "color": "rgb(242, 240, 235)",
+    "stroke": "rgb(242, 240, 235)",
+    "width": 48,
+    "height": 48,
+    "snow": "rgb(242, 240, 235)",
+    "note": "Snow Ivory arrow on Warm Black scrim; WCAG large UI ≥3:1 expected"
+  }
+}

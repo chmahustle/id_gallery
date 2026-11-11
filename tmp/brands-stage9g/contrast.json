@@ -1,0 +1,17 @@
+{
+  "method": "WCAG 2.1 relative luminance. Text vs Warm Black #2C2929 (scrim floor under titles). Photo under scrim is darker → contrast only improves.",
+  "name_snow_100_vs_ink": 12.66,
+  "eyebrow_snow_92_vs_ink": 10.93,
+  "eyebrow_rgb": [
+    226,
+    224,
+    219
+  ],
+  "pass_aa_4_5": true,
+  "brands": [
+    "visionnaire",
+    "molteni",
+    "baxter",
+    "bonaldo"
+  ]
+}

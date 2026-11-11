@@ -1,0 +1,20 @@
+{
+  "primary": {
+    "text": "Primary",
+    "height": "40px",
+    "fontSize": "16px",
+    "paddingLeft": "24px",
+    "paddingRight": "24px",
+    "color": "rgb(242, 240, 235)",
+    "background": "rgb(74, 65, 42)"
+  },
+  "secondary": {
+    "text": "Смотреть модели",
+    "height": "40px",
+    "fontSize": "16px",
+    "paddingLeft": "24px",
+    "paddingRight": "24px",
+    "color": "rgb(44, 41, 41)",
+    "background": "rgba(0, 0, 0, 0)"
+  }
+}

@@ -5,13 +5,6 @@ export default function Pagination({ page, totalPages, onChange }) {
 
   return (
     <nav className="catalog-pagination" aria-label="Страницы каталога">
-      <button
-        type="button"
-        disabled={page <= 1}
-        onClick={() => onChange(page - 1)}
-      >
-        Назад
-      </button>
       <ul>
         {pages.map((p) => (
           <li key={p}>
@@ -25,14 +18,19 @@ export default function Pagination({ page, totalPages, onChange }) {
             </button>
           </li>
         ))}
+        {page < totalPages ? (
+          <li>
+            <button
+              type="button"
+              className="catalog-pagination__next"
+              aria-label="Следующая страница"
+              onClick={() => onChange(page + 1)}
+            >
+              ›
+            </button>
+          </li>
+        ) : null}
       </ul>
-      <button
-        type="button"
-        disabled={page >= totalPages}
-        onClick={() => onChange(page + 1)}
-      >
-        Далее
-      </button>
     </nav>
   )
 }

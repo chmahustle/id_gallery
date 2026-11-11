@@ -1,99 +1,174 @@
 import { Link } from 'react-router-dom'
-import { useContent } from '../content/ContentContext'
-import AppLink from './AppLink'
+import { brands } from '../data/brands'
+import { getApprovedContacts } from '../data/contacts'
+import { featureFlags } from '../data/featureFlags'
+import { getApprovedLegalLinks } from '../data/legal'
+import { footerNav } from '../data/navigation'
+import { site as siteData } from '../data/site'
+import { FooterLogo } from './FooterLogo'
+import NewsletterForm from './NewsletterForm'
+import { Button } from './ui/Button'
 import './Footer.css'
 
-const YEAR = 2026
+const YEAR = new Date().getFullYear()
 
 export default function Footer() {
-  const { content } = useContent()
-  const { site, contacts, header, mainNav, catalogCategories } = content
-
-  const columns = [
-    { title: 'Разделы', links: mainNav },
-    {
-      title: 'Каталог',
-      links: catalogCategories.map(({ label, href }) => ({ label, href })),
-    },
-    {
-      title: 'Сервис',
-      links: [
-        { label: 'Запись на экскурсию', href: '/contacts' },
-        { label: 'Запросить КП', href: '/contacts' },
-        { label: 'Каталоги брендов', href: '#sourcebooks' },
-        { label: header.partners, href: '/partners' },
-      ],
-    },
-    {
-      title: 'Правовая информация',
-      links: [{ label: 'Политика конфиденциальности', href: '/contacts' }],
-    },
-  ]
+  const approvedContacts = getApprovedContacts()
+  const legalLinks = getApprovedLegalLinks()
+  const showContacts = approvedContacts.length > 0
+  const visible = (links) =>
+    links.filter((link) => !link.flag || Boolean(featureFlags[link.flag]))
+  const catalogLinks = visible(footerNav.catalog)
+  const companyLinks = visible(footerNav.company)
+  const serviceLinks = visible(footerNav.services)
 
   return (
     <footer className="footer">
-      <Link to="/" className="footer__brand" aria-label={`${site.name} — главная`}>
-        <img
-          className="footer__logo"
-          src="/brand/logo-mark-light.webp"
-          alt=""
-          width={55}
-          height={160}
-          decoding="async"
-        />
-      </Link>
-
-      <div className="footer__grid">
-        {columns.map((col) => (
-          <div key={col.title} className="footer__col">
-            <h3>{col.title}</h3>
-            <ul>
-              {col.links.map((link, index) =>
-                link.label?.trim() ? (
-                  <li key={`${index}-${link.href}-${link.label}`}>
-                    <AppLink to={link.href}>{link.label}</AppLink>
+      <div className="footer__inner">
+        <div className="footer__top">
+          <div
+            className={[
+              'footer__grid',
+              showContacts ? 'footer__grid--5' : 'footer__grid--4',
+            ].join(' ')}
+          >
+            <div className="footer__col">
+              <h3 className="footer__heading">Каталог</h3>
+              <ul>
+                {catalogLinks.map((link) => (
+                  <li key={link.href}>
+                    <Button
+                      className="footer__link"
+                      as="link"
+                      to={link.href}
+                      variant="link"
+                      subtle
+                    >
+                      {link.label}
+                    </Button>
                   </li>
-                ) : null,
-              )}
-            </ul>
-          </div>
-        ))}
-      </div>
+                ))}
+              </ul>
+            </div>
 
-      <div className="footer__bottom">
-        <p>
-          © {YEAR} {site.name}
-        </p>
-        <address className="footer__contacts">
-          {[
-            contacts.phone?.trim() ? (
-              <a key="phone" href={contacts.phoneHref}>
-                {contacts.phone}
-              </a>
-            ) : null,
-            contacts.email?.trim() ? (
-              <a key="email" href={contacts.emailHref}>
-                {contacts.email}
-              </a>
-            ) : null,
-            contacts.hours?.trim() ? (
-              <span key="hours">{contacts.hours}</span>
-            ) : null,
-          ]
-            .filter(Boolean)
-            .flatMap((node, index, arr) =>
-              index < arr.length - 1
-                ? [node, <span key={`sep-${index}`} aria-hidden="true">·</span>]
-                : [node],
-            )}
-        </address>
-        <p className="footer__locale">
-          {site.locale}
-          <span aria-hidden="true"> · </span>
-          {contacts.address}
-          <span aria-hidden="true"> · </span>
-          <Link to="/admin">Админ</Link>
-        </p>
+            <div className="footer__col">
+              <h3 className="footer__heading">Бренды</h3>
+              <ul>
+                {brands.map((brand) => (
+                  <li key={brand.slug}>
+                    <Button
+                      className="footer__link"
+                      as="link"
+                      to={`/brands/${brand.slug}`}
+                      variant="link"
+                      subtle
+                    >
+                      {brand.name}
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="footer__col">
+              <h3 className="footer__heading">Галерея</h3>
+              <ul>
+                {companyLinks.map((link) => (
+                  <li key={`${link.label}-${link.href}`}>
+                    <Button
+                      className="footer__link"
+                      as="link"
+                      to={link.href}
+                      variant="link"
+                      subtle
+                    >
+                      {link.label}
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="footer__col">
+              <h3 className="footer__heading">Сотрудничество</h3>
+              <ul>
+                {serviceLinks.map((link) => (
+                  <li key={`${link.label}-${link.href}`}>
+                    <Button
+                      className="footer__link"
+                      as="link"
+                      to={link.href}
+                      variant="link"
+                      subtle
+                    >
+                      {link.label}
+                    </Button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {showContacts ? (
+              <div className="footer__col">
+                <h3 className="footer__heading">Контакты</h3>
+                <ul className="footer__contacts-list">
+                  {approvedContacts.map((item) => (
+                    <li key={item.label}>
+                      <span className="footer__contact-label">{item.label}</span>
+                      {item.href ? (
+                        <Button
+                          className="footer__link"
+                          as="a"
+                          href={item.href}
+                          variant="link"
+                          subtle
+                        >
+                          {item.value}
+                        </Button>
+                      ) : (
+                        <span>{item.value}</span>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+          </div>
+
+          {featureFlags.showNewsletter ? (
+            <div className="footer__newsletter">
+              <NewsletterForm
+                className="footer__subscribe-wrap"
+                headingClassName="footer__heading"
+                title="Подписаться на рассылку"
+              />
+            </div>
+          ) : null}
+        </div>
+
+        <div className="footer__bottom">
+          <div className="footer__mark" aria-hidden="true">
+            <FooterLogo />
+          </div>
+          <div className="footer__copy-row">
+            <p className="footer__copy">
+              © {YEAR} {siteData.name}
+            </p>
+            {legalLinks.length > 0 ? (
+              <div className="footer__legal">
+                {legalLinks.map((item) => (
+                  <Link
+                    key={item.href + item.label}
+                    className="footer__policy"
+                    to={item.href}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+            ) : null}
+          </div>
+        </div>
       </div>
     </footer>
   )

@@ -1,0 +1,45 @@
+{
+  "viewport": {
+    "w": 390,
+    "h": 844
+  },
+  "heroSrc": "http://127.0.0.1:5173/images/Gemini_Generated_Image_sq76gsq76gsq76gs.jpg",
+  "heroNatural": {
+    "w": 838,
+    "h": 468
+  },
+  "heroDisplay": {
+    "w": 390,
+    "h": 844
+  },
+  "columnGap": "64px",
+  "rows": [
+    {
+      "index": 1,
+      "title": "Гостиная",
+      "mirrored": false,
+      "mediaW": 350,
+      "mediaH": 233,
+      "gapPx": -350,
+      "gutterLeft": 20
+    },
+    {
+      "index": 2,
+      "title": "Столовая",
+      "mirrored": true,
+      "mediaW": 350,
+      "mediaH": 233,
+      "gapPx": -350,
+      "gutterLeft": 20
+    },
+    {
+      "index": 3,
+      "title": "Гостиная в тёплой палитре",
+      "mirrored": false,
+      "mediaW": 350,
+      "mediaH": 233,
+      "gapPx": -350,
+      "gutterLeft": 20
+    }
+  ]
+}

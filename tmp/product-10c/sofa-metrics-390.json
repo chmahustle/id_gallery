@@ -1,0 +1,21 @@
+{
+  "viewport": {
+    "w": 390,
+    "h": 844
+  },
+  "galleryBottom": 699,
+  "mainH": 438,
+  "thumbsH": 91,
+  "galleryFitsFirstScreen": true,
+  "h1": "Baxter · Модель 02",
+  "h1FontSize": "28px",
+  "gridCols": "350px",
+  "relatedCards": 4,
+  "brandLabels": [
+    "Baxter",
+    "Baxter",
+    "Baxter",
+    "Baxter"
+  ],
+  "lowerBrandHits": []
+}

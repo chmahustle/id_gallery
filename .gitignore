@@ -16,6 +16,7 @@ dist-ssr
 !.env.example
 uploads
 !uploads/.gitkeep
+.data/
 
 # Исходники логотипов/шрифтов (в репо — готовые файлы из public/)
 лого без фона ID Gallery/

@@ -1,0 +1,48 @@
+/* Строка комнат: общий фильтр с разделом «Комната» в панели */
+.catalog-rooms {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex: 0 0 100%;
+  width: 100%;
+  margin-bottom: 0;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--color-ink) 16%, transparent);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.catalog-rooms::-webkit-scrollbar {
+  display: none;
+}
+
+.catalog-rooms__tab {
+  flex: 0 0 auto;
+  padding: 0 0 0.45rem;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  margin-bottom: -1px;
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.catalog-rooms__tab:hover,
+.catalog-rooms__tab:focus-visible,
+.catalog-rooms__tab.is-active {
+  color: var(--color-ink);
+}
+
+.catalog-rooms__tab.is-active {
+  font-weight: 500;
+  border-bottom-color: var(--color-ink);
+}

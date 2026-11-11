@@ -1,0 +1,28 @@
+{
+  "headerH": 113,
+  "mainW": 755,
+  "mainH": 503,
+  "mainRatio": 1.5,
+  "thumbW": 88,
+  "thumbH": 91,
+  "thumbsBottom": 770,
+  "galleryFits1080": true,
+  "order": [
+    "title",
+    "summary",
+    "price",
+    "actions",
+    "finishes",
+    "desc-acc",
+    "specs-acc"
+  ],
+  "summary": "Краткое официальное описание модели — после подтверждения информации производите",
+  "descAcc": "После подтверждения информации производителя.",
+  "relatedImgs": [
+    "/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg",
+    "/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg"
+  ],
+  "relatedDupes": [],
+  "gapTitleSummary": 16,
+  "gapSummaryPrice": 24
+}

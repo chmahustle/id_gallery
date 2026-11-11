@@ -1,125 +1,119 @@
-/** Слоты медиа главной — значения по умолчанию */
+/** Слоты медиа — только public/placeholders (без RH) */
 
 export const MEDIA_SLOTS = [
   {
     id: 'hero',
     label: 'Hero — главный баннер',
     kind: 'image',
-    defaultSrc: '/images/hero.jpg',
+    defaultSrc: '/images/Gemini_Generated_Image_sq76gsq76gsq76gs.jpg',
   },
   {
     id: 'outdoor',
-    label: 'Outdoor / второй баннер',
+    label: 'Второй баннер',
     kind: 'image',
-    defaultSrc: '/images/outdoor.jpg',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg',
   },
   {
     id: 'diningPoster',
-    label: 'Видео 1 — постер',
+    label: 'Постер 1',
     kind: 'image',
-    defaultSrc: '/images/dining.jpg',
+    defaultSrc: '/placeholders/product-02.jpg',
   },
   {
     id: 'diningDesktop',
     label: 'Видео 1 — desktop',
-    kind: 'video',
-    defaultSrc:
-      'https://embed-ssl.wistia.com/deliveries/87c8656a67c5885ac7121fcaca43b6be08f198c7.bin',
+    kind: 'image',
+    defaultSrc: '/placeholders/product-02.jpg',
   },
   {
     id: 'diningMobile',
     label: 'Видео 1 — mobile',
-    kind: 'video',
-    defaultSrc:
-      'https://embed-ssl.wistia.com/deliveries/3bfab15d81c49de9150d19840d38c0242e3636c8.bin',
+    kind: 'image',
+    defaultSrc: '/placeholders/product-02.jpg',
   },
   {
     id: 'estates',
-    label: 'Панель Estates',
+    label: 'Панель каталога',
     kind: 'image',
-    defaultSrc: '/images/estates.jpg',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg',
   },
   {
     id: 'modernPoster',
-    label: 'Видео 2 — постер',
+    label: 'Постер 2',
     kind: 'image',
-    defaultSrc: '/images/modern.jpg',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg',
   },
   {
     id: 'modernDesktop',
     label: 'Видео 2 — desktop',
-    kind: 'video',
-    defaultSrc:
-      'https://embed-ssl.wistia.com/deliveries/4d6b51255d6d35984706effead4f1d155c3b700d.bin',
+    kind: 'image',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg',
   },
   {
     id: 'modernMobile',
     label: 'Видео 2 — mobile',
-    kind: 'video',
-    defaultSrc:
-      'https://embed-ssl.wistia.com/deliveries/da12b9fdfecdb9f4f1869017780fdf1f357ab1e6.bin',
+    kind: 'image',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg',
   },
   {
     id: 'modernBook',
-    label: 'Панель Modern',
+    label: 'Панель коллекции',
     kind: 'image',
-    defaultSrc: '/images/modern-book.jpg',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg',
   },
   {
     id: 'interiorsPoster',
-    label: 'Видео 3 — постер',
+    label: 'Постер интерьеры',
     kind: 'image',
-    defaultSrc: '/images/interiors.jpg',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg',
   },
   {
     id: 'interiorsDesktop',
     label: 'Видео 3 — desktop',
-    kind: 'video',
-    defaultSrc:
-      'https://embed-ssl.wistia.com/deliveries/155ceb387664966ca6ef00ea3ac79939dd85310f.bin',
+    kind: 'image',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg',
   },
   {
     id: 'interiorsMobile',
     label: 'Видео 3 — mobile',
-    kind: 'video',
-    defaultSrc:
-      'https://embed-ssl.wistia.com/deliveries/da4dd3f86bf0969e05a9e9cc0e588d56440ee589.bin',
+    kind: 'image',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg',
   },
   {
     id: 'interiorsBook',
-    label: 'Панель Interiors',
+    label: 'Панель интерьеры',
     kind: 'image',
-    defaultSrc: '/images/interiors-book.jpg',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg',
   },
   {
     id: 'membership',
-    label: 'Партнёрам / Membership',
+    label: 'Дизайнерам',
     kind: 'image',
-    defaultSrc: '/images/membership.jpg',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg',
   },
   {
     id: 'sourcebooks',
-    label: 'Каталоги / Sourcebooks',
+    label: 'Каталоги',
     kind: 'image',
-    defaultSrc: '/images/sourcebooks.jpg',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg',
   },
   {
     id: 'exploreGallery',
     label: 'Блок салонов — 1',
     kind: 'image',
-    defaultSrc: '/images/gallery.jpg',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_9wrdx89wrdx89wrd.jpg',
   },
   {
     id: 'exploreRestaurant',
     label: 'Блок салонов — 2',
     kind: 'image',
-    defaultSrc: '/images/restaurant.jpg',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_bts5zcbts5zcbts5.jpg',
   },
   {
     id: 'exploreGuesthouse',
     label: 'Блок салонов — 3',
     kind: 'image',
-    defaultSrc: '/images/guesthouse.jpg',
+    defaultSrc: '/placeholders/Gemini_Generated_Image_ty7owqty7owqty7o.jpg',
   },
 ]
 

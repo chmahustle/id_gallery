@@ -1,0 +1,202 @@
+[
+  {
+    "slug": "visionnaire",
+    "label": "1920",
+    "cardsSectionHeight": 532,
+    "cardHeights": [
+      340,
+      340
+    ],
+    "maxCardHeight": 340,
+    "cardsPass": true,
+    "gapCardsToBanner": 96,
+    "sectionPadBottom": "96px",
+    "afterGapH": 14,
+    "afterGapAfterBanner": 0,
+    "seam": {
+      "scrimInset": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      },
+      "scrimPos": "absolute",
+      "scrimW": 1920,
+      "heroW": 1920,
+      "contentMaxW": "min(100%, 896px)",
+      "contentBeforeContent": "none",
+      "contentBeforeW": "auto",
+      "fullBleed": true
+    },
+    "align": {
+      "nameBottom": 612,
+      "circleBottom": 612,
+      "baselineDelta": 0,
+      "circleRight": 1824,
+      "contentRight": 1920,
+      "circleSize": 88,
+      "rightAlignDelta": 96,
+      "gutterApprox": null
+    }
+  },
+  {
+    "slug": "visionnaire",
+    "label": "390",
+    "cardsSectionHeight": 656,
+    "cardHeights": [
+      260,
+      260
+    ],
+    "maxCardHeight": 260,
+    "cardsPass": false,
+    "gapCardsToBanner": 56,
+    "sectionPadBottom": "56px",
+    "afterGapH": 14,
+    "afterGapAfterBanner": 0,
+    "seam": {
+      "scrimInset": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      },
+      "scrimPos": "absolute",
+      "scrimW": 390,
+      "heroW": 390,
+      "contentMaxW": "min(100%, 896px)",
+      "contentBeforeContent": "none",
+      "contentBeforeW": "auto",
+      "fullBleed": true
+    },
+    "align": {
+      "nameBottom": 611,
+      "circleBottom": 611,
+      "baselineDelta": 0,
+      "circleRight": 370,
+      "contentRight": 390,
+      "circleSize": 56,
+      "rightAlignDelta": 20,
+      "gutterApprox": null
+    }
+  },
+  {
+    "slug": "bonaldo",
+    "label": "1920",
+    "cardsSectionHeight": 532,
+    "cardHeights": [
+      340,
+      340
+    ],
+    "maxCardHeight": 340,
+    "cardsPass": true,
+    "gapCardsToBanner": 96,
+    "sectionPadBottom": "96px",
+    "afterGapH": 14,
+    "afterGapAfterBanner": 0,
+    "seam": {
+      "scrimInset": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      },
+      "scrimPos": "absolute",
+      "scrimW": 1920,
+      "heroW": 1920,
+      "contentMaxW": "min(100%, 896px)",
+      "contentBeforeContent": "none",
+      "contentBeforeW": "auto",
+      "fullBleed": true
+    },
+    "align": {
+      "nameBottom": 612,
+      "circleBottom": 612,
+      "baselineDelta": 0,
+      "circleRight": 1824,
+      "contentRight": 1920,
+      "circleSize": 88,
+      "rightAlignDelta": 96,
+      "gutterApprox": null
+    }
+  },
+  {
+    "slug": "bonaldo",
+    "label": "390",
+    "cardsSectionHeight": 656,
+    "cardHeights": [
+      260,
+      260
+    ],
+    "maxCardHeight": 260,
+    "cardsPass": false,
+    "gapCardsToBanner": 56,
+    "sectionPadBottom": "56px",
+    "afterGapH": 14,
+    "afterGapAfterBanner": 0,
+    "seam": {
+      "scrimInset": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      },
+      "scrimPos": "absolute",
+      "scrimW": 390,
+      "heroW": 390,
+      "contentMaxW": "min(100%, 896px)",
+      "contentBeforeContent": "none",
+      "contentBeforeW": "auto",
+      "fullBleed": true
+    },
+    "align": {
+      "nameBottom": 611,
+      "circleBottom": 611,
+      "baselineDelta": 0,
+      "circleRight": 370,
+      "contentRight": 390,
+      "circleSize": 56,
+      "rightAlignDelta": 20,
+      "gutterApprox": null
+    }
+  },
+  {
+    "slug": "visionnaire",
+    "label": "1440",
+    "cardsSectionHeight": 532,
+    "cardHeights": [
+      340,
+      340
+    ],
+    "maxCardHeight": 340,
+    "cardsPass": true,
+    "gapCardsToBanner": 96,
+    "sectionPadBottom": "96px",
+    "afterGapH": 14,
+    "afterGapAfterBanner": 0,
+    "seam": {
+      "scrimInset": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      },
+      "scrimPos": "absolute",
+      "scrimW": 1440,
+      "heroW": 1440,
+      "contentMaxW": "min(100%, 896px)",
+      "contentBeforeContent": "none",
+      "contentBeforeW": "auto",
+      "fullBleed": true
+    },
+    "align": {
+      "nameBottom": 529,
+      "circleBottom": 529,
+      "baselineDelta": 0,
+      "circleRight": 1368,
+      "contentRight": 1440,
+      "circleSize": 88,
+      "rightAlignDelta": 72,
+      "gutterApprox": null
+    }
+  }
+]

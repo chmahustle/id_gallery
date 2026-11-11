@@ -1,0 +1,10 @@
+{
+  "fontSize": "30px",
+  "lineHeight": "42px",
+  "fontWeight": "300",
+  "maxWidth": "640px",
+  "width": 640,
+  "height": 126,
+  "lines": 3,
+  "color": "rgb(44, 41, 41)"
+}

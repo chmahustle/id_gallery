@@ -1,0 +1,38 @@
+{
+  "slug": "visionnaire",
+  "label": "1920",
+  "width": 1920,
+  "lefts": [
+    {
+      "sel": ".brand-page__about-text",
+      "left": 960
+    },
+    {
+      "sel": ".brand-page__row-aside",
+      "left": 960
+    },
+    {
+      "sel": ".brand-page__request-aside",
+      "left": 960
+    }
+  ],
+  "deltaPx": 0,
+  "pass": true,
+  "axisVarSample": [
+    {
+      "class": "brand-page__right brand-page__about-text brand-page__axis-start",
+      "leftDoc": 960,
+      "leftView": 960
+    },
+    {
+      "class": "brand-page__right brand-page__row-aside brand-page__axis-start",
+      "leftDoc": 960,
+      "leftView": 960
+    },
+    {
+      "class": "brand-page__right brand-page__request-aside brand-page__axis-start",
+      "leftDoc": 960,
+      "leftView": 960
+    }
+  ]
+}

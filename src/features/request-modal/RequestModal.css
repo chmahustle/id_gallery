@@ -1,0 +1,320 @@
+.request-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 240;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  overflow-y: auto;
+  background: var(--color-ink-glass-soft);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.request-modal__panel {
+  position: relative;
+  box-sizing: border-box;
+  width: min(36rem, 100%);
+  max-height: calc(100svh - 2.5rem);
+  overflow-y: auto;
+  padding: 2rem 2.25rem;
+  background: var(--color-cream);
+  color: var(--color-ink);
+  outline: none;
+}
+
+.request-modal__close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: var(--color-ink);
+}
+
+.request-modal__title {
+  margin: 0 0 1.25rem;
+  padding-right: 2.5rem;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.request-modal__text {
+  margin: 0 0 1.25rem;
+  max-width: 34rem;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  letter-spacing: -0.01em;
+  color: var(--color-text-secondary);
+}
+
+.request-modal__note {
+  margin: -0.5rem 0 1.25rem;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  color: var(--color-ink);
+}
+
+.request-modal__subject {
+  margin: 0 0 0.25rem;
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.request-modal__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.request-modal__row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 1rem;
+}
+
+/* —— Поле: подпись сверху, светлая плашка без рамки —— */
+.rm-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.rm-field label {
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  transition: color 200ms var(--ease);
+}
+
+.rm-field:focus-within label {
+  color: var(--color-ink);
+}
+
+.rm-field input,
+.rm-field textarea {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0 0.85rem;
+  height: 2.75rem;
+  border: 0;
+  border-radius: 0;
+  background: var(--color-snow);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+  outline: none;
+  resize: none;
+  color-scheme: light;
+  transition: box-shadow 200ms var(--ease);
+}
+
+.rm-field textarea {
+  height: 3.5rem;
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+}
+
+.rm-field input[type='date']::-webkit-calendar-picker-indicator,
+.rm-field input[type='time']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.rm-field input[type='date'],
+.rm-field input[type='time'] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.rm-field input:focus,
+.rm-field textarea:focus {
+  box-shadow: inset 0 -2px 0 var(--color-olive);
+}
+
+.rm-field.is-error input,
+.rm-field.is-error textarea {
+  box-shadow: inset 0 -2px 0 var(--color-ink);
+}
+
+.rm-field__error {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+/* —— Способ связи: как вкладки «Вход / Регистрация» —— */
+.rm-method__title {
+  margin: 0 0 -0.5rem;
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.rm-method {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+
+.rm-method button {
+  height: 2.5rem;
+  padding: 0 0.5rem;
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition:
+    background-color 200ms var(--ease),
+    color 200ms var(--ease),
+    border-color 200ms var(--ease);
+}
+
+.rm-method button:hover {
+  color: var(--color-ink);
+}
+
+.rm-method button.is-active {
+  border-color: var(--color-olive);
+  background: var(--color-olive);
+  color: var(--color-snow);
+}
+
+/* —— Кнопка, примечание —— */
+.request-modal__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.request-modal__actions .ui-btn {
+  width: 100%;
+}
+
+.request-modal__form .request-modal__actions {
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+.request-modal__form .request-modal__link {
+  align-self: flex-start;
+}
+
+.request-modal__check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-body);
+  font-size: var(--text-caption-md);
+  font-weight: 300;
+  line-height: var(--leading-caption);
+  color: var(--color-ink);
+  cursor: pointer;
+}
+
+.request-modal__check input {
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin: 0.1rem 0 0;
+  accent-color: var(--color-olive);
+}
+
+.request-modal__check a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.request-modal__link {
+  flex-shrink: 0;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.request-modal__result .request-modal__actions,
+[role='alert'] .request-modal__actions {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+}
+
+[role='alert'] .request-modal__actions .ui-btn,
+.request-modal__result .request-modal__actions .ui-btn {
+  width: auto;
+}
+
+.request-modal__link {
+  align-self: flex-start;
+  padding-bottom: 4px;
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-ink);
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 0.45s var(--ease-media, var(--ease));
+}
+
+.request-modal__link:hover,
+.request-modal__link:focus-visible {
+  background-size: 100% 1px;
+}
+
+@media (max-width: 560px) {
+  .request-modal__panel {
+    padding: 1.5rem 1.25rem;
+  }
+
+  .request-modal__row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

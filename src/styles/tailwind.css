@@ -1,0 +1,52 @@
+@import './tokens.css';
+@import 'tailwindcss';
+
+/* Map brand tokens into Tailwind utilities (values live in tokens.css only). */
+@theme inline {
+  --color-ivory: var(--color-ivory);
+  --color-ink: var(--color-ink);
+  --color-olive: var(--color-olive);
+  --color-cream: var(--color-cream);
+  --color-champagne: var(--color-champagne);
+
+  --color-bg-page: var(--color-bg-page);
+  --color-bg-elevated: var(--color-bg-elevated);
+  --color-bg-inverse: var(--color-bg-inverse);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-on-dark: var(--color-text-on-dark);
+  --color-border-subtle: var(--color-border-subtle);
+  --color-border-strong: var(--color-border-strong);
+  --color-accent: var(--color-accent);
+  --color-accent-hover: var(--color-accent-hover);
+  --color-focus-ring: var(--color-focus-ring);
+  --color-error: var(--color-error);
+  --color-success: var(--color-success);
+  --color-swatch-fallback: var(--color-swatch-fallback);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+
+  --text-h1: var(--text-h1);
+  --text-h2: var(--text-h2);
+  --text-h3: var(--text-h3);
+  --text-label: var(--text-label);
+  --text-body-lg: var(--text-body-lg);
+  --text-body: var(--text-body);
+  --text-caption: var(--text-caption);
+  --text-subtitle: var(--text-subtitle);
+  --text-label-md: var(--text-label-md);
+  --text-caption-md: var(--text-caption-md);
+  --text-model-title: var(--text-model-title);
+
+  --tracking-label: var(--tracking-label);
+  --leading-body: var(--leading-body);
+  --leading-label: var(--leading-label);
+  --leading-caption: var(--leading-caption);
+
+  --spacing-page-gutter: var(--page-gutter);
+  --spacing-section: var(--section-space);
+  --container-page: var(--page-max);
+  --ease-brand: var(--ease);
+}

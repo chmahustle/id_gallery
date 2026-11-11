@@ -1,0 +1,31 @@
+src/data/navigation.ts:16:    { label: 'Дизайнерам', href: '/partners' },
+src/content/textDefaults.js:54:    defaultValue: 'Партнёрам',
+src/content/textDefaults.js:138:    label: 'Партнёрам — заголовок',
+src/content/textDefaults.js:139:    defaultValue: 'Партнёрам ID Gallery',
+src/content/textDefaults.js:144:    label: 'Партнёрам — alt',
+src/content/textDefaults.js:145:    defaultValue: 'Партнёрам — архитекторы, дизайнеры, девелоперы',
+src/components/Membership.jsx:6:  title = 'Партнёрам ID Gallery',
+src/components/Membership.jsx:7:  alt = 'Партнёрам — архитекторы, дизайнеры, девелоперы',
+src/components/Membership.jsx:11:      <Link to="/partners" className="membership__link" aria-label={`${title} — подробнее`}>
+src/components/HomeSections.jsx:218:        <h2 id="partners-title">Партнёрам</h2>
+src/components/HomeSections.jsx:232:              <Button as="link" variant="secondary" to="/partners">
+src/components/HomeSections.jsx:239:          <Link to="/partners">Все условия для партнёров</Link>
+src/content.js:104:    title: 'Партнёрам',
+src/content.js:106:    href: '/partners',
+src/content.js:155:  title: 'Партнёрам',
+src/content.js:257:    { label: 'Партнёрам', href: '/partners' },
+src/content.js:276:        { label: 'Дизайнерам', href: '/partners' },
+src/App.jsx:16:import Partners from './pages/Partners'
+src/App.jsx:40:                    <Route path="/partners" element={<Partners />} />
+src/App.jsx:41:                    <Route path="/trade" element={<Navigate to="/partners" replace />} />
+src/components/header/Header.tsx:50:    { label: content.header?.partners || 'Партнёрам', href: '/partners' },
+src/media/defaults.js:90:    label: 'Партнёрам',
+src/pages/Partners.jsx:12:import './Partners.css'
+src/pages/Partners.jsx:15:export default function Partners() {
+src/pages/Partners.jsx:24:    document.title = 'Партнёрам — ID Gallery'
+src/pages/Partners.jsx:40:          <span>Партнёрам</span>
+src/features/home/home-sections.css:558:/* —— Partners split —— */
+src/features/home/HomeBelowFold.tsx:7:import { PartnersSection } from './PartnersSection'
+src/features/home/HomeBelowFold.tsx:25:      <PartnersSection />
+src/features/home/index.ts:9:export { PartnersSection } from './PartnersSection'
+src/features/home/PartnersSection.tsx:5:export function PartnersSection() {

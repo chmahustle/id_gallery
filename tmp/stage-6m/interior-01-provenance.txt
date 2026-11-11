@@ -1,0 +1,12 @@
+=== git log --follow public/images/interior-01.png ===
+
+=== git status ===
+?? public/images/interior-01.png
+
+=== file ===
+public/images/interior-01.png: PNG image data, 1440 x 1791, 8-bit/color RGBA, non-interlaced
+
+=== exiftool ===
+Command 'exiftool' not found, but can be installed with:
+apt install libimage-exiftool-perl
+exiftool: not installed

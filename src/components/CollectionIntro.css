@@ -3,18 +3,18 @@
 }
 
 .collection--dark {
-  color: #f3eee7;
-  background: linear-gradient(165deg, #6a5341 0%, #3d2e24 52%, #241910 100%);
+  color: var(--color-snow);
+  background: linear-gradient(165deg, var(--color-olive) 0%, var(--color-olive) 52%, var(--color-ink) 100%);
 }
 
 .collection--light {
   color: var(--color-ink);
-  background: linear-gradient(180deg, #ebe4d9 0%, #ddd2c4 100%);
+  background: linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream) 100%);
 }
 
 .collection--mist {
   color: var(--color-ink-soft);
-  background: #e8e0d5;
+  background: var(--color-cream);
 }
 
 .collection__grid {
@@ -35,12 +35,12 @@
   width: min(100%, 380px);
   aspect-ratio: 3 / 4;
   object-fit: cover;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.32);
+  box-shadow: 0 30px 70px var(--color-border-strong);
 }
 
 .collection--light .collection__media img,
 .collection--mist .collection__media img {
-  box-shadow: 0 22px 48px rgba(40, 28, 16, 0.16);
+  box-shadow: 0 22px 48px var(--color-border-subtle);
 }
 
 .collection__copy {
@@ -51,7 +51,7 @@
 
 .collection__eyebrow {
   font-size: 0.62rem;
-  font-weight: 200;
+  font-weight: 300;
   letter-spacing: 0.42em;
   text-transform: uppercase;
   margin-bottom: 0.9rem;

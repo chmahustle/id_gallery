@@ -1,0 +1,19 @@
+{
+  "viewport": 390,
+  "headerToH1": 56,
+  "h1Top": 166,
+  "headerBottom": 110,
+  "introPadTop": "56px",
+  "loginFieldY": 393,
+  "regFieldY": 827,
+  "fieldYDelta": 434,
+  "loginFieldToBtn": 32,
+  "regFieldToBtn": 32,
+  "loginActionsPad": "32px",
+  "regActionsPad": "32px",
+  "loginBtnY": 610,
+  "regBtnY": 1146,
+  "btnYDelta": 536,
+  "loginLeadH": 22,
+  "regLeadH": 44
+}

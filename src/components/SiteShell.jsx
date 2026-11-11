@@ -1,6 +1,5 @@
 import Header from './Header'
 import Footer from './Footer'
-import ScrollTop from './ScrollTop'
 
 export default function SiteShell({ variant = 'overlay', children }) {
   return (
@@ -11,7 +10,6 @@ export default function SiteShell({ variant = 'overlay', children }) {
       <Header variant={variant} />
       <main id="main">{children}</main>
       <Footer />
-      <ScrollTop />
     </div>
   )
 }

@@ -1,0 +1,13 @@
+{
+  "leftH": 614,
+  "rightH": 614,
+  "heightsMatch": true,
+  "photoBottom": 710,
+  "panelBottom": 710,
+  "bottomsMatch": true,
+  "labelsTopMatch": true,
+  "asideSrc": "/images/brand-baxter.jpg",
+  "heroSrc": "/images/brand-molteni.jpg",
+  "panelPad": "48px",
+  "fieldBg": "rgb(242, 240, 235)"
+}

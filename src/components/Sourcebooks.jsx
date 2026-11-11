@@ -1,7 +1,7 @@
 import './Sourcebooks.css'
 
 export default function Sourcebooks({
-  src = '/images/sourcebooks.jpg',
+  src = '/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg',
   title = 'Каталоги брендов',
   alt = 'Каталоги и sourcebooks брендов ID Gallery',
 }) {

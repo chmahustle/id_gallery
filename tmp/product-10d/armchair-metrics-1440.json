@@ -1,0 +1,22 @@
+{
+  "hasAnchors": false,
+  "h1Top": 164,
+  "mainTop": 164,
+  "titleAlignDelta": 0,
+  "gapTitleToPrice": 24,
+  "gapPriceToBtn": 24,
+  "gapBtnToFinishesBlock": 40,
+  "finishesPadTop": "24px",
+  "finishesPadBottom": "24px",
+  "gapLineToFinTitle": 25,
+  "specs": [
+    "240 × 105 × 80 см",
+    "Кожа, массив дерева",
+    "Образец A, Образец B",
+    "BX-0211"
+  ],
+  "thumbCols": "141.328px 141.328px 141.328px 141.328px 141.344px",
+  "thumbCount": 4,
+  "galleryBottom": 840,
+  "viewportH": 900
+}

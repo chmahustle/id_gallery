@@ -1,0 +1,2 @@
+cd ~/progects/id_gallery
+npm run dev

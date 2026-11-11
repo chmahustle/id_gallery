@@ -1,0 +1,11 @@
+{
+  "h1": "Личный кабинет",
+  "crumbs": false,
+  "panels": 2,
+  "forbidden": [
+    "ВХОД"
+  ],
+  "authModal": false,
+  "profileHref": "/account",
+  "profileTag": "A"
+}

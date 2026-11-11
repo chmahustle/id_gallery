@@ -1,0 +1,270 @@
+/* /trade/ — docs/content-brief.md §13 */
+
+.trade-page {
+  --trade-gutter: clamp(1.25rem, 5vw, 6rem);
+  --trade-section-y: 7.5rem; /* 120px */
+  background: var(--color-snow);
+  color: var(--color-ink);
+}
+
+/* —— Hero 80svh —— */
+.trade-page__hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 80svh;
+  min-height: 480px;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: var(--color-snow);
+}
+
+.trade-page__hero-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.trade-page__hero-img,
+.trade-page__hero-ph {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trade-page__hero-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-ink) 72%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 28%, transparent) 45%,
+    color-mix(in srgb, var(--color-ink) 12%, transparent) 100%
+  );
+}
+
+.trade-page__hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--trade-gutter) clamp(3rem, 8vh, 5.5rem);
+  max-width: 42rem;
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 700ms var(--ease),
+    transform 700ms var(--ease);
+}
+
+.trade-page__hero.is-ready .trade-page__hero-content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.trade-page__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--color-snow);
+}
+
+.trade-page__lead {
+  margin: 1rem 0 0;
+  max-width: 36rem;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-body);
+  color: color-mix(in srgb, var(--color-snow) 90%, transparent);
+}
+
+/* —— Пара карточек —— */
+.trade-page__cards {
+  /* низ 96px до баннера «Сотрудничество» (этап 13b) */
+  padding: var(--trade-section-y) var(--trade-gutter) 6rem;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 600ms var(--ease),
+    transform 600ms var(--ease);
+}
+
+.trade-page__cards.is-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.trade-page__cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem; /* 24px */
+  align-items: start;
+}
+
+@media (min-width: 768px) {
+  .trade-page__cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.trade-page__card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--color-cream);
+  transition: background-color 300ms var(--ease);
+}
+
+.trade-page__card:hover,
+.trade-page__card:focus-within {
+  background: var(--color-snow);
+}
+
+.trade-page__card-media {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--color-cream);
+}
+
+.trade-page__card-crop {
+  width: 100% !important;
+  height: 100% !important;
+  aspect-ratio: unset;
+  transition: transform 900ms var(--ease);
+  will-change: transform;
+}
+
+.trade-page__card-crop .crop-image__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trade-page__card:hover .trade-page__card-crop,
+.trade-page__card:focus-within .trade-page__card-crop {
+  transform: scale(1.03);
+}
+
+.trade-page__card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 2.5rem; /* 40px */
+}
+
+.trade-page__card-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.2vw, 2.25rem); /* ~28–36px */
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.trade-page__card-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: color-mix(in srgb, var(--color-ink) 72%, transparent);
+}
+
+.trade-page__footer-gap {
+  height: 14px;
+  background: var(--color-snow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .trade-page__hero-content,
+  .trade-page__cards,
+  .trade-page__card-crop,
+  .trade-page__card {
+    transition: none;
+  }
+
+  .trade-page__card:hover .trade-page__card-crop,
+  .trade-page__card:focus-within .trade-page__card-crop {
+    transform: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .trade-page {
+    --trade-section-y: 4rem;
+  }
+
+  .trade-page__card-body {
+    padding: 1.75rem;
+  }
+}
+
+/* —— Входы в hero, «Дизайнерам и архитекторам», «Девелоперам» —— */
+.trade-h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.trade-intro {
+  padding: 6rem var(--trade-gutter) 0;
+}
+
+.trade-intro__text {
+  max-width: 52ch;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--color-ink);
+}
+
+.trade-designers {
+  /* 96px между секциями — как на странице бренда */
+  padding: 6rem var(--trade-gutter) 0;
+  scroll-margin-top: calc(var(--header-offset, 110px) + 1.5rem);
+}
+
+/* карточки внутри секции: отступы задаёт секция */
+.trade-designers .trade-page__cards,
+.trade-developers .trade-page__cards {
+  padding: 2rem 0 0;
+}
+
+/* карточки в ряду одной высоты */
+.trade-designers .trade-page__cards-grid,
+.trade-developers .trade-page__cards-grid {
+  align-items: stretch;
+}
+
+@media (min-width: 1024px) {
+  .trade-page__cards-grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.trade-developers {
+  padding: 6rem var(--trade-gutter) 6rem;
+  scroll-margin-top: calc(var(--header-offset, 110px) + 1.5rem);
+}
+

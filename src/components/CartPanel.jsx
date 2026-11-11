@@ -2,6 +2,7 @@ import { Minus, Plus, ShoppingBag, X } from 'lucide-react'
 import { useEffect, useId, useRef } from 'react'
 import { buildWhatsAppOrderUrl, useCart } from '../cart/CartContext'
 import { useContent } from '../content/ContentContext'
+import { Button } from './ui'
 import './CartPanel.css'
 
 export default function CartPanel() {
@@ -122,22 +123,25 @@ export default function CartPanel() {
 
         <div className="cart-panel__foot">
           {items.length > 0 ? (
-            <a
+            <Button
+              as="a"
+              variant="primary"
               className="cart-panel__order"
               href={orderHref}
               target="_blank"
               rel="noopener noreferrer"
             >
               Заказать в WhatsApp
-            </a>
+            </Button>
           ) : (
-            <button
+            <Button
               type="button"
+              variant="primary"
               className="cart-panel__order cart-panel__order--disabled"
               disabled
             >
               Заказать в WhatsApp
-            </button>
+            </Button>
           )}
           <p className="cart-panel__hint">
             Заявка откроется в WhatsApp с списком выбранных позиций

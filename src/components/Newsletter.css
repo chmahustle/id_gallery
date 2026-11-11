@@ -5,17 +5,20 @@
 }
 
 .newsletter h2 {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-size: clamp(1.5rem, 3vw, 2.1rem);
-  font-weight: 400;
-  letter-spacing: 0.16em;
+  font-weight: 500;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   margin-bottom: 0.7rem;
 }
 
 .newsletter > p {
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: 1.05rem;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  text-transform: none;
   color: var(--color-ink-soft);
   margin-bottom: 1.75rem;
 }
@@ -31,14 +34,16 @@
 
 .newsletter__form input {
   flex: 1 1 220px;
-  min-height: 48px;
-  padding: 0.85rem 1rem;
-  border: 1px solid rgba(0, 0, 0, 0.22);
-  background: var(--color-white);
-  font-family: var(--font-sans);
+  height: var(--btn-height);
+  min-height: var(--btn-height);
+  padding: 0 1rem;
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-snow);
+  font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 300;
-  letter-spacing: 0.04em;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
   outline: none;
 }
 
@@ -47,23 +52,24 @@
 }
 
 .newsletter__form button {
-  min-height: 48px;
-  padding: 0 1.5rem;
-  background: var(--color-black);
-  color: var(--color-white);
-  font-size: 0.68rem;
-  font-weight: 300;
-  letter-spacing: 0.22em;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  background: var(--color-ink);
+  color: var(--color-snow);
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: opacity 0.2s var(--ease);
+  transition: background 0.2s var(--ease), color 0.2s var(--ease);
 }
 
 .newsletter__form button:hover {
-  opacity: 0.82;
+  background: var(--color-olive);
 }
 
 .newsletter__thanks {
-  font-family: var(--font-serif);
+  font-family: var(--font-body);
   font-size: 1.05rem;
+  font-weight: 300;
   color: var(--color-ink-soft);
 }

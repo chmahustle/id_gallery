@@ -1,15 +1,16 @@
 import { useState } from 'react'
 import { buildWhatsAppLeadUrl } from '../catalog/catalog'
 import { useContent } from '../content/ContentContext'
+import { Button } from './ui'
 
 const PRESETS = {
   tour: {
-    title: 'Запись на персональную экскурсию',
+    title: 'Запись на визит',
     submit: 'Записаться в WhatsApp',
     thanks: 'Спасибо! Откроется WhatsApp для подтверждения визита.',
     message: (data) =>
       [
-        'Здравствуйте! Хочу записаться на персональную экскурсию в ID Gallery.',
+        'Здравствуйте! Хочу записаться на визит в ID Gallery.',
         `Имя: ${data.name}`,
         `Телефон: ${data.phone}`,
         data.email ? `E-mail: ${data.email}` : null,
@@ -105,9 +106,9 @@ export default function ContactLeadForm({
         {type === 'quote' ? 'Что интересует' : 'Комментарий'}
         <textarea name="comment" rows={3} />
       </label>
-      <button className="contact-form__submit" type="submit">
+      <Button type="submit" variant="primary" fullWidthMobile>
         {preset.submit}
-      </button>
+      </Button>
     </form>
   )
 }

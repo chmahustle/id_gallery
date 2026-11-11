@@ -1,0 +1,9 @@
+{
+  "path": "/request/",
+  "viewport": 1440,
+  "headerToH1": 96,
+  "pageTopOffset": "6rem",
+  "firstPadTop": "96px",
+  "hasShell": true,
+  "h1": "Запросить предложение"
+}

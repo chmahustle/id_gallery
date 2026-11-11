@@ -1,0 +1,56 @@
+[
+  {
+    "path": "/account/",
+    "viewport": 1920,
+    "headerToH1": 96,
+    "pageTopOffset": "6rem",
+    "firstPadTop": "96px",
+    "hasShell": true,
+    "h1": "Личный кабинет"
+  },
+  {
+    "path": "/account/",
+    "viewport": 1440,
+    "headerToH1": 96,
+    "pageTopOffset": "6rem",
+    "firstPadTop": "96px",
+    "hasShell": true,
+    "h1": "Личный кабинет"
+  },
+  {
+    "path": "/account/",
+    "viewport": 390,
+    "headerToH1": 56,
+    "pageTopOffset": "3.5rem",
+    "firstPadTop": "56px",
+    "hasShell": true,
+    "h1": "Личный кабинет"
+  },
+  {
+    "path": "/request/",
+    "viewport": 1920,
+    "headerToH1": 96,
+    "pageTopOffset": "6rem",
+    "firstPadTop": "96px",
+    "hasShell": true,
+    "h1": "Запросить предложение"
+  },
+  {
+    "path": "/request/",
+    "viewport": 1440,
+    "headerToH1": 96,
+    "pageTopOffset": "6rem",
+    "firstPadTop": "96px",
+    "hasShell": true,
+    "h1": "Запросить предложение"
+  },
+  {
+    "path": "/request/",
+    "viewport": 390,
+    "headerToH1": 56,
+    "pageTopOffset": "3.5rem",
+    "firstPadTop": "56px",
+    "hasShell": true,
+    "h1": "Запросить предложение"
+  }
+]

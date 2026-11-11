@@ -269,7 +269,7 @@ export default function Admin() {
             setActionError('')
           }}
         >
-          Новости
+          События
         </button>
         <button
           type="button"

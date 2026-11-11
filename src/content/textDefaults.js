@@ -51,7 +51,7 @@ export const TEXT_SLOTS = [
     id: 'header.partners',
     group: 'Шапка',
     label: 'Ссылка справа (1)',
-    defaultValue: 'Партнёрам',
+    defaultValue: 'Дизайнерам',
   },
   {
     id: 'header.contacts',
@@ -94,7 +94,7 @@ export const TEXT_SLOTS = [
     id: 'hero.title',
     group: 'Блоки главной',
     label: 'Hero — заголовок (скрытый H1)',
-    defaultValue: 'ID Gallery — интерьерный центр класса люкс',
+    defaultValue: 'ID Gallery — интерьерный формат Idea Decor',
   },
   {
     id: 'hero.alt',
@@ -135,14 +135,14 @@ export const TEXT_SLOTS = [
   {
     id: 'membership.title',
     group: 'Блоки главной',
-    label: 'Партнёрам — заголовок',
-    defaultValue: 'Партнёрам ID Gallery',
+    label: 'Дизайнерам — заголовок',
+    defaultValue: 'Дизайнерам ID Gallery',
   },
   {
     id: 'membership.alt',
     group: 'Блоки главной',
-    label: 'Партнёрам — alt',
-    defaultValue: 'Партнёрам — архитекторы, дизайнеры, девелоперы',
+    label: 'Дизайнерам — alt',
+    defaultValue: 'Дизайнерам — архитекторы и дизайнеры',
   },
   {
     id: 'sourcebooks.title',

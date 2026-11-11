@@ -1,0 +1,118 @@
+[
+  {
+    "tab": "login",
+    "viewport": 1920,
+    "topGap": 269,
+    "bottomGap": 270,
+    "panelH": 428,
+    "formsCount": 2,
+    "formsVisible": 2,
+    "hiddenPanels": [
+      false,
+      true
+    ],
+    "bannerTitleSize": "88px",
+    "bannerTitleLines": 1,
+    "bannerWhiteSpace": "nowrap",
+    "bannerMaxWidth": "none"
+  },
+  {
+    "tab": "login",
+    "viewport": 1440,
+    "topGap": 179,
+    "bottomGap": 180,
+    "panelH": 428,
+    "formsCount": 2,
+    "formsVisible": 2,
+    "hiddenPanels": [
+      false,
+      true
+    ],
+    "bannerTitleSize": "86.4px",
+    "bannerTitleLines": 1,
+    "bannerWhiteSpace": "nowrap",
+    "bannerMaxWidth": "none"
+  },
+  {
+    "tab": "login",
+    "viewport": 390,
+    "topGap": 156,
+    "bottomGap": 40,
+    "panelH": 380,
+    "formsCount": 2,
+    "formsVisible": 2,
+    "hiddenPanels": [
+      false,
+      true
+    ],
+    "bannerTitleSize": "44px",
+    "bannerTitleLines": 1,
+    "bannerWhiteSpace": "normal",
+    "bannerMaxWidth": "none"
+  },
+  {
+    "tab": "register",
+    "viewport": 1920,
+    "topGap": 181,
+    "bottomGap": 182,
+    "panelH": 604,
+    "formsCount": 2,
+    "formsVisible": 2,
+    "hiddenPanels": [
+      true,
+      false
+    ],
+    "bannerTitleSize": "88px",
+    "bannerTitleLines": 1,
+    "bannerWhiteSpace": "nowrap",
+    "bannerMaxWidth": "none"
+  },
+  {
+    "tab": "register",
+    "viewport": 1440,
+    "topGap": 93,
+    "bottomGap": 93,
+    "panelH": 601,
+    "formsCount": 2,
+    "formsVisible": 2,
+    "hiddenPanels": [
+      true,
+      false
+    ],
+    "bannerTitleSize": "86.4px",
+    "bannerTitleLines": 1,
+    "bannerWhiteSpace": "nowrap",
+    "bannerMaxWidth": "none"
+  },
+  {
+    "tab": "register",
+    "viewport": 390,
+    "topGap": 156,
+    "bottomGap": 40,
+    "panelH": 550,
+    "formsCount": 2,
+    "formsVisible": 2,
+    "hiddenPanels": [
+      true,
+      false
+    ],
+    "bannerTitleSize": "44px",
+    "bannerTitleLines": 1,
+    "bannerWhiteSpace": "normal",
+    "bannerMaxWidth": "none"
+  },
+  {
+    "path": "/trade/",
+    "fontSize": "88px",
+    "lines": 1,
+    "maxWidth": "none",
+    "whiteSpace": "nowrap"
+  },
+  {
+    "path": "/showrooms/",
+    "fontSize": "88px",
+    "lines": 1,
+    "maxWidth": "none",
+    "whiteSpace": "nowrap"
+  }
+]

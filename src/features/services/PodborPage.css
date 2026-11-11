@@ -1,0 +1,256 @@
+.services-page {
+  --svc-gutter: clamp(1.25rem, 5vw, 6rem);
+  background: var(--color-snow);
+  color: var(--color-ink);
+}
+
+/* —— Первый экран —— */
+.services-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 80svh;
+  min-height: 520px;
+  overflow: hidden;
+  background: var(--color-ink);
+  color: var(--color-snow);
+}
+
+.services-hero__img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.services-hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    color-mix(in srgb, var(--color-ink) 72%, transparent) 0%,
+    color-mix(in srgb, var(--color-ink) 28%, transparent) 55%,
+    color-mix(in srgb, var(--color-ink) 12%, transparent) 100%
+  );
+}
+
+.services-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 var(--svc-gutter) 10vh;
+}
+
+.services-hero__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-h1);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--color-snow);
+}
+
+.services-hero__intro {
+  max-width: 52ch;
+  margin: 1.25rem 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--color-snow);
+}
+
+.services-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 2rem;
+  margin-top: 2rem;
+}
+
+/* текстовая ссылка со стрелкой: подчёркивание слева направо */
+.services-hero__link,
+.services-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 4px;
+  margin-bottom: -4px;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 0.45s var(--ease-media, var(--ease));
+}
+
+.services-hero__link {
+  color: var(--color-snow);
+}
+
+.services-link {
+  color: var(--color-ink);
+}
+
+.services-hero__link:hover,
+.services-hero__link:focus-visible,
+.services-link:hover,
+.services-link:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* —— Секции —— */
+.services-section {
+  padding: var(--section-space) var(--svc-gutter) 0;
+  scroll-margin-top: var(--header-h);
+}
+
+.services-section:last-child {
+  padding-bottom: var(--section-space);
+}
+
+.services-h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-h2);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.services-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  margin-bottom: 2rem;
+}
+
+.services-head__tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.5rem;
+}
+
+/* —— Этапы —— */
+.services-steps {
+  list-style: none;
+  margin: 3rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6rem;
+}
+
+.services-step {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 4rem;
+  align-items: center;
+}
+
+.services-step--right .services-step__media {
+  order: 2;
+}
+
+.services-step__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--color-cream);
+}
+
+.services-step__num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.services-step__title {
+  margin: 0.75rem 0 0;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.services-step__body {
+  max-width: 52ch;
+  margin: 1rem 0 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--color-ink);
+}
+
+/* —— Обсудить проект —— */
+.services-section.services-discuss {
+  /* заливка Cream, как у нижних блоков на других страницах */
+  margin-top: var(--section-space);
+  padding: 4rem var(--svc-gutter);
+  background: var(--color-cream);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
+}
+
+.services-discuss__text {
+  max-width: 52ch;
+  margin: 1rem 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  font-weight: 300;
+  line-height: var(--leading-body);
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 767px) {
+  .services-step {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 1.5rem;
+  }
+
+  .services-step--right .services-step__media {
+    order: 0;
+  }
+
+  .services-steps {
+    gap: 4rem;
+  }
+
+  .services-arrows {
+    display: none;
+  }
+
+  .services-discuss .ui-btn {
+    width: 100%;
+  }
+}
