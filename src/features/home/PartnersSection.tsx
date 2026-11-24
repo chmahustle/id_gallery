@@ -19,13 +19,12 @@ export function PartnersSection() {
           <h2 id="home-partners-title" className="home-section__title">
             {copy.title}
           </h2>
-          <p className="home-section__desc">{copy.description}</p>
           <div className="home-partners__actions">
-            <Button as="link" to={copy.clientCta.href} variant="inverse" withArrow>
-              Клиентам: {copy.clientCta.label}
-            </Button>
             <Button as="link" to={copy.cta.href} variant="inverse" withArrow>
-              Специалистам: {copy.cta.label}
+              {copy.cta.label}
+            </Button>
+            <Button as="link" to={copy.tradeLink.href} variant="link" withArrow>
+              {copy.tradeLink.label}
             </Button>
           </div>
         </div>

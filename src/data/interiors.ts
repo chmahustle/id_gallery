@@ -1,4 +1,9 @@
-import type { InteriorSelection, ProductImageFocus } from '../types'
+import type {
+  InteriorHotspot,
+  InteriorOrigin,
+  InteriorSelection,
+  ProductImageFocus,
+} from '../types'
 
 /**
  * Интерьеры — docs/content-brief.md §11.
@@ -22,7 +27,10 @@ export const interiorsCopy = {
   introText:
     'Сочетания предметов помогают оценить масштаб, форму и взаимодействие материалов в интерьере.',
   rowCta: 'Смотреть подборку',
-  detailModelsTitle: 'Предметы в этом интерьере',
+  detailModelsTitle: 'Предметы в интерьере',
+  originBrand: 'Интерьер бренда',
+  originGallery: 'Проект ID Gallery',
+  originAuthor: 'Автор',
   detailModelsLead: 'Модели, которые использованы в интерьере на фото.',
   similarTitle: 'Подойдут к этому интерьеру',
   similarLead: 'Подборка по комнате. Этих моделей на фото нет.',
@@ -82,6 +90,8 @@ let demoModules: Record<
   {
     demoInteriors: InteriorSelection[]
     demoInteriorBrands: Record<string, string[]>
+    demoInteriorOrigins?: Record<string, InteriorOrigin>
+    demoInteriorScenes?: Record<string, { hotspots: InteriorHotspot[]; cropTop?: number }>
   }
 > = {}
 try {
@@ -91,12 +101,29 @@ try {
 }
 const demo = demoEnabled ? Object.values(demoModules)[0] : undefined
 
-export const interiors: InteriorSelection[] = demo
-  ? [
-      ...baseInteriors.map((item) => ({
-        ...item,
-        brands: item.brands ?? demo.demoInteriorBrands[item.slug],
-      })),
-      ...demo.demoInteriors,
-    ]
-  : baseInteriors
+/* демо дополняет только пустые поля: свои данные интерьера важнее */
+const withDemo = (item: InteriorSelection): InteriorSelection => {
+  if (!demo) return item
+  const origin = item.origin ?? demo.demoInteriorOrigins?.[item.slug]
+  const scene = demo.demoInteriorScenes?.[item.slug]
+  return {
+    ...item,
+    brands: item.brands ?? demo.demoInteriorBrands[item.slug],
+    origin,
+    productsConfirmed: item.productsConfirmed ?? Boolean(origin),
+    hotspots: item.hotspots ?? scene?.hotspots,
+    sceneCropTop: item.sceneCropTop ?? scene?.cropTop,
+  }
+}
+
+/** Проект галереи публикуется только с подтверждённым автором */
+function isPublishable(item: InteriorSelection): boolean {
+  if (item.origin?.kind !== 'gallery') return true
+  return Boolean(item.origin.author.trim())
+}
+
+export const interiors: InteriorSelection[] = (
+  demo ? [...baseInteriors, ...demo.demoInteriors] : baseInteriors
+)
+  .map(withDemo)
+  .filter(isPublishable)

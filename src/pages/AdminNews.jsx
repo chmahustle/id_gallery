@@ -13,7 +13,7 @@ const emptyForm = {
   gallery: '',
   body: '',
   ctaLabel: 'Оставить заявку',
-  ctaHref: '/contacts',
+  ctaHref: '/contact',
   externalUrl: '',
   videoUrl: '',
   published: true,

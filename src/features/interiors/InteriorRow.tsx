@@ -3,6 +3,7 @@ import { Button } from '../../components/ui'
 import { interiorsCopy } from '../../data/interiors'
 import type { InteriorSelection } from '../../types'
 import { CropImage } from '../brands/CropImage'
+import { InteriorOrigin } from './InteriorOrigin'
 
 type InteriorRowProps = {
   item: InteriorSelection
@@ -30,6 +31,7 @@ export function InteriorRow({ item, mirrored }: InteriorRowProps) {
         />
       </div>
       <div className="interiors-page__row-copy">
+        <InteriorOrigin origin={item.origin} variant="row" />
         <h3 className="interiors-page__row-title">{item.title}</h3>
         <p className="interiors-page__row-caption">{item.caption}</p>
         <Button

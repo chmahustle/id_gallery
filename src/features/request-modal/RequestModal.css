@@ -318,3 +318,8 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* «Что вам нужно?» в узком окне — плашки в одну колонку */
+.request-modal .service-directions__list {
+  grid-template-columns: 1fr;
+}

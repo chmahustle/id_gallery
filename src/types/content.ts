@@ -29,12 +29,17 @@ export type BrandAuthor = {
   /** Необязательное фото; без него фото не показывается */
   photo?: string
   link: string
+  /** slug моделей автора; блок «Авторы» показывается только при связи с моделями */
+  models?: string[]
   demo?: boolean
 }
 
 /** Каталог/буклет бренда */
 export type BrandCatalog = {
+  /** Короткое имя: семейство моделей или тема, не год выпуска */
   title: string
+  /** Выпуск, если фабрика его указывает (например, «2026») */
+  edition?: string
   format: string
   /** Файл каталога; без него карточка не показывается */
   url: string
@@ -84,6 +89,8 @@ export type Brand = {
 export type Category = {
   slug: string
   label: string
+  /** Тип одного предмета для карточки модели: «Диван» */
+  singular?: string
   href: string
   /** Краткий текст под H1 / в карточке — docs/content-brief */
   description?: string
@@ -93,18 +100,22 @@ export type Category = {
   children?: string[]
 }
 
+/** Поле характеристик с явным статусом (этап 10). */
+export type CharacteristicField = {
+  value: string
+  status: ContentStatus
+}
+
 export type ProductVariant = {
   id: string
   name: string
   swatch?: string
   image?: string
   status?: ContentStatus
-}
-
-/** Поле характеристик с явным статусом (этап 10). */
-export type CharacteristicField = {
-  value: string
-  status: ContentStatus
+  /** Размеры именно этого исполнения — для сравнения */
+  dimensions?: CharacteristicField
+  /** Материалы именно этого исполнения — для сравнения */
+  materials?: CharacteristicField
 }
 
 export type ProductCharacteristics = {
@@ -181,6 +192,8 @@ export type FeatureFlags = {
   /** Подборки во «Вдохновении» — пока нет страницы */
   showSelections: boolean
   showCommerce: boolean
+  /** Сравнение до подтверждения данных исполнений — только для показа (демо/разработка) */
+  showCompare: boolean
   showNewsletter: boolean
   /** «Карьера»: открывается после настройки получателя резюме */
   showCareer: boolean
@@ -304,6 +317,32 @@ export type SiteContent = {
 }
 
 /** Подборка интерьера — docs/content-brief.md §11 */
+/** Происхождение сцены: интерьер фабрики или проект галереи */
+export type InteriorOrigin =
+  | {
+      kind: 'brand'
+      /** slug бренда из data/brands.ts */
+      brand: string
+      /** Источник фото: подпись правообладателя */
+      photoSource: string
+    }
+  | {
+      kind: 'gallery'
+      /** Подтверждённый автор проекта; без него проект не публикуется */
+      author: string
+      photoSource?: string
+    }
+
+/** Точка на фото интерьера: предмет и его место в процентах от исходного кадра */
+export type InteriorHotspot = {
+  /** slug товара из data/products.ts */
+  product: string
+  /** 0–100 от ширины исходного фото */
+  x: number
+  /** 0–100 от высоты исходного фото */
+  y: number
+}
+
 export type InteriorSelection = {
   slug: string
   title: string
@@ -316,6 +355,14 @@ export type InteriorSelection = {
   room?: string
   /** slug брендов, к которым относится интерьер (блок «Интерьеры» на странице бренда) */
   brands?: string[]
+  /** Интерьер бренда или проект ID Gallery; без данных подпись не показывается */
+  origin?: InteriorOrigin
+  /** Редакция подтвердила, что productIds — модели на фото; иначе блок «Предметы в интерьере» скрыт */
+  productsConfirmed?: boolean
+  /** Точки на сцене; показываются только при productsConfirmed */
+  hotspots?: InteriorHotspot[]
+  /** Сколько процентов кадра скрыть сверху (вшитые надписи); точки пересчитываются */
+  sceneCropTop?: number
   /** Демонстрационный интерьер (src/data/demoInteriors.ts, VITE_DEMO_DATA) */
   demo?: boolean
   status: ContentStatus

@@ -164,13 +164,33 @@ export function useCatalogFilters() {
     })
   }
 
+  /*
+   * Вход в каталог: тип из адреса /catalog/:slug или бренд (?brand=) без типа.
+   * «Сбросить фильтры» снимает всё, кроме входа, запроса и сортировки;
+   * «Все товары» — весь каталог без условий.
+   */
+  const entryBrand = !categoryFromPath && !searching ? filters.brandSlug : ''
+  const hasEntry = Boolean(categoryFromPath || entryBrand || searching)
+
   function resetFilters() {
     const qs = new URLSearchParams()
+    if (entryBrand) qs.set('brand', entryBrand)
     if (filters.sort && filters.sort !== 'default') {
       qs.set('sort', filters.sort)
     }
     if (filters.q) qs.set('q', filters.q)
-    navigate(qs.toString() ? `/catalog?${qs}` : '/catalog')
+    const base = categoryFromPath ? `/catalog/${categoryFromPath.slug}` : '/catalog'
+    navigate(qs.toString() ? `${base}?${qs}` : base)
+  }
+
+  /* Тип из строки над сеткой: путь /catalog/:slug, остальные условия сохраняются */
+  function setCategory(slug) {
+    const next = new URLSearchParams(queryKey)
+    next.delete('category')
+    next.delete('sub')
+    next.delete('page')
+    const base = slug ? `/catalog/${slug}` : '/catalog'
+    navigate(next.toString() ? `${base}?${next}` : base)
   }
 
   /* Снять категорию, даже если она задана путём /catalog/:slug */
@@ -249,6 +269,8 @@ export function useCatalogFilters() {
     openFilters,
     closeFilters,
     resetFilters,
+    hasEntry,
+    setCategory,
     clearCategory,
     updateParams,
   }

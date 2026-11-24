@@ -44,7 +44,7 @@ export const promoSlides = [
     title: 'Персональная экскурсия',
     text: 'Запишитесь на визит: подберём решения под ваш проект.',
     cta: siteData.cta.bookVisit,
-    href: '/contacts',
+    href: '/contact',
     image: '/placeholders/product-02.jpg',
   },
   {
@@ -70,7 +70,7 @@ export const advantages = [
   {
     title: 'Шоурумы',
     text: 'Экспозиции мебели и света в формате интерьерных зон.',
-    href: '/contacts',
+    href: '/contact',
   },
   {
     title: 'Каталог',
@@ -80,7 +80,7 @@ export const advantages = [
   {
     title: 'Консультация',
     text: 'Помощь в подборе решений под ваш проект.',
-    href: '/contacts',
+    href: '/contact',
   },
   {
     title: 'Дизайнерам',
@@ -192,7 +192,7 @@ export function buildContentPayload() {
 export const header = {
   utility: [
     { label: 'Дизайнерам', href: '/trade' },
-    { label: 'Контакты', href: '/contacts' },
+    { label: 'Контакты', href: '/contact' },
   ],
   links: mainNav,
 }
@@ -212,7 +212,7 @@ export const footer = {
       links: [
         { label: 'Дизайнерам', href: '/trade' },
         { label: 'О галерее', href: '/about' },
-        { label: 'Контакты', href: '/contacts' },
+        { label: 'Контакты', href: '/contact' },
       ],
     },
   ],

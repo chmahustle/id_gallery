@@ -1,4 +1,4 @@
-import { ListFilter, Search, X } from 'lucide-react'
+import { Search, X } from 'lucide-react'
 import type { RefObject } from 'react'
 import type { ColorFacet } from '../../catalog/filter-facets'
 import type { Room } from '../../data/rooms'
@@ -26,7 +26,6 @@ type CatalogFiltersDrawerProps = {
   activeSizes: string[]
   activeColors: string[]
   linkParams: Record<string, string | string[] | undefined>
-  onOpen: (el: HTMLElement) => void
   onClose: () => void
   onReset: () => void
   onQueryChange: (q: string) => void
@@ -57,7 +56,6 @@ export function CatalogFiltersDrawer({
   activeSizes,
   activeColors,
   linkParams,
-  onOpen,
   onClose,
   onReset,
   onQueryChange,
@@ -69,18 +67,6 @@ export function CatalogFiltersDrawer({
 }: CatalogFiltersDrawerProps) {
   return (
     <>
-      <button
-        type="button"
-        className={`catalog-fab ${open ? 'is-hidden' : ''}`}
-        aria-expanded={open}
-        aria-controls="catalog-filters"
-        aria-label="Открыть фильтры"
-        onClick={(event) => onOpen(event.currentTarget)}
-      >
-        <ListFilter size={16} strokeWidth={1.4} aria-hidden="true" />
-        <span>Фильтры</span>
-      </button>
-
       <button
         type="button"
         className={`catalog-drawer__backdrop ${open ? 'is-open' : ''}`}
@@ -124,6 +110,16 @@ export function CatalogFiltersDrawer({
               onChange={(event) => onQueryChange(event.target.value)}
               autoComplete="off"
             />
+            {q ? (
+              <button
+                type="button"
+                className="catalog-page__search-clear"
+                aria-label="Очистить поиск"
+                onClick={() => onQueryChange('')}
+              >
+                <X size={18} strokeWidth={1.2} aria-hidden="true" />
+              </button>
+            ) : null}
           </label>
 
           <CatalogFilterPanel

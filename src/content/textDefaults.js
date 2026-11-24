@@ -303,7 +303,7 @@ export function buildContent(textMap) {
   const explore = [
     { title: t['explore.0'], href: '/brands' },
     { title: t['explore.1'], href: '#membership' },
-    { title: t['explore.2'], href: '/contacts' },
+    { title: t['explore.2'], href: '/contact' },
   ]
 
   const newsletter = {

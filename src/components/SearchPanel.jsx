@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { products } from '../data/products'
 import { resolveBrandName } from '../lib/catalog'
 import { searchBrands, searchProducts } from '../lib/search'
+import { readSearchQuery, saveSearchQuery } from '../lib/navHistory'
 import SearchNotFound from './search/SearchNotFound'
 import './SearchPanel.css'
 
@@ -13,8 +14,9 @@ const PRODUCTS_LIMIT = 6
 
 export default function SearchPanel({ open, onClose }) {
   const navigate = useNavigate()
-  const [query, setQuery] = useState('')
-  const [term, setTerm] = useState('')
+  /* запрос помнится в рамках сессии: после перехода к результату и «Назад» он на месте */
+  const [query, setQuery] = useState(readSearchQuery)
+  const [term, setTerm] = useState(() => readSearchQuery().trim())
   const [active, setActive] = useState(-1)
   const inputRef = useRef(null)
   const panelId = useId()
@@ -79,14 +81,24 @@ export default function SearchPanel({ open, onClose }) {
     }
   }, [open, onClose])
 
+  useEffect(() => {
+    saveSearchQuery(query)
+  }, [query])
+
+  /* закрыть крестиком или Escape — запрос стирается */
   function close() {
     setQuery('')
     setTerm('')
     onClose()
   }
 
+  /* переход к результату — запрос остаётся до следующего открытия поиска */
+  function leave() {
+    onClose()
+  }
+
   function goTo(href) {
-    close()
+    leave()
     window.requestAnimationFrame(() => navigate(href))
   }
 
@@ -180,7 +192,14 @@ export default function SearchPanel({ open, onClose }) {
 
       <div className="search-panel__body" aria-live="polite">
         {empty ? (
-          <SearchNotFound query={term} onNavigate={close} />
+          <SearchNotFound
+            onNavigate={close}
+            onClear={() => {
+              setQuery('')
+              setTerm('')
+              inputRef.current?.focus()
+            }}
+          />
         ) : hasAny ? (
           <div id={listId} role="listbox" aria-label="Результаты поиска">
             {found.brands.length > 0 ? (
@@ -193,9 +212,14 @@ export default function SearchPanel({ open, onClose }) {
                         className="search-panel__row"
                         to={`/brands/${brand.slug}`}
                         tabIndex={-1}
-                        onClick={close}
+                        onClick={leave}
                       >
                         <span className="search-panel__row-title">{brand.name}</span>
+                        <ArrowRight
+                          className="search-panel__row-arrow"
+                          size={16}
+                          aria-hidden="true"
+                        />
                       </Link>
                     </li>
                   ))}
@@ -213,19 +237,25 @@ export default function SearchPanel({ open, onClose }) {
                         className="search-panel__row search-panel__row--product"
                         to={`/product/${item.slug}`}
                         tabIndex={-1}
-                        onClick={close}
+                        onClick={leave}
                       >
                         <span className="search-panel__thumb">
                           {item.image ? <img src={item.image} alt="" /> : null}
                         </span>
-                        <span className="search-panel__row-text">
-                          <span className="search-panel__row-title">
-                            {`${resolveBrandName(item)} · ${item.name}`}
-                          </span>
-                          <span className="search-panel__row-meta">
-                            {item.subcategory || item.category}
-                          </span>
+                        <span className="search-panel__row-title">
+                          {[
+                            resolveBrandName(item),
+                            item.name,
+                            item.subcategory || item.category,
+                          ]
+                            .filter(Boolean)
+                            .join(' · ')}
                         </span>
+                        <ArrowRight
+                          className="search-panel__row-arrow"
+                          size={16}
+                          aria-hidden="true"
+                        />
                       </Link>
                     </li>
                   ))}
@@ -238,9 +268,9 @@ export default function SearchPanel({ open, onClose }) {
                 className="search-panel__all"
                 to={`/catalog?q=${encodeURIComponent(term)}`}
                 tabIndex={-1}
-                onClick={close}
+                onClick={leave}
               >
-                <span>{`Все результаты (${found.total})`}</span>
+                <span>Все результаты</span>
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
             ) : null}

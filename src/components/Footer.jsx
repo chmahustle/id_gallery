@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { brands } from '../data/brands'
-import { getApprovedContacts } from '../data/contacts'
 import { featureFlags } from '../data/featureFlags'
 import { getApprovedLegalLinks } from '../data/legal'
 import { footerNav } from '../data/navigation'
@@ -13,9 +12,7 @@ import './Footer.css'
 const YEAR = new Date().getFullYear()
 
 export default function Footer() {
-  const approvedContacts = getApprovedContacts()
   const legalLinks = getApprovedLegalLinks()
-  const showContacts = approvedContacts.length > 0
   const visible = (links) =>
     links.filter((link) => !link.flag || Boolean(featureFlags[link.flag]))
   const catalogLinks = visible(footerNav.catalog)
@@ -26,12 +23,7 @@ export default function Footer() {
     <footer className="footer">
       <div className="footer__inner">
         <div className="footer__top">
-          <div
-            className={[
-              'footer__grid',
-              showContacts ? 'footer__grid--5' : 'footer__grid--4',
-            ].join(' ')}
-          >
+          <div className="footer__grid footer__grid--4">
             <div className="footer__col">
               <h3 className="footer__heading">Каталог</h3>
               <ul>
@@ -107,32 +99,6 @@ export default function Footer() {
                 ))}
               </ul>
             </div>
-
-            {showContacts ? (
-              <div className="footer__col">
-                <h3 className="footer__heading">Контакты</h3>
-                <ul className="footer__contacts-list">
-                  {approvedContacts.map((item) => (
-                    <li key={item.label}>
-                      <span className="footer__contact-label">{item.label}</span>
-                      {item.href ? (
-                        <Button
-                          className="footer__link"
-                          as="a"
-                          href={item.href}
-                          variant="link"
-                          subtle
-                        >
-                          {item.value}
-                        </Button>
-                      ) : (
-                        <span>{item.value}</span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
           </div>
 
           {featureFlags.showNewsletter ? (

@@ -1,7 +1,7 @@
 import type { FeatureFlags, NavLink, NavSection } from '../types'
-import { rooms } from './rooms'
+import { categories } from './categories'
 
-/** Шесть колонок меню — docs/content-brief.md §01 + этап 4c */
+/** Семь колонок меню в порядке владельца: О галерее → Журнал */
 
 /** Ссылки футера — документ §19 (фильтр флагов в Footer) */
 export type FooterNavLink = NavLink & {
@@ -15,21 +15,22 @@ export type FooterNavLink = NavLink & {
  * Проекты, журнал, авторы и подписка скрыты, пока не готовы.
  */
 export const footerNav = {
+  /* бренды — своей колонкой, интерьеры — в «Галерее» (утверждённый порядок) */
   catalog: [
     { label: 'Все товары', href: '/catalog' },
-    { label: 'Все комнаты', href: '/rooms/' },
-    { label: 'Все бренды', href: '/brands' },
-    { label: 'Интерьеры', href: '/interiors/', flag: 'showInteriors' },
+    { label: 'По комнатам', href: '/rooms/' },
   ] satisfies FooterNavLink[],
   company: [
     { label: 'О галерее', href: '/about' },
+    { label: 'Интерьеры', href: '/interiors/', flag: 'showInteriors' },
+    { label: 'Журнал', href: '/news' },
     { label: 'Шоурумы', href: '/showrooms/', flag: 'showShowrooms' },
-    { label: 'Контакты', href: '/contacts' },
+    { label: 'Контакты', href: '/contact' },
     { label: 'Карьера', href: '/career/', flag: 'showCareer' },
   ] satisfies FooterNavLink[],
   services: [
     { label: 'Услуги', href: '/services/podbor' },
-    { label: 'Профессионалам', href: '/trade' },
+    { label: 'Для профессионалов', href: '/trade' },
     { label: 'Девелоперам', href: '/trade#developers' },
     { label: 'Каталоги и материалы', href: '/materials/', flag: 'showMaterialsLibrary' },
     { label: 'Помощь после покупки', href: '/help/', flag: 'showAftercare' },
@@ -41,51 +42,50 @@ export const footerMenu = [
   { label: 'Каталог', href: '/catalog' },
   { label: 'Бренды', href: '/brands' },
   { label: 'О галерее', href: '/about' },
-  { label: 'Контакты', href: '/contacts' },
+  { label: 'Контакты', href: '/contact' },
 ]
 
 export const navigation: NavSection[] = [
   {
-    title: 'Каталог',
+    title: 'О галерее',
+    href: '/about',
     links: [
-      { label: 'Все товары', href: '/catalog' },
-      { label: 'Диваны', href: '/catalog/divany' },
-      { label: 'Кресла', href: '/catalog/kresla' },
-      { label: 'Стулья', href: '/catalog/stulya' },
-      { label: 'Столы', href: '/catalog/stoly' },
-      { label: 'Мебель для хранения', href: '/catalog/hranenie' },
-      { label: 'Освещение', href: '/catalog/osveshchenie' },
-    ],
-    subgroups: [
-      {
-        title: 'По комнатам',
-        links: rooms.map((room) => ({
-          label: room.label,
-          href: `/rooms/${room.slug}`,
-        })),
-      },
+      { label: 'О галерее', href: '/about' },
+      { label: 'Шоурумы', href: '/showrooms/' },
+      { label: 'Карьера', href: '/career/', flag: 'showCareer' },
     ],
   },
   {
     title: 'Бренды',
     href: '/brands',
     links: [
+      { label: 'Все бренды', href: '/brands' },
       { label: 'Visionnaire', href: '/brands/visionnaire' },
       { label: 'Molteni&C', href: '/brands/molteni' },
       { label: 'Baxter', href: '/brands/baxter' },
       { label: 'Bonaldo', href: '/brands/bonaldo' },
-      { label: 'Все бренды', href: '/brands' },
     ],
   },
   {
-    title: 'Вдохновение',
+    title: 'Каталог',
+    href: '/catalog',
     links: [
-      { label: 'Интерьеры', href: '/interiors/' },
-      { label: 'Подборки', href: '/#featured', flag: 'showSelections' },
+      { label: 'Все товары', href: '/catalog' },
+      { label: 'По комнатам', href: '/rooms/' },
+    ],
+    subgroups: [
+      {
+        title: 'По типам',
+        links: categories.map((category) => ({
+          label: category.label,
+          href: `/catalog/${category.slug}`,
+        })),
+      },
     ],
   },
   {
     title: 'Услуги',
+    href: '/services/podbor',
     links: [
       { label: 'Подбор и комплектация', href: '/services/podbor' },
       { label: 'Как мы работаем', href: '/services/podbor#etapy' },
@@ -93,27 +93,22 @@ export const navigation: NavSection[] = [
     ],
   },
   {
-    title: 'Профессионалам',
+    title: 'Интерьеры',
+    href: '/interiors/',
+    links: [{ label: 'Смотреть интерьеры', href: '/interiors/' }],
+  },
+  {
+    title: 'Для профессионалов',
     href: '/trade',
     links: [
-      { label: 'Архитекторам и дизайнерам', href: '/trade/#designers' },
+      { label: 'Дизайнерам и архитекторам', href: '/trade/#designers' },
       { label: 'Девелоперам', href: '/trade/#developers' },
-      { label: 'Проекты', href: '/projects/', flag: 'showProjects' },
-      { label: 'Журнал', href: '/news', flag: 'showNews' },
+      { label: 'Каталоги и материалы', href: '/materials/', flag: 'showMaterialsLibrary' },
     ],
   },
   {
-    title: 'О галерее',
-    links: [
-      { label: 'Об ID Gallery', href: '/about' },
-      { label: 'Шоурумы', href: '/showrooms/' },
-    ],
-  },
-  {
-    title: 'Контакты',
-    links: [
-      { label: 'Контактная информация', href: '/contacts' },
-      { label: 'Обратная связь', href: '/contacts' },
-    ],
+    title: 'Журнал',
+    href: '/news',
+    links: [{ label: 'Все статьи', href: '/news' }],
   },
 ]

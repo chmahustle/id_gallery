@@ -21,6 +21,7 @@ export function BrandInteriors({ interiors }: BrandInteriorsProps) {
 
   return (
     <section
+      id="brand-interiors"
       className="brand-page__section"
       aria-labelledby="brand-interiors-title"
     >

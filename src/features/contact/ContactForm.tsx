@@ -5,6 +5,7 @@ import {
   contactPageCopy,
   type ContactTopic,
 } from '../../data/contact-page'
+import { labelForBrandSlug, labelForModelSlug } from '../../data/request-page'
 import { ContactField } from './ContactField'
 
 type FormFields = {
@@ -30,15 +31,23 @@ function validate(fields: FormFields): FormErrors {
   return errors
 }
 
-/** Заглушка: без fetch и без «Спасибо» / «Отправлено» */
-function submitStub(_fields: FormFields): void {
+/** Заглушка: без fetch и без «Спасибо» / «Отправлено». Тема уходит отдельным значением. */
+function submitStub(_fields: FormFields & { topic: string; subject: string }): void {
   void _fields
 }
 
 export function ContactForm() {
   const baseId = useId()
   const [params] = useSearchParams()
-  const hint = topicHint(params.get('topic'))
+  /* тема и предмет видны клиенту в форме и передаются отдельно, а не подсказкой в поле */
+  const topic = params.get('topic') || ''
+  const hint = topicHint(topic)
+  const modelSlug = params.get('model')
+  const brandSlug = params.get('brand')
+  const subject =
+    (modelSlug ? labelForModelSlug(modelSlug) : null) ??
+    (brandSlug ? labelForBrandSlug(brandSlug) : null) ??
+    ''
 
   const [fields, setFields] = useState<FormFields>({
     name: '',
@@ -52,7 +61,7 @@ export function ContactForm() {
     const next = validate(fields)
     setErrors(next)
     if (Object.keys(next).length > 0) return
-    submitStub(fields)
+    submitStub({ ...fields, topic: hint ? topic : '', subject })
   }
 
   return (
@@ -69,6 +78,11 @@ export function ContactForm() {
 
       <div className="contact-page__form-panel">
         <p className="contact-page__form-lead">{contactPageCopy.formLead}</p>
+        {hint ? (
+          <p className="contact-page__topic">
+            {subject ? `${hint} · ${subject}` : hint}
+          </p>
+        ) : null}
 
         <form className="contact-page__form" onSubmit={onSubmit} noValidate>
           <ContactField
@@ -95,7 +109,6 @@ export function ContactForm() {
             name="message"
             multiline
             rows={4}
-            placeholder={hint || undefined}
             value={fields.message}
             error={errors.message}
             onChange={(message) => setFields((prev) => ({ ...prev, message }))}

@@ -3,6 +3,8 @@ import NavTracker from './components/NavTracker'
 import { RequestModalHost } from './features/request-modal/RequestModalHost'
 import { UserAuthProvider } from './auth/UserAuthContext'
 import { CartProvider } from './cart/CartContext'
+import { SelectionProvider } from './selection/SelectionContext'
+import { CompareProvider } from './compare/CompareContext'
 import { MediaProvider } from './media/MediaContext'
 import { ContentProvider } from './content/ContentContext'
 import { BrandsProvider } from './brands/BrandsContext'
@@ -26,6 +28,9 @@ import InteriorDetail from './pages/InteriorDetail'
 import Showrooms from './pages/Showrooms'
 import ServicesPodbor from './pages/ServicesPodbor'
 import Rooms from './pages/Rooms'
+import Compare from './pages/Compare'
+import Materials from './pages/Materials'
+import Career from './pages/Career'
 import Room from './pages/Room'
 import { DevUi } from './pages/DevUi'
 
@@ -39,6 +44,8 @@ export default function App() {
           <BrandsProvider>
             <UserAuthProvider>
               <CartProvider>
+                <SelectionProvider>
+                <CompareProvider>
                 <BrowserRouter>
                   <NavTracker />
                   <RequestModalHost />
@@ -50,6 +57,9 @@ export default function App() {
                     <Route path="/services" element={<Navigate to="/services/podbor" replace />} />
                     <Route path="/services/podbor" element={<ServicesPodbor />} />
                     <Route path="/rooms" element={<Rooms />} />
+                    <Route path="/compare" element={<Compare />} />
+                    <Route path="/materials" element={<Materials />} />
+                    <Route path="/career" element={<Career />} />
                     <Route path="/rooms/:roomSlug" element={<Room />} />
                     <Route path="/brands" element={<Brands />} />
                     <Route path="/brands/:brandSlug" element={<BrandDetail />} />
@@ -73,6 +83,8 @@ export default function App() {
                     <Route path="*" element={<Navigate to="/" replace />} />
                   </Routes>
                 </BrowserRouter>
+                </CompareProvider>
+                </SelectionProvider>
               </CartProvider>
             </UserAuthProvider>
           </BrandsProvider>

@@ -30,6 +30,7 @@ function loadItems() {
         brand: item.brand,
         price: item.price || '',
         image: item.image || '',
+        variant: typeof item.variant === 'string' ? item.variant : '',
         qty: Math.min(99, Math.max(1, Math.floor(item.qty))),
       }))
   } catch {
@@ -62,8 +63,9 @@ export function CartProvider({ children }) {
   const closeCart = useCallback(() => setOpen(false), [])
   const toggleCart = useCallback(() => setOpen((v) => !v), [])
 
-  const addItem = useCallback((product) => {
-    const id = productId(product)
+  /* variant — выбранное исполнение; одна модель в двух исполнениях — две строки */
+  const addItem = useCallback((product, variant = null) => {
+    const id = variant ? `${productId(product)}::${variant.id}` : productId(product)
     setItems((current) => {
       const existing = current.find((item) => item.id === id)
       if (existing) {
@@ -78,10 +80,33 @@ export function CartProvider({ children }) {
           name: product.name,
           brand: resolveBrandName(product) || product.brand,
           price: product.price || '',
-          image: product.image || '',
+          image: variant?.image || product.image || '',
+          variant: variant?.name || '',
           qty: 1,
         },
       ]
+    })
+    setOpen(true)
+  }, [])
+
+  /* позиции из подборки: добавить отсутствующие, количество не менять, открыть корзину */
+  const addMissing = useCallback((entries) => {
+    setItems((current) => {
+      const next = [...current]
+      for (const { product, variant } of entries) {
+        const id = variant ? `${productId(product)}::${variant.id}` : productId(product)
+        if (next.some((item) => item.id === id)) continue
+        next.push({
+          id,
+          name: product.name,
+          brand: resolveBrandName(product) || product.brand,
+          price: product.price || '',
+          image: variant?.image || product.image || '',
+          variant: variant?.name || '',
+          qty: 1,
+        })
+      }
+      return next
     })
     setOpen(true)
   }, [])
@@ -118,12 +143,14 @@ export function CartProvider({ children }) {
       closeCart,
       toggleCart,
       addItem,
+      addMissing,
       removeItem,
       setQty,
       clear,
       count,
     }),
     [
+      addMissing,
       items,
       open,
       openCart,

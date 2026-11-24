@@ -14,15 +14,15 @@ function words(value: string): string[] {
   return normalizeText(value).split(/[^a-zа-я0-9&]+/i).filter(Boolean)
 }
 
-const PREFIX_MIN = 4
-
-/** Слово запроса подходит слову текста: по началу слова от 4 букв, иначе целиком */
+/**
+ * Слово запроса подходит слову текста по началу слова: «ba» → Baxter.
+ * Числа сравниваются целиком: «2» → «Модель 02», но не «12».
+ */
 function tokenMatches(token: string, haystack: string[]): boolean {
   const numeric = /^\d+$/.test(token)
   return haystack.some((word) => {
     if (numeric) return /^\d+$/.test(word) && Number(word) === Number(token)
-    if (token.length >= PREFIX_MIN) return word.startsWith(token)
-    return word === token
+    return word.startsWith(token)
   })
 }
 

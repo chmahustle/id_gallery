@@ -1,10 +1,10 @@
-import { featureFlags } from '../../data/featureFlags'
 import { homeBannerImages, homeSections } from '../../data/home'
+import { hasVerifiedShowrooms } from './showroomsVisibility'
 import { FullBleedBanner } from './FullBleedBanner'
 
 export function ShowroomsSection() {
   const copy = homeSections.showrooms
-  if (!featureFlags.showShowrooms) return null
+  if (!hasVerifiedShowrooms()) return null
 
   const img = homeBannerImages.showrooms
 

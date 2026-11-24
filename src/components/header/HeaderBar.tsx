@@ -16,6 +16,8 @@ type HeaderBarProps = {
   searchButtonRef: RefObject<HTMLButtonElement | null>
   utilityLinks: UtilityLink[]
   userLoggedIn: boolean
+  /** Корзина — только после входа */
+  showCart: boolean
   cartCount: number
   accordion: boolean
   onToggleMenu: () => void
@@ -31,6 +33,7 @@ export function HeaderBar({
   searchButtonRef,
   utilityLinks,
   userLoggedIn,
+  showCart,
   cartCount,
   accordion,
   onToggleMenu,
@@ -95,12 +98,12 @@ export function HeaderBar({
           <AppLink
             to="/account"
             className="header__icon-btn header__profile-btn"
-            aria-label={userLoggedIn ? 'Профиль' : 'Личный кабинет'}
+            aria-label={userLoggedIn ? 'Личный кабинет' : 'Вход или регистрация'}
           >
             <User size={18} strokeWidth={1.4} aria-hidden="true" />
           </AppLink>
         ) : null}
-        {featureFlags.showCommerce ? (
+        {showCart ? (
           <button
             type="button"
             className="header__icon-btn header__cart-btn"

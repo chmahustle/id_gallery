@@ -8,6 +8,8 @@ import type { InteriorSelection } from '../../types'
 import { getInteriorProducts } from '../../lib/interiors'
 import { getRoomBySlug, getRoomProducts } from '../../lib/rooms'
 import { CropImage } from '../brands/CropImage'
+import { InteriorOrigin } from './InteriorOrigin'
+import { InteriorScene } from './InteriorScene'
 import './InteriorsPage.css'
 
 type InteriorDetailPageProps = {
@@ -15,8 +17,12 @@ type InteriorDetailPageProps = {
 }
 
 export function InteriorDetailPage({ selection }: InteriorDetailPageProps) {
-  const products = getInteriorProducts(selection)
+  /* «Предметы в интерьере» — только подтверждённые редакцией модели */
+  const products = selection.productsConfirmed ? getInteriorProducts(selection) : []
   const showModels = products.length > 0
+  /* есть сцена с точками — модели показываются на фото, сетка под ним не нужна */
+  const hasScene = Boolean(selection.hotspots?.length && selection.image)
+  const gridProducts = hasScene ? [] : products
   const room = selection.room ? getRoomBySlug(selection.room) : null
   /* «Подойдут к этому интерьеру»: товары комнаты, которых нет на фото */
   const similar = room
@@ -72,10 +78,16 @@ export function InteriorDetailPage({ selection }: InteriorDetailPageProps) {
         </div>
       </section>
 
+      {selection.origin ? (
+        <div className="interiors-page__origin">
+          <InteriorOrigin origin={selection.origin} />
+        </div>
+      ) : null}
+
       {showModels ? (
         <Reveal
           as="section"
-          className="interiors-page__models"
+          className="interiors-page__models interiors-page__models--detail"
           aria-labelledby="interior-models-title"
         >
           <div className="interiors-page__models-head">
@@ -111,8 +123,18 @@ export function InteriorDetailPage({ selection }: InteriorDetailPageProps) {
               </Button>
             </div>
           </div>
+          {hasScene ? (
+            <InteriorScene
+              image={selection.image}
+              hotspots={selection.hotspots}
+              products={products}
+              cropTop={selection.sceneCropTop}
+              title={selection.title}
+            />
+          ) : null}
+          {gridProducts.length > 0 ? (
           <div className="interiors-page__models-grid">
-            {products.map((item) => (
+            {gridProducts.map((item) => (
               <ProductCard
                 key={item.slug}
                 item={item}
@@ -120,13 +142,14 @@ export function InteriorDetailPage({ selection }: InteriorDetailPageProps) {
               />
             ))}
           </div>
+          ) : null}
         </Reveal>
       ) : null}
 
       {similar.length > 0 ? (
         <Reveal
           as="section"
-          className="interiors-page__models"
+          className="interiors-page__models interiors-page__models--detail"
           aria-labelledby="interior-similar-title"
         >
           <div className="interiors-page__models-head">

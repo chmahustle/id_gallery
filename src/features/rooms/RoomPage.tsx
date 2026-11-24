@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { Placeholder } from '../../components/Placeholder'
 import { ProductCard } from '../../components/catalog/ProductCard'
 import { Button, Reveal } from '../../components/ui'
@@ -21,15 +21,29 @@ export function RoomPage({ room }: RoomPageProps) {
   const all = useMemo(() => getRoomProducts(room.slug), [room.slug])
   const interiorsList = getRoomInteriors(room.slug)
   const cover = interiorsList[0]
-  const [brand, setBrand] = useState('')
-  const [type, setType] = useState('')
+  /* бренд и тип — в адресе (?brand=, ?type=): при возврате из карточки выбор сохраняется */
+  const [params, setParams] = useSearchParams()
+  const brandSlug = params.get('brand') || ''
+  const typeSlug = params.get('type') || ''
+  const brand = all.find((item) => item.brandSlug === brandSlug)?.brand || ''
+  const type = all.find((item) => item.categorySlug === typeSlug)?.category || ''
   const [heroReady, setHeroReady] = useState(false)
   const rowsReveal = useRevealOnce<HTMLElement>()
 
-  useEffect(() => {
-    setBrand('')
-    setType('')
-  }, [room.slug])
+  function setFilter(key: 'brand' | 'type', slug: string) {
+    const next = new URLSearchParams(params)
+    if (slug) next.set(key, slug)
+    else next.delete(key)
+    setParams(next, { replace: true, preventScrollReset: true })
+  }
+
+  function setBrand(name: string) {
+    setFilter('brand', all.find((item) => item.brand === name)?.brandSlug || '')
+  }
+
+  function setType(name: string) {
+    setFilter('type', all.find((item) => item.category === name)?.categorySlug || '')
+  }
 
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches

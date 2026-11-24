@@ -148,6 +148,15 @@
   line-height: 1.25;
 }
 
+.cart-panel__variant {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-caption-md);
+  font-weight: 300;
+  line-height: var(--leading-caption);
+  color: var(--color-text-secondary);
+}
+
 .cart-panel__price {
   margin: 0.25rem 0 0;
   font-size: 0.72rem;

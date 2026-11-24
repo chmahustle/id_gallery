@@ -421,35 +421,6 @@
   border-bottom-color: var(--color-ink);
 }
 
-.home-featured__room--all {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  text-decoration: none;
-  color: var(--color-ink);
-}
-
-.home-featured__room-arrow {
-  display: inline-block;
-  transition: transform 0.3s var(--ease-media, var(--ease));
-}
-
-.home-featured__room--all:hover,
-.home-featured__room--all:focus-visible {
-  border-bottom-color: var(--color-ink);
-}
-
-.home-featured__room--all:hover .home-featured__room-arrow,
-.home-featured__room--all:focus-visible .home-featured__room-arrow {
-  transform: translateX(6px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .home-featured__room-arrow {
-    transition: none;
-  }
-}
-
 .home-featured__grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -688,11 +659,16 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 1.25rem;
   margin-top: 1.75rem; /* 28px */
 }
 
-.home-partners__copy .ui-btn--inverse:focus-visible {
+.home-partners__actions .ui-btn--link {
+  color: var(--color-snow);
+}
+
+.home-partners__copy .ui-btn--inverse:focus-visible,
+.home-partners__copy .ui-btn--link:focus-visible {
   outline-color: var(--color-snow);
 }
 
@@ -831,4 +807,23 @@
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+/* Бренды: ряд фабрик под фото баннера — подпись к баннеру, не отдельная секция */
+.home-brands__strip {
+  padding: 0 var(--page-gutter);
+  background: var(--color-snow);
+}
+
+/* сверху +0.5rem — компенсация отступа подчёркивания у ссылки снизу */
+.home-brands__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 3rem;
+  margin: 0;
+  padding: 1.75rem 0 1.25rem;
+  border-bottom: 1px solid var(--color-champagne);
+  list-style: none;
+  color: var(--color-text-primary);
 }

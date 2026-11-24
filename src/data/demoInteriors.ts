@@ -1,4 +1,9 @@
-import type { InteriorSelection, ProductImageFocus } from '../types'
+import type {
+  InteriorHotspot,
+  InteriorOrigin,
+  InteriorSelection,
+  ProductImageFocus,
+} from '../types'
 
 /**
  * Демо-данные интерьеров: привязка существующих интерьеров к брендам и три
@@ -17,6 +22,70 @@ export const demoInteriorBrands: Record<string, string[]> = {
   gostinaya: ALL_BRANDS,
   stolovaya: ALL_BRANDS,
   'gostinaya-svetlaya': ALL_BRANDS,
+}
+
+/**
+ * Демо-происхождение и подтверждённые модели — показать заказчику, как это будет
+ * выглядеть. Имён не выдумываем: автор «ФИО», источник «Источник фото».
+ */
+export const demoInteriorOrigins: Record<string, InteriorOrigin> = {
+  gostinaya: { kind: 'brand', brand: 'baxter', photoSource: 'Источник фото' },
+  stolovaya: { kind: 'brand', brand: 'molteni', photoSource: 'Источник фото' },
+  'gostinaya-svetlaya': { kind: 'gallery', author: 'ФИО', photoSource: 'Источник фото' },
+  kabinet: { kind: 'gallery', author: 'ФИО', photoSource: 'Источник фото' },
+  terrasa: { kind: 'brand', brand: 'bonaldo', photoSource: 'Источник фото' },
+  'gostinaya-zelenaya': { kind: 'brand', brand: 'visionnaire', photoSource: 'Источник фото' },
+}
+
+/**
+ * Демо-точки на сценах: расставлены по предметам на кадре, товары — из productIds.
+ * cropTop скрывает вшитое название бренда вверху кадра.
+ */
+export const demoInteriorScenes: Record<
+  string,
+  { hotspots: InteriorHotspot[]; cropTop?: number }
+> = {
+  gostinaya: {
+    cropTop: 22,
+    hotspots: [
+      { product: 'model-02-sofa', x: 67, y: 64 },
+      { product: 'model-11-armchair', x: 25, y: 79 },
+    ],
+  },
+  stolovaya: {
+    cropTop: 22,
+    hotspots: [
+      { product: 'model-13-table', x: 64, y: 64 },
+      { product: 'model-12-chair', x: 29, y: 77 },
+      { product: 'model-04-chair', x: 82, y: 75 },
+    ],
+  },
+  'gostinaya-svetlaya': {
+    cropTop: 22,
+    hotspots: [
+      { product: 'model-06-sofa', x: 39, y: 66 },
+      { product: 'model-07-armchair', x: 86, y: 60 },
+    ],
+  },
+  kabinet: {
+    hotspots: [
+      { product: 'model-15-armchair', x: 70, y: 69 },
+      { product: 'model-19-armchair', x: 15, y: 75 },
+      { product: 'model-31-storage', x: 59, y: 85 },
+    ],
+  },
+  terrasa: {
+    hotspots: [
+      { product: 'model-22-sofa', x: 38, y: 65 },
+      { product: 'model-26-table', x: 66, y: 70 },
+    ],
+  },
+  'gostinaya-zelenaya': {
+    hotspots: [
+      { product: 'model-16-sofa', x: 50, y: 60 },
+      { product: 'model-20-armchair', x: 22, y: 78 },
+    ],
+  },
 }
 
 export const demoInteriors: InteriorSelection[] = [

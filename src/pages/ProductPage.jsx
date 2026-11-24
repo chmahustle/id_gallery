@@ -21,7 +21,12 @@ import { ProductCard } from '../components/catalog/ProductCard'
 import { Placeholder } from '../components/Placeholder'
 import SiteShell from '../components/SiteShell'
 import { Button, Reveal, SectionLabel } from '../components/ui'
+import { useUserAuth } from '../auth/UserAuthContext'
 import { useCart } from '../cart/CartContext'
+import { useSelection } from '../selection/SelectionContext'
+import { useCompare } from '../compare/CompareContext'
+import { canCompare, confirmedValue } from '../compare/comparable'
+import { categories } from '../data/categories'
 import { featureFlags } from '../data/featureFlags'
 import { CropImage } from '../features/brands/CropImage'
 import {
@@ -31,13 +36,12 @@ import {
   resolveBrandName,
 } from '../lib/catalog'
 import { resolveProductDevPreview } from './productDevPreview'
-import { getPreviousLocation } from '../lib/navHistory'
+import { getPreviousLocation, readFinish, saveFinish } from '../lib/navHistory'
 import { getProductRooms, getRoomBySlug, getRoomProducts } from '../lib/rooms'
 import { buildGalleryFrames } from './productGalleryFrames'
 import './ProductPage.css'
 
 const PREVIEW_SWATCH_LIMIT = 4
-const PRICE_LABEL = 'Стоимость — по запросу'
 const RELATED_MIN = 2
 const RELATED_LIMIT = 4
 /** Заглушка «#» не должна уводить со страницы */
@@ -265,6 +269,11 @@ export default function ProductPage() {
   const navigate = useNavigate()
   const baseProduct = getProductBySlug(productSlug)
   const { addItem } = useCart()
+  const { user } = useUserAuth()
+  const selection = useSelection()
+  const compare = useCompare()
+  /* сообщение после «Сравнить»: другой тип / набор полон */
+  const [compareNote, setCompareNote] = useState('')
   const [openAcc, setOpenAcc] = useState('specs')
   const [activeColorId, setActiveColorId] = useState(null)
   const [finishesOpen, setFinishesOpen] = useState(false)
@@ -285,8 +294,10 @@ export default function ProductPage() {
   useEffect(() => {
     window.scrollTo(0, 0)
     setOpenAcc('specs')
-    setActiveColorId(null)
+    /* выбранное исполнение помнится в рамках сессии */
+    setActiveColorId(readFinish(productSlug))
     setFinishesOpen(false)
+    setCompareNote('')
   }, [productSlug, preview.active])
 
   useEffect(() => {
@@ -404,6 +415,7 @@ export default function ProductPage() {
 
   function selectFinish(color) {
     setActiveColorId(color.id)
+    saveFinish(productSlug, color.id)
   }
 
   if (!product) {
@@ -423,11 +435,24 @@ export default function ProductPage() {
 
   const showRealSpecs = approvedSpecs.length > 0
   const showPlaceholderSpecs = !showRealSpecs && showPh
-  const specEntries = showRealSpecs
+  const baseSpecs = showRealSpecs
     ? approvedSpecs
     : showPlaceholderSpecs
       ? placeholderSpecs
       : []
+  /* размеры и материалы — по выбранному исполнению, если они у него подтверждены */
+  const chosenFinish = activeColorId && activeColor?.id === activeColorId ? activeColor : null
+  const finishSpecs = [
+    ['Размеры', confirmedValue(chosenFinish?.dimensions)],
+    ['Материалы', confirmedValue(chosenFinish?.materials)],
+  ].filter(([, value]) => Boolean(value))
+  const specEntries = finishSpecs.length
+    ? [
+        ...finishSpecs,
+        ...baseSpecs.filter(([key]) => !finishSpecs.some(([label]) => label === key)),
+      ]
+    : baseSpecs
+  const specsForFinish = finishSpecs.length ? chosenFinish?.name || '' : ''
   const showSpecs = specEntries.length > 0
 
   const documents = (product.documents || []).filter(
@@ -437,14 +462,29 @@ export default function ProductPage() {
   const careText = (product.care || '').trim()
   const showCare = Boolean(careText)
 
-  const requestHref = `/request/?type=offer&model=${encodeURIComponent(product.slug)}`
+  /* в заявку, визит и подборку уходят модель и выбранное исполнение */
+  const variantParam =
+    activeColorId && activeColor?.id === activeColorId
+      ? `&variant=${encodeURIComponent(activeColor.id)}`
+      : ''
+  const modelParam = `model=${encodeURIComponent(product.slug)}${variantParam}`
+  const savedVariantId =
+    activeColorId && activeColor?.id === activeColorId ? activeColor.id : ''
+  const requestHref = `/request/?type=offer&${modelParam}`
+  const visitHref = `/request/?type=visit&${modelParam}`
+  /* гость: «Сохранить в подборку» ведёт ко входу или регистрации с моделью */
+  const saveHref = `/account?tab=login&${modelParam}`
+  const typeLabel =
+    categories.find((item) => item.slug === product.categorySlug)?.singular ||
+    product.subcategory ||
+    product.category
 
   /* «Назад к результатам» — только если пришли со списка внутри сайта */
   const previousPage = getPreviousLocation()
   const cameFromList =
     location.key !== 'default' &&
     previousPage &&
-    /^\/(catalog|brands|interiors)(\/|$)/.test(previousPage.pathname)
+    /^\/(catalog|brands|interiors|rooms)(\/|$)/.test(previousPage.pathname)
 
   function toggleAcc(id) {
     setOpenAcc((current) => (current === id ? '' : id))
@@ -510,6 +550,10 @@ export default function ProductPage() {
               {product.name}
             </h1>
 
+            {typeLabel ? (
+              <p className="product-page__type">{typeLabel}</p>
+            ) : null}
+
             {product.author?.name ? (
               <p className="product-page__author">
                 Автор:{' '}
@@ -525,20 +569,77 @@ export default function ProductPage() {
             ) : null}
 
             <div className="product-page__stack">
-              <p className="product-page__price">{PRICE_LABEL}</p>
-
               <div className="product-page__actions">
                 <Button as={Link} variant="primary" to={requestHref}>
-                  Запросить предложение
+                  Узнать стоимость
                 </Button>
-                {featureFlags.showCommerce ? (
-                  <Button
+                {user ? (
+                  /* повторное сохранение не создаёт дубль: уже сохранено — ссылка в подборку */
+                  selection.has(product.slug, savedVariantId) ? (
+                    <Button as={Link} variant="secondary" withArrow to="/account">
+                      В подборке
+                    </Button>
+                  ) : (
+                    <Button
+                      type="button"
+                      variant="secondary"
+                      onClick={() => selection.save(product.slug, savedVariantId)}
+                    >
+                      Сохранить в подборку
+                    </Button>
+                  )
+                ) : (
+                  <Button as={Link} variant="secondary" to={saveHref}>
+                    Сохранить в подборку
+                  </Button>
+                )}
+                <Link className="product-page__visit" to={visitHref}>
+                  Консультация и визит
+                  <ArrowRight size={16} aria-hidden="true" />
+                </Link>
+                {canCompare(activeColorId ? activeColor : null) ? (
+                  compare.has(product.slug) ? (
+                    <Link className="product-page__visit" to="/compare">
+                      {`В сравнении · ${compare.items.length}`}
+                      <ArrowRight size={16} aria-hidden="true" />
+                    </Link>
+                  ) : (
+                    <button
+                      type="button"
+                      className="product-page__visit product-page__cart-add"
+                      onClick={() => {
+                        const result = compare.add(product, savedVariantId)
+                        setCompareNote(
+                          result === 'other-type'
+                            ? 'Можно сравнить только модели одного типа.'
+                            : result === 'full'
+                              ? 'В сравнении уже 4 модели — уберите одну.'
+                              : '',
+                        )
+                      }}
+                    >
+                      Сравнить
+                      <ArrowRight size={16} aria-hidden="true" />
+                    </button>
+                  )
+                ) : null}
+                {compareNote ? (
+                  <p className="product-page__compare-note" role="status">
+                    {compareNote}{' '}
+                    <Link to="/compare">Открыть сравнение</Link>
+                  </p>
+                ) : null}
+                {user ? (
+                  <button
                     type="button"
-                    variant="secondary"
-                    onClick={() => addItem(product)}
+                    className="product-page__visit product-page__cart-add"
+                    onClick={() =>
+                      addItem(product, activeColorId ? activeColor : null)
+                    }
                   >
                     Добавить в корзину
-                  </Button>
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </button>
                 ) : null}
               </div>
 
@@ -609,6 +710,11 @@ export default function ProductPage() {
                       onToggle={() => toggleAcc('specs')}
                       demoLabel={demoLabel}
                     >
+                      {specsForFinish ? (
+                        <p className="product-page__specs-note">
+                          {`Для исполнения: ${specsForFinish}`}
+                        </p>
+                      ) : null}
                       <dl className="product-page__specs">
                         {specEntries.map(([key, value]) => (
                           <div key={key}>

@@ -12,9 +12,13 @@ export const featureFlags: FeatureFlags = {
   showProjects: false,
   showSelections: false,
   showCommerce: false,
+  /* сравнение отложено до сопоставимых данных исполнений; демо — показать заказчику */
+  showCompare: import.meta.env.DEV || demoData,
   showNewsletter: false,
-  showCareer: false,
-  showMaterialsLibrary: false,
+  /* «Карьера» в подвале и меню: демо — показать заказчику */
+  showCareer: import.meta.env.DEV || demoData,
+  /* библиотека «Каталоги и материалы»: демо — показать заказчику */
+  showMaterialsLibrary: import.meta.env.DEV || demoData,
   showAftercare: false,
   showBrandCollections: false,
   /* true только в Vite DEV; в production-сборке всегда false */
@@ -23,8 +27,8 @@ export const featureFlags: FeatureFlags = {
   showShowroomPlaceholders: import.meta.env.DEV || demoData,
   showContactPlaceholders: import.meta.env.DEV || demoData,
   showContactForm: import.meta.env.DEV || demoData,
-  /* личный кабинет скрыт до появления функции */
-  showAccount: false,
+  /* показ заказчику: иконка кабинета и /account видны; вход пока заглушка */
+  showAccount: true,
   showRequestForms: import.meta.env.DEV,
 }
 

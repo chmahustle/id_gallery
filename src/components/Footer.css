@@ -59,10 +59,6 @@ footer.footer .footer__grid {
   align-items: start;
 }
 
-footer.footer .footer__grid--5 {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-}
-
 footer.footer .footer__grid--4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
@@ -142,23 +138,6 @@ footer.footer .footer__link.ui-btn--link:focus-visible {
   color: var(--color-ink);
   opacity: 1;
   background-size: 100% 1px;
-}
-
-footer.footer .footer__contacts-list span {
-  display: block;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  min-height: 0;
-  font-family: var(--font-body);
-  font-size: var(--footer-col-link-size);
-  font-weight: 300;
-  font-style: normal;
-  letter-spacing: -0.01em;
-  line-height: var(--footer-col-link-lh);
-  text-transform: none;
-  text-decoration: none;
-  color: color-mix(in srgb, var(--color-ink) 68%, transparent);
 }
 
 /* Зона нажатия только на touch — не раздувает шаг на десктопе */
@@ -287,7 +266,6 @@ footer.footer .footer__policy:focus-visible {
     display: none;
   }
 
-  footer.footer .footer__grid--5,
   footer.footer .footer__grid--4,
   footer.footer .footer__grid--3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -310,7 +288,6 @@ footer.footer .footer__policy:focus-visible {
     padding-inline: clamp(1rem, 4vw, 1.25rem);
   }
 
-  footer.footer .footer__grid--5,
   footer.footer .footer__grid--4,
   footer.footer .footer__grid--3 {
     grid-template-columns: 1fr;
@@ -323,9 +300,4 @@ footer.footer .footer__policy:focus-visible {
     height: auto;
     aspect-ratio: 1092.162 / 132.676;
   }
-}
-
-/* подписи у телефона и WhatsApp */
-footer.footer .footer__contact-label {
-  color: var(--color-text-secondary);
 }

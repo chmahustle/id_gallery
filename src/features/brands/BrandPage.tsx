@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { Placeholder } from '../../components/Placeholder'
 import { Button, SectionLabel } from '../../components/ui'
+import { featureFlags } from '../../data/featureFlags'
 import { getNextBrand } from '../../lib/catalog'
 import { getBrandInteriors } from '../../lib/interiors'
+import { getAvailableRooms } from '../../lib/rooms'
 import { getBrandFeatured } from '../../lib/brandShowcase'
 import type { Brand } from '../../types'
 import { NEXT_BRAND_LABEL } from './brandUiCopy'
@@ -30,6 +32,27 @@ export function BrandPage({ brand }: BrandPageProps) {
   const nextBrand = getNextBrand(brand.slug)
   const featured = getBrandFeatured(brand.slug)
   const brandInteriors = getBrandInteriors(brand.slug)
+  const showInteriors = brandInteriors.length >= 3
+  const catalogFiles = (brand.catalogs || []).filter((item) => item.url)
+  /* авторы — только связанные с конкретными моделями */
+  const linkedAuthors = (brand.authors || []).filter((item) => item.models?.length)
+  const roomsHref = `/rooms/?brand=${encodeURIComponent(brand.slug)}`
+  const secondaryLinks = [
+    getAvailableRooms(brand.slug).length > 0
+      ? { label: 'По комнатам', to: roomsHref }
+      : null,
+    showInteriors ? { label: 'Интерьеры', to: '#brand-interiors' } : null,
+    /* авторы — только после подтверждения связей с моделями (как и сам блок) */
+    linkedAuthors.length ? { label: 'Авторы дизайна', to: '#brand-authors' } : null,
+    {
+      label: 'Каталоги и материалы',
+      to: catalogFiles.length
+        ? '#brand-catalogs'
+        : featureFlags.showMaterialsLibrary
+          ? `/materials/?brand=${encodeURIComponent(brand.slug)}`
+          : `/contact/?topic=materials&brand=${encodeURIComponent(brand.slug)}`,
+    },
+  ].filter(Boolean) as { label: string; to: string }[]
 
   const [heroReady, setHeroReady] = useState(false)
   const [showScrollCue, setShowScrollCue] = useState(true)
@@ -101,6 +124,24 @@ export function BrandPage({ brand }: BrandPageProps) {
             <Button as={Link} variant="inverse" withArrow to={catalogHref}>
               {`Все товары ${brand.name}`}
             </Button>
+            {secondaryLinks.length > 0 ? (
+              <nav
+                className="brand-page__hero-links"
+                aria-label={`Разделы ${brand.name}`}
+              >
+                {secondaryLinks.map((item) =>
+                  item.to.startsWith('#') ? (
+                    <a key={item.label} href={item.to}>
+                      {item.label}
+                    </a>
+                  ) : (
+                    <Link key={item.label} to={item.to}>
+                      {item.label}
+                    </Link>
+                  ),
+                )}
+              </nav>
+            ) : null}
           </div>
         </div>
 
@@ -132,8 +173,7 @@ export function BrandPage({ brand }: BrandPageProps) {
         </p>
       </section>
 
-      {/* Порядок блоков: О бренде (только текст) → подборка товаров → интерьеры → (коллекции → материалы: пока скрыты) → авторы → каталоги →
-          (коллекции → материалы → авторы → каталоги: данные в brand.*, интерфейса пока нет) */}
+      {/* Порядок блоков: О бренде → подборка товаров → каталоги и материалы → интерьеры → авторы */}
       {featured.length > 0 ? (
         <BrandFeatured
           brandName={brand.name}
@@ -142,15 +182,14 @@ export function BrandPage({ brand }: BrandPageProps) {
         />
       ) : null}
 
-      {brandInteriors.length >= 3 ? (
-        <BrandInteriors interiors={brandInteriors} />
+      {/* «Каталоги и материалы» — сразу после ассортимента */}
+      {catalogFiles.length ? (
+        <BrandCatalogs brandSlug={brand.slug} catalogs={catalogFiles} />
       ) : null}
 
-      {brand.authors?.length ? <BrandAuthors authors={brand.authors} /> : null}
+      {showInteriors ? <BrandInteriors interiors={brandInteriors} /> : null}
 
-      {brand.catalogs?.length ? (
-        <BrandCatalogs catalogs={brand.catalogs} />
-      ) : null}
+      {linkedAuthors.length ? <BrandAuthors authors={linkedAuthors} /> : null}
 
       <section
         className="brand-page__request"

@@ -15,7 +15,7 @@ export default function Explore({
     : [
         { title: 'Флагманские салоны', href: '/brands', image: gallery },
         { title: 'Сервисы', href: '#membership', image: restaurant },
-        { title: 'Контакты', href: '/contacts', image: guesthouse },
+        { title: 'Контакты', href: '/contact', image: guesthouse },
       ]
 
   return (

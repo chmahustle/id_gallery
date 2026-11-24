@@ -6,6 +6,7 @@
 export const accountPageCopy = {
   heroTitle: 'Личный кабинет',
   heroLead: 'Войдите в аккаунт или создайте новый.',
+  saveLead: 'Войдите или зарегистрируйтесь, чтобы сохранить в подборку:',
   loginTitle: 'Вход',
   registerTitle: 'Регистрация',
   registerLead:

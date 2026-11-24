@@ -9,6 +9,8 @@ export type RequestPayload = {
   contactMethod: string
   contact: string
   comment: string
+  /** «Что вам нужно?»: выбранные направления услуг */
+  directions?: string[]
   /** Для визита */
   date?: string
   time?: string

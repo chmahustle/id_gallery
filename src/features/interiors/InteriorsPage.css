@@ -319,6 +319,23 @@
   padding: var(--int-section-y) var(--int-gutter) 0;
 }
 
+/*
+ * Страница интерьера: у блоков равные отступы сверху и снизу;
+ * два блока подряд не складывают отступы (между ними — один).
+ */
+.interiors-page__models--detail {
+  padding-bottom: var(--int-section-y);
+}
+
+.interiors-page__models--detail + .interiors-page__models--detail {
+  padding-top: 0;
+}
+
+/* заголовок блока → фото со сценой: тот же шаг, что между фото и текстом в рядах */
+.interiors-page__models-head:has(+ .interior-scene) {
+  margin-bottom: var(--int-grid-gap);
+}
+
 .interiors-page__models-head {
   display: flex;
   flex-wrap: wrap;
@@ -439,4 +456,53 @@
     --int-section-y: 4rem;
     --int-row-gap: 4rem;
   }
+}
+
+/* Происхождение сцены: под фото интерьера и над названием в списке */
+.interiors-page__origin {
+  padding: 1.5rem var(--int-gutter) 0;
+}
+
+.interior-origin {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+}
+
+.interior-origin__label,
+.interior-origin--row {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.interior-origin--row {
+  margin-bottom: 0.75rem;
+  color: var(--color-text-secondary);
+}
+
+.interior-origin__text {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1rem;
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-caption-md);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: var(--leading-caption);
+  color: var(--color-text-secondary);
+}
+
+.interior-origin__text a {
+  color: var(--color-ink);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
 }

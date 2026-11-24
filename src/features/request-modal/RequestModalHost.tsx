@@ -30,14 +30,14 @@ function contextFromHref(href: string): RequestContext | null {
   return {
     kind: 'offer',
     subject:
-      (model ? labelForModelSlug(model) : null) ??
+      (model ? labelForModelSlug(model, params.get('variant')) : null) ??
       (brand ? labelForBrandSlug(brand) : null) ??
       '',
   }
 }
 
 /**
- * Основное действие открывает форму поверх текущей страницы: ссылки на
+ * Запрос предложения и темы услуг открывают форму поверх текущей страницы: ссылки на
  * /request/ перехватываются и открывают окно, закрытие возвращает к прежнему
  * месту. Сама страница /request/ по прямому адресу работает как раньше.
  */
@@ -61,7 +61,8 @@ export function RequestModalHost() {
       const href = link.getAttribute('href') || ''
       if (!/^\/request\/?(\?|$)/.test(href)) return
       const next = contextFromHref(href)
-      if (!next) return
+      /* посещение — отдельная страница «Запланировать консультацию» */
+      if (!next || next.kind === 'visit') return
       event.preventDefault()
       event.stopPropagation()
       setContext(next)

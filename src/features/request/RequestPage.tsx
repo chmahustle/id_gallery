@@ -4,8 +4,7 @@ import { Placeholder } from '../../components/Placeholder'
 import { Reveal } from '../../components/ui'
 import {
   labelForBrandSlug,
-  labelForModelSlug,
-  labelForShowroomSlug,
+  labelForModels,
   parseRequestType,
   requestAsideImage,
   requestPageCopy,
@@ -13,26 +12,22 @@ import {
 } from '../../data/request-page'
 import { RequestOfferForm } from './RequestOfferForm'
 import { RequestTabs } from './RequestTabs'
-import { RequestVisitForm } from './RequestVisitForm'
+import { RequestConsultation } from './RequestConsultation'
 import './RequestPage.css'
 
 export function RequestPage() {
   const [params, setParams] = useSearchParams()
   const type = parseRequestType(params.get('type'))
-  const modelSlug = params.get('model')
+  const modelSlugs = params.getAll('model')
+  const variantIds = params.getAll('variant')
   const brandSlug = params.get('brand')
   const showroomSlug = params.get('showroom')
-  const showroomPrefill = showroomSlug ? labelForShowroomSlug(showroomSlug) ?? '' : ''
   const tabsId = useId()
   const [ready, setReady] = useState(false)
 
   const offerPrefill =
-    (modelSlug ? labelForModelSlug(modelSlug) : null) ??
+    labelForModels(modelSlugs, variantIds) ??
     (brandSlug ? labelForBrandSlug(brandSlug) : null) ??
-    ''
-  const visitPrefill =
-    (brandSlug ? labelForBrandSlug(brandSlug) : null) ??
-    (modelSlug ? labelForModelSlug(modelSlug) : null) ??
     ''
 
   useEffect(() => {
@@ -52,9 +47,28 @@ export function RequestPage() {
   }
 
   const offerTabId = `${tabsId}-offer`
-  const visitTabId = `${tabsId}-visit`
   const offerPanelId = `${tabsId}-panel-offer`
-  const visitPanelId = `${tabsId}-panel-visit`
+
+  /* посещение — отдельный экран «Запланировать консультацию» */
+  if (type === 'visit') {
+    return (
+      <article className="request-page">
+        <RequestConsultation
+          modelSlugs={modelSlugs}
+          variantIds={variantIds}
+          initialShowroom={showroomSlug || ''}
+          initialAudience={
+            params.get('audience') === 'pro'
+              ? 'pro'
+              : params.get('audience') === 'private'
+                ? 'private'
+                : null
+          }
+        />
+        <div className="request-page__footer-gap" aria-hidden="true" />
+      </article>
+    )
+  }
 
   return (
     <article className="request-page">
@@ -82,33 +96,19 @@ export function RequestPage() {
               style={{ objectPosition: requestAsideImage.objectPosition }}
             />
           ) : (
-            <Placeholder
-              className="request-page__media-ph"
-              variant="default"
-              label=""
-            />
+            <Placeholder className="request-page__media-ph" variant="default" label="" />
           )}
         </div>
 
         <div className="request-page__main">
           <div className="request-page__panel">
             <RequestTabs baseId={tabsId} type={type} onChange={setType} />
-            {type === 'offer' ? (
-              <RequestOfferForm
-                key={`offer-${offerPrefill}`}
-                panelId={offerPanelId}
-                labelledBy={offerTabId}
-                initialModel={offerPrefill}
-              />
-            ) : (
-              <RequestVisitForm
-                key={`visit-${visitPrefill}-${showroomPrefill}`}
-                panelId={visitPanelId}
-                labelledBy={visitTabId}
-                initialBrandOrModel={visitPrefill}
-                initialShowroom={showroomPrefill}
-              />
-            )}
+            <RequestOfferForm
+              key={`offer-${offerPrefill}`}
+              panelId={offerPanelId}
+              labelledBy={offerTabId}
+              initialModel={offerPrefill}
+            />
           </div>
         </div>
       </Reveal>

@@ -1,4 +1,5 @@
 import type { BrandAuthor, BrandCatalog } from '../types'
+import { demoProducts } from './demoProducts'
 
 /**
  * Демо-данные блоков «Авторы» и «Каталоги» на странице бренда.
@@ -56,6 +57,10 @@ export const demoBrandContent: Record<string, DemoBrandContent> =
           photo,
           // TODO: когда появится фильтр по автору — вести на него
           link: `/catalog?brand=${slug}`,
+          /* демо-связь с моделями: демо-товары бренда с автором «ФИО» */
+          models: demoProducts
+            .filter((item) => item.brandSlug === slug && item.author)
+            .map((item) => item.slug),
           demo: true,
         })),
         catalogs: CATALOG_TITLES.map((title, j) => ({

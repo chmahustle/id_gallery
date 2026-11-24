@@ -9,7 +9,7 @@ const SECTIONS = [
   { key: 'brands', label: 'Бренды', href: '/brands' },
   { key: 'interiors', label: 'Интерьеры', href: '/interiors/', visible: featureFlags.showInteriors },
   { key: 'services', label: 'Услуги', href: '/services/podbor' },
-  { key: 'trade', label: 'Профессионалам', href: '/trade' },
+  { key: 'trade', label: 'Для профессионалов', href: '/trade' },
   { key: 'about', label: 'О галерее', href: '/about' },
 ].filter((item) => item.visible !== false)
 

@@ -6,6 +6,8 @@ export type {
   Category,
   ContentStatus,
   FeatureFlags,
+  InteriorHotspot,
+  InteriorOrigin,
   InteriorSelection,
   NavLink,
   NavSection,

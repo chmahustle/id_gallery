@@ -4,13 +4,15 @@ import { products } from '../data/products'
 import { getRoomBySlug, rooms, type Room } from '../data/rooms'
 import type { InteriorSelection, Product } from '../types'
 
-export function getRoomProducts(roomSlug: string): Product[] {
-  return filterProducts(products, { room: roomSlug }) as Product[]
+/** Товары комнаты; brandSlug — только товары этой фабрики */
+export function getRoomProducts(roomSlug: string, brandSlug = ''): Product[] {
+  const items = filterProducts(products, { room: roomSlug }) as Product[]
+  return brandSlug ? items.filter((item) => item.brandSlug === brandSlug) : items
 }
 
-/** Комнаты, в которых есть товары */
-export function getAvailableRooms(): Room[] {
-  return rooms.filter((room) => getRoomProducts(room.slug).length > 0)
+/** Комнаты, в которых есть товары (с brandSlug — товары этой фабрики) */
+export function getAvailableRooms(brandSlug = ''): Room[] {
+  return rooms.filter((room) => getRoomProducts(room.slug, brandSlug).length > 0)
 }
 
 export function getRoomInteriors(roomSlug: string): InteriorSelection[] {

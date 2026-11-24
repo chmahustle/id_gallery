@@ -16,9 +16,9 @@ export const site: SiteContent = {
   },
   legal: {
     privacyLabel: 'Политика конфиденциальности',
-    privacyHref: '/contacts',
+    privacyHref: '/contact',
     termsLabel: 'Условия использования',
-    termsHref: '/contacts',
+    termsHref: '/contact',
     /** Юридические ссылки скрыты, пока тексты не утверждены */
     hidden: true,
   },

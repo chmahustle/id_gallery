@@ -50,7 +50,7 @@ export function Header({ variant = 'overlay' }: HeaderProps) {
     ...(featureFlags.showShowrooms
       ? [{ label: 'Шоурумы', href: '/showrooms/' }]
       : []),
-    { label: content.header?.contacts || 'Контакты', href: '/contacts' },
+    { label: content.header?.contacts || 'Контакты', href: '/contact' },
   ]
   const headerRef = useRef<HTMLElement>(null)
   const menuButtonRef = useRef<HTMLButtonElement>(null)
@@ -148,6 +148,7 @@ export function Header({ variant = 'overlay' }: HeaderProps) {
           searchButtonRef={searchButtonRef}
           utilityLinks={utilityLinks}
           userLoggedIn={Boolean(user)}
+          showCart={Boolean(user)}
           cartCount={cartCount}
           accordion={accordion}
           onToggleMenu={handleToggleMenu}
@@ -185,7 +186,7 @@ export function Header({ variant = 'overlay' }: HeaderProps) {
         open={searchOpen}
         onClose={() => closeSearch({ restoreFocus: true })}
       />
-      {featureFlags.showCommerce ? <CartPanel /> : null}
+      {user ? <CartPanel /> : null}
     </>
   )
 }

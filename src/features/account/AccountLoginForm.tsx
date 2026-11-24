@@ -1,4 +1,6 @@
 import { type FormEvent, useId, useState } from 'react'
+import { demoAuthEnabled } from '../../auth/demoAuth'
+import { useUserAuth } from '../../auth/UserAuthContext'
 import { Button } from '../../components/ui'
 import { accountPageCopy, isValidEmail } from '../../data/account-page'
 import { AccountField } from './AccountField'
@@ -25,6 +27,7 @@ type AccountLoginFormProps = {
 
 export function AccountLoginForm({ formHidden = false }: AccountLoginFormProps) {
   const baseId = useId()
+  const { demoLogin } = useUserAuth()
   const [fields, setFields] = useState<LoginFields>({ email: '', password: '' })
   const [errors, setErrors] = useState<LoginErrors>({})
 
@@ -33,7 +36,9 @@ export function AccountLoginForm({ formHidden = false }: AccountLoginFormProps) 
     const next = validate(fields)
     setErrors(next)
     if (Object.keys(next).length > 0) return
-    submitStub(fields)
+    /* демо-стенд: вход без сервера; иначе заглушка до подключения авторизации */
+    if (demoAuthEnabled) demoLogin(fields.email)
+    else submitStub(fields)
   }
 
   return (

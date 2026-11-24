@@ -102,6 +102,32 @@
   color: var(--color-text-muted);
 }
 
+/* системный крестик type=search скрыт — свой, как в панели поиска */
+.catalog-page__search input::-webkit-search-cancel-button,
+.catalog-page__search input::-webkit-search-decoration {
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.catalog-page__search-clear {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: color 200ms var(--ease);
+}
+
+.catalog-page__search-clear:hover,
+.catalog-page__search-clear:focus-visible {
+  color: var(--color-ink);
+}
+
 .catalog-page__tools {
   grid-column: 1;
   grid-row: 1;
@@ -121,64 +147,6 @@
   grid-row: 2;
   min-width: 0;
   padding-top: 0;
-}
-
-/* Floating filters trigger — left edge, mid-screen (≥1024) */
-.catalog-fab {
-  position: fixed;
-  left: 0;
-  top: 50%;
-  /* Below burger curtain (195) and header (200); above page content */
-  z-index: 180;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  min-height: 2.75rem;
-  padding: 0.7rem 0.55rem 0.7rem 0.65rem;
-  border: 1px solid var(--color-border-subtle);
-  border-left: 0;
-  background: var(--color-ivory);
-  color: var(--color-ink);
-  box-shadow: 4px 8px 24px var(--color-border-subtle);
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-  transform: translateY(-50%) rotate(180deg);
-  font-family: var(--font-display);
-  font-size: var(--text-label-md);
-  font-weight: 400;
-  letter-spacing: var(--tracking-label);
-  line-height: var(--leading-label);
-  text-transform: uppercase;
-  transition:
-    opacity 0.25s var(--ease),
-    transform 0.25s var(--ease),
-    visibility 0.25s var(--ease),
-    background 0.2s var(--ease),
-    color 0.2s var(--ease);
-}
-
-.catalog-fab svg {
-  transform: rotate(90deg);
-}
-
-.catalog-fab:hover,
-.catalog-fab:focus-visible {
-  background: var(--color-ink);
-  color: var(--color-snow);
-  outline: none;
-}
-
-.catalog-fab.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transform: translateY(-50%) rotate(180deg) translateX(0.5rem);
-}
-
-@media (max-width: 1023px) {
-  .catalog-fab {
-    display: none;
-  }
 }
 
 .catalog-drawer__backdrop {
@@ -367,8 +335,34 @@
   cursor: pointer;
 }
 
+/* плавное раскрытие: высота 0fr → 1fr, без замера в JS */
 .catalog-acc__panel {
-  padding: 0 0 1rem;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows 450ms var(--ease),
+    opacity 300ms var(--ease);
+}
+
+.catalog-acc__panel.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+}
+
+.catalog-acc__panel-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.catalog-acc__panel.is-open .catalog-acc__panel-inner {
+  padding-bottom: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catalog-acc__panel {
+    transition: none;
+  }
 }
 
 .catalog-filter-panel__subs {
@@ -683,15 +677,68 @@
   text-decoration-thickness: 1px;
 }
 
-/* Toolbar */
+/* Toolbar: тихая строка фильтров над сеткой */
 .catalog-toolbar {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 0.85rem 1.25rem;
   width: 100%;
   margin: 0;
+  padding-block: 1.25rem;
+  border-top: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.catalog-toolbar__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 2rem;
+  min-width: 0;
+}
+
+.catalog-toolbar__all,
+.catalog-toolbar__more {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.2rem 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.catalog-toolbar__all.is-active,
+.catalog-toolbar__all:hover,
+.catalog-toolbar__all:focus-visible,
+.catalog-toolbar__more:hover,
+.catalog-toolbar__more:focus-visible {
+  color: var(--color-ink);
+}
+
+/* выбранное значение — основным цветом, пустой список — вторичным */
+.catalog-toolbar__filters .catalog-select__trigger {
+  color: var(--color-text-secondary);
+}
+
+.catalog-toolbar__filters .catalog-select__trigger.has-value,
+.catalog-toolbar__filters .catalog-select__trigger:hover {
+  color: var(--color-ink);
+}
+
+.catalog-toolbar__filters .catalog-select--toolbar .catalog-select__list {
+  left: 0;
+  right: auto;
 }
 
 .catalog-toolbar__right {
@@ -773,6 +820,34 @@
 .product-grid--grid2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2.5rem 1.75rem;
+}
+
+.product-grid__cell {
+  min-width: 0;
+}
+
+/* смена выдачи: карточки проявляются по очереди, 450ms ease */
+.product-grid--animated .product-grid__cell {
+  animation: product-grid-in 450ms var(--ease) both;
+  animation-delay: calc(var(--card-i, 0) * 40ms);
+}
+
+@keyframes product-grid-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-grid--animated .product-grid__cell {
+    animation: none;
+  }
 }
 
 .product-grid__media {
@@ -907,8 +982,9 @@
   text-align: center;
 }
 
+/* без образцов — тот же отступ, что занимает ряд образцов: подписи на одной линии */
 .product-grid__card:not(:has(.product-grid__swatches)) .product-grid__info {
-  margin-top: 0.85rem;
+  margin-top: calc(0.9rem + 0.875rem + 0.4rem + 0.75rem);
 }
 
 .product-grid__category {
@@ -952,11 +1028,33 @@
 }
 
 .catalog-empty {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem 2rem;
   margin: 2.5rem 0;
+}
+
+.catalog-empty__title {
+  margin: 0;
+  font-size: var(--text-h3);
+}
+
+.catalog-empty__text {
+  margin: 0.75rem 0 0;
   font-family: var(--font-body);
-  font-size: 14px;
+  font-size: var(--text-body);
   font-weight: 300;
-  color: var(--color-text-muted);
+  letter-spacing: -0.01em;
+  line-height: var(--leading-body);
+  color: var(--color-text-secondary);
+}
+
+.catalog-empty__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
 }
 
 /* Pagination */
@@ -991,80 +1089,6 @@
 .catalog-pagination button.is-active {
   color: var(--color-ink);
   border-bottom-color: var(--color-ink);
-}
-
-/* Shared select defaults used by toolbar */
-.catalog-select {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  position: relative;
-  z-index: 1;
-}
-
-.catalog-select.is-open {
-  z-index: 50;
-}
-
-.catalog-select__trigger {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.45rem;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  color: inherit;
-  font: inherit;
-  background: none;
-  border: 0;
-}
-
-.catalog-select__value {
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.catalog-select__chevron {
-  flex-shrink: 0;
-  opacity: 0.55;
-  transition: transform 0.2s var(--ease);
-}
-
-.catalog-select.is-open .catalog-select__chevron {
-  transform: rotate(180deg);
-}
-
-.catalog-select__list {
-  position: absolute;
-  top: calc(100% + 0.35rem);
-  z-index: 40;
-  list-style: none;
-  margin: 0;
-  padding: 0.35rem 0;
-  background: var(--color-snow);
-  border: 1px solid var(--color-border-subtle);
-  box-shadow: 0 12px 28px var(--color-border-subtle);
-  max-height: 16rem;
-  overflow: auto;
-}
-
-.catalog-select__list button {
-  display: block;
-  width: 100%;
-  padding: 0.55rem 0.85rem;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
-.catalog-select__list button:hover,
-.catalog-select__list button.is-active {
-  background: var(--color-ink-wash);
 }
 
 @media (max-width: 1100px) {
@@ -1158,8 +1182,7 @@
   border-color: var(--color-ink);
 }
 
-.catalog-active__reset,
-.catalog-empty__reset {
+.catalog-active__reset {
   padding: 0 0 2px;
   border: 0;
   border-bottom: 1px solid currentColor;
@@ -1172,18 +1195,78 @@
   cursor: pointer;
 }
 
-.catalog-empty p {
-  margin: 0 0 1rem;
-}
-
-/* Сортировка и вид сетки: одинаковый зазор до линии комнат и до фото */
-.catalog-rooms + .catalog-toolbar {
-  padding-block: 1.25rem;
-}
 
 /* Хлебные крошки каталога: Caption брендбука (другие страницы не затронуты) */
 .catalog-page .catalog-page__crumbs {
   font-size: var(--text-caption-md);
   line-height: var(--leading-caption);
   color: var(--color-text-secondary);
+}
+
+/* «Гостиная в интерьере»: фото слева, текст справа */
+.catalog-room-interior {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2.5rem;
+  margin-top: 4rem;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.catalog-room-interior__media {
+  display: block;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-cream);
+}
+
+.catalog-room-interior__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-media, var(--ease));
+}
+
+.catalog-room-interior__media:hover img {
+  transform: scale(1.02);
+}
+
+.catalog-room-interior__body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 2rem 2rem 2rem 0;
+}
+
+.catalog-room-interior__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.catalog-room-interior__body .catalog-page__lead {
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 760px) {
+  .catalog-room-interior {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .catalog-room-interior__body {
+    padding: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catalog-room-interior__media img {
+    transition: none;
+  }
 }

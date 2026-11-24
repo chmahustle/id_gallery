@@ -35,11 +35,10 @@ export const homeMeta = {
 
 export const homeHero = {
   label: 'ID GALLERY',
-  title: 'ID Gallery',
-  subtitle:
-    'Мебель и интерьерные решения Visionnaire, Molteni&C, Baxter и Bonaldo.',
+  title: 'Мебель и интерьерные решения',
+  subtitle: 'Visionnaire, Molteni&C, Baxter и Bonaldo',
   primaryCta: { label: 'Все товары', href: '/catalog' },
-  secondaryCta: { label: 'Бренды', href: '/brands' },
+  secondaryCta: { label: 'По комнатам', href: '/rooms/' },
 }
 
 export const homeHeroSlides: HeroSlide[] = [
@@ -89,8 +88,6 @@ export const homeSections = {
   brands: {
     id: 'brands',
     title: 'Бренды ID Gallery',
-    description:
-      'Четыре производителя с собственным подходом к форме, материалам и интерьеру.',
     cta: { label: 'Все бренды', href: '/brands' },
   },
   catalog: {
@@ -103,28 +100,26 @@ export const homeSections = {
     id: 'interiors',
     title: 'Интерьеры',
     description:
-      'Идеи сочетания мебели, материалов и освещения для разных пространств.',
+      'Посмотрите, как мебель, материалы и свет сочетаются в пространстве.',
     cta: { label: 'Смотреть интерьеры', href: '/interiors/' },
   },
   featured: {
     id: 'featured',
-    title: 'Предметы для вашего пространства',
+    title: 'По комнатам',
     description: 'Выберите комнату и посмотрите модели из каталога ID Gallery.',
-    cta: { label: 'Все товары', href: '/catalog' },
+    cta: { label: 'Все комнаты', href: '/rooms/' },
   },
   showrooms: {
     id: 'showrooms',
     title: 'Шоурумы',
     description:
       'Познакомьтесь с коллекциями и материалами лично. Наличие конкретной модели в экспозиции уточняется перед посещением.',
-    cta: { label: 'Шоурумы', href: '/showrooms/' },
+    cta: { label: 'Смотреть шоурумы', href: '/showrooms/' },
   },
   partners: {
     id: 'partners',
-    title: 'Дизайнерам и архитекторам',
-    description:
-      'Подбор моделей для проектов и запрос технической информации у команды ID Gallery.',
-    cta: { label: 'Сотрудничество', href: '/trade' },
-    clientCta: { label: 'Подбор и комплектация', href: '/request/' },
+    title: 'Подбор и комплектация',
+    cta: { label: 'Обсудить подбор', href: '/services/podbor' },
+    tradeLink: { label: 'Для профессионалов', href: '/trade' },
   },
 }

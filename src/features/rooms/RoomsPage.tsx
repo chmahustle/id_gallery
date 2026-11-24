@@ -1,35 +1,50 @@
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
+import { brands } from '../../data/brands'
 import { Placeholder } from '../../components/Placeholder'
-import { getAvailableRooms, getRoomInteriors, getRoomProducts } from '../../lib/rooms'
+import { getAvailableRooms, getRoomInteriors } from '../../lib/rooms'
 import { CropImage } from '../brands/CropImage'
 import './RoomsPage.css'
 
-function modelsLabel(n: number) {
-  const mod10 = n % 10
-  const mod100 = n % 100
-  if (mod10 === 1 && mod100 !== 11) return `${n} модель`
-  if (mod10 >= 2 && mod10 <= 4 && (mod100 < 12 || mod100 > 14)) return `${n} модели`
-  return `${n} моделей`
-}
-
-/** /rooms/ — обзор комнат: Все комнаты → Комната */
+/**
+ * /rooms/ — «По комнатам»: общий вход. Каждая комната ведёт в единый
+ * каталог с выбранной комнатой (?room=), фабрика со страницы бренда сохраняется.
+ */
 export function RoomsPage() {
-  const rooms = getAvailableRooms()
+  /* ?brand= со страницы бренда: только комнаты с товарами фабрики, бренд передаётся дальше */
+  const [params] = useSearchParams()
+  const brand = brands.find((item) => item.slug === params.get('brand')) || null
+  const brandSlug = brand?.slug || ''
+  const rooms = getAvailableRooms(brandSlug)
+  const roomHref = (slug: string) => {
+    const query = new URLSearchParams({ room: slug })
+    if (brandSlug) query.set('brand', brandSlug)
+    return `/catalog?${query}`
+  }
 
   return (
     <section className="rooms-page">
       <nav className="rooms-page__crumbs" aria-label="Хлебные крошки">
-        <Link to="/">Главная</Link>
-        <span aria-hidden="true">-</span>
-        <span>Все комнаты</span>
+        <Link to="/catalog">Каталог</Link>
+        <span aria-hidden="true">/</span>
+        <span>По комнатам</span>
       </nav>
-      <h1 className="rooms-page__title">Все комнаты</h1>
+      <h1 className="rooms-page__title">По комнатам</h1>
+      <p className="rooms-page__lead">Выберите пространство, для которого подбираете мебель.</p>
+      {/* ограничение по фабрике видно над списком и снимается одной ссылкой */}
+      {brand ? (
+        <p className="rooms-page__brand">
+          <span>{`Фабрика: ${brand.name}`}</span>
+          <Link className="rooms-page__all" to="/rooms/">
+            Все фабрики
+          </Link>
+        </p>
+      ) : null}
       <ul className="rooms-grid">
         {rooms.map((room) => {
           const interior = getRoomInteriors(room.slug)[0]
           return (
             <li key={room.slug}>
-              <Link className="rooms-card" to={`/rooms/${room.slug}`}>
+              <Link className="rooms-card" to={roomHref(room.slug)}>
                 <span className="rooms-card__media">
                   {interior?.image ? (
                     <CropImage
@@ -44,9 +59,7 @@ export function RoomsPage() {
                   )}
                 </span>
                 <span className="rooms-card__title">{room.label}</span>
-                <span className="rooms-card__count">
-                  {modelsLabel(getRoomProducts(room.slug).length)}
-                </span>
+                <span className="rooms-card__more">Смотреть предметы</span>
               </Link>
             </li>
           )

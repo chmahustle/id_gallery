@@ -46,10 +46,55 @@ function AuthorSolo({ author }: { author: BrandAuthor }) {
   )
 }
 
-/** Авторы: цветная полоса на всю ширину страницы, внутри обычный контейнер */
-export function BrandAuthors({ authors }: BrandAuthorsProps) {
+/**
+ * Один автор с фото: фото слева на всю высоту полосы, от края экрана;
+ * справа подпись секции и текст.
+ */
+function AuthorSplit({ author }: { author: BrandAuthor }) {
   return (
     <section
+      id="brand-authors"
+      className="brand-page__authors-band brand-page__authors-band--split"
+      aria-labelledby="brand-authors-title"
+    >
+      <Link
+        className="brand-page__split-photo-link"
+        to={author.link}
+        aria-label={`Товары автора: ${author.name}`}
+      >
+        <img
+          className="brand-page__split-photo"
+          src={author.photo}
+          alt={`${author.name}, ${author.role}`}
+          loading="lazy"
+        />
+      </Link>
+      <div className="brand-page__split-body">
+        <div className="brand-page__showcase-head">
+          <SectionLabel id="brand-authors-title">Авторы</SectionLabel>
+        </div>
+        <div className="brand-page__solo-text">
+          <div className="brand-page__solo-top">
+            <p className="brand-page__solo-role">{author.role}</p>
+            <p className="brand-page__solo-name">{author.name}</p>
+          </div>
+          <div className="brand-page__solo-bottom">
+            {author.bio ? <p className="brand-page__solo-bio">{author.bio}</p> : null}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/** Авторы: цветная полоса на всю ширину страницы, внутри обычный контейнер */
+export function BrandAuthors({ authors }: BrandAuthorsProps) {
+  if (authors.length === 1 && authors[0]!.photo) {
+    return <AuthorSplit author={authors[0]!} />
+  }
+  return (
+    <section
+      id="brand-authors"
       className="brand-page__authors-band"
       aria-labelledby="brand-authors-title"
     >

@@ -1,5 +1,6 @@
 import { ChevronDown } from 'lucide-react'
 import { useEffect, useId, useRef, useState } from 'react'
+import './CatalogSelect.css'
 
 /**
  * Кастомный select в стиле ID Gallery.
@@ -7,6 +8,8 @@ import { useEffect, useId, useRef, useState } from 'react'
  */
 export default function CatalogSelect({
   label,
+  /** Подпись на кнопке, пока ничего не выбрано (value пустой) */
+  placeholder,
   value,
   options,
   onChange,
@@ -17,6 +20,7 @@ export default function CatalogSelect({
   const listId = useId()
   const selected =
     options.find((option) => option.value === value) || options[0]
+  const triggerText = !value && placeholder ? placeholder : selected?.label
 
   useEffect(() => {
     if (!open) return undefined
@@ -49,13 +53,13 @@ export default function CatalogSelect({
       {label ? <span className="catalog-select__label">{label}</span> : null}
       <button
         type="button"
-        className="catalog-select__trigger"
+        className={`catalog-select__trigger ${value ? 'has-value' : ''}`.trim()}
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-controls={listId}
         onClick={() => setOpen((current) => !current)}
       >
-        <span className="catalog-select__value">{selected?.label}</span>
+        <span className="catalog-select__value">{triggerText}</span>
         <ChevronDown
           className="catalog-select__chevron"
           strokeWidth={1.25}
@@ -69,7 +73,7 @@ export default function CatalogSelect({
           id={listId}
           className="catalog-select__list"
           role="listbox"
-          aria-label={label || 'Выбор'}
+          aria-label={label || placeholder || 'Выбор'}
         >
           {options.map((option) => {
             const active = option.value === value

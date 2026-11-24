@@ -8,6 +8,10 @@ import {
   parseAccountTab,
   type AccountTab,
 } from '../../data/account-page'
+import { useUserAuth } from '../../auth/UserAuthContext'
+import { labelForModelSlug } from '../../data/request-page'
+import { useSelection } from '../../selection/SelectionContext'
+import { AccountSelection } from './AccountSelection'
 import { FullBleedBanner } from '../home/FullBleedBanner'
 import { AccountTabPanels } from './AccountTabPanels'
 import { AccountTabs } from './AccountTabs'
@@ -20,8 +24,27 @@ function heroSrcSet(src: string) {
 export function AccountPage() {
   const [params, setParams] = useSearchParams()
   const tab = parseAccountTab(params.get('tab'))
+  /* пришли с «Сохранить в подборку»: модель и исполнение ждут входа */
+  const modelSlug = params.get('model')
+  const savingLabel = modelSlug
+    ? labelForModelSlug(modelSlug, params.get('variant'))
+    : null
+  const { user } = useUserAuth()
+  const selection = useSelection()
   const tabsId = useId()
   const [heroReady, setHeroReady] = useState(false)
+
+  /* после входа: сохранить модель и исполнение, с которыми пришли, и убрать их из адреса */
+  const variantParam = params.get('variant') || ''
+  useEffect(() => {
+    if (!user || !modelSlug) return
+    selection.save(modelSlug, variantParam)
+    const next = new URLSearchParams(params)
+    next.delete('model')
+    next.delete('variant')
+    next.delete('tab')
+    setParams(next, { replace: true })
+  }, [user, modelSlug, variantParam, selection, params, setParams])
   const heightLockRef = useRef<(() => void) | null>(null)
 
   useEffect(() => {
@@ -39,6 +62,14 @@ export function AccountPage() {
     const nextParams = new URLSearchParams(params)
     nextParams.set('tab', next)
     setParams(nextParams, { replace: true })
+  }
+
+  if (user) {
+    return (
+      <article className="account-page">
+        <AccountSelection />
+      </article>
+    )
   }
 
   const loginPanelId = `${tabsId}-panel-login`
@@ -87,7 +118,11 @@ export function AccountPage() {
             <h1 id="account-hero-title" className="account-page__title">
               {accountPageCopy.heroTitle}
             </h1>
-            <p className="account-page__lead">{accountPageCopy.heroLead}</p>
+            <p className="account-page__lead">
+              {savingLabel
+                ? `${accountPageCopy.saveLead} ${savingLabel}`
+                : accountPageCopy.heroLead}
+            </p>
           </div>
 
           <div className="account-page__panel">

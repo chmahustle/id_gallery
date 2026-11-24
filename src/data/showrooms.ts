@@ -55,6 +55,16 @@ export const showroomsVisitBanner = {
 const DEMO_MAP_SRC =
   'https://yandex.ru/map-widget/v1/?ll=71.449100%2C51.169400&z=11&l=map'
 
+/** Шоурум проверен: утверждён, есть адрес, часы и фото */
+export function isVerifiedShowroom(entry: ShowroomEntry): boolean {
+  return (
+    entry.status === 'approved' &&
+    Boolean(entry.address.trim()) &&
+    Boolean(entry.hours.trim()) &&
+    Boolean(entry.image)
+  )
+}
+
 export const showrooms: ShowroomEntry[] = [
   {
     slug: 'showroom-01',

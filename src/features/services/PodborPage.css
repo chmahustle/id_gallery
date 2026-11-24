@@ -74,51 +74,10 @@
   margin-top: 2rem;
 }
 
-/* текстовая ссылка со стрелкой: подчёркивание слева направо */
-.services-hero__link,
-.services-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-family: var(--font-display);
-  font-size: var(--text-label-md);
-  font-weight: 400;
-  letter-spacing: var(--tracking-label);
-  line-height: var(--leading-label);
-  text-transform: uppercase;
-  text-decoration: none;
-  padding-bottom: 4px;
-  margin-bottom: -4px;
-  background-image: linear-gradient(currentColor, currentColor);
-  background-position: 0 100%;
-  background-repeat: no-repeat;
-  background-size: 0 1px;
-  transition: background-size 0.45s var(--ease-media, var(--ease));
-}
-
-.services-hero__link {
-  color: var(--color-snow);
-}
-
-.services-link {
-  color: var(--color-ink);
-}
-
-.services-hero__link:hover,
-.services-hero__link:focus-visible,
-.services-link:hover,
-.services-link:focus-visible {
-  background-size: 100% 1px;
-}
-
-/* —— Секции —— */
+/* —— Общий ритм секций: один отступ и одни поля —— */
 .services-section {
   padding: var(--section-space) var(--svc-gutter) 0;
   scroll-margin-top: var(--header-h);
-}
-
-.services-section:last-child {
-  padding-bottom: var(--section-space);
 }
 
 .services-h2 {
@@ -127,130 +86,196 @@
   font-size: var(--text-h2);
   font-weight: 500;
   letter-spacing: 0.02em;
+  line-height: 1.05;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.services-h2--sm {
+  font-size: var(--text-h3);
+}
+
+.services-h3 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-h3);
+  font-weight: 500;
+  letter-spacing: 0.02em;
   line-height: 1.1;
   text-transform: uppercase;
   color: var(--color-ink);
 }
 
-.services-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem 2rem;
-  margin-bottom: 2rem;
+.services-lead,
+.services-text {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-body);
+  color: var(--color-text-secondary);
 }
 
-.services-head__tools {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.75rem 1.5rem;
+.services-lead {
+  max-width: 44ch;
+  font-size: var(--text-body-lg);
 }
 
-/* —— Этапы —— */
-.services-steps {
-  list-style: none;
-  margin: 3rem 0 0;
+.services-text {
+  max-width: 48ch;
+  margin-top: 0.75rem;
+  font-size: var(--text-body);
+}
+
+/* —— Направления: заголовок слева, текст справа; ниже две карточки —— */
+.services-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.5rem 4rem;
+  align-items: end;
+}
+
+.services-directions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem 1.5rem;
+  margin: 3.5rem 0 0;
   padding: 0;
+  list-style: none;
+}
+
+.services-direction__media {
+  display: block;
+  aspect-ratio: 4 / 3;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+  background: var(--color-cream);
+}
+
+.services-direction__media img,
+.services-step__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* —— Как мы работаем: фото 7/12 и этап 5/12, попеременно —— */
+.services-steps {
   display: flex;
   flex-direction: column;
-  gap: 6rem;
+  gap: 5rem;
+  margin: 3.5rem 0 0;
+  padding: 0;
+  list-style: none;
 }
 
 .services-step {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 4rem;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 2rem 5rem;
   align-items: center;
 }
 
-.services-step--right .services-step__media {
+.services-step--flip {
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+}
+
+.services-step--flip .services-step__media {
   order: 2;
 }
 
 .services-step__media {
   display: block;
-  width: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  overflow: hidden;
   background: var(--color-cream);
+}
+
+.services-step__body {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-champagne);
 }
 
 .services-step__num {
   display: block;
+  margin-bottom: 1rem;
   font-family: var(--font-display);
   font-size: var(--text-label-md);
   font-weight: 400;
   letter-spacing: var(--tracking-label);
   line-height: var(--leading-label);
-  text-transform: uppercase;
   color: var(--color-text-secondary);
 }
 
-.services-step__title {
-  margin: 0.75rem 0 0;
-  font-family: var(--font-display);
-  font-size: var(--text-h3);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  line-height: 1.1;
-  text-transform: uppercase;
-  color: var(--color-ink);
-}
-
-.services-step__body {
-  max-width: 52ch;
-  margin: 1rem 0 0;
-  font-family: var(--font-body);
-  font-size: 1rem;
-  font-weight: 300;
-  line-height: var(--leading-body);
-  color: var(--color-ink);
-}
-
-/* —— Обсудить проект —— */
-.services-section.services-discuss {
-  /* заливка Cream, как у нижних блоков на других страницах */
+/* —— Итог и следующий шаг: кремовая плашка на всю ширину —— */
+.services-next {
   margin-top: var(--section-space);
-  padding: 4rem var(--svc-gutter);
+  padding: 5rem var(--svc-gutter);
   background: var(--color-cream);
+  scroll-margin-top: var(--header-h);
+}
+
+.services-next__inner {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 3rem 5rem;
+}
+
+.services-next__col {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem 2rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
 }
 
-.services-discuss__text {
-  max-width: 52ch;
-  margin: 1rem 0 0;
-  font-family: var(--font-body);
-  font-size: var(--text-body-lg);
-  font-weight: 300;
-  line-height: var(--leading-body);
-  color: var(--color-text-secondary);
+.services-next__col + .services-next__col {
+  padding-left: 5rem;
+  border-left: 1px solid var(--color-champagne);
 }
 
-@media (max-width: 767px) {
-  .services-step {
+.services-next .ui-btn {
+  margin-top: 0.75rem;
+}
+
+/* баннер «Интерьеры» сразу после плашки — без зазора между ними */
+.services-page > .ff-banner {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .services-intro,
+  .services-step,
+  .services-step--flip,
+  .services-next__inner {
     grid-template-columns: minmax(0, 1fr);
-    row-gap: 1.5rem;
   }
 
-  .services-step--right .services-step__media {
+  .services-step--flip .services-step__media {
     order: 0;
   }
 
+  .services-next__col + .services-next__col {
+    padding: 2.5rem 0 0;
+    border-left: 0;
+    border-top: 1px solid var(--color-champagne);
+  }
+}
+
+@media (max-width: 640px) {
+  .services-directions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
   .services-steps {
-    gap: 4rem;
+    gap: 3.5rem;
   }
 
-  .services-arrows {
-    display: none;
+  .services-next {
+    padding: 3.5rem var(--svc-gutter);
   }
 
-  .services-discuss .ui-btn {
+  .services-next .ui-btn {
     width: 100%;
   }
 }

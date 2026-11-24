@@ -35,7 +35,7 @@ function CtaButton({ item }) {
     )
   }
   return (
-    <Button as="link" variant="primary" to={item.ctaHref || '/contacts'}>
+    <Button as="link" variant="primary" to={item.ctaHref || '/contact'}>
       {label}
     </Button>
   )

@@ -1,4 +1,5 @@
-import { Grid2x2, Grid3x3 } from 'lucide-react'
+import { Grid2x2, Grid3x3, ListFilter } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { SORT_OPTIONS } from '../../catalog/catalog'
 import CatalogSelect from './CatalogSelect'
 
@@ -10,15 +11,95 @@ function formatCount(n) {
   return `${n} товаров`
 }
 
+/**
+ * Строка над сеткой: «Все товары», бренд, комната, тип, остальные фильтры;
+ * справа — фактическая выдача, сортировка, вид сетки.
+ */
 export default function CatalogToolbar({
+  allActive,
+  brand,
+  brands,
+  room,
+  rooms,
+  category,
+  categories,
+  extraFilterCount,
+  filtersOpen,
   sort,
   view,
   count,
+  onBrandChange,
+  onRoomChange,
+  onCategoryChange,
+  onOpenFilters,
   onSortChange,
   onViewChange,
 }) {
   return (
     <div className="catalog-toolbar">
+      <div className="catalog-toolbar__filters">
+        <Link
+          to="/catalog"
+          className={`catalog-toolbar__all ${allActive ? 'is-active' : ''}`.trim()}
+          aria-current={allActive ? 'page' : undefined}
+        >
+          Все товары
+        </Link>
+        {brands.length > 0 ? (
+          <CatalogSelect
+            className="catalog-select--toolbar"
+            label=""
+            placeholder="Бренд"
+            value={brand}
+            options={[
+              { value: '', label: 'Все бренды' },
+              ...brands.map((name) => ({ value: name, label: name })),
+            ]}
+            onChange={onBrandChange}
+          />
+        ) : null}
+        {rooms.length > 0 ? (
+          <CatalogSelect
+            className="catalog-select--toolbar"
+            label=""
+            placeholder="Комната"
+            value={room}
+            options={[
+              { value: '', label: 'Все комнаты' },
+              ...rooms.map((item) => ({ value: item.slug, label: item.label })),
+            ]}
+            onChange={onRoomChange}
+          />
+        ) : null}
+        {categories.length > 0 ? (
+          <CatalogSelect
+            className="catalog-select--toolbar"
+            label=""
+            placeholder="Тип"
+            value={category}
+            options={[
+              { value: '', label: 'Все типы' },
+              ...categories.map((item) => ({ value: item.slug, label: item.label })),
+            ]}
+            onChange={onCategoryChange}
+          />
+        ) : null}
+        <button
+          type="button"
+          className="catalog-toolbar__more"
+          aria-expanded={filtersOpen}
+          aria-controls="catalog-filters"
+          onClick={(event) => onOpenFilters(event.currentTarget)}
+        >
+          <ListFilter size={14} strokeWidth={1.4} aria-hidden="true" />
+          <span>
+            {extraFilterCount > 0
+              ? `Ещё фильтры (${extraFilterCount})`
+              : 'Ещё фильтры'}
+          </span>
+        </button>
+      </div>
+
       <div className="catalog-toolbar__right">
         {typeof count === 'number' ? (
           <p className="catalog-toolbar__count" role="status">
@@ -26,11 +107,14 @@ export default function CatalogToolbar({
           </p>
         ) : null}
         <CatalogSelect
-          className="catalog-select--toolbar"
+          className="catalog-select--toolbar catalog-select--sort"
           label=""
-          value={sort}
-          options={SORT_OPTIONS}
-          onChange={onSortChange}
+          placeholder="Сортировка"
+          value={sort === 'default' ? '' : sort}
+          options={SORT_OPTIONS.map((option) =>
+            option.value === 'default' ? { ...option, value: '' } : option,
+          )}
+          onChange={(value) => onSortChange(value || 'default')}
         />
 
         <div

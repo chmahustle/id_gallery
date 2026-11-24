@@ -1,0 +1,159 @@
+/* Каталог фабрики — общий для страницы бренда и библиотеки «Каталоги и материалы» */
+.catalog-cover {
+  min-width: 0;
+}
+
+.catalog-cover__brand {
+  margin: 0.85rem 0 0;
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.catalog-cover__brand + .catalog-cover__title {
+  margin-top: 0.3rem;
+}
+
+.catalog-cover__media {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-cream);
+}
+
+.catalog-cover__open {
+  position: absolute;
+  inset: 0;
+  display: block;
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.catalog-cover__open img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s var(--ease);
+}
+
+.catalog-cover__media:hover .catalog-cover__open img {
+  transform: scale(1.02);
+}
+
+/* затемнение обложки при наведении/фокусе — как у карточки товара */
+.catalog-cover__open::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--color-ink-overlay);
+  opacity: 0;
+  transition: opacity 0.25s var(--ease);
+  pointer-events: none;
+}
+
+.catalog-cover__media:hover .catalog-cover__open::after,
+.catalog-cover__media:focus-within .catalog-cover__open::after {
+  opacity: 1;
+}
+
+.catalog-cover__open:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: -4px;
+}
+
+.catalog-cover__tile {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1.5rem;
+  font-family: var(--font-display);
+  font-size: var(--text-model-title);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+/* «Открыть каталог»: по центру обложки, как «Узнать стоимость» у карточки товара */
+.catalog-cover__action {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  translate: -50% -50%;
+  border: 0;
+  background-color: var(--color-ivory);
+  color: var(--color-ink);
+  opacity: 0;
+  transition: opacity 0.25s var(--ease);
+}
+
+.catalog-cover__media:hover .catalog-cover__action,
+.catalog-cover__media:focus-within .catalog-cover__action {
+  opacity: 1;
+}
+
+.catalog-cover__title {
+  margin: 0.85rem 0 0;
+  font-family: var(--font-display);
+  font-size: var(--text-model-title);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--color-ink);
+}
+
+.catalog-cover__meta {
+  margin: 0.3rem 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-caption-md);
+  font-weight: 300;
+  line-height: var(--leading-caption);
+  color: var(--color-text-secondary);
+}
+
+/* без наведения: «Открыть каталог» всегда видна под обложкой как ссылка */
+@media (hover: none) {
+  .catalog-cover__media {
+    aspect-ratio: auto;
+    overflow: visible;
+  }
+
+  .catalog-cover__open {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    overflow: hidden;
+    background: var(--color-cream);
+  }
+
+  .catalog-cover__action {
+    position: static;
+    translate: none;
+    height: auto;
+    margin-top: 0.75rem;
+    padding: 0;
+    border: 0;
+    background: none;
+    opacity: 1;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .catalog-cover__open::after,
+  .catalog-cover__open img,
+  .catalog-cover__action {
+    transition: none;
+  }
+}

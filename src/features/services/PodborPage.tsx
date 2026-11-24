@@ -1,25 +1,22 @@
-import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import {
-  Button,
-  CircularSlider,
-  SliderArrows,
-  useCircularSlider,
-} from '../../components/ui'
-import { featureFlags } from '../../data/featureFlags'
+import { Button, Reveal } from '../../components/ui'
 import { podbor } from '../../data/services'
-import { getInteriors } from '../../lib/interiors'
-import { InteriorCard } from '../interiors/InteriorCard'
+import { FullBleedBanner } from '../home/FullBleedBanner'
 import '../../components/ui/Button.css'
 import './PodborPage.css'
 
-const COLS = 4
+function srcSet(src: string) {
+  return `${src} 1280w, ${src} 1920w, ${src} 2560w`
+}
 
+/**
+ * /services/podbor. Одна сетка и один ритм секций:
+ * первый экран → направления (две карточки с фото) → «Как мы работаем»
+ * (крупное фото и короткий этап, попеременно) → итог и следующий шаг
+ * (кремовая плашка) → интерьеры (баннер на всю ширину).
+ * Обе кнопки «Обсудить проект» ведут в одну форму с сохранением услуги.
+ */
 export function PodborPage() {
-  const interiors = getInteriors()
-  const slider = useCircularSlider(interiors.length)
-  const visitHref = featureFlags.showShowrooms ? '/showrooms/' : '/contacts'
-
   return (
     <article className="services-page">
       <section className="services-hero" aria-labelledby="services-title">
@@ -39,102 +36,90 @@ export function PodborPage() {
           </h1>
           <p className="services-hero__intro">{podbor.intro}</p>
           <div className="services-hero__actions">
-            <Button as="a" variant="inverse" href="#obsudit">
+            <Button as={Link} variant="inverse" withArrow to={podbor.requestHref}>
               {podbor.primaryCta}
             </Button>
-            <Link className="services-hero__link" to={visitHref}>
-              <span>{podbor.secondaryCta}</span>
-              <ArrowRight size={16} aria-hidden="true" />
-            </Link>
           </div>
         </div>
       </section>
 
-      <section
-        id="etapy"
-        className="services-section"
-        aria-labelledby="services-steps-title"
-      >
+      {/* —— Направления —— */}
+      <section className="services-section" aria-labelledby="services-about-title">
+        <div className="services-intro">
+          <h2 id="services-about-title" className="services-h2">
+            {podbor.aboutTitle}
+          </h2>
+          <p className="services-lead">{podbor.aboutText}</p>
+        </div>
+        <Reveal as="ul" className="services-directions" stagger>
+          {podbor.directions.map((item) => (
+            <li key={item.title} className="services-direction">
+              <span className="services-direction__media">
+                <img src={item.image} alt="" loading="lazy" />
+              </span>
+              <h3 className="services-h3">{item.title}</h3>
+              <p className="services-text">{item.text}</p>
+            </li>
+          ))}
+        </Reveal>
+      </section>
+
+      {/* —— Как мы работаем —— */}
+      <section id="etapy" className="services-section" aria-labelledby="services-steps-title">
         <h2 id="services-steps-title" className="services-h2">
           {podbor.stepsTitle}
         </h2>
         <ol className="services-steps">
           {podbor.steps.map((step, index) => (
-            <li
+            <Reveal
+              as="li"
               key={step.num}
-              className={[
-                'services-step',
-                index % 2 === 1 ? 'services-step--right' : '',
-              ]
+              className={['services-step', index % 2 ? 'services-step--flip' : '']
                 .filter(Boolean)
                 .join(' ')}
             >
-              <img
-                className="services-step__media"
-                src={step.image}
-                alt=""
-                loading="lazy"
-              />
-              <div className="services-step__text">
-                <span className="services-step__num">{step.num}</span>
-                <h3 className="services-step__title">{step.title}</h3>
-                <p className="services-step__body">{step.text}</p>
+              <span className="services-step__media">
+                <img src={step.image} alt="" loading="lazy" />
+              </span>
+              <div className="services-step__body">
+                <span className="services-step__num" aria-hidden="true">
+                  {step.num}
+                </span>
+                <h3 className="services-h3">{step.title}</h3>
+                <p className="services-text">{step.text}</p>
               </div>
-            </li>
+            </Reveal>
           ))}
         </ol>
       </section>
 
-      {interiors.length > 0 ? (
-        <section
-          className="services-section"
-          aria-labelledby="services-examples-title"
-        >
-          <div className="services-head">
-            <h2 id="services-examples-title" className="services-h2">
-              {podbor.examplesTitle}
-            </h2>
-            <div className="services-head__tools">
-              <Link className="services-link" to="/interiors">
-                <span>{podbor.examplesLink}</span>
-                <ArrowRight size={16} aria-hidden="true" />
-              </Link>
-              {interiors.length > COLS ? (
-                <SliderArrows
-                  className="services-arrows"
-                  prevLabel="Предыдущие интерьеры"
-                  nextLabel="Следующие интерьеры"
-                  onPrev={() => slider.go(-1)}
-                  onNext={() => slider.go(1)}
-                />
-              ) : null}
-            </div>
+      {/* —— Что вы получаете / Ваш следующий шаг —— */}
+      <section id="obsudit" className="services-next" aria-label={podbor.nextTitle}>
+        <Reveal className="services-next__inner" stagger>
+          <div className="services-next__col">
+            <h2 className="services-h2 services-h2--sm">{podbor.resultTitle}</h2>
+            <p className="services-lead">{podbor.resultText}</p>
           </div>
-          <CircularSlider
-            items={interiors}
-            slider={slider}
-            cols={COLS}
-            mobileWidth={78}
-            renderItem={(item) => <InteriorCard item={item} />}
-          />
-        </section>
-      ) : null}
-
-      <section
-        id="obsudit"
-        className="services-section services-discuss"
-        aria-labelledby="services-discuss-title"
-      >
-        <div>
-          <h2 id="services-discuss-title" className="services-h2">
-            {podbor.discussTitle}
-          </h2>
-          <p className="services-discuss__text">{podbor.discussText}</p>
-        </div>
-        <Button as={Link} variant="secondary" withArrow to={podbor.requestHref}>
-          {podbor.primaryCta}
-        </Button>
+          <div className="services-next__col">
+            <h2 className="services-h2 services-h2--sm">{podbor.nextTitle}</h2>
+            <p className="services-lead">{podbor.nextText}</p>
+            <Button as={Link} variant="primary" withArrow to={podbor.requestHref}>
+              {podbor.primaryCta}
+            </Button>
+          </div>
+        </Reveal>
       </section>
+
+      {/* —— Интерьеры и сочетания —— */}
+      <FullBleedBanner
+        id="services-interiors"
+        title={podbor.interiorsTitle}
+        description={podbor.interiorsText}
+        align="left"
+        minHeight="70svh"
+        links={[{ label: podbor.interiorsLink, href: '/interiors/' }]}
+        image={{ src: podbor.interiorsImage, srcSet: srcSet(podbor.interiorsImage) }}
+      />
     </article>
   )
 }

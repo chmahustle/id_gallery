@@ -5,7 +5,8 @@ import { buildWhatsAppLeadUrl } from '../../catalog/catalog'
 import { Button } from '../../components/ui'
 import { useContent } from '../../content/ContentContext'
 import { getApprovedLegalLinks } from '../../data/legal'
-import { todayISODate } from '../../data/request-page'
+import { keepDirections, type ServiceAudience, todayISODate } from '../../data/request-page'
+import { ServiceDirections } from '../request/ServiceDirections'
 import {
   type RequestKind,
   REQUEST_RECIPIENTS,
@@ -52,6 +53,7 @@ const COPY = {
   sending: 'Отправляем…',
   whatsapp: 'Или написать в WhatsApp',
   required: 'Заполните поле',
+  taskOrDirection: 'Выберите услугу или опишите задачу',
   close: 'Закрыть',
   successTitle: 'Заявка получена',
   successText:
@@ -157,6 +159,12 @@ export function RequestModal({
     date: '',
     time: '',
   })
+  /* «Что вам нужно?»: подбор — частный клиент, сотрудничество — дизайнер и архитектор */
+  const withDirections = kind === 'project' || kind === 'specialist'
+  const [audience, setAudience] = useState<ServiceAudience>(
+    kind === 'specialist' ? 'pro' : 'private',
+  )
+  const [directions, setDirections] = useState<string[]>([])
   const [consent, setConsent] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
 
@@ -191,7 +199,10 @@ export function RequestModal({
     const next: Record<string, string> = {}
     if (!fields.name.trim()) next.name = COPY.required
     if (!fields.contact.trim()) next.contact = COPY.required
-    if (kind === 'project' && !fields.task.trim()) next.task = COPY.required
+    /* в запросе нужна услуга или описание задачи */
+    if (kind === 'project' && !fields.task.trim() && directions.length === 0) {
+      next.task = COPY.taskOrDirection
+    }
     if (kind === 'specialist') {
       if (!fields.role.trim()) next.role = COPY.required
       if (!fields.company.trim()) next.company = COPY.required
@@ -216,6 +227,7 @@ export function RequestModal({
       contactMethod: fields.method,
       contact: fields.contact.trim(),
       comment: (kind === 'project' ? fields.task : fields.comment).trim(),
+      ...(withDirections && directions.length ? { directions } : {}),
       page: window.location.pathname + window.location.search,
       recipient: REQUEST_RECIPIENTS[kind],
       ...(kind === 'visit' ? { date: fields.date, time: fields.time } : {}),
@@ -240,7 +252,9 @@ export function RequestModal({
 
   const whatsappHref = buildWhatsAppLeadUrl(
     whatsapp,
-    `Здравствуйте! ${COPY.titles[kind]}${subject ? `: ${subject}` : ''}.`,
+    `Здравствуйте! ${COPY.titles[kind]}${subject ? `: ${subject}` : ''}.${
+      withDirections && directions.length ? `\nЧто нужно: ${directions.join(', ')}.` : ''
+    }`,
   )
   const hasWhatsApp = whatsappHref && whatsappHref !== '#'
 
@@ -369,6 +383,22 @@ export function RequestModal({
                     onChange={(v) => set('contact', v)}
                   />
                 </div>
+
+                {withDirections ? (
+                  <ServiceDirections
+                    audience={audience}
+                    value={directions}
+                    onChange={setDirections}
+                    onAudienceChange={
+                      kind === 'project'
+                        ? (next) => {
+                            setAudience(next)
+                            setDirections((current) => keepDirections(next, current))
+                          }
+                        : undefined
+                    }
+                  />
+                ) : null}
 
                 {kind === 'project' ? (
                   <Field

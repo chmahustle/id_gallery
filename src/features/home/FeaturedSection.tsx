@@ -73,12 +73,6 @@ export function FeaturedSection() {
                 {room.label}
               </button>
             ))}
-            <Link className="home-featured__room home-featured__room--all" to="/rooms/">
-              Все комнаты
-              <span className="home-featured__room-arrow" aria-hidden="true">
-                →
-              </span>
-            </Link>
           </div>
         ) : null}
 

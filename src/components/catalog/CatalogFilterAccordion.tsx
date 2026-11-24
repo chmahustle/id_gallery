@@ -42,9 +42,9 @@ export function CatalogFilterAccordion({
         role="region"
         aria-labelledby={id}
         className={`catalog-acc__panel ${open ? 'is-open' : ''}`}
-        hidden={!open}
+        inert={!open ? true : undefined}
       >
-        {children}
+        <div className="catalog-acc__panel-inner">{children}</div>
       </div>
     </section>
   )

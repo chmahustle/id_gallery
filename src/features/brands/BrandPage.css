@@ -192,6 +192,50 @@
   margin-top: 1.75rem;
 }
 
+/* вторичные входы: текстовые ссылки рядом с главной кнопкой */
+.brand-page__hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.75rem;
+}
+
+.brand-page__hero-links a {
+  padding-bottom: 0.35rem;
+  color: var(--color-snow);
+  font-family: var(--font-display);
+  font-size: var(--text-label-md);
+  font-weight: 400;
+  letter-spacing: var(--tracking-label);
+  line-height: var(--leading-label);
+  text-transform: uppercase;
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.45s var(--ease-media, var(--ease));
+}
+
+.brand-page__hero-links a:hover,
+.brand-page__hero-links a:focus-visible {
+  background-size: 100% 1px;
+}
+
+.brand-page__hero-links a:focus-visible {
+  outline: 2px solid var(--color-snow);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-page__hero-links a {
+    transition: none;
+  }
+}
+
+.brand-page__section {
+  scroll-margin-top: calc(var(--header-offset, 110px) + 1rem);
+}
+
 .brand-page__scroll-cue {
   position: absolute;
   z-index: 1;
@@ -579,6 +623,47 @@
   color: var(--color-snow);
 }
 
+/* один автор: фото на всю высоту полосы слева, от края экрана */
+.brand-page__authors-band--split {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  min-height: 36rem;
+  padding-block: 0;
+}
+
+.brand-page__split-photo-link {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.brand-page__split-photo {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+  transition: transform 0.45s var(--ease);
+}
+
+.brand-page__split-photo-link:hover .brand-page__split-photo,
+.brand-page__split-photo-link:focus-visible .brand-page__split-photo {
+  transform: scale(1.02);
+}
+
+.brand-page__split-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: var(--brand-section-y) var(--brand-gutter);
+}
+
+.brand-page__split-body .brand-page__solo-text {
+  flex: 1 1 auto;
+}
+
 @media (max-width: 1023px) {
   .brand-page__authors {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -588,6 +673,20 @@
 @media (max-width: 767px) {
   .brand-page__authors {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* телефон: фото сверху на всю ширину, текст под ним */
+  .brand-page__authors-band--split {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+
+  .brand-page__split-photo-link {
+    aspect-ratio: 4 / 3;
+  }
+
+  .brand-page__split-body {
+    padding-top: 2.5rem;
   }
 
   .brand-page__author-solo {
@@ -610,138 +709,6 @@
   }
 }
 
-.brand-page__cat-cover {
-  position: relative;
-  aspect-ratio: 4 / 5;
-  overflow: hidden;
-  background: var(--color-cream);
-}
-
-.brand-page__cat-open {
-  position: absolute;
-  inset: 0;
-  display: block;
-  color: var(--color-ink);
-  text-decoration: none;
-}
-
-.brand-page__cat-open img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.45s var(--ease);
-}
-
-.brand-page__cat-cover:hover .brand-page__cat-open img {
-  transform: scale(1.02);
-}
-
-/* затемнение обложки при наведении/фокусе — как у карточки товара */
-.brand-page__cat-open::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--color-ink-overlay);
-  opacity: 0;
-  transition: opacity 0.25s var(--ease);
-  pointer-events: none;
-}
-
-.brand-page__cat-cover:hover .brand-page__cat-open::after,
-.brand-page__cat-cover:focus-within .brand-page__cat-open::after {
-  opacity: 1;
-}
-
-.brand-page__cat-open:focus-visible {
-  outline: 2px solid var(--color-focus-ring);
-  outline-offset: -4px;
-}
-
-.brand-page__cat-tile {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 1.5rem;
-  font-family: var(--font-display);
-  font-size: var(--text-model-title);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  line-height: 1.15;
-  text-align: left;
-  text-transform: uppercase;
-  color: var(--color-ink);
-}
-
-/* «Скачать PDF»: по центру обложки, как «Узнать стоимость» у карточки товара */
-.brand-page__cat-download {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  z-index: 2;
-  translate: -50% -50%;
-  border: 0;
-  background-color: var(--color-ivory);
-  color: var(--color-ink);
-  opacity: 0;
-  transition: opacity 0.25s var(--ease);
-}
-
-.brand-page__cat-cover:hover .brand-page__cat-download,
-.brand-page__cat-cover:focus-within .brand-page__cat-download {
-  opacity: 1;
-}
-
-.brand-page__cat-title {
-  margin: 0.85rem 0 0;
-  font-family: var(--font-display);
-  font-size: var(--text-model-title);
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  line-height: 1.15;
-  text-transform: uppercase;
-  color: var(--color-ink);
-}
-
-.brand-page__cat-format {
-  margin: 0.3rem 0 0;
-  font-family: var(--font-body);
-  font-size: var(--text-caption-md);
-  font-weight: 300;
-  line-height: var(--leading-caption);
-  color: var(--color-text-secondary);
-}
-
-/* без наведения: «Скачать PDF» всегда видна под обложкой как ссылка */
-@media (hover: none) {
-  .brand-page__cat-cover {
-    aspect-ratio: auto;
-    overflow: visible;
-  }
-
-  .brand-page__cat-open {
-    position: relative;
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    background: var(--color-cream);
-  }
-
-  .brand-page__cat-download {
-    position: static;
-    translate: none;
-    height: auto;
-    margin-top: 0.75rem;
-    padding: 0;
-    border: 0;
-    background: none;
-    opacity: 1;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-}
-
 @media (max-width: 767px) {
   .brand-page__cat-arrows {
     display: none;
@@ -749,9 +716,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .brand-page__cat-open::after,
-  .brand-page__cat-open img,
-  .brand-page__cat-download,
+  .brand-page__split-photo,
   .brand-page__author-photo {
     transition: none;
   }

@@ -1,12 +1,12 @@
-import { Link, Navigate } from 'react-router-dom'
+import { Link, Navigate, useLocation, useNavigationType } from 'react-router-dom'
 import { CatalogFiltersDrawer } from '../components/catalog/CatalogFiltersDrawer'
-import { RoomTabs } from '../components/catalog/RoomTabs'
 import CatalogToolbar from '../components/catalog/CatalogToolbar'
 import Pagination from '../components/catalog/Pagination'
 import ProductGrid from '../components/catalog/ProductGrid'
 import SiteShell from '../components/SiteShell'
-import { Reveal } from '../components/ui'
+import { Button, Reveal } from '../components/ui'
 import { categories } from '../data/categories'
+import { interiors } from '../data/interiors'
 import { getRoomBySlug } from '../data/rooms'
 import { getBrandBySlug } from '../lib/catalog'
 import SearchNotFound from '../components/search/SearchNotFound'
@@ -15,6 +15,9 @@ import './Catalog.css'
 
 export default function Catalog() {
   const catalog = useCatalogFilters()
+  const location = useLocation()
+  /* «Назад» из карточки — выдача на месте, без повторного проявления */
+  const returning = useNavigationType() === 'POP'
 
   if (catalog.invalidCategory) {
     return <Navigate to="/catalog" replace />
@@ -27,6 +30,31 @@ export default function Catalog() {
       ? getBrandBySlug(filters.brandSlug)
       : null
   const roomInfo = filters.room ? getRoomBySlug(filters.room) : null
+  /* комната — главное условие: заголовок по комнате, фабрика — строкой ограничения */
+  const roomHeading = roomInfo && !searching && !catalog.category
+  const brandOfRoom =
+    roomHeading && filters.brandSlug ? getBrandBySlug(filters.brandSlug) : null
+  /* интерьер этой комнаты: сначала с той же фабрикой, иначе любой этой комнаты */
+  const roomInterior = roomHeading
+    ? (brandOfRoom &&
+        interiors.find(
+          (item) => item.room === roomInfo.slug && item.brands?.includes(brandOfRoom.slug),
+        )) ||
+      interiors.find((item) => item.room === roomInfo.slug) ||
+      null
+    : null
+  /* анимация сетки — при смене фильтров и страницы, но не на каждую букву поиска */
+  const gridParams = new URLSearchParams(location.search)
+  gridParams.delete('q')
+  const gridKey = `${location.pathname}?${gridParams}`
+  const extraFilterCount =
+    filters.materials.length + filters.sizes.length + filters.colors.length
+  const allActive =
+    !searching &&
+    !filters.brand &&
+    !filters.room &&
+    !catalog.activeCategorySlug &&
+    extraFilterCount === 0
 
   return (
     <SiteShell variant="solid">
@@ -70,8 +98,14 @@ export default function Catalog() {
         </nav>
 
         <Reveal as="header" className="catalog-page__head">
-          <h1>{brandInfo ? brandInfo.name : catalog.title}</h1>
-          {searching ? (
+          <h1>{roomHeading ? roomInfo.label : brandInfo ? brandInfo.name : catalog.title}</h1>
+          {roomHeading ? (
+            <p className="catalog-page__lead">
+              {brandOfRoom
+                ? `Модели ${brandOfRoom.name} для комнаты «${roomInfo.label}».`
+                : `Модели для комнаты «${roomInfo.label}» из ассортимента ID Gallery.`}
+            </p>
+          ) : searching ? (
             <>
               <p className="catalog-page__lead">
                 {`Результаты по запросу «${filters.q}»: ${catalog.filteredCount}.`}
@@ -95,14 +129,20 @@ export default function Catalog() {
 
         <Reveal className="catalog-page__layout" stagger>
           <div className="catalog-page__tools">
-            {catalog.availableRooms.length > 0 ? (
-              <RoomTabs
-                rooms={catalog.availableRooms}
-                value={filters.room}
-                onChange={(room) => catalog.updateParams({ room, page: 1 })}
-              />
-            ) : null}
             <CatalogToolbar
+              allActive={allActive}
+              brand={searching ? '' : filters.brand}
+              brands={searching ? [] : catalog.brands}
+              room={filters.room}
+              rooms={catalog.availableRooms}
+              category={catalog.activeCategorySlug}
+              categories={categories}
+              extraFilterCount={extraFilterCount}
+              filtersOpen={catalog.filtersOpen}
+              onBrandChange={(brand) => catalog.updateParams({ brand, page: 1 })}
+              onRoomChange={(room) => catalog.updateParams({ room, page: 1 })}
+              onCategoryChange={catalog.setCategory}
+              onOpenFilters={catalog.openFilters}
               sort={filters.sort}
               view={catalog.view}
               count={catalog.filteredCount}
@@ -113,28 +153,73 @@ export default function Catalog() {
 
           <div className="catalog-page__main">
             {catalog.filteredCount === 0 && searching ? (
-              <SearchNotFound query={filters.q} />
+              <SearchNotFound
+                onClear={() => catalog.updateParams({ q: '', page: 1 })}
+              />
             ) : catalog.filteredCount === 0 ? (
               <div className="catalog-empty" role="status">
-                <p>По выбранным условиям товаров нет.</p>
-                <button
-                  type="button"
-                  className="catalog-empty__reset"
-                  onClick={catalog.resetFilters}
-                >
-                  Сбросить условия
-                </button>
+                <div className="catalog-empty__copy">
+                  <h2 className="catalog-empty__title">
+                    Нет моделей с такими фильтрами
+                  </h2>
+                  <p className="catalog-empty__text">
+                    Снимите один фильтр или откройте весь каталог.
+                  </p>
+                </div>
+                <div className="catalog-empty__actions">
+                  <Button
+                    type="button"
+                    variant="primary"
+                    onClick={catalog.resetFilters}
+                  >
+                    Сбросить фильтры
+                  </Button>
+                  {catalog.hasEntry ? (
+                    <Button as="link" to="/catalog" variant="secondary">
+                      Все товары
+                    </Button>
+                  ) : null}
+                </div>
               </div>
             ) : null}
             <ProductGrid
               products={catalog.pageData.items}
               view={catalog.view}
+              animationKey={gridKey}
+              animate={!returning}
             />
             <Pagination
               page={catalog.pageData.page}
               totalPages={catalog.pageData.totalPages}
               onChange={(page) => catalog.updateParams({ page })}
             />
+
+            {roomInterior?.image ? (
+              <section className="catalog-room-interior" aria-labelledby="catalog-room-interior">
+                <Link
+                  className="catalog-room-interior__media"
+                  to={`/interiors/${roomInterior.slug}/`}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                >
+                  <img src={roomInterior.image} alt="" loading="lazy" />
+                </Link>
+                <div className="catalog-room-interior__body">
+                  <h2 id="catalog-room-interior" className="catalog-room-interior__title">
+                    {`${roomInfo.label} в интерьере`}
+                  </h2>
+                  <p className="catalog-page__lead">Посмотрите сочетание предметов в пространстве.</p>
+                  <Button
+                    as="link"
+                    to={`/interiors/${roomInterior.slug}/`}
+                    variant="secondary"
+                    withArrow
+                  >
+                    Смотреть интерьер
+                  </Button>
+                </div>
+              </section>
+            ) : null}
           </div>
         </Reveal>
       </div>
@@ -167,7 +252,6 @@ export default function Catalog() {
           q: filters.q,
           sort: filters.sort !== 'default' ? filters.sort : '',
         }}
-        onOpen={catalog.openFilters}
         onClose={catalog.closeFilters}
         onReset={catalog.resetFilters}
         onQueryChange={(q) => catalog.updateParams({ q, page: 1 })}

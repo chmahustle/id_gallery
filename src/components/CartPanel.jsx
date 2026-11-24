@@ -85,6 +85,9 @@ export default function CartPanel() {
                   <div className="cart-panel__info">
                     <p className="cart-panel__brand">{item.brand}</p>
                     <p className="cart-panel__name">{item.name}</p>
+                    {item.variant ? (
+                      <p className="cart-panel__variant">{item.variant}</p>
+                    ) : null}
                     {item.price ? (
                       <p className="cart-panel__price">{item.price}</p>
                     ) : null}
