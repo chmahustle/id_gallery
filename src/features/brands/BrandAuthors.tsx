@@ -1,3 +1,4 @@
+import { ArrowRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { SectionLabel } from '../../components/ui'
 import type { BrandAuthor } from '../../types'
@@ -105,14 +106,15 @@ export function BrandAuthors({ authors }: BrandAuthorsProps) {
         {authors.length === 1 ? (
           <AuthorSolo author={authors[0]!} />
         ) : (
-          <ul className="brand-page__authors">
+          /* несколько авторов: журнальные карточки — фото, линия, роль, имя, текст */
+          <ul
+            className="brand-page__authors"
+            style={{ ['--authors-cols' as string]: Math.min(authors.length, 3) }}
+          >
             {authors.map((author, index) => (
               <li
                 key={`${author.name}-${index}`}
-                className={[
-                  'brand-page__author',
-                  author.photo ? '' : 'brand-page__author--text',
-                ]
+                className={['brand-page__author', author.photo ? '' : 'brand-page__author--text']
                   .filter(Boolean)
                   .join(' ')}
               >
@@ -120,19 +122,25 @@ export function BrandAuthors({ authors }: BrandAuthorsProps) {
                   <Link
                     className="brand-page__author-photo-link"
                     to={author.link}
-                    aria-label={`Товары автора: ${author.name}`}
+                    tabIndex={-1}
+                    aria-hidden="true"
                   >
                     <img
                       className="brand-page__author-photo"
                       src={author.photo}
-                      alt={`${author.name}, ${author.role}`}
+                      alt=""
                       loading="lazy"
                     />
                   </Link>
                 ) : null}
                 <div className="brand-page__author-body">
-                  <p className="brand-page__author-name">{author.name}</p>
                   <p className="brand-page__author-role">{author.role}</p>
+                  <p className="brand-page__author-name">{author.name}</p>
+                  {author.bio ? <p className="brand-page__author-bio">{author.bio}</p> : null}
+                  <Link className="brand-page__author-link" to={author.link}>
+                    Модели автора
+                    <ArrowRight size={16} aria-hidden="true" />
+                  </Link>
                 </div>
               </li>
             ))}

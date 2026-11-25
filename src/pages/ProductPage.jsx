@@ -8,15 +8,8 @@ import {
   useParams,
   useSearchParams,
 } from 'react-router-dom'
-import {
-  catalogPath,
-  getProductBySlug,
-  getRelatedProducts,
-} from '../catalog/catalog'
-import {
-  flattenFinishes,
-  getProductFinishGroups,
-} from '../catalog/finishes'
+import { catalogPath, getProductBySlug, getRelatedProducts } from '../catalog/catalog'
+import { flattenFinishes, getProductFinishGroups } from '../catalog/finishes'
 import { ProductCard } from '../components/catalog/ProductCard'
 import { Placeholder } from '../components/Placeholder'
 import SiteShell from '../components/SiteShell'
@@ -39,6 +32,7 @@ import { resolveProductDevPreview } from './productDevPreview'
 import { getPreviousLocation, readFinish, saveFinish } from '../lib/navHistory'
 import { getProductRooms, getRoomBySlug, getRoomProducts } from '../lib/rooms'
 import { buildGalleryFrames } from './productGalleryFrames'
+import { swatchBackground } from '../lib/swatch'
 import './ProductPage.css'
 
 const PREVIEW_SWATCH_LIMIT = 4
@@ -155,14 +149,7 @@ function Accordion({ id, title, open, onToggle, children, demoLabel }) {
   )
 }
 
-function FinishesDrawer({
-  open,
-  onClose,
-  groups,
-  activeColorId,
-  onSelect,
-  demoLabel,
-}) {
+function FinishesDrawer({ open, onClose, groups, activeColorId, onSelect, demoLabel }) {
   useEffect(() => {
     if (!open) return undefined
 
@@ -220,11 +207,7 @@ function FinishesDrawer({
               <h3 className="finishes-drawer__group-title">{group.title}</h3>
               {group.materials.map((material) => (
                 <div key={material.name} className="finishes-drawer__material">
-                  <div
-                    className="finishes-drawer__grid"
-                    role="listbox"
-                    aria-label={material.name}
-                  >
+                  <div className="finishes-drawer__grid" role="listbox" aria-label={material.name}>
                     {material.colors.map((color) => {
                       const selected = color.id === activeColorId
                       return (
@@ -238,16 +221,9 @@ function FinishesDrawer({
                         >
                           <span
                             className="finishes-drawer__chip"
-                            style={{
-                              background:
-                                color.swatch ||
-                                color.hex ||
-                                'var(--color-swatch-fallback)',
-                            }}
+                            style={{ background: swatchBackground(color) }}
                           />
-                          <span className="finishes-drawer__name">
-                            {color.name}
-                          </span>
+                          <span className="finishes-drawer__name">{color.name}</span>
                         </button>
                       )
                     })}
@@ -378,32 +354,15 @@ export default function ProductPage() {
     return blocks
   }, [product, brandName])
 
-  const galleryFrames = useMemo(
-    () => (product ? buildGalleryFrames(product) : []),
-    [product],
-  )
-
   const productColors = useMemo(
-    () =>
-      Array.isArray(product?.colors)
-        ? product.colors
-        : product?.variants || [],
+    () => (Array.isArray(product?.colors) ? product.colors : product?.variants || []),
     [product],
   )
-  const finishGroups = useMemo(
-    () => getProductFinishGroups(productColors),
-    [productColors],
-  )
-  const allFinishes = useMemo(
-    () => flattenFinishes(finishGroups),
-    [finishGroups],
-  )
+  const finishGroups = useMemo(() => getProductFinishGroups(productColors), [productColors])
+  const allFinishes = useMemo(() => flattenFinishes(finishGroups), [finishGroups])
   const previewColors = productColors.slice(0, PREVIEW_SWATCH_LIMIT)
-  const hasApprovedFinishes = productColors.some(
-    (color) => color.status === 'approved',
-  )
-  const showFinishes =
-    (hasApprovedFinishes || showPh) && productColors.length > 0
+  const hasApprovedFinishes = productColors.some((color) => color.status === 'approved')
+  const showFinishes = (hasApprovedFinishes || showPh) && productColors.length > 0
 
   const activeColor =
     allFinishes.find((color) => color.id === activeColorId) ||
@@ -412,6 +371,13 @@ export default function ProductPage() {
     null
 
   const closeFinishes = useCallback(() => setFinishesOpen(false), [])
+
+  /* галерея: у выбранного исполнения — сначала его фото */
+  const pickedFinish = activeColorId ? activeColor : null
+  const galleryFrames = useMemo(
+    () => (product ? buildGalleryFrames(product, pickedFinish) : []),
+    [product, pickedFinish],
+  )
 
   function selectFinish(color) {
     setActiveColorId(color.id)
@@ -435,11 +401,7 @@ export default function ProductPage() {
 
   const showRealSpecs = approvedSpecs.length > 0
   const showPlaceholderSpecs = !showRealSpecs && showPh
-  const baseSpecs = showRealSpecs
-    ? approvedSpecs
-    : showPlaceholderSpecs
-      ? placeholderSpecs
-      : []
+  const baseSpecs = showRealSpecs ? approvedSpecs : showPlaceholderSpecs ? placeholderSpecs : []
   /* размеры и материалы — по выбранному исполнению, если они у него подтверждены */
   const chosenFinish = activeColorId && activeColor?.id === activeColorId ? activeColor : null
   const finishSpecs = [
@@ -453,11 +415,11 @@ export default function ProductPage() {
       ]
     : baseSpecs
   const specsForFinish = finishSpecs.length ? chosenFinish?.name || '' : ''
-  const showSpecs = specEntries.length > 0
+  /* материалы с образцами из админки — квадраты-данные, не кнопки */
+  const materialSwatches = (product.materialSwatches || []).filter((item) => item.name)
+  const showSpecs = specEntries.length > 0 || materialSwatches.length > 0
 
-  const documents = (product.documents || []).filter(
-    (doc) => doc.title && doc.url,
-  )
+  const documents = (product.documents || []).filter((doc) => doc.title && doc.url)
   const showDocuments = documents.length > 0
   const careText = (product.care || '').trim()
   const showCare = Boolean(careText)
@@ -468,8 +430,7 @@ export default function ProductPage() {
       ? `&variant=${encodeURIComponent(activeColor.id)}`
       : ''
   const modelParam = `model=${encodeURIComponent(product.slug)}${variantParam}`
-  const savedVariantId =
-    activeColorId && activeColor?.id === activeColorId ? activeColor.id : ''
+  const savedVariantId = activeColorId && activeColor?.id === activeColorId ? activeColor.id : ''
   const requestHref = `/request/?type=offer&${modelParam}`
   const visitHref = `/request/?type=visit&${modelParam}`
   /* гость: «Сохранить в подборку» ведёт ко входу или регистрации с моделью */
@@ -537,10 +498,7 @@ export default function ProductPage() {
 
           <div className="product-page__info">
             <h1>
-              <Link
-                className="product-page__title-brand"
-                to={`/brands/${product.brandSlug}`}
-              >
+              <Link className="product-page__title-brand" to={`/brands/${product.brandSlug}`}>
                 {brandName}
               </Link>
               <span className="product-page__title-sep" aria-hidden="true">
@@ -550,23 +508,18 @@ export default function ProductPage() {
               {product.name}
             </h1>
 
-            {typeLabel ? (
-              <p className="product-page__type">{typeLabel}</p>
-            ) : null}
+            {typeLabel ? <p className="product-page__type">{typeLabel}</p> : null}
 
             {product.author?.name ? (
               <p className="product-page__author">
-                Автор:{' '}
-                {/* TODO: когда появится фильтр каталога по автору — вести на него */}
+                Автор: {/* TODO: когда появится фильтр каталога по автору — вести на него */}
                 <Link to={`/catalog?brand=${encodeURIComponent(product.brandSlug)}`}>
                   {product.author.name}
                 </Link>
               </p>
             ) : null}
 
-            {showSummary ? (
-              <p className="product-page__summary">{summaryText}</p>
-            ) : null}
+            {showSummary ? <p className="product-page__summary">{summaryText}</p> : null}
 
             <div className="product-page__stack">
               <div className="product-page__actions">
@@ -625,17 +578,14 @@ export default function ProductPage() {
                 ) : null}
                 {compareNote ? (
                   <p className="product-page__compare-note" role="status">
-                    {compareNote}{' '}
-                    <Link to="/compare">Открыть сравнение</Link>
+                    {compareNote} <Link to="/compare">Открыть сравнение</Link>
                   </p>
                 ) : null}
                 {user ? (
                   <button
                     type="button"
                     className="product-page__visit product-page__cart-add"
-                    onClick={() =>
-                      addItem(product, activeColorId ? activeColor : null)
-                    }
+                    onClick={() => addItem(product, activeColorId ? activeColor : null)}
                   >
                     Добавить в корзину
                     <ArrowRight size={16} aria-hidden="true" />
@@ -654,15 +604,9 @@ export default function ProductPage() {
                     <DemoBadge label={demoLabel} />
                   </h2>
                   {activeColor?.name ? (
-                    <p className="product-page__finishes-current">
-                      {activeColor.name}
-                    </p>
+                    <p className="product-page__finishes-current">{activeColor.name}</p>
                   ) : null}
-                  <div
-                    className="product-page__swatches"
-                    role="listbox"
-                    aria-label="Выбор образца"
-                  >
+                  <div className="product-page__swatches" role="listbox" aria-label="Выбор образца">
                     {previewColors.map((color) => {
                       const selected = color.id === (activeColor?.id || null)
                       return (
@@ -674,12 +618,7 @@ export default function ProductPage() {
                           aria-label={color.name}
                           title={color.name}
                           className={`product-page__swatch ${selected ? 'is-active' : ''}`}
-                          style={{
-                            background:
-                              color.swatch ||
-                              color.hex ||
-                              'var(--color-swatch-fallback)',
-                          }}
+                          style={{ background: swatchBackground(color) }}
                           onClick={() => selectFinish(color)}
                         />
                       )
@@ -698,10 +637,7 @@ export default function ProductPage() {
               ) : null}
 
               {showSpecs || showDocuments || showCare ? (
-                <div
-                  id="product-specs"
-                  className="product-page__block product-page__accordions"
-                >
+                <div id="product-specs" className="product-page__block product-page__accordions">
                   {showSpecs ? (
                     <Accordion
                       id="specs"
@@ -710,6 +646,23 @@ export default function ProductPage() {
                       onToggle={() => toggleAcc('specs')}
                       demoLabel={demoLabel}
                     >
+                      {materialSwatches.length ? (
+                        <ul className="product-page__materials" aria-label="Материалы">
+                          {materialSwatches.map((item) => (
+                            <li key={item.name}>
+                              <span
+                                className="product-page__material-chip"
+                                style={{ background: swatchBackground({ swatch: item.image }) }}
+                                aria-hidden="true"
+                              />
+                              <span className="product-page__material-text">
+                                <span>{item.name}</span>
+                                {item.note ? <span>{item.note}</span> : null}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : null}
                       {specsForFinish ? (
                         <p className="product-page__specs-note">
                           {`Для исполнения: ${specsForFinish}`}
@@ -735,13 +688,9 @@ export default function ProductPage() {
                       <ul className="product-page__docs">
                         {documents.map((doc, index) => (
                           <li key={`${doc.title}-${index}`}>
-                            <span className="product-page__doc-title">
-                              {doc.title}
-                            </span>
+                            <span className="product-page__doc-title">{doc.title}</span>
                             <span className="product-page__doc-actions">
-                              <span className="product-page__doc-format">
-                                {doc.format}
-                              </span>
+                              <span className="product-page__doc-format">{doc.format}</span>
                               <a
                                 className="product-page__doc-link"
                                 href={doc.url}
@@ -790,9 +739,7 @@ export default function ProductPage() {
           >
             <div className="product-related__head">
               <div className="product-related__titlebar">
-                <SectionLabel id={`related-${block.id}`}>
-                  {block.title}
-                </SectionLabel>
+                <SectionLabel id={`related-${block.id}`}>{block.title}</SectionLabel>
                 <Link className="product-related__link" to={block.linkHref}>
                   <span>{block.linkLabel}</span>
                   <ArrowRight size={16} aria-hidden="true" />

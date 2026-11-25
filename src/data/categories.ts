@@ -4,6 +4,12 @@ import type { Category } from '../types'
  * Категории — docs/content-brief.md §04
  * description / ctaLabel: общие шаблоны из брифа (этап 7c).
  */
+/** Тексты страницы каталога без выбранного типа */
+export const catalogCopy = {
+  allTitle: 'Все товары',
+  allLead: 'Весь представленный в ID Gallery ассортимент четырёх брендов.',
+}
+
 export const categories: Category[] = [
   {
     slug: 'divany',

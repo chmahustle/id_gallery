@@ -1,9 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 
 /** Появление при скролле один раз (opacity / translateY). */
-export function useRevealOnce<T extends HTMLElement = HTMLElement>(
-  rootMargin = '0px 0px -8% 0px',
-) {
+export function useRevealOnce<T extends HTMLElement = HTMLElement>(rootMargin = '0px 0px -8% 0px') {
   const nodeRef = useRef<T | null>(null)
   const [revealed, setRevealed] = useState(false)
 

@@ -117,7 +117,7 @@ export function filterProducts(
     priceMin,
     priceMax,
     q,
-  },
+  } = {},
 ) {
   const query = String(q || '')
     .trim()

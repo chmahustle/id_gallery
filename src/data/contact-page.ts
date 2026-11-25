@@ -44,26 +44,24 @@ export const contactAsideImage = {
 
 export type ContactTopic = keyof typeof contactPageCopy.topicHints
 
-/** Строки блока «Контактная информация» в порядке брифа */
+/**
+ * Строки блока «Контактная информация»: все контакты по порядку,
+ * подряд идущие с одной подписью (два телефона) — в одну строку.
+ */
 export function getContactInfoRows(): SiteContact[] {
-  const byKey = (needle: RegExp) =>
-    contacts.find((item) => needle.test(item.label)) ?? null
+  return contacts.slice()
+}
 
-  const phone = byKey(/телефон/i)
-  const email = byKey(/email|почт/i)
-  const address = byKey(/адрес/i)
+export type ContactGroup = { label: string; items: SiteContact[] }
 
-  const rows: SiteContact[] = []
-  if (phone) {
-    rows.push({ ...phone, label: 'Телефон' })
+export function groupContacts(rows: SiteContact[]): ContactGroup[] {
+  const groups: ContactGroup[] = []
+  for (const row of rows) {
+    const last = groups[groups.length - 1]
+    if (last && last.label === row.label) last.items.push(row)
+    else groups.push({ label: row.label, items: [row] })
   }
-  if (email) {
-    rows.push({ ...email, label: 'Электронная почта' })
-  }
-  if (address) {
-    rows.push({ ...address, label: 'Адреса' })
-  }
-  return rows
+  return groups
 }
 
 export function isContactValueReady(item: SiteContact): boolean {

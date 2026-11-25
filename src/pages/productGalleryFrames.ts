@@ -1,4 +1,4 @@
-import type { ContentStatus, Product, ProductImageFocus } from '../types'
+import type { ContentStatus, Product, ProductImageFocus, ProductVariant } from '../types'
 
 export type GalleryFrame = {
   src: string
@@ -39,8 +39,13 @@ const MAX_FRAMES = 4
  * Кадры галереи: разные approved-источники (3–4), кроп без бренда в кадре.
  * Меньше 5 — сетка всё равно 5 колонок, пустые ячейки не рендерятся.
  */
-export function buildGalleryFrames(product: Product): GalleryFrame[] {
-  const own = (product.images?.length ? product.images : [product.image])
+export function buildGalleryFrames(
+  product: Product,
+  variant?: ProductVariant | null,
+): GalleryFrame[] {
+  /* фото выбранного исполнения — первыми, затем общие фото товара */
+  const variantImages = variant?.images?.length ? variant.images : variant?.image ? [variant.image] : []
+  const own = [...variantImages, ...(product.images?.length ? product.images : [product.image])]
     .map((src) => (src || '').trim())
     .filter(Boolean)
 

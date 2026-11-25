@@ -1,0 +1,50 @@
+# Проверки при каждом пуше и пул-реквесте: типы, линтер, тесты (с PostgreSQL),
+# сборка сайта, запрещённые слова и пути к фото.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: ci
+          POSTGRES_PASSWORD: ci
+          POSTGRES_DB: id_gallery_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U ci -d id_gallery_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    env:
+      TEST_DATABASE_URL: postgresql://ci:ci@localhost:5432/id_gallery_test
+      VITE_DEMO_DATA: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Типы
+        run: npm run typecheck
+      - name: Линтер
+        run: npm run lint
+      - name: Тесты
+        run: npm test
+      - name: Сборка
+        run: npm run build
+      - name: Содержимое
+        run: npm run check:content
+      - name: Фото
+        run: npm run check:images
+      - name: Уязвимости в библиотеках
+        run: npm audit --omit=dev --audit-level=high

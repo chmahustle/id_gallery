@@ -112,3 +112,73 @@ export const navigation: NavSection[] = [
     links: [{ label: 'Все статьи', href: '/news' }],
   },
 ]
+
+/** Верхняя строка разделов в шапке (под логотипом) */
+export const topNav: FooterNavLink[] = [
+  { label: 'Каталог', href: '/catalog' },
+  { label: 'Бренды', href: '/brands' },
+  { label: 'Интерьеры', href: '/interiors/', flag: 'showInteriors' },
+  { label: 'Услуги', href: '/services/podbor' },
+  { label: 'Для профессионалов', href: '/trade' },
+  { label: 'О галерее', href: '/about' },
+]
+
+/** Заголовки колонок подвала; колонка «Бренды» собирается из брендов сама */
+export const footerHeadings = {
+  catalog: 'Каталог',
+  brands: 'Бренды',
+  company: 'Галерея',
+  services: 'Сотрудничество',
+}
+
+type StoredLink = { label?: unknown; href?: unknown; flag?: unknown }
+
+function cleanLinks(list: unknown): FooterNavLink[] {
+  if (!Array.isArray(list)) return []
+  return list
+    .filter((item: StoredLink) => typeof item?.label === 'string' && typeof item?.href === 'string')
+    .map((item: StoredLink) => ({
+      label: String(item.label).trim(),
+      href: String(item.href).trim(),
+      ...(typeof item.flag === 'string' && item.flag ? { flag: item.flag as keyof FeatureFlags } : {}),
+    }))
+    .filter((item) => item.label && item.href)
+}
+
+/** Меню и подвал из админки (nav.top, nav.menu, nav.footer) */
+export function applyTopNav(list: unknown) {
+  const links = cleanLinks(list)
+  if (links.length) topNav.splice(0, topNav.length, ...links)
+}
+
+export function applyMenu(list: unknown) {
+  if (!Array.isArray(list)) return
+  const byTitle = new Map(navigation.map((section) => [section.title, section]))
+  const sections: NavSection[] = list
+    .filter((item) => item && typeof item.title === 'string' && item.title.trim())
+    .map((item) => ({
+      title: item.title.trim(),
+      ...(typeof item.href === 'string' && item.href.trim() ? { href: item.href.trim() } : {}),
+      links: cleanLinks(item.links),
+      /* подгруппы (список типов в «Каталоге») остаются из кода */
+      ...(byTitle.get(item.keep || item.title)?.subgroups
+        ? { subgroups: byTitle.get(item.keep || item.title)!.subgroups }
+        : {}),
+    }))
+  if (sections.length) navigation.splice(0, navigation.length, ...sections)
+}
+
+export function applyFooter(value: unknown) {
+  if (!value || typeof value !== 'object') return
+  const data = value as Record<string, { title?: unknown; links?: unknown }>
+  for (const key of ['catalog', 'company', 'services'] as const) {
+    const col = data[key]
+    if (!col) continue
+    if (typeof col.title === 'string' && col.title.trim()) footerHeadings[key] = col.title.trim()
+    const links = cleanLinks(col.links)
+    footerNav[key].splice(0, footerNav[key].length, ...(links as never[]))
+  }
+  if (typeof data.brands?.title === 'string' && data.brands.title.trim()) {
+    footerHeadings.brands = data.brands.title.trim()
+  }
+}

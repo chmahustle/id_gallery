@@ -5,7 +5,7 @@ import Pagination from '../components/catalog/Pagination'
 import ProductGrid from '../components/catalog/ProductGrid'
 import SiteShell from '../components/SiteShell'
 import { Button, Reveal } from '../components/ui'
-import { categories } from '../data/categories'
+import { catalogCopy, categories } from '../data/categories'
 import { interiors } from '../data/interiors'
 import { getRoomBySlug } from '../data/rooms'
 import { getBrandBySlug } from '../lib/catalog'
@@ -122,7 +122,7 @@ export default function Catalog() {
             <p className="catalog-page__lead">{catalog.category.description}</p>
           ) : (
             <p className="catalog-page__lead">
-              Весь представленный в ID Gallery ассортимент четырёх брендов.
+              {catalogCopy.allLead}
             </p>
           )}
         </Reveal>

@@ -27,10 +27,7 @@ export function formatShowroomHeading(item: ShowroomEntry): string {
 }
 
 /** Текст раскрытого блока: реальные данные или заглушка из §12. */
-export function getShowroomDetailsText(
-  item: ShowroomEntry,
-  placeholderLabel: string,
-): string {
+export function getShowroomDetailsText(item: ShowroomEntry, placeholderLabel: string): string {
   if (item.status === 'approved') {
     const parts = [item.address, item.hours].filter(Boolean)
     return parts.join('\n')

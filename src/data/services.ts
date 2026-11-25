@@ -72,7 +72,32 @@ export const podbor = {
   interiorsText: 'Как предметы и материалы работают вместе в готовых пространствах.',
   interiorsImage: '/images/brand-molteni.jpg',
   interiorsLink: 'Смотреть интерьеры',
+  interiorsHref: '/interiors/',
 
   /** Одна форма с сохранением услуги: окно запроса «Подбор и комплектация» */
   requestHref: '/request/?type=offer&topic=podbor',
 } as const
+
+/** Блоки страницы услуг под первым экраном; порядок меняется в админке */
+export type ServicesBlockId = 'about' | 'steps' | 'next' | 'interiors'
+
+export const servicesBlockLabels: Record<ServicesBlockId, string> = {
+  about: 'Направления',
+  steps: 'Как мы работаем',
+  next: 'Что вы получаете и следующий шаг',
+  interiors: 'Интерьеры и сочетания',
+}
+
+export const servicesLayout: { order: ServicesBlockId[] } = {
+  order: ['about', 'steps', 'next', 'interiors'],
+}
+
+export const defaultServicesOrder: readonly ServicesBlockId[] = [...servicesLayout.order]
+
+/** Задать порядок: только известные блоки, пропущенные — в конец */
+export function setServicesOrder(list: unknown[]) {
+  const known = Object.keys(servicesBlockLabels) as ServicesBlockId[]
+  const order = list.filter((id): id is ServicesBlockId => known.includes(id as ServicesBlockId))
+  servicesLayout.order = [...new Set([...order, ...known])]
+  return servicesLayout.order
+}

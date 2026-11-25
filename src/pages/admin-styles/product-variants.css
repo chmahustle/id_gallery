@@ -1,0 +1,170 @@
+/* Админка — товар: цвета, исполнения, материалы */
+
+/* —— Товар: цвета и исполнения, материалы —— */
+.admin-finish,
+.admin-material {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr) auto;
+  gap: 0.85rem;
+  align-items: start;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.admin-finish__swatch {
+  display: grid;
+  gap: 0.35rem;
+}
+
+/* квадрат образца: нажатие — загрузить фото фактуры */
+.admin-swatch {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 5.5rem;
+  aspect-ratio: 1;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-cream);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.admin-swatch:hover {
+  border-color: var(--color-ink);
+}
+
+.admin-swatch input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.admin-swatch__color {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem !important;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.admin-product .admin-swatch__color input[type='color'] {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0;
+  border: 1px solid var(--color-border-subtle);
+  background: none;
+  cursor: pointer;
+}
+
+.admin-finish__body,
+.admin-material__body {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.admin-product input.admin-finish__name {
+  font-weight: 400;
+}
+
+.admin-finish__photos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.admin-finish__photo {
+  position: relative;
+  display: block;
+  width: 5.5rem;
+  aspect-ratio: 4 / 3;
+  background: var(--color-cream);
+}
+
+.admin-finish__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.admin-product .admin-finish__photo button {
+  position: absolute;
+  top: 0.2rem;
+  right: 0.2rem;
+  min-height: 1.4rem;
+  width: 1.4rem;
+  padding: 0;
+  border: 0;
+  background: color-mix(in srgb, var(--color-ink) 75%, transparent);
+  color: var(--color-snow);
+  font-size: 0.85rem;
+  line-height: 1;
+}
+
+.admin-finish__add-photo {
+  position: relative;
+  display: grid !important;
+  place-items: center;
+  width: 5.5rem;
+  aspect-ratio: 4 / 3;
+  border: 1px dashed var(--color-ink);
+  font-size: 0.7rem !important;
+  line-height: 1.2;
+  text-align: center;
+  cursor: pointer;
+}
+
+.admin-finish__add-photo input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.admin-finish__more summary {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.admin-finish__more[open] {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.admin-product .admin-finish__remove {
+  min-height: 2rem;
+  width: 2rem;
+  padding: 0;
+}
+
+.admin-materials {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  gap: 0.6rem;
+}
+
+.admin-material {
+  grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+}
+
+.admin-material .admin-swatch {
+  width: 4.5rem;
+}
+
+@media (max-width: 640px) {
+  .admin-finish {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+  }
+
+  .admin-finish .admin-finish__remove {
+    grid-column: 1 / -1;
+    justify-self: end;
+  }
+}

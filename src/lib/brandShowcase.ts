@@ -10,8 +10,16 @@ export const FEATURED_MIN = 3
  * (повторы допустимы, пока данные демонстрационные). Пусто, если у бренда
  * меньше FEATURED_MIN товаров или ни у одного нет фото.
  */
-export function getBrandFeatured(brandSlug: string, limit = 8): Product[] {
+export function getBrandFeatured(brandSlug: string, limit = 8, picks?: string[]): Product[] {
   const mine = products.filter((item) => item.brandSlug === brandSlug)
+  /* подборка из админки: выбранные товары бренда по порядку */
+  if (picks?.length) {
+    const bySlug = new Map(mine.map((item) => [item.slug, item]))
+    return picks
+      .map((slug) => bySlug.get(slug))
+      .filter((item): item is Product => Boolean(item))
+      .slice(0, limit)
+  }
   const withPhoto = mine.filter((item) => Boolean(item.image))
   if (mine.length < FEATURED_MIN || withPhoto.length === 0) return []
   const borrowed = mine

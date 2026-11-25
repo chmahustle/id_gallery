@@ -1,3 +1,4 @@
+import { swatchBackground } from '../../lib/swatch'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { productPath } from '../../catalog/catalog'
@@ -68,10 +69,7 @@ export function ProductCard({
                 aria-label={color.name}
                 title={color.name}
                 className={`product-grid__swatch ${selected ? 'is-active' : ''}`}
-                style={{
-                  background:
-                    color.swatch || color.hex || 'var(--color-swatch-fallback)',
-                }}
+                style={{ background: swatchBackground(color) }}
                 onClick={(event) => {
                   event.preventDefault()
                   setActiveId(color.id)

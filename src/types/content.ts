@@ -83,6 +83,10 @@ export type Brand = {
   materials?: BrandEntry[]
   authors?: BrandAuthor[]
   catalogs?: BrandCatalog[]
+  /** Подборка товаров на странице бренда (slug-и, по порядку) — из админки */
+  featuredSlugs?: string[]
+  /** Интерьеры на странице бренда (slug-и, по порядку) — из админки */
+  interiorSlugs?: string[]
   status: ContentStatus
 }
 
@@ -106,11 +110,21 @@ export type CharacteristicField = {
   status: ContentStatus
 }
 
+/** Материал товара: образец-фото, название, короткое пояснение */
+export type ProductMaterial = {
+  name: string
+  image?: string
+  note?: string
+}
+
 export type ProductVariant = {
   id: string
   name: string
+  /** Образец: цвет (#hex) или фото фактуры (/uploads/…) */
   swatch?: string
   image?: string
+  /** Фото товара в этом исполнении; при выборе исполнения галерея показывает их */
+  images?: string[]
   status?: ContentStatus
   /** Размеры именно этого исполнения — для сравнения */
   dimensions?: CharacteristicField
@@ -178,6 +192,10 @@ export type Product = {
   documents?: ProductDocument[]
   /** Текст по уходу; пустой — блока нет */
   care?: string
+  /** Материалы с образцами (фото фактуры, название, пояснение) */
+  materialSwatches?: ProductMaterial[]
+  /** Цена из админки; на сайте не показывается, пока нет решения о ценах */
+  price?: string
   /** Демонстрационный товар (src/data/demoProducts.ts, VITE_DEMO_DATA) */
   demo?: boolean
   popularity?: number

@@ -123,3 +123,83 @@ export const homeSections = {
     tradeLink: { label: 'Для профессионалов', href: '/trade' },
   },
 }
+
+/** Разделы главной под первым экраном; порядок меняется в админке */
+export type HomeSectionId = 'featured' | 'brands' | 'interiors' | 'partners' | 'showrooms'
+
+export const homeSectionLabels: Record<HomeSectionId, string> = {
+  featured: 'По комнатам',
+  brands: 'Бренды',
+  interiors: 'Интерьеры',
+  partners: 'Подбор и комплектация',
+  showrooms: 'Шоурумы',
+}
+
+export const homeLayout: { order: HomeSectionId[] } = {
+  order: ['featured', 'brands', 'interiors', 'partners', 'showrooms'],
+}
+
+export const defaultHomeOrder: readonly HomeSectionId[] = [...homeLayout.order]
+
+/** Задать порядок: только известные разделы, пропущенные — в конец */
+export function setHomeOrder(list: unknown[]) {
+  const known = Object.keys(homeSectionLabels) as HomeSectionId[]
+  const order = list.filter((id): id is HomeSectionId => known.includes(id as HomeSectionId))
+  homeLayout.order = [...new Set([...order, ...known])]
+  return homeLayout.order
+}
+
+/** Порядок из админки (JSON-строка из базы) */
+export function applyHomeOrder(raw: string) {
+  try {
+    const parsed = JSON.parse(raw)
+    if (Array.isArray(parsed)) setHomeOrder(parsed)
+  } catch {
+    /* битое значение — остаётся порядок из кода */
+  }
+}
+
+/**
+ * «По комнатам»: товары, выбранные в админке для каждой комнаты (slug-и).
+ * Пусто — блок берёт первые модели комнаты автоматически.
+ */
+export const homeFeaturedPicks: Record<string, string[]> = {}
+
+export const FEATURED_COUNT = 4
+
+export function setFeaturedPicks(value: unknown) {
+  for (const key of Object.keys(homeFeaturedPicks)) delete homeFeaturedPicks[key]
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return homeFeaturedPicks
+  for (const [room, list] of Object.entries(value as Record<string, unknown>)) {
+    if (!Array.isArray(list)) continue
+    const slugs = list.filter((slug): slug is string => typeof slug === 'string').slice(0, FEATURED_COUNT)
+    if (slugs.length) homeFeaturedPicks[room] = slugs
+  }
+  return homeFeaturedPicks
+}
+
+/**
+ * Полоса брендов под баннером «Бренды»: список из админки.
+ * slug — бренд из каталога (название и ссылка берутся из него),
+ * label + href — свой пункт. null — показываются все бренды.
+ */
+export type BrandStripItem = { slug?: string; label?: string; href?: string }
+
+export const homeBrandStrip: { items: BrandStripItem[] | null } = { items: null }
+
+export function setBrandStrip(value: unknown) {
+  if (!Array.isArray(value)) {
+    homeBrandStrip.items = null
+    return null
+  }
+  const items = value
+    .filter((item): item is BrandStripItem => Boolean(item) && typeof item === 'object')
+    .map((item) => ({
+      ...(typeof item.slug === 'string' && item.slug ? { slug: item.slug } : {}),
+      ...(typeof item.label === 'string' && item.label.trim() ? { label: item.label.trim() } : {}),
+      ...(typeof item.href === 'string' && item.href.trim() ? { href: item.href.trim() } : {}),
+    }))
+    .filter((item) => item.slug || (item.label && item.href))
+  homeBrandStrip.items = items
+  return items
+}

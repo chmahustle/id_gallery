@@ -17,7 +17,7 @@ function heroSrcSet(src: string) {
 
 export function ContactPage() {
   const [heroReady, setHeroReady] = useState(false)
-  const bodyReveal = useRevealOnce<HTMLElement>()
+  const bodyReveal = useRevealOnce<HTMLDivElement>()
   const showForm = featureFlags.showContactForm
 
   useEffect(() => {

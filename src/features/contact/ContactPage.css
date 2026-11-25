@@ -414,3 +414,18 @@
     transition: none;
   }
 }
+
+/* шоурум в контактах: название-ссылка и адрес под ним */
+.contact-page__showroom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.contact-page__showroom + .contact-page__showroom {
+  margin-top: 0.75rem;
+}
+
+.contact-page__showroom span {
+  color: var(--color-text-secondary);
+}

@@ -18,9 +18,7 @@ export function resolveBrandName(
   if (typeof brandSlugOrName === 'string') {
     const bySlug = getBrandBySlug(brandSlugOrName)
     if (bySlug) return bySlug.name
-    const byName = brands.find(
-      (b) => b.name.toLowerCase() === brandSlugOrName.toLowerCase(),
-    )
+    const byName = brands.find((b) => b.name.toLowerCase() === brandSlugOrName.toLowerCase())
     return byName?.name || brandSlugOrName
   }
   if (brandSlugOrName.brandSlug) {
@@ -54,9 +52,7 @@ export function getProducts(filters: ProductFilters = {}): Product[] {
     }
     if (brand) {
       const matchBrand =
-        item.brand === brand ||
-        item.brandSlug === brand ||
-        item.brandSlug === brand.toLowerCase()
+        item.brand === brand || item.brandSlug === brand || item.brandSlug === brand.toLowerCase()
       if (!matchBrand) return false
     }
     if (material) {
@@ -69,9 +65,7 @@ export function getProducts(filters: ProductFilters = {}): Product[] {
     }
     if (color) {
       const variants = item.variants || item.colors || []
-      const hit = variants.some(
-        (variant) => variant.name.toLowerCase() === color.toLowerCase(),
-      )
+      const hit = variants.some((variant) => variant.name.toLowerCase() === color.toLowerCase())
       if (!hit) return false
     }
     return true
@@ -95,9 +89,7 @@ const SPEC_LABELS: Record<string, string> = {
 }
 
 /** Только поля characteristics со status === 'approved'. */
-export function getApprovedSpecs(
-  product: Product,
-): Array<[string, string]> {
+export function getApprovedSpecs(product: Product): Array<[string, string]> {
   const chars = product.characteristics
   if (!chars) return []
   const entries: Array<[string, string]> = []
@@ -114,9 +106,7 @@ export function getApprovedSpecs(
  * Демо-характеристики (status: 'placeholder') — только при showProductPlaceholders.
  * Значения живут в data/products.ts, не в JSX.
  */
-export function getPlaceholderSpecs(
-  product: Product,
-): Array<[string, string]> {
+export function getPlaceholderSpecs(product: Product): Array<[string, string]> {
   const chars = product.characteristics
   if (!chars) return []
   const entries: Array<[string, string]> = []
@@ -152,10 +142,7 @@ export function getProductBySlug(slug: string): ProductView | null {
 export function getRelatedProducts(product: Product, limit = 4): Product[] {
   if (!product) return []
   return allProducts
-    .filter(
-      (item) =>
-        item.slug !== product.slug && item.brandSlug === product.brandSlug,
-    )
+    .filter((item) => item.slug !== product.slug && item.brandSlug === product.brandSlug)
     .sort((a, b) => (b.popularity || 0) - (a.popularity || 0))
     .slice(0, limit)
 }

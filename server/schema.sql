@@ -26,6 +26,9 @@ CREATE TABLE IF NOT EXISTS admin_sessions (
 
 CREATE INDEX IF NOT EXISTS admin_sessions_expires_idx ON admin_sessions (expires_at);
 
+-- отпечаток логина и пароля из .env: после их смены старые сессии не действуют
+ALTER TABLE admin_sessions ADD COLUMN IF NOT EXISTS credentials TEXT NOT NULL DEFAULT '';
+
 CREATE TABLE IF NOT EXISTS news_articles (
   id SERIAL PRIMARY KEY,
   slug TEXT NOT NULL UNIQUE,
@@ -87,3 +90,34 @@ CREATE TABLE IF NOT EXISTS user_sessions (
 
 CREATE INDEX IF NOT EXISTS user_sessions_expires_idx ON user_sessions (expires_at);
 CREATE INDEX IF NOT EXISTS user_sessions_user_idx ON user_sessions (user_id);
+
+/* Правки текстов и фото текущих страниц (реестр src/content/editable.ts) */
+CREATE TABLE IF NOT EXISTS content_overrides (
+  id TEXT PRIMARY KEY,
+  value TEXT NOT NULL,
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+/*
+ * Товары из админки. slug совпадает с товаром в коде — запись заменяет его;
+ * новый slug — новый товар. published = false скрывает товар на сайте.
+ */
+CREATE TABLE IF NOT EXISTS products (
+  slug TEXT PRIMARY KEY,
+  data JSONB NOT NULL,
+  published BOOLEAN NOT NULL DEFAULT true,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+/*
+ * Бренды из админки. slug совпадает с брендом в коде — запись дополняет
+ * и заменяет его поля; новый slug — новый бренд со своей страницей.
+ */
+CREATE TABLE IF NOT EXISTS brand_records (
+  slug TEXT PRIMARY KEY,
+  data JSONB NOT NULL,
+  published BOOLEAN NOT NULL DEFAULT true,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);

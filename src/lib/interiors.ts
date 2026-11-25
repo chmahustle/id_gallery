@@ -12,14 +12,19 @@ export function getInteriorBySlug(slug: string): InteriorSelection | null {
 }
 
 /** Интерьеры, в которых участвует бренд (блок «Интерьеры» на странице бренда) */
-export function getBrandInteriors(brandSlug: string): InteriorSelection[] {
+export function getBrandInteriors(brandSlug: string, picks?: string[]): InteriorSelection[] {
+  /* интерьеры из админки: выбранные по порядку */
+  if (picks?.length) {
+    const bySlug = new Map(interiors.map((item) => [item.slug, item]))
+    return picks
+      .map((slug) => bySlug.get(slug))
+      .filter((item): item is InteriorSelection => Boolean(item))
+  }
   return interiors.filter((item) => item.brands?.includes(brandSlug))
 }
 
 /** Товары подборки по productIds (slug); отсутствующие пропускаем. */
-export function getInteriorProducts(
-  selection: InteriorSelection,
-): Product[] {
+export function getInteriorProducts(selection: InteriorSelection): Product[] {
   const bySlug = new Map(products.map((item) => [item.slug, item]))
   const result: Product[] = []
   for (const id of selection.productIds) {

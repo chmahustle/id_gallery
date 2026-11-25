@@ -239,7 +239,8 @@
 }
 
 /* баннер «Интерьеры» сразу после плашки — без зазора между ними */
-.services-page > .ff-banner {
+.services-page > .ff-banner,
+.services-page > [data-cv-block] > .ff-banner {
   margin-top: 0;
 }
 

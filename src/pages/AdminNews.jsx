@@ -1,7 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
 import { api } from '../api'
 import { newsCategories } from '../content'
+import { FrameButton } from './AdminFrame'
 import './Admin.css'
+
+/* где на сайте стоит обложка события */
+const NEWS_FRAMES = [
+  { label: 'Карточка в списке событий', ratio: 16 / 10 },
+  { label: 'Обложка на странице события', ratio: 21 / 9 },
+]
 
 const emptyForm = {
   title: '',
@@ -40,9 +47,7 @@ function articleToForm(item) {
     excerpt: item.excerpt || '',
     image: item.image || '',
     gallery: (item.images || [])
-      .map((img) =>
-        img.caption ? `${img.src} | ${img.caption}` : img.src,
-      )
+      .map((img) => (img.caption ? `${img.src} | ${img.caption}` : img.src))
       .join('\n'),
     body: (item.body || []).join('\n\n'),
     ctaLabel: item.ctaLabel || '',
@@ -90,10 +95,7 @@ export default function AdminNews({ onMessage, onChanged }) {
   const [form, setForm] = useState(emptyForm)
   const [busy, setBusy] = useState(false)
 
-  const categoryOptions = useMemo(
-    () => newsCategories.filter((name) => name !== 'Все'),
-    [],
-  )
+  const categoryOptions = useMemo(() => newsCategories.filter((name) => name !== 'Все'), [])
 
   async function load() {
     setReady(false)
@@ -217,9 +219,7 @@ export default function AdminNews({ onMessage, onChanged }) {
               Заголовок
               <input
                 value={form.title}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, title: e.target.value }))
-                }
+                onChange={(e) => setForm((prev) => ({ ...prev, title: e.target.value }))}
                 required
               />
             </label>
@@ -228,9 +228,7 @@ export default function AdminNews({ onMessage, onChanged }) {
               <input
                 type="date"
                 value={form.date}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, date: e.target.value }))
-                }
+                onChange={(e) => setForm((prev) => ({ ...prev, date: e.target.value }))}
                 required
               />
             </label>
@@ -238,9 +236,7 @@ export default function AdminNews({ onMessage, onChanged }) {
               Категория
               <select
                 value={form.category}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, category: e.target.value }))
-                }
+                onChange={(e) => setForm((prev) => ({ ...prev, category: e.target.value }))}
               >
                 {categoryOptions.map((name) => (
                   <option key={name} value={name}>
@@ -253,9 +249,7 @@ export default function AdminNews({ onMessage, onChanged }) {
               slug (необязательно)
               <input
                 value={form.slug}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, slug: e.target.value }))
-                }
+                onChange={(e) => setForm((prev) => ({ ...prev, slug: e.target.value }))}
                 placeholder="сгенерируется из заголовка"
               />
             </label>
@@ -266,9 +260,7 @@ export default function AdminNews({ onMessage, onChanged }) {
             <textarea
               rows={2}
               value={form.excerpt}
-              onChange={(e) =>
-                setForm((prev) => ({ ...prev, excerpt: e.target.value }))
-              }
+              onChange={(e) => setForm((prev) => ({ ...prev, excerpt: e.target.value }))}
             />
           </label>
 
@@ -276,9 +268,7 @@ export default function AdminNews({ onMessage, onChanged }) {
             Обложка (URL или /uploads/…)
             <input
               value={form.image}
-              onChange={(e) =>
-                setForm((prev) => ({ ...prev, image: e.target.value }))
-              }
+              onChange={(e) => setForm((prev) => ({ ...prev, image: e.target.value }))}
             />
           </label>
           <label className="admin-news-form__file">
@@ -290,7 +280,14 @@ export default function AdminNews({ onMessage, onChanged }) {
             />
           </label>
           {form.image ? (
-            <img className="admin-news-form__preview" src={form.image} alt="" />
+            <span className="admin-media">
+              <img className="admin-news-form__preview" src={form.image} alt="" />
+              <FrameButton
+                src={form.image}
+                aspects={NEWS_FRAMES}
+                onChange={(image) => setForm((prev) => ({ ...prev, image }))}
+              />
+            </span>
           ) : null}
 
           <label>
@@ -298,9 +295,7 @@ export default function AdminNews({ onMessage, onChanged }) {
             <textarea
               rows={4}
               value={form.gallery}
-              onChange={(e) =>
-                setForm((prev) => ({ ...prev, gallery: e.target.value }))
-              }
+              onChange={(e) => setForm((prev) => ({ ...prev, gallery: e.target.value }))}
               placeholder="/placeholders/Gemini_Generated_Image_9eqvhh9eqvhh9eqv.jpg | Подпись"
             />
           </label>
@@ -310,9 +305,7 @@ export default function AdminNews({ onMessage, onChanged }) {
             <textarea
               rows={8}
               value={form.body}
-              onChange={(e) =>
-                setForm((prev) => ({ ...prev, body: e.target.value }))
-              }
+              onChange={(e) => setForm((prev) => ({ ...prev, body: e.target.value }))}
               required
             />
           </label>
@@ -322,36 +315,28 @@ export default function AdminNews({ onMessage, onChanged }) {
               Текст кнопки
               <input
                 value={form.ctaLabel}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, ctaLabel: e.target.value }))
-                }
+                onChange={(e) => setForm((prev) => ({ ...prev, ctaLabel: e.target.value }))}
               />
             </label>
             <label>
               Ссылка кнопки
               <input
                 value={form.ctaHref}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, ctaHref: e.target.value }))
-                }
+                onChange={(e) => setForm((prev) => ({ ...prev, ctaHref: e.target.value }))}
               />
             </label>
             <label>
               Внешняя ссылка
               <input
                 value={form.externalUrl}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, externalUrl: e.target.value }))
-                }
+                onChange={(e) => setForm((prev) => ({ ...prev, externalUrl: e.target.value }))}
               />
             </label>
             <label>
               Видео (embed URL)
               <input
                 value={form.videoUrl}
-                onChange={(e) =>
-                  setForm((prev) => ({ ...prev, videoUrl: e.target.value }))
-                }
+                onChange={(e) => setForm((prev) => ({ ...prev, videoUrl: e.target.value }))}
               />
             </label>
           </div>
@@ -360,9 +345,7 @@ export default function AdminNews({ onMessage, onChanged }) {
             <input
               type="checkbox"
               checked={form.published}
-              onChange={(e) =>
-                setForm((prev) => ({ ...prev, published: e.target.checked }))
-              }
+              onChange={(e) => setForm((prev) => ({ ...prev, published: e.target.checked }))}
             />
             Опубликовано
           </label>
@@ -405,9 +388,7 @@ export default function AdminNews({ onMessage, onChanged }) {
             </div>
           </article>
         ))}
-        {ready && items.length === 0 ? (
-          <p className="admin__loading">Новостей пока нет</p>
-        ) : null}
+        {ready && items.length === 0 ? <p className="admin__loading">Новостей пока нет</p> : null}
       </div>
     </section>
   )

@@ -1,3 +1,4 @@
+import { swatchBackground } from '../../lib/swatch'
 import type { ColorFacet } from '../../catalog/filter-facets'
 
 type CatalogFilterSwatchesProps = {
@@ -33,7 +34,7 @@ export function CatalogFilterSwatches({
             >
               <span
                 className="catalog-swatch__chip"
-                style={item.swatch ? { background: item.swatch } : undefined}
+                style={item.swatch ? { background: swatchBackground(item) } : undefined}
               />
               <span className="catalog-swatch__name">{item.name}</span>
             </button>

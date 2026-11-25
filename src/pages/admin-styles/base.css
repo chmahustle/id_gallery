@@ -1,0 +1,144 @@
+/* Админка: «Тексты и фото» и «Товары» */
+
+.admin-product,
+.admin-products {
+  --ae-line: var(--color-border-subtle);
+}
+
+/* общие поля и кнопки новых вкладок */
+.admin-product input:not([type='checkbox']):not([type='file']),
+.admin-product textarea,
+.admin-product select,
+.admin-products input,
+.admin-products select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.65rem 0.8rem;
+  border: 1px solid var(--ae-line);
+  background: var(--color-snow);
+  color: var(--color-ink);
+  font: inherit;
+}
+
+.admin-product textarea {
+  resize: vertical;
+}
+
+.admin-product button,
+.admin-product__save a {
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-snow);
+  font: inherit;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin-product button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.admin__ghost,
+.admin-product__save a {
+  background: transparent !important;
+  color: var(--color-ink) !important;
+}
+
+.admin-product__save a {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.admin-field {
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--ae-line);
+  background: var(--color-snow);
+}
+
+.admin-field h3,
+.admin-product__bar h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-field__head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.admin-field__badge {
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--color-champagne);
+  color: var(--color-champagne);
+  font-size: 0.72rem;
+}
+
+.admin-field__hint {
+  margin: 0;
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.admin-field__image {
+  display: grid;
+  grid-template-columns: 12rem minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.admin-field__image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--color-cream);
+}
+
+.admin-field__image-tools {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.admin-field__upload,
+.admin-variant__file {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  justify-self: start;
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  border: 1px dashed var(--color-ink);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin-field__upload input,
+.admin-variant__file input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.admin-field__actions,
+.admin-product__save {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}

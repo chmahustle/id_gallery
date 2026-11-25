@@ -11,7 +11,9 @@ export function normalizeText(value: string): string {
 }
 
 function words(value: string): string[] {
-  return normalizeText(value).split(/[^a-zа-я0-9&]+/i).filter(Boolean)
+  return normalizeText(value)
+    .split(/[^a-zа-я0-9&]+/i)
+    .filter(Boolean)
 }
 
 /**
@@ -33,9 +35,7 @@ function matchesAll(query: string, haystack: string[]): boolean {
 }
 
 function productWords(item: Product): string[] {
-  return words(
-    [item.name, item.brand, item.category, item.subcategory].filter(Boolean).join(' '),
-  )
+  return words([item.name, item.brand, item.category, item.subcategory].filter(Boolean).join(' '))
 }
 
 /** Товары по запросу: название модели, бренд, категория */

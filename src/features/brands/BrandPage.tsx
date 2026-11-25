@@ -30,9 +30,12 @@ export function BrandPage({ brand }: BrandPageProps) {
   const catalogHref = `/catalog?brand=${encodeURIComponent(brand.slug)}`
   const requestHref = `/request/?type=offer&brand=${encodeURIComponent(brand.slug)}`
   const nextBrand = getNextBrand(brand.slug)
-  const featured = getBrandFeatured(brand.slug)
-  const brandInteriors = getBrandInteriors(brand.slug)
-  const showInteriors = brandInteriors.length >= 3
+  const featured = getBrandFeatured(brand.slug, 8, brand.featuredSlugs)
+  const brandInteriors = getBrandInteriors(brand.slug, brand.interiorSlugs)
+  /* без выбора в админке блок нужен от трёх интерьеров; выбранные показываются всегда */
+  const showInteriors = brand.interiorSlugs?.length
+    ? brandInteriors.length > 0
+    : brandInteriors.length >= 3
   const catalogFiles = (brand.catalogs || []).filter((item) => item.url)
   /* авторы — только связанные с конкретными моделями */
   const linkedAuthors = (brand.authors || []).filter((item) => item.models?.length)

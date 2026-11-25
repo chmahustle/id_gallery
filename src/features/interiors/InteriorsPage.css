@@ -506,3 +506,15 @@
   text-underline-offset: 0.2em;
   text-decoration-thickness: 1px;
 }
+
+/* текст интерьера под заголовком на первом экране */
+.interiors-page__hero-caption {
+  max-width: 40rem;
+  margin: 1rem 0 0;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: var(--leading-body);
+  color: var(--color-snow);
+}

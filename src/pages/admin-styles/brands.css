@@ -1,0 +1,224 @@
+/* Админка — бренды: карточка, выбор на странице бренда, авторы */
+
+/* —— Карточка бренда —— */
+.admin-products__row img.admin-products__logo {
+  object-fit: contain;
+  padding: 0.4rem;
+  box-sizing: border-box;
+}
+
+.admin-brand-photos {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.admin-brand-photos > div {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.admin-photo.is-logo {
+  aspect-ratio: 3 / 2;
+}
+
+.admin-photo.is-logo img {
+  object-fit: contain;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.admin-photo:not(:has(img)) .admin-photo__over {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px dashed var(--color-border-strong, var(--color-ink));
+}
+
+.admin-brand__title {
+  margin: 1.75rem 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-brand-page {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+  gap: 0.75rem;
+  align-items: start;
+}
+
+.admin-brand__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.admin-product__open {
+  margin-left: auto;
+  color: var(--color-ink);
+  font-size: 0.85rem;
+}
+
+.admin-pick__files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+/* кнопки внутри выбора на странице бренда (вне конструктора) */
+.admin-product .admin-pick__tools button {
+  min-height: 1.9rem;
+  width: 1.9rem;
+  padding: 0;
+}
+
+.admin-product .admin-pick__list li .admin__ghost {
+  min-height: 2rem;
+}
+
+.admin-product .admin-field__link {
+  justify-self: start;
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: none !important;
+  color: var(--color-text-secondary) !important;
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 800px) {
+  .admin-brand-photos {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* —— Авторы бренда —— */
+.admin-authors {
+  grid-column: 1 / -1;
+}
+
+.admin-author {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.6rem;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.admin-photo.admin-author__photo {
+  aspect-ratio: 3 / 4;
+}
+
+.admin-author__body {
+  display: grid;
+  gap: 0.4rem;
+  min-width: 0;
+}
+
+.admin-author__body input,
+.admin-author__body textarea,
+.admin-author__body select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-snow);
+  font: inherit;
+  font-size: 0.88rem;
+}
+
+.admin-author__body input.admin-author__name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.admin-author__models {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.admin-author__models select {
+  width: auto;
+  flex: 1 1 10rem;
+}
+
+.admin-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.3rem 0.2rem 0.55rem;
+  border: 1px solid var(--color-olive);
+  color: var(--color-olive);
+  font-size: 0.78rem;
+}
+
+.admin-chip button {
+  min-height: auto !important;
+  width: auto !important;
+  padding: 0 0.2rem !important;
+  border: 0 !important;
+  background: none !important;
+  color: inherit !important;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.admin-author__tools {
+  flex-direction: column;
+}
+
+.admin-authors__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+/* узкое окно настроек в конструкторе: фото над полями */
+.admin-sheet .admin-author {
+  grid-template-columns: 5rem minmax(0, 1fr);
+}
+
+.admin-sheet .admin-author__tools {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+@media (max-width: 700px) {
+  .admin-author {
+    grid-template-columns: 5rem minmax(0, 1fr);
+  }
+
+  .admin-author__tools {
+    grid-column: 1 / -1;
+    flex-direction: row;
+  }
+}
+
+.admin-author__warn {
+  margin: 0;
+  padding: 0.4rem 0.6rem;
+  border-left: 2px solid var(--color-error);
+  background: var(--color-error-wash);
+  color: var(--color-error);
+  font-size: 0.8rem;
+}

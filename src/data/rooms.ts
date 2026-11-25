@@ -8,6 +8,12 @@ export type Room = {
   categorySlugs: string[]
 }
 
+/** Тексты страницы «По комнатам» */
+export const roomsCopy = {
+  title: 'По комнатам',
+  lead: 'Выберите пространство, для которого подбираете мебель.',
+}
+
 export const rooms: Room[] = [
   { slug: 'gostinaya', label: 'Гостиная', genitive: 'гостиной', categorySlugs: ['divany', 'kresla', 'stoly', 'hranenie', 'osveshchenie'] },
   { slug: 'stolovaya', label: 'Столовая', genitive: 'столовой', categorySlugs: ['stulya', 'stoly', 'hranenie', 'osveshchenie'] },

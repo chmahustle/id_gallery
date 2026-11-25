@@ -14,7 +14,7 @@ import {
   collectSizeFacets,
   countActiveCatalogFilters,
 } from '../../catalog/filter-facets'
-import { categories } from '../../data/categories'
+import { catalogCopy, categories } from '../../data/categories'
 import { rooms } from '../../data/rooms'
 import { searchProducts } from '../../lib/search'
 import { getProducts } from '../../lib/catalog'
@@ -249,7 +249,7 @@ export function useCatalogFilters() {
   return {
     invalidCategory,
     category,
-    title: searching ? 'Поиск' : category?.label || 'Все товары',
+    title: searching ? 'Поиск' : category?.label || catalogCopy.allTitle,
     searching,
     view,
     setView,

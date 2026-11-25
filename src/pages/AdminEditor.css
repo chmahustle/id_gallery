@@ -1,0 +1,8 @@
+/* Админка: стили вкладок, по темам (порядок важен — как был в одном файле) */
+@import './admin-styles/base.css';
+@import './admin-styles/products.css';
+@import './admin-styles/constructor.css';
+@import './admin-styles/brands.css';
+@import './admin-styles/product-variants.css';
+@import './admin-styles/contacts.css';
+@import './admin-styles/misc.css';

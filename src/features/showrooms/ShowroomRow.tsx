@@ -14,7 +14,9 @@ type ShowroomRowProps = {
 
 /** Адрес встраиваемой карты шоурума (Яндекс.Карты); без него — шаблон */
 function mapSrcFor(item: ShowroomEntry): string {
-  return item.mapSrc || ''
+  /* карта встраивается только по https — другие адреса из админки не грузятся */
+  const src = item.mapSrc || ''
+  return /^https:\/\//i.test(src) ? src : ''
 }
 
 export function ShowroomRow({

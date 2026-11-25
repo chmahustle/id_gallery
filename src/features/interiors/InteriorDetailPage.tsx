@@ -17,12 +17,18 @@ type InteriorDetailPageProps = {
 }
 
 export function InteriorDetailPage({ selection }: InteriorDetailPageProps) {
-  /* «Предметы в интерьере» — только подтверждённые редакцией модели */
-  const products = selection.productsConfirmed ? getInteriorProducts(selection) : []
+  /*
+   * «Предметы в интерьере» — подтверждённые модели. Точки на фото сами
+   * подтверждают товар: его отметили на кадре.
+   */
+  const hotspots = selection.hotspots || []
+  const confirmed = Boolean(selection.productsConfirmed || hotspots.length)
+  const products = confirmed ? getInteriorProducts(selection) : []
   const showModels = products.length > 0
-  /* есть сцена с точками — модели показываются на фото, сетка под ним не нужна */
-  const hasScene = Boolean(selection.hotspots?.length && selection.image)
-  const gridProducts = hasScene ? [] : products
+  const hasScene = Boolean(hotspots.length && selection.image)
+  /* под сценой — только модели без точки на фото */
+  const onScene = new Set(hotspots.map((spot) => spot.product))
+  const gridProducts = hasScene ? products.filter((item) => !onScene.has(item.slug)) : products
   const room = selection.room ? getRoomBySlug(selection.room) : null
   /* «Подойдут к этому интерьеру»: товары комнаты, которых нет на фото */
   const similar = room
@@ -63,11 +69,7 @@ export function InteriorDetailPage({ selection }: InteriorDetailPageProps) {
               priority
             />
           ) : (
-            <Placeholder
-              className="interiors-page__hero-ph"
-              variant="default"
-              label=""
-            />
+            <Placeholder className="interiors-page__hero-ph" variant="default" label="" />
           )}
         </div>
         <div className="interiors-page__hero-scrim" aria-hidden="true" />
@@ -75,6 +77,9 @@ export function InteriorDetailPage({ selection }: InteriorDetailPageProps) {
           <h1 id="interior-detail-title" className="interiors-page__title">
             {selection.title}
           </h1>
+          {selection.caption ? (
+            <p className="interiors-page__hero-caption">{selection.caption}</p>
+          ) : null}
         </div>
       </section>
 
@@ -92,33 +97,18 @@ export function InteriorDetailPage({ selection }: InteriorDetailPageProps) {
         >
           <div className="interiors-page__models-head">
             <div className="interiors-page__models-intro">
-              <h2
-                id="interior-models-title"
-                className="interiors-page__models-title"
-              >
+              <h2 id="interior-models-title" className="interiors-page__models-title">
                 {interiorsCopy.detailModelsTitle}
               </h2>
-              <p className="interiors-page__models-lead">
-                {interiorsCopy.detailModelsLead}
-              </p>
+              <p className="interiors-page__models-lead">{interiorsCopy.detailModelsLead}</p>
             </div>
             <div className="interiors-page__models-cta">
               {room ? (
-                <Button
-                  as={Link}
-                  variant="secondary"
-                  withArrow
-                  to={`/rooms/${room.slug}`}
-                >
+                <Button as={Link} variant="secondary" withArrow to={`/rooms/${room.slug}`}>
                   {`Все товары для ${room.genitive}`}
                 </Button>
               ) : null}
-              <Button
-                as={Link}
-                variant="secondary"
-                withArrow
-                to="/interiors/"
-              >
+              <Button as={Link} variant="secondary" withArrow to="/interiors/">
                 {interiorsCopy.backToList}
               </Button>
             </div>
@@ -126,22 +116,22 @@ export function InteriorDetailPage({ selection }: InteriorDetailPageProps) {
           {hasScene ? (
             <InteriorScene
               image={selection.image}
-              hotspots={selection.hotspots}
+              hotspots={hotspots}
               products={products}
               cropTop={selection.sceneCropTop}
               title={selection.title}
             />
           ) : null}
           {gridProducts.length > 0 ? (
-          <div className="interiors-page__models-grid">
-            {gridProducts.map((item) => (
-              <ProductCard
-                key={item.slug}
-                item={item}
-                ctaLabel={interiorsCopy.detailProductCta}
-              />
-            ))}
-          </div>
+            <div className="interiors-page__models-grid">
+              {gridProducts.map((item) => (
+                <ProductCard
+                  key={item.slug}
+                  item={item}
+                  ctaLabel={interiorsCopy.detailProductCta}
+                />
+              ))}
+            </div>
           ) : null}
         </Reveal>
       ) : null}
@@ -154,24 +144,15 @@ export function InteriorDetailPage({ selection }: InteriorDetailPageProps) {
         >
           <div className="interiors-page__models-head">
             <div className="interiors-page__models-intro">
-              <h2
-                id="interior-similar-title"
-                className="interiors-page__models-title"
-              >
+              <h2 id="interior-similar-title" className="interiors-page__models-title">
                 {interiorsCopy.similarTitle}
               </h2>
-              <p className="interiors-page__models-lead">
-                {interiorsCopy.similarLead}
-              </p>
+              <p className="interiors-page__models-lead">{interiorsCopy.similarLead}</p>
             </div>
           </div>
           <div className="interiors-page__models-grid">
             {similar.map((item) => (
-              <ProductCard
-                key={item.slug}
-                item={item}
-                ctaLabel={interiorsCopy.detailProductCta}
-              />
+              <ProductCard key={item.slug} item={item} ctaLabel={interiorsCopy.detailProductCta} />
             ))}
           </div>
         </Reveal>
@@ -182,7 +163,6 @@ export function InteriorDetailPage({ selection }: InteriorDetailPageProps) {
           <Button as={Link} variant="secondary" withArrow to="/interiors/">
             {interiorsCopy.backToList}
           </Button>
- 
         </div>
       ) : null}
 

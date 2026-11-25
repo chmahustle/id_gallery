@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { productPath } from '../../catalog/catalog'
 import { interiorsCopy } from '../../data/interiors'
 import { resolveBrandName } from '../../lib/catalog'
+import { readFrame, stripFrame } from '../../lib/imageFrame'
 import type { InteriorHotspot, Product } from '../../types'
 import './InteriorScene.css'
 
@@ -28,9 +29,7 @@ function SceneCardBody({ product }: { product: Product }) {
       <span className="interior-scene__info">
         <span className="interior-scene__brand">{resolveBrandName(product)}</span>
         <span className="interior-scene__name">{product.name}</span>
-        <span className="interior-scene__type">
-          {product.subcategory || product.category}
-        </span>
+        <span className="interior-scene__type">{product.subcategory || product.category}</span>
         <span className="interior-scene__more">
           {interiorsCopy.detailProductCta}
           <ArrowRight size={14} aria-hidden="true" />
@@ -113,28 +112,38 @@ export function InteriorScene({
    * Фото на всю ширину: заполняет кадр с обрезкой (как cover), без верхней
    * полосы cropTop. Кадр центрируется по точкам, чтобы предметы были в кадре.
    */
+  /* кадр из админки: фото стоит так, как его выставили, точки — следом */
+  const adminFrame = readFrame(image)
   const layout =
-    size && frame && frame.w > 0 && frame.h > 0
+    size && frame && frame.w > 0 && frame.h > 0 && adminFrame
       ? (() => {
-          const visibleH = size.h * (1 - top / 100)
-          const scale = Math.max(frame.w / size.w, frame.h / visibleH)
-          const dw = size.w * scale
-          const dh = size.h * scale
-          const mean = (values: number[]) =>
-            values.reduce((sum, value) => sum + value, 0) / values.length
-          const cx = (mean(points.map((spot) => spot.x)) / 100) * dw
-          const cy = (mean(points.map((spot) => spot.y)) / 100) * dh
-          const clamp = (value: number, min: number, max: number) =>
-            Math.min(max, Math.max(min, value))
-          const left = clamp(frame.w / 2 - cx, frame.w - dw, 0)
-          const topPx = clamp(
-            frame.h / 2 - cy,
-            frame.h - dh,
-            -dh * (top / 100),
-          )
-          return { dw, dh, left, top: topPx }
+          const cover = Math.max(frame.w / size.w, frame.h / size.h) * adminFrame.zoom
+          const dw = size.w * cover
+          const dh = size.h * cover
+          return {
+            dw,
+            dh,
+            left: ((frame.w - dw) * adminFrame.x) / 100,
+            top: ((frame.h - dh) * adminFrame.y) / 100,
+          }
         })()
-      : null
+      : size && frame && frame.w > 0 && frame.h > 0
+        ? (() => {
+            const visibleH = size.h * (1 - top / 100)
+            const scale = Math.max(frame.w / size.w, frame.h / visibleH)
+            const dw = size.w * scale
+            const dh = size.h * scale
+            const mean = (values: number[]) =>
+              values.reduce((sum, value) => sum + value, 0) / values.length
+            const cx = (mean(points.map((spot) => spot.x)) / 100) * dw
+            const cy = (mean(points.map((spot) => spot.y)) / 100) * dh
+            const clamp = (value: number, min: number, max: number) =>
+              Math.min(max, Math.max(min, value))
+            const left = clamp(frame.w / 2 - cx, frame.w - dw, 0)
+            const topPx = clamp(frame.h / 2 - cy, frame.h - dh, -dh * (top / 100))
+            return { dw, dh, left, top: topPx }
+          })()
+        : null
 
   return (
     <div className="interior-scene" ref={rootRef}>
@@ -143,7 +152,7 @@ export function InteriorScene({
         <div className="interior-scene__crop">
           <img
             className="interior-scene__img"
-            src={image}
+            src={stripFrame(image)}
             alt={title}
             loading="lazy"
             decoding="async"
@@ -203,9 +212,7 @@ export function InteriorScene({
                     aria-expanded={open}
                     aria-label={`${brand} · ${product.name}`}
                     onClick={() =>
-                      setActive((current) =>
-                        current === spot.product ? null : spot.product,
-                      )
+                      setActive((current) => (current === spot.product ? null : spot.product))
                     }
                     onFocus={() => openSpot(spot.product)}
                   >
@@ -235,7 +242,6 @@ export function InteriorScene({
           <SceneCardBody product={activeProduct} />
         </Link>
       ) : null}
-
     </div>
   )
 }

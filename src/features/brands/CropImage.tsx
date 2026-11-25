@@ -1,4 +1,5 @@
 import type { CSSProperties } from 'react'
+import { readFrame } from '../../lib/imageFrame'
 import type { BrandDetailFocus } from '../../types'
 import './CropImage.css'
 
@@ -47,11 +48,16 @@ export function CropImage({
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : undefined}
         decoding="async"
-        style={{
-          objectPosition: `${ox} ${oy}`,
-          transform: `scale(${z})`,
-          transformOrigin: `${ox} ${oy}`,
-        }}
+        /* кадр из админки главнее кадра из кода */
+        style={
+          readFrame(src)
+            ? undefined
+            : {
+                objectPosition: `${ox} ${oy}`,
+                transform: `scale(${z})`,
+                transformOrigin: `${ox} ${oy}`,
+              }
+        }
       />
     </div>
   )

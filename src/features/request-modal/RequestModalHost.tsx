@@ -56,6 +56,8 @@ export function RequestModalHost() {
       ) {
         return
       }
+      /* конструктор страниц в админке: ссылки там не работают */
+      if ((event.target as Element | null)?.closest?.('.cv')) return
       const link = (event.target as Element | null)?.closest?.('a[href]')
       if (!link || link.getAttribute('target') === '_blank') return
       const href = link.getAttribute('href') || ''

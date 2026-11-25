@@ -85,3 +85,20 @@ export const vacancies: Vacancy[] = approvedVacancies.length
   : demoEnabled
     ? Object.values(demoModules).flatMap((module) => module.demoVacancies)
     : []
+
+/** Вакансии из админки (career.vacancies): заменяют демо и вакансии из кода */
+export function applyVacancies(list: unknown) {
+  if (!Array.isArray(list)) return
+  const rows: Vacancy[] = list
+    .filter((item) => item && typeof item.title === 'string' && item.title.trim())
+    .filter((item) => item.published !== false)
+    .map((item, index) => ({
+      slug: typeof item.slug === 'string' && item.slug ? item.slug : `vacancy-${index + 1}`,
+      title: item.title.trim(),
+      ...(typeof item.place === 'string' && item.place.trim() ? { place: item.place.trim() } : {}),
+      text: (Array.isArray(item.text) ? item.text : String(item.text || '').split(/\n\s*\n/))
+        .map((p: unknown) => String(p).trim())
+        .filter(Boolean),
+    }))
+  vacancies.splice(0, vacancies.length, ...rows)
+}

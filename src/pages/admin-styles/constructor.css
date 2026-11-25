@@ -1,0 +1,728 @@
+/* Админка — конструктор «Тексты и фото»: панели, холст, окно настроек, поля */
+
+/* —— Визуальный редактор: страницы | превью | поля —— */
+/* три колонки; ширина боковых панелей меняется плавно, страница подстраивается */
+.admin-visual {
+  display: grid;
+  grid-template-columns: 2.75rem minmax(0, 1fr) 0rem;
+  /* одна строка ровно в высоту окна: прокручивается только страница в центре */
+  grid-template-rows: minmax(0, 1fr);
+  align-items: start;
+  gap: 0.75rem;
+  height: calc(100vh - 12rem);
+  min-height: 30rem;
+  transition: grid-template-columns 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    gap 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.admin-visual.is-pages-open {
+  grid-template-columns: 13rem minmax(0, 1fr) 0rem;
+}
+
+.admin-visual.is-panel-open {
+  grid-template-columns: 2.75rem minmax(0, 1fr) 26rem;
+}
+
+.admin-visual.is-pages-open.is-panel-open {
+  grid-template-columns: 13rem minmax(0, 1fr) 26rem;
+}
+
+.admin-visual__pane {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  max-height: 100%;
+  overflow: hidden;
+}
+
+/* —— Левая панель: страницы —— */
+.admin-visual__pane--left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-visual .admin-visual__rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+  width: 2.75rem;
+  min-height: 2.5rem;
+  padding: 0.5rem 0;
+  font-size: 1.1rem;
+}
+
+
+.admin-visual__rail-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+}
+
+.admin-visual__pages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 13rem;
+  min-height: 0;
+  max-height: 100%;
+  overflow-y: auto;
+  transition: opacity 0.25s ease;
+}
+
+.admin-visual:not(.is-pages-open) .admin-visual__pages {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.admin-visual__pages button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 0 0 auto;
+  text-align: left;
+}
+
+.admin-visual__pages em {
+  font-style: normal;
+  opacity: 0.75;
+}
+
+.admin-visual button {
+  min-height: 2.25rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--color-border-subtle);
+  background: transparent;
+  color: var(--color-ink);
+  font: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.admin-visual button.is-active {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-snow);
+}
+
+.admin-visual button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.admin-visual__pages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow-y: auto;
+}
+
+.admin-visual__pages button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+}
+
+.admin-visual__pages em {
+  font-style: normal;
+  opacity: 0.75;
+}
+
+.admin-visual__preview {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.admin-visual__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem 1rem;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+  font-size: 0.82rem;
+  color: var(--color-text-secondary);
+}
+
+.admin-visual__device {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.admin-visual__device a {
+  margin-left: 0.5rem;
+  color: var(--color-ink);
+  font-size: 0.82rem;
+}
+
+.admin-visual__stage {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--color-cream);
+}
+
+/* —— Холст страницы: страница 1440px, уменьшенная под колонку —— */
+.cv {
+  width: 100%;
+}
+
+.cv__sizer {
+  position: relative;
+  overflow: hidden;
+}
+
+.cv__page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  background: var(--color-snow);
+}
+
+.cv__content {
+  position: relative;
+}
+
+/* в холсте блоки показываются без анимаций; текст и картинки не выделяются и не тянутся */
+.cv__content * {
+  transition: none !important;
+  animation: none !important;
+}
+
+.cv__page {
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+
+.cv__page img {
+  -webkit-user-drag: none;
+}
+
+.cv__page:has(.cv__box.is-dragging) {
+  cursor: grabbing;
+}
+
+.cv__layer {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.cv__box {
+  position: absolute;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  border: calc(1px * var(--cv-inv)) dashed color-mix(in srgb, var(--color-olive) 45%, transparent);
+}
+
+.cv__box.is-selected {
+  border: calc(3px * var(--cv-inv)) solid var(--color-champagne);
+  background: color-mix(in srgb, var(--color-champagne) 8%, transparent);
+}
+
+.cv__box.is-dragging {
+  opacity: 0.45;
+  background: color-mix(in srgb, var(--color-ink) 12%, transparent);
+}
+
+.cv__tag {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: calc(6px * var(--cv-inv));
+  padding: calc(5px * var(--cv-inv)) calc(10px * var(--cv-inv));
+  background: var(--color-ink);
+  color: var(--color-snow);
+  font-family: var(--font-body);
+  font-size: calc(12px * var(--cv-inv));
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  white-space: nowrap;
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.cv__tag.is-movable {
+  cursor: grab;
+  touch-action: none;
+}
+
+.cv__box.is-dragging .cv__tag {
+  cursor: grabbing;
+}
+
+.cv__box.is-selected .cv__tag {
+  background: var(--color-champagne);
+}
+
+.cv__tag em {
+  font-style: normal;
+  opacity: 0.7;
+}
+
+.cv__grip {
+  font-size: 1.1em;
+  opacity: 0.8;
+}
+
+.cv__drop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: calc(6px * var(--cv-inv));
+  margin-top: calc(-3px * var(--cv-inv));
+  background: var(--color-champagne);
+}
+
+/* поля текста и фото на холсте */
+.cv [data-idg-edit] {
+  cursor: pointer;
+}
+
+.cv [data-idg-edit]:hover {
+  outline: calc(2px * var(--cv-inv)) solid var(--color-olive);
+  outline-offset: calc(3px * var(--cv-inv));
+}
+
+.admin-visual .admin-field__image {
+  grid-template-columns: 7rem minmax(0, 1fr);
+}
+
+.admin-visual textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid var(--color-border-subtle);
+  font: inherit;
+  resize: vertical;
+}
+
+.admin-visual .admin-field__save {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-snow);
+}
+
+.admin-order {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: ord;
+}
+
+.admin-order li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.35rem 0.35rem 0.75rem;
+  border: 1px solid var(--color-border-subtle);
+  counter-increment: ord;
+}
+
+.admin-order li span::before {
+  content: counter(ord) '. ';
+  color: var(--color-text-secondary);
+}
+
+.admin-order button {
+  min-height: 2rem;
+  padding: 0 0.6rem;
+}
+
+/* —— Правое окно настроек: выезжает, внутри своя прокрутка —— */
+.admin-visual__pane--right {
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.admin-sheet {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 26rem;
+  width: 26rem;
+  min-height: 0;
+  /* окно по высоте содержимого, но не выше колонки; лишнее прокручивается внутри */
+  max-height: 100%;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-snow);
+  box-shadow: 0 18px 40px color-mix(in srgb, var(--color-ink) 14%, transparent);
+  opacity: 0;
+  transform: translateX(2rem);
+  transition:
+    opacity 0.3s ease,
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.admin-visual.is-panel-open .admin-sheet {
+  opacity: 1;
+  transform: none;
+}
+
+.admin-sheet__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.admin-sheet__head h2 {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.admin-sheet__kicker {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.admin-visual .admin-sheet__close {
+  min-height: 2.25rem;
+  width: 2.25rem;
+  padding: 0;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.admin-sheet__body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.6rem 0.6rem 1rem;
+}
+
+/* поля в окне настроек — компактнее */
+.admin-sheet .admin-field {
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.75rem;
+}
+
+.admin-sheet .admin-field__image {
+  gap: 0.6rem;
+}
+
+@media (max-width: 1000px) {
+  .admin-visual.is-panel-open,
+  .admin-visual.is-pages-open.is-panel-open {
+    grid-template-columns: 2.75rem minmax(0, 1fr) 0rem;
+  }
+
+  /* узкий экран: окно настроек поверх страницы */
+  .admin-visual__pane--right {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 80;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .admin-visual.is-panel-open .admin-visual__pane--right {
+    pointer-events: auto;
+  }
+
+  .admin-sheet {
+    width: min(26rem, calc(100vw - 2rem));
+    flex-basis: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-visual,
+  .admin-sheet,
+  .admin-visual__pages {
+    transition: none;
+  }
+}
+
+/* —— «По комнатам»: выбор товаров по ссылкам —— */
+.admin-pick select,
+.admin-pick input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-snow);
+  font: inherit;
+}
+
+.admin-pick__list {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-pick__list li {
+  display: grid;
+  grid-template-columns: 3.5rem minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.35rem;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.admin-pick__list li.admin-pick__empty {
+  display: block;
+  padding: 0.85rem 0.6rem;
+  border-style: dashed;
+  color: var(--color-text-secondary);
+  font-size: 0.8rem;
+}
+
+.admin-pick__list img,
+.admin-pick__noimg {
+  display: block;
+  width: 3.5rem;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--color-cream);
+}
+
+.admin-pick__name {
+  display: grid;
+  gap: 0.1rem;
+  min-width: 0;
+  font-size: 0.85rem;
+}
+
+.admin-pick__name span {
+  color: var(--color-text-secondary);
+  font-size: 0.78rem;
+}
+
+.admin-pick__tools {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.admin-visual .admin-pick__tools button {
+  min-height: 1.9rem;
+  width: 1.9rem;
+  padding: 0;
+}
+
+.admin-pick__add {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.4rem;
+}
+
+/* полоса брендов: логотипы и свой пункт */
+.admin-pick__list img.admin-pick__logo {
+  object-fit: contain;
+  padding: 0.3rem;
+  box-sizing: border-box;
+}
+
+.admin-pick__custom {
+  display: grid;
+  gap: 0.4rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+/* —— Окно настроек: компактные поля, роль видна по виду —— */
+.admin-sheet .admin-field--compact {
+  gap: 0.35rem;
+  padding: 0.6rem 0.7rem 0.7rem;
+}
+
+.admin-field--compact .admin-field__head {
+  gap: 0.45rem;
+  min-height: 1rem;
+}
+
+.admin-field__role {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-olive);
+}
+
+.admin-field__place {
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+}
+
+.admin-field__dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  margin-left: auto;
+  border-radius: 50%;
+  background: var(--color-champagne);
+}
+
+/* поле ввода без рамки-коробки: текст выглядит как на сайте */
+.admin-visual textarea.admin-field__input {
+  padding: 0.35rem 0.45rem;
+  border: 1px solid transparent;
+  border-bottom-color: var(--color-border-subtle);
+  background: transparent;
+  color: var(--color-ink);
+  resize: none;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.admin-visual textarea.admin-field__input:hover {
+  background: color-mix(in srgb, var(--color-cream) 45%, transparent);
+}
+
+.admin-visual textarea.admin-field__input:focus {
+  outline: none;
+  border-color: var(--color-olive);
+  background: var(--color-snow);
+}
+
+/* заголовок — шрифтом заголовков сайта, капсом и крупно */
+.admin-field--title textarea.admin-field__input {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+/* подзаголовок — основной шрифт, чуть крупнее текста */
+.admin-field--subtitle textarea.admin-field__input {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+/* текст — основной шрифт, светлый и мельче */
+.admin-field--text textarea.admin-field__input {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+
+/* фото — само кнопка «заменить» */
+.admin-photo {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--color-cream);
+  cursor: pointer;
+}
+
+.admin-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.admin-photo input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.admin-photo__over {
+  position: absolute;
+  inset: auto 0.5rem 0.5rem auto;
+  padding: 0.35rem 0.6rem;
+  background: color-mix(in srgb, var(--color-ink) 78%, transparent);
+  color: var(--color-snow);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.admin-photo:hover img {
+  transform: scale(1.03);
+}
+
+.admin-photo:hover .admin-photo__over,
+.admin-photo.is-busy .admin-photo__over {
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--color-ink) 45%, transparent);
+  font-size: 0.8rem;
+}
+
+.admin-photo:focus-within {
+  outline: 2px solid var(--color-olive);
+  outline-offset: 2px;
+}
+
+.admin-field--compact .admin-field__actions {
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.admin-visual .admin-field--compact .admin-field__save {
+  min-height: 2rem;
+  padding: 0 0.8rem;
+  font-size: 0.72rem;
+}
+
+.admin-visual .admin-field__link {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--color-text-secondary);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-photo img,
+  .admin-visual textarea.admin-field__input {
+    transition: none;
+  }
+}

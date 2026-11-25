@@ -135,6 +135,8 @@ export function RequestConsultation({
   }, [draft])
 
   useEffect(() => {
+    /* в конструкторе админки заголовок вкладки не трогаем */
+    if (window.location.pathname.startsWith('/admin')) return
     document.title = `${copy.title} — ID Gallery`
   }, [])
 
@@ -449,8 +451,8 @@ export function RequestConsultation({
               <ul>
                 {items.map((item) => (
                   <li key={item.key}>
-                    <span>{item.label}</span>
-                    <span>{item.detail}</span>
+                    <span>{`${item.brand}, ${item.name}`}</span>
+                    <span>{itemDetail(item).join(' · ')}</span>
                   </li>
                 ))}
               </ul>

@@ -1260,3 +1260,43 @@
   line-height: var(--leading-caption);
   color: var(--color-text-secondary);
 }
+
+/* «Характеристики»: материалы с образцами (квадраты — данные, не кнопки) */
+.product-page__materials {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: 0.75rem 1rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.product-page__materials li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-width: 0;
+}
+
+.product-page__material-chip {
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.product-page__material-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  font-family: var(--font-body);
+  font-size: var(--text-caption-md);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: var(--leading-caption);
+  color: var(--color-ink);
+}
+
+.product-page__material-text span + span {
+  color: var(--color-text-secondary);
+}

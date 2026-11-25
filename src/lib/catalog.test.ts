@@ -11,12 +11,7 @@ describe('catalog accessors', () => {
   it('returns exactly four brands', () => {
     const list = getBrands()
     expect(list).toHaveLength(4)
-    expect(list.map((b) => b.slug).sort()).toEqual([
-      'baxter',
-      'bonaldo',
-      'molteni',
-      'visionnaire',
-    ])
+    expect(list.map((b) => b.slug).sort()).toEqual(['baxter', 'bonaldo', 'molteni', 'visionnaire'])
   })
 
   it('getBrandBySlug finds Visionnaire', () => {
@@ -39,11 +34,7 @@ describe('catalog accessors', () => {
   it('filters products by material substring when approved materials exist', () => {
     const list = getProducts({ material: 'Кожа' })
     expect(
-      list.every((p) =>
-        (p.characteristics?.materials?.value || '')
-          .toLowerCase()
-          .includes('кожа'),
-      ),
+      list.every((p) => (p.characteristics?.materials?.value || '').toLowerCase().includes('кожа')),
     ).toBe(true)
   })
 
@@ -56,9 +47,9 @@ describe('catalog accessors', () => {
   it('filters products by color variant name', () => {
     const list = getProducts({ color: 'Образец A' })
     expect(list.length).toBeGreaterThan(0)
-    expect(list.every((p) => (p.variants || p.colors || []).some((v) => v.name === 'Образец A'))).toBe(
-      true,
-    )
+    expect(
+      list.every((p) => (p.variants || p.colors || []).some((v) => v.name === 'Образец A')),
+    ).toBe(true)
   })
 
   it('getProductBySlug and getRelatedProducts', () => {
@@ -66,17 +57,12 @@ describe('catalog accessors', () => {
     expect(product).not.toBeNull()
     const related = getRelatedProducts(product!)
     expect(related.every((p) => p.slug !== product!.slug)).toBe(true)
-    expect(related.every((p) => p.brandSlug === product!.brandSlug)).toBe(
-      true,
-    )
+    expect(related.every((p) => p.brandSlug === product!.brandSlug)).toBe(true)
   })
 
   it('related card images are unique within a product page grid', async () => {
     const { products } = await import('../data/products')
-    const {
-      productCardImageSrc,
-      withUniqueRelatedImages,
-    } = await import('./catalog')
+    const { productCardImageSrc, withUniqueRelatedImages } = await import('./catalog')
     for (const product of products) {
       const related = withUniqueRelatedImages(getRelatedProducts(product))
       const paths = related.map(productCardImageSrc).filter(Boolean)

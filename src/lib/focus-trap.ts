@@ -12,10 +12,7 @@ export function getFocusableElements(container: HTMLElement): HTMLElement[] {
 }
 
 /** Циклический Tab внутри контейнера. Возвращает true, если событие перехвачено. */
-export function handleFocusTrapKeyDown(
-  container: HTMLElement,
-  event: KeyboardEvent,
-): boolean {
+export function handleFocusTrapKeyDown(container: HTMLElement, event: KeyboardEvent): boolean {
   if (event.key !== 'Tab') return false
   const items = getFocusableElements(container)
   if (items.length === 0) {

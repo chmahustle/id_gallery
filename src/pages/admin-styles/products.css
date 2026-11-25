@@ -1,0 +1,203 @@
+/* Админка — товары: список и редактор */
+
+/* —— Товары: список —— */
+.admin-products .admin__toolbar input,
+.admin-products .admin__toolbar select {
+  width: auto;
+  min-width: 14rem;
+}
+
+.admin-products__list {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-products__list li {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.admin-products__copy {
+  flex: 0 0 auto;
+  padding: 0 0.85rem;
+  border: 1px solid var(--ae-line);
+  background: var(--color-snow);
+  color: var(--color-ink);
+  font: inherit;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.admin-products__copy:hover {
+  border-color: var(--color-ink);
+}
+
+.admin-products__row {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid var(--ae-line);
+  background: var(--color-snow);
+  color: var(--color-ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.admin-products__row:hover {
+  border-color: var(--color-ink);
+}
+
+.admin-products__row img,
+.admin-products__noimg {
+  display: block;
+  width: 5rem;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--color-cream);
+}
+
+.admin-products__name {
+  display: grid;
+  gap: 0.15rem;
+}
+
+.admin-products__name span {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+.admin-products__tags {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.admin-products__tags em {
+  padding: 0.1rem 0.5rem;
+  border: 1px solid var(--color-olive);
+  color: var(--color-olive);
+  font-size: 0.72rem;
+  font-style: normal;
+}
+
+.admin-products__tags em.is-muted {
+  border-color: var(--ae-line);
+  color: var(--color-text-secondary);
+}
+
+.admin-products__tags em.is-hidden {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+/* —— Товары: редактор —— */
+.admin-product {
+  max-width: 60rem;
+}
+
+.admin-product__bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.admin-product label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem 1rem;
+}
+
+.admin-product .admin-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+}
+
+.admin-photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-photos img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--color-cream);
+}
+
+.admin-photos div {
+  display: flex;
+  gap: 0.25rem;
+  margin-top: 0.35rem;
+}
+
+.admin-photos button {
+  min-height: 2rem;
+  padding: 0 0.6rem;
+}
+
+.admin-variant {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-variant > input {
+  flex: 1 1 16rem;
+  width: auto !important;
+}
+
+.admin-variant__file img {
+  width: 1.75rem;
+  height: 1.75rem;
+  object-fit: cover;
+}
+
+.admin-spec {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 1rem;
+  align-items: end;
+}
+
+.admin-product__save {
+  position: sticky;
+  bottom: 0;
+  padding: 1rem 0;
+  background: var(--color-snow);
+  border-top: 1px solid var(--ae-line);
+}
+
+@media (max-width: 800px) {
+  .admin-grid,
+  .admin-field__image {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

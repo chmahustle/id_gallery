@@ -18,6 +18,15 @@ export default function Brands() {
 
   return (
     <SiteShell variant="solid">
+      <BrandsListBody />
+    </SiteShell>
+  )
+}
+
+/** Тело страницы «Бренды» — и для сайта, и для конструктора в админке */
+export function BrandsListBody() {
+  return (
+    <>
       <div className="brands-page">
         <nav className="page-crumbs" aria-label="Хлебные крошки">
           <Link to="/">Главная</Link>
@@ -64,6 +73,6 @@ export default function Brands() {
           />
         ))}
       </BannerStack>
-    </SiteShell>
+    </>
   )
 }

@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import { brands } from '../data/brands'
 import { featureFlags } from '../data/featureFlags'
 import { getApprovedLegalLinks } from '../data/legal'
-import { footerNav } from '../data/navigation'
+import { footerHeadings, footerNav } from '../data/navigation'
 import { site as siteData } from '../data/site'
 import { FooterLogo } from './FooterLogo'
 import NewsletterForm from './NewsletterForm'
@@ -25,7 +25,7 @@ export default function Footer() {
         <div className="footer__top">
           <div className="footer__grid footer__grid--4">
             <div className="footer__col">
-              <h3 className="footer__heading">Каталог</h3>
+              <h3 className="footer__heading">{footerHeadings.catalog}</h3>
               <ul>
                 {catalogLinks.map((link) => (
                   <li key={link.href}>
@@ -44,7 +44,7 @@ export default function Footer() {
             </div>
 
             <div className="footer__col">
-              <h3 className="footer__heading">Бренды</h3>
+              <h3 className="footer__heading">{footerHeadings.brands}</h3>
               <ul>
                 {brands.map((brand) => (
                   <li key={brand.slug}>
@@ -63,7 +63,7 @@ export default function Footer() {
             </div>
 
             <div className="footer__col">
-              <h3 className="footer__heading">Галерея</h3>
+              <h3 className="footer__heading">{footerHeadings.company}</h3>
               <ul>
                 {companyLinks.map((link) => (
                   <li key={`${link.label}-${link.href}`}>
@@ -82,7 +82,7 @@ export default function Footer() {
             </div>
 
             <div className="footer__col">
-              <h3 className="footer__heading">Сотрудничество</h3>
+              <h3 className="footer__heading">{footerHeadings.services}</h3>
               <ul>
                 {serviceLinks.map((link) => (
                   <li key={`${link.label}-${link.href}`}>

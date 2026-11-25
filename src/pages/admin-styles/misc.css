@@ -1,0 +1,405 @@
+/* Админка — интерьеры, схема страницы, меню, кнопки, поиск, точки, типы и комнаты */
+
+/* —— Интерьер —— */
+.admin-interior {
+  grid-template-columns: 20rem minmax(0, 1fr);
+  align-items: start;
+}
+
+.admin-interior__photo {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+
+.admin-media {
+  display: grid;
+  gap: 0.5rem;
+  justify-items: start;
+  min-width: 0;
+}
+
+.admin-media > .admin-photo {
+  width: 100%;
+}
+
+.admin-interior__fields {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.admin-interior__fields .admin-field__role {
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 800px) {
+  .admin-interior {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* —— Схема страницы без копии (каталог): блоки с текущими текстами —— */
+.admin-outline {
+  display: grid;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.admin-outline__block {
+  all: unset;
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  border: 1px dashed color-mix(in srgb, var(--color-olive) 45%, transparent);
+  background: var(--color-snow);
+  cursor: pointer;
+}
+
+.admin-outline__block:hover,
+.admin-outline__block.is-selected {
+  border: 2px solid var(--color-champagne);
+}
+
+.admin-outline__label {
+  justify-self: start;
+  padding: 0.25rem 0.6rem;
+  background: var(--color-ink);
+  color: var(--color-snow);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.admin-outline__block.is-selected .admin-outline__label {
+  background: var(--color-champagne);
+}
+
+.admin-outline__values {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.admin-outline__values .is-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.admin-outline__values .is-subtitle,
+.admin-outline__values .is-text {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--color-text-secondary);
+}
+
+/* —— Меню и подвал —— */
+.admin-nav {
+  max-width: 72rem;
+}
+
+.admin-links {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.admin-links__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) auto;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.admin-links .admin__ghost {
+  justify-self: start;
+}
+
+.admin-nav input:not([type='checkbox']) {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-snow);
+  font: inherit;
+  font-size: 0.88rem;
+}
+
+.admin-nav__columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
+  gap: 0.75rem;
+}
+
+.admin-nav__column {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+  padding: 0.75rem;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.admin-nav input.admin-nav__href {
+  color: var(--color-text-secondary);
+  font-size: 0.82rem;
+}
+
+/* —— Кнопка: текст и ссылка —— */
+.admin-link-field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.admin-link-field label {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.admin-link-field span {
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+}
+
+.admin-link-field input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-snow);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.admin-link-field label:first-child input {
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* кнопки «Кнопки и подписи», «Для поисковиков» в строке над страницей */
+.admin-visual__bar {
+  justify-content: space-between;
+}
+
+.admin-visual__extra:empty {
+  display: none;
+}
+
+/* —— Превью в поиске —— */
+.admin-seo {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.admin-seo__card {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-snow);
+  font-family: Arial, sans-serif;
+}
+
+.admin-seo__url {
+  font-size: 0.78rem;
+  color: #4d5156;
+}
+
+.admin-seo__title {
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: #1a0dab;
+}
+
+.admin-seo__text {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #4d5156;
+}
+
+/* —— Точки на фото интерьера —— */
+.admin-spots__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
+.admin-spots__frame {
+  position: relative;
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+
+.admin-spots__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.admin-product .admin-spot {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 1.8rem;
+  min-height: 1.8rem;
+  height: 1.8rem;
+  padding: 0;
+  border: 2px solid var(--color-snow);
+  border-radius: 50%;
+  background: var(--color-ink);
+  color: var(--color-snow);
+  font-size: 0.75rem;
+  letter-spacing: 0;
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--color-ink) 40%, transparent);
+}
+
+.admin-product .admin-spot.is-active {
+  background: var(--color-champagne);
+}
+
+.admin-product .admin-spot.is-empty {
+  background: var(--color-error);
+}
+
+.admin-spots__list {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-spots__list li {
+  display: grid;
+  grid-template-columns: 1.6rem minmax(0, 1fr) auto;
+  gap: 0.4rem;
+  align-items: center;
+  padding: 0.3rem;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.admin-spots__list li.is-active {
+  border-color: var(--color-champagne);
+}
+
+.admin-spots__num {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: var(--color-ink);
+  color: var(--color-snow);
+  font-size: 0.72rem;
+}
+
+.admin-spots__list select {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid var(--color-border-subtle);
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.admin-product .admin-spots__list button {
+  min-height: 1.9rem;
+  width: 1.9rem;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .admin-spots__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* —— Типы и комнаты —— */
+.admin-types__head,
+.admin-types__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(0, 1.6fr) auto;
+  gap: 0.4rem;
+  align-items: start;
+}
+
+.admin-types__head span {
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.admin-types__row {
+  padding: 0.35rem 0;
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.admin-types input:not([type='checkbox']) {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--color-border-subtle);
+  background: var(--color-snow);
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.admin-types__row label {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.admin-types__meta {
+  font-size: 0.72rem;
+  color: var(--color-text-secondary);
+}
+
+.admin-room {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  border: 1px solid var(--color-border-subtle);
+}
+
+.admin-room__top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+@media (max-width: 800px) {
+  .admin-types__head {
+    display: none;
+  }
+
+  .admin-types__row,
+  .admin-room__top {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* удаление интерьера из списка */
+.admin-interiors__delete {
+  font-size: 1.1rem;
+}
+
+.admin-interiors__delete:hover {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+/* «Кадр» на маленьком фото цвета — снизу слева, не под крестиком */
+.admin-product .admin-finish__photo .admin-frame-btn {
+  top: auto;
+  right: auto;
+  bottom: 0.2rem;
+  left: 0.2rem;
+  width: auto;
+  padding: 0 0.35rem;
+  font-size: 0.62rem;
+}

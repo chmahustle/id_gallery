@@ -1,31 +1,37 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Placeholder } from '../../components/Placeholder'
 import { Button, Reveal } from '../../components/ui'
 import { filterProducts } from '../../catalog/catalog'
-import { homeSections } from '../../data/home'
+import { FEATURED_COUNT, homeFeaturedPicks, homeSections } from '../../data/home'
 import { products } from '../../data/products'
 import { rooms } from '../../data/rooms'
 import { resolveBrandName } from '../../lib/catalog'
 import './home-sections.css'
-
-const FEATURED_COUNT = 4
+import type { Product } from '../../types'
 
 /** Каталог и модели: переключатели комнат + до четырёх моделей выбранной комнаты */
 export function FeaturedSection() {
   const copy = homeSections.featured
 
-  /* Только комнаты, в которых уже есть товары */
-  const available = useMemo(
-    () =>
-      rooms
-        .map((room) => ({
-          room,
-          items: filterProducts(products, { room: room.slug }),
-        }))
-        .filter((entry) => entry.items.length > 0),
-    [],
-  )
+  /*
+   * Товары комнаты: выбранные в админке (по порядку), иначе первые модели
+   * комнаты. Показываются только комнаты, где есть что показать.
+   */
+  const bySlug = new Map(products.map((item) => [item.slug, item]))
+  const available = rooms
+    .map((room) => {
+      const picks = (homeFeaturedPicks[room.slug] || [])
+        .map((slug) => bySlug.get(slug))
+        .filter((item): item is (typeof products)[number] => Boolean(item))
+      return {
+        room,
+        items: picks.length
+          ? picks
+          : (filterProducts(products, { room: room.slug }) as Product[]),
+      }
+    })
+    .filter((entry) => entry.items.length > 0)
 
   const [activeSlug, setActiveSlug] = useState(available[0]?.room.slug ?? '')
   const active = available.find((entry) => entry.room.slug === activeSlug)

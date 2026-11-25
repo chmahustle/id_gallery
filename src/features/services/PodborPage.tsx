@@ -1,6 +1,7 @@
+import type { JSX } from 'react'
 import { Link } from 'react-router-dom'
 import { Button, Reveal } from '../../components/ui'
-import { podbor } from '../../data/services'
+import { podbor, type ServicesBlockId, servicesLayout } from '../../data/services'
 import { FullBleedBanner } from '../home/FullBleedBanner'
 import '../../components/ui/Button.css'
 import './PodborPage.css'
@@ -9,40 +10,39 @@ function srcSet(src: string) {
   return `${src} 1280w, ${src} 1920w, ${src} 2560w`
 }
 
-/**
- * /services/podbor. Одна сетка и один ритм секций:
- * первый экран → направления (две карточки с фото) → «Как мы работаем»
- * (крупное фото и короткий этап, попеременно) → итог и следующий шаг
- * (кремовая плашка) → интерьеры (баннер на всю ширину).
- * Обе кнопки «Обсудить проект» ведут в одну форму с сохранением услуги.
- */
-export function PodborPage() {
+/** Первый экран */
+export function ServicesHero() {
   return (
-    <article className="services-page">
-      <section className="services-hero" aria-labelledby="services-title">
-        <img
-          className="services-hero__img"
-          src={podbor.heroImage}
-          alt=""
-          width={2752}
-          height={1536}
-          fetchPriority="high"
-          decoding="async"
-        />
-        <div className="services-hero__scrim" aria-hidden="true" />
-        <div className="services-hero__content">
-          <h1 id="services-title" className="services-hero__title">
-            {podbor.title}
-          </h1>
-          <p className="services-hero__intro">{podbor.intro}</p>
-          <div className="services-hero__actions">
-            <Button as={Link} variant="inverse" withArrow to={podbor.requestHref}>
-              {podbor.primaryCta}
-            </Button>
-          </div>
+    <section className="services-hero" aria-labelledby="services-title">
+      <img
+        className="services-hero__img"
+        src={podbor.heroImage}
+        alt=""
+        width={2752}
+        height={1536}
+        fetchPriority="high"
+        decoding="async"
+      />
+      <div className="services-hero__scrim" aria-hidden="true" />
+      <div className="services-hero__content">
+        <h1 id="services-title" className="services-hero__title">
+          {podbor.title}
+        </h1>
+        <p className="services-hero__intro">{podbor.intro}</p>
+        <div className="services-hero__actions">
+          <Button as={Link} variant="inverse" withArrow to={podbor.requestHref}>
+            {podbor.primaryCta}
+          </Button>
         </div>
-      </section>
+      </div>
+    </section>
+  )
+}
 
+/** Направления */
+export function ServicesAbout() {
+  return (
+    <>
       {/* —— Направления —— */}
       <section className="services-section" aria-labelledby="services-about-title">
         <div className="services-intro">
@@ -63,7 +63,14 @@ export function PodborPage() {
           ))}
         </Reveal>
       </section>
+    </>
+  )
+}
 
+/** Как мы работаем */
+export function ServicesSteps() {
+  return (
+    <>
       {/* —— Как мы работаем —— */}
       <section id="etapy" className="services-section" aria-labelledby="services-steps-title">
         <h2 id="services-steps-title" className="services-h2">
@@ -92,7 +99,14 @@ export function PodborPage() {
           ))}
         </ol>
       </section>
+    </>
+  )
+}
 
+/** Что вы получаете / Ваш следующий шаг */
+export function ServicesNext() {
+  return (
+    <>
       {/* —— Что вы получаете / Ваш следующий шаг —— */}
       <section id="obsudit" className="services-next" aria-label={podbor.nextTitle}>
         <Reveal className="services-next__inner" stagger>
@@ -109,7 +123,14 @@ export function PodborPage() {
           </div>
         </Reveal>
       </section>
+    </>
+  )
+}
 
+/** Интерьеры и сочетания */
+export function ServicesInteriors() {
+  return (
+    <>
       {/* —— Интерьеры и сочетания —— */}
       <FullBleedBanner
         id="services-interiors"
@@ -117,9 +138,32 @@ export function PodborPage() {
         description={podbor.interiorsText}
         align="left"
         minHeight="70svh"
-        links={[{ label: podbor.interiorsLink, href: '/interiors/' }]}
+        links={[{ label: podbor.interiorsLink, href: podbor.interiorsHref }]}
         image={{ src: podbor.interiorsImage, srcSet: srcSet(podbor.interiorsImage) }}
       />
+    </>
+  )
+}
+
+export const servicesBlockComponents: Record<ServicesBlockId, () => JSX.Element> = {
+  about: ServicesAbout,
+  steps: ServicesSteps,
+  next: ServicesNext,
+  interiors: ServicesInteriors,
+}
+
+/**
+ * /services/podbor: первый экран и блоки в порядке servicesLayout (админка).
+ * Обе кнопки «Обсудить проект» ведут в одну форму с сохранением услуги.
+ */
+export function PodborPage() {
+  return (
+    <article className="services-page">
+      <ServicesHero />
+      {servicesLayout.order.map((id) => {
+        const Block = servicesBlockComponents[id]
+        return <Block key={id} />
+      })}
     </article>
   )
 }

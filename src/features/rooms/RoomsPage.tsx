@@ -1,6 +1,7 @@
 import { Link, useSearchParams } from 'react-router-dom'
 import { brands } from '../../data/brands'
 import { Placeholder } from '../../components/Placeholder'
+import { roomsCopy } from '../../data/rooms'
 import { getAvailableRooms, getRoomInteriors } from '../../lib/rooms'
 import { CropImage } from '../brands/CropImage'
 import './RoomsPage.css'
@@ -28,8 +29,8 @@ export function RoomsPage() {
         <span aria-hidden="true">/</span>
         <span>По комнатам</span>
       </nav>
-      <h1 className="rooms-page__title">По комнатам</h1>
-      <p className="rooms-page__lead">Выберите пространство, для которого подбираете мебель.</p>
+      <h1 className="rooms-page__title">{roomsCopy.title}</h1>
+      <p className="rooms-page__lead">{roomsCopy.lead}</p>
       {/* ограничение по фабрике видно над списком и снимается одной ссылкой */}
       {brand ? (
         <p className="rooms-page__brand">
