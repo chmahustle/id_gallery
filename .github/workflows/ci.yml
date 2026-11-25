@@ -1,5 +1,5 @@
 # Проверки при каждом пуше и пул-реквесте: типы, линтер, тесты (с PostgreSQL),
-# сборка сайта, запрещённые слова и пути к фото.
+# сборка сайта, проверки админки в браузере, запрещённые слова и пути к фото.
 name: CI
 
 on:
@@ -42,6 +42,16 @@ jobs:
         run: npm test
       - name: Сборка
         run: npm run build
+      - name: Браузер для проверок админки
+        run: npx playwright install --with-deps chromium
+      - name: Проверки в браузере
+        run: npx playwright test
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: playwright-report
+          path: test-results/
+          retention-days: 7
       - name: Содержимое
         run: npm run check:content
       - name: Фото

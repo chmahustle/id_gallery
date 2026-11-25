@@ -1,3 +1,5 @@
+import os from 'node:os'
+import path from 'node:path'
 import type { Server } from 'node:http'
 import type { AddressInfo } from 'node:net'
 import 'dotenv/config'
@@ -8,14 +10,17 @@ export const TEST_LOGIN = 'tester'
 export const TEST_PASSWORD = 'test-password-strong-42'
 
 /**
- * Сервер для тестов на отдельной базе id_gallery_test (создаётся сама).
+ * Сервер для тестов на отдельной базе (по умолчанию id_gallery_test, создаётся сама).
  * Нет PostgreSQL — возвращает null, и тесты сервера пропускаются.
  */
-export async function startTestServer() {
+export async function startTestServer({
+  database = 'id_gallery_test',
+  port = 0,
+}: { database?: string; port?: number } = {}) {
   const source = process.env.TEST_DATABASE_URL || process.env.DATABASE_URL
   if (!source) return null
   const url = new URL(source)
-  const testDb = process.env.TEST_DATABASE_URL ? url.pathname.slice(1) : 'id_gallery_test'
+  const testDb = process.env.TEST_DATABASE_URL ? url.pathname.slice(1) : database
   if (!process.env.TEST_DATABASE_URL) {
     const admin = new URL(source)
     admin.pathname = '/postgres'
@@ -35,6 +40,8 @@ export async function startTestServer() {
   process.env.ADMIN_LOGIN = TEST_LOGIN
   process.env.ADMIN_PASSWORD = TEST_PASSWORD
   process.env.COOKIE_SECURE = '0'
+  /* загрузки тестов — во временную папку, не в рабочую uploads */
+  process.env.UPLOAD_DIR ||= path.join(os.tmpdir(), `id-gallery-test-uploads-${testDb}`)
 
   const { initDb, pool } = await import('../db.js')
   const { createApp } = await import('../app.js')
@@ -42,7 +49,7 @@ export async function startTestServer() {
   await ensureUploadsDir()
   await initDb()
   const server = await new Promise<Server>((resolve) => {
-    const s = createApp().listen(0, () => resolve(s))
+    const s = createApp().listen(port, () => resolve(s))
   })
   const base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`
   return {

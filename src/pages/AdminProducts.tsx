@@ -2,8 +2,18 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { api } from '../api'
 import { brands } from '../data/brands'
 import { categories } from '../data/categories'
-import { applyAdminProducts, codeProducts } from '../data/productsRuntime'
+import { type AdminProductRecord, applyAdminProducts, codeProducts } from '../data/productsRuntime'
 import { rooms } from '../data/rooms'
+import type { AdminMessage } from './adminListStore'
+import {
+  type ProductEditing,
+  type ProductForm,
+  type ProductRow,
+  SPEC_KEYS,
+  fromForm,
+  slugify,
+  toForm,
+} from './adminProductForm'
 import { explainError, uploadAdminFile } from './adminUpload'
 import {
   ProductDocuments,
@@ -12,7 +22,6 @@ import {
   ProductVariants,
 } from './AdminProductSections'
 import './AdminEditor.css'
-import { slugify as toSlug } from './adminSlug'
 
 /**
  * «Товары»: товары из кода и из админки в одном списке.
@@ -20,139 +29,28 @@ import { slugify as toSlug } from './adminSlug'
  * «Удалить из админки» возвращает версию из кода или удаляет новый товар.
  */
 
-const slugify = (text) => toSlug(text, { max: 100 })
-
-const SPEC_KEYS = [
-  ['dimensions', 'Размеры'],
-  ['materials', 'Материалы'],
-  ['finishes', 'Отделки'],
-  ['sku', 'Артикул'],
-]
-
-/** Товар → форма редактора */
-function toForm(product) {
-  const chars = product?.characteristics || {}
-  return {
-    slug: product?.slug || '',
-    name: product?.name || '',
-    brandSlug: product?.brandSlug || brands[0]?.slug || '',
-    categorySlug: product?.categorySlug || categories[0]?.slug || '',
-    summary: product?.summary || '',
-    shortDescription: product?.shortDescription || '',
-    images: [...(product?.images || (product?.image ? [product.image] : []))],
-    variants: (product?.variants || product?.colors || []).map((item) => ({
-      id: item.id,
-      name: item.name || '',
-      swatch: item.swatch || '',
-      images: item.images?.length ? [...item.images] : item.image ? [item.image] : [],
-      dimensions: {
-        value: item.dimensions?.value || '',
-        approved: item.dimensions?.status === 'approved',
-      },
-      materials: {
-        value: item.materials?.value || '',
-        approved: item.materials?.status === 'approved',
-      },
-    })),
-    materialSwatches: (product?.materialSwatches || []).map((item) => ({
-      name: item.name || '',
-      image: item.image || '',
-      note: item.note || '',
-    })),
-    specs: Object.fromEntries(
-      SPEC_KEYS.map(([key]) => [
-        key,
-        { value: chars[key]?.value || '', approved: chars[key]?.status === 'approved' },
-      ]),
-    ),
-    rooms: [...(product?.rooms || [])],
-    collection: product?.collection || '',
-    price: product?.price || '',
-    author: product?.author?.name || '',
-    documents: (product?.documents || []).map((doc) => ({ ...doc })),
-    care: product?.care || '',
-  }
-}
-
-/** Форма → данные товара для базы */
-function fromForm(form) {
-  const brand = brands.find((item) => item.slug === form.brandSlug)
-  const category = categories.find((item) => item.slug === form.categorySlug)
-  const characteristics = {}
-  for (const [key] of SPEC_KEYS) {
-    const spec = form.specs[key]
-    if (spec?.value.trim()) {
-      characteristics[key] = {
-        value: spec.value.trim(),
-        status: spec.approved ? 'approved' : 'placeholder',
-      }
-    }
-  }
-  const images = form.images.filter(Boolean)
-  return {
-    name: form.name.trim(),
-    brand: brand?.name || form.brandSlug,
-    brandSlug: form.brandSlug,
-    category: category?.label || form.categorySlug,
-    categorySlug: form.categorySlug,
-    subcategory: category?.singular || category?.label || '',
-    summary: form.summary.trim(),
-    shortDescription: form.shortDescription.trim(),
-    images,
-    image: images[0] || '',
-    variants: form.variants
-      .filter((item) => item.name.trim())
-      .map((item, i) => {
-        const images = item.images.filter(Boolean)
-        const field = (spec) =>
-          spec.value.trim()
-            ? { value: spec.value.trim(), status: spec.approved ? 'approved' : 'placeholder' }
-            : undefined
-        return {
-          id: item.id || `v${i + 1}-${slugify(item.name)}`,
-          name: item.name.trim(),
-          ...(item.swatch ? { swatch: item.swatch } : {}),
-          ...(images.length ? { image: images[0], images } : {}),
-          ...(field(item.dimensions) ? { dimensions: field(item.dimensions) } : {}),
-          ...(field(item.materials) ? { materials: field(item.materials) } : {}),
-          status: 'approved',
-        }
-      }),
-    materialSwatches: form.materialSwatches
-      .filter((item) => item.name.trim())
-      .map((item) => ({
-        name: item.name.trim(),
-        ...(item.image ? { image: item.image } : {}),
-        ...(item.note.trim() ? { note: item.note.trim() } : {}),
-      })),
-    characteristics,
-    rooms: form.rooms,
-    ...(form.collection.trim() ? { collection: form.collection.trim() } : {}),
-    ...(form.price.trim() ? { price: form.price.trim() } : {}),
-    ...(form.author.trim()
-      ? { author: { name: form.author.trim(), slug: slugify(form.author) } }
-      : {}),
-    documents: form.documents
-      .filter((doc) => doc.title.trim() && doc.url)
-      .map((doc) => ({ title: doc.title.trim(), url: doc.url, format: doc.format || 'PDF' })),
-    care: form.care.trim(),
-  }
-}
-
 /**
  * intent — переход из карточки бренда: { type: 'new', brandSlug } — новый
  * товар этого бренда, { type: 'edit', slug } — открыть товар.
  */
-export default function AdminProducts({ onMessage, intent, onIntentDone }) {
-  const [records, setRecords] = useState([])
+export type ProductsIntent = { type: 'new'; brandSlug: string } | { type: 'edit'; slug: string }
+
+type AdminProductsProps = {
+  onMessage: (message: AdminMessage) => void
+  intent?: ProductsIntent | null
+  onIntentDone?: () => void
+}
+
+export default function AdminProducts({ onMessage, intent, onIntentDone }: AdminProductsProps) {
+  const [records, setRecords] = useState<AdminProductRecord[]>([])
   const [ready, setReady] = useState(false)
   const [query, setQuery] = useState('')
   const [brandFilter, setBrandFilter] = useState('')
-  const [editing, setEditing] = useState(null) // { isNew, form, published }
+  const [editing, setEditing] = useState<ProductEditing | null>(null)
   const [busy, setBusy] = useState(false)
 
   const reload = useCallback(async () => {
-    const data = await api('/api/products')
+    const data = await api<{ items?: AdminProductRecord[] }>('/api/products')
     setRecords(data.items || [])
     applyAdminProducts(data.items || [])
   }, [])
@@ -164,14 +62,14 @@ export default function AdminProducts({ onMessage, intent, onIntentDone }) {
   }, [reload, onMessage])
 
   /* общий список: код + база */
-  const rows = useMemo(() => {
+  const rows = useMemo((): ProductRow[] => {
     const bySlug = new Map(records.map((item) => [item.slug, item]))
     const list = codeProducts.map((product) => {
       const record = bySlug.get(product.slug)
       return {
         slug: product.slug,
         product: record ? { ...product, ...record.data } : product,
-        source: record ? 'changed' : 'code',
+        source: record ? ('changed' as const) : ('code' as const),
         published: record ? record.published : true,
       }
     })
@@ -180,8 +78,8 @@ export default function AdminProducts({ onMessage, intent, onIntentDone }) {
       .filter((record) => !codeSlugs.has(record.slug))
       .map((record) => ({
         slug: record.slug,
-        product: { slug: record.slug, ...record.data },
-        source: 'admin',
+        product: { ...record.data, slug: record.slug },
+        source: 'admin' as const,
         published: record.published,
       }))
     return [...added, ...list]
@@ -197,7 +95,7 @@ export default function AdminProducts({ onMessage, intent, onIntentDone }) {
   /* ссылка на товар — для блоков с подборкой товаров (например «По комнатам») */
   const [copied, setCopied] = useState('')
 
-  async function copyLink(slug) {
+  async function copyLink(slug: string) {
     const url = `${window.location.origin}/product/${slug}`
     try {
       await navigator.clipboard.writeText(url)
@@ -226,7 +124,7 @@ export default function AdminProducts({ onMessage, intent, onIntentDone }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps -- один раз на каждый переход
   }, [ready, intent])
 
-  function startEdit(row) {
+  function startEdit(row: ProductRow) {
     setEditing({
       isNew: false,
       form: toForm(row.product),
@@ -235,11 +133,17 @@ export default function AdminProducts({ onMessage, intent, onIntentDone }) {
     })
   }
 
-  function patch(update) {
-    setEditing((prev) => ({ ...prev, form: { ...prev.form, ...update } }))
+  /* изменить форму по её последнему состоянию (загрузки идут асинхронно) */
+  function updateForm(change: (form: ProductForm) => ProductForm) {
+    setEditing((prev) => (prev ? { ...prev, form: change(prev.form) } : prev))
+  }
+
+  function patch(update: Partial<ProductForm>) {
+    updateForm((form) => ({ ...form, ...update }))
   }
 
   async function save() {
+    if (!editing) return
     const { form, isNew, published } = editing
     const slug = isNew ? form.slug || slugify(`${form.brandSlug}-${form.name}`) : form.slug
     if (!form.name.trim()) {
@@ -266,7 +170,7 @@ export default function AdminProducts({ onMessage, intent, onIntentDone }) {
     }
   }
 
-  async function removeRecord(row) {
+  async function removeRecord(row: ProductRow) {
     const text =
       row.source === 'admin'
         ? `Удалить товар «${row.product.name}»?`
@@ -285,7 +189,7 @@ export default function AdminProducts({ onMessage, intent, onIntentDone }) {
     }
   }
 
-  async function uploadTo(file, onUrl) {
+  async function uploadTo(file: File, onUrl: (url: string) => void) {
     setBusy(true)
     try {
       onUrl(await uploadAdminFile(file))
@@ -302,7 +206,7 @@ export default function AdminProducts({ onMessage, intent, onIntentDone }) {
     const { form } = editing
     const row = rows.find((item) => item.slug === form.slug)
     /* общие свойства блоков формы, вынесенных в AdminProductSections */
-    const sectionProps = { form, patch, setEditing, busy, uploadTo }
+    const sectionProps = { form, patch, updateForm, busy, uploadTo }
     return (
       <div className="admin-product">
         <div className="admin-product__bar">
@@ -392,7 +296,9 @@ export default function AdminProducts({ onMessage, intent, onIntentDone }) {
             <input
               type="checkbox"
               checked={editing.published}
-              onChange={(e) => setEditing((prev) => ({ ...prev, published: e.target.checked }))}
+              onChange={(e) =>
+                setEditing((prev) => (prev ? { ...prev, published: e.target.checked } : prev))
+              }
             />
             Показывать на сайте
           </label>

@@ -35,3 +35,8 @@ uploads
 *.njsproj
 *.sln
 *.sw?
+
+# браузерные тесты: сохранённый вход и отчёты
+e2e/.auth/
+test-results/
+playwright-report/

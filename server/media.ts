@@ -10,7 +10,10 @@ import { query } from './db.js'
 import { isAllowedMediaUrl } from './mediaUrl.js'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
-const UPLOAD_ROOT = path.resolve(__dirname, '../uploads')
+/* папка загрузок; тесты подменяют её через UPLOAD_DIR, чтобы не трогать настоящие файлы */
+const UPLOAD_ROOT = process.env.UPLOAD_DIR
+  ? path.resolve(process.env.UPLOAD_DIR)
+  : path.resolve(__dirname, '../uploads')
 const SLOT_IDS = new Set(MEDIA_SLOTS.map((slot) => slot.id))
 const MAX_IMAGE = 20 * 1024 * 1024
 const MAX_VIDEO = 120 * 1024 * 1024

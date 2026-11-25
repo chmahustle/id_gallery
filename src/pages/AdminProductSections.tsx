@@ -1,19 +1,39 @@
 import { swatchBackground } from '../lib/swatch'
 import { FrameButton } from './AdminFrame'
 import { FRAMES } from './adminFrames'
+import {
+  emptyVariant,
+  type MaterialForm,
+  type ProductForm,
+  type SpecInput,
+  type VariantForm,
+} from './adminProductForm'
 
 /*
  * Блоки формы товара (вкладка «Товары»). Все получают одно и то же:
- * form — данные формы, patch — изменить поля, setEditing — изменить
- * состояние редактора целиком, busy — идёт загрузка, uploadTo — загрузить
- * файл и передать адрес.
+ * form — данные формы, patch — изменить поля, updateForm — изменить форму
+ * по её последнему состоянию (для загрузок), busy — идёт загрузка,
+ * uploadTo — загрузить файл и передать адрес.
  */
+export type ProductSectionProps = {
+  form: ProductForm
+  patch: (update: Partial<ProductForm>) => void
+  updateForm: (change: (form: ProductForm) => ProductForm) => void
+  busy: boolean
+  uploadTo: (file: File, onUrl: (url: string) => void) => Promise<void>
+}
+
+/* размеры и материалы у отдельного исполнения */
+const VARIANT_SPECS: ['dimensions' | 'materials', string][] = [
+  ['dimensions', 'Размеры'],
+  ['materials', 'Материалы'],
+]
 
 /* где на сайте стоят фото товара */
 const PRODUCT_FRAMES = [...FRAMES.card43, { label: 'Галерея на странице товара', ratio: 3 / 2 }]
 
 /** Товар — фото товара: порядок, кадр, загрузка */
-export function ProductPhotos({ form, patch, setEditing, busy, uploadTo }) {
+export function ProductPhotos({ form, patch, updateForm, busy, uploadTo }: ProductSectionProps) {
   return (
     <section className="admin-field">
       <h3>Фото</h3>
@@ -79,10 +99,7 @@ export function ProductPhotos({ form, patch, setEditing, busy, uploadTo }) {
             e.target.value = ''
             for (const file of files) {
               await uploadTo(file, (url) =>
-                setEditing((prev) => ({
-                  ...prev,
-                  form: { ...prev.form, images: [...prev.form.images, url] },
-                })),
+                updateForm((current) => ({ ...current, images: [...current.images, url] })),
               )
             }
           }}
@@ -93,7 +110,7 @@ export function ProductPhotos({ form, patch, setEditing, busy, uploadTo }) {
 }
 
 /** Товар — цвета и исполнения: образец, название, фото в этом цвете */
-export function ProductVariants({ form, patch, setEditing, busy, uploadTo }) {
+export function ProductVariants({ form, patch, updateForm, busy, uploadTo }: ProductSectionProps) {
   return (
     <section className="admin-field">
       <h3>Цвета и исполнения</h3>
@@ -102,11 +119,11 @@ export function ProductVariants({ form, patch, setEditing, busy, uploadTo }) {
         показываются на сайте, когда покупатель выбирает этот цвет.
       </p>
       {form.variants.map((variant, i) => {
-        const setVariant = (update) =>
-          setEditing((prev) => {
-            const next = [...prev.form.variants]
+        const setVariant = (update: (current: VariantForm) => Partial<VariantForm>) =>
+          updateForm((current) => {
+            const next = [...current.variants]
             next[i] = { ...next[i], ...update(next[i]) }
-            return { ...prev, form: { ...prev.form, variants: next } }
+            return { ...current, variants: next }
           })
         const isColor = /^#/.test(variant.swatch)
         return (
@@ -192,17 +209,16 @@ export function ProductVariants({ form, patch, setEditing, busy, uploadTo }) {
               </div>
               <details className="admin-finish__more">
                 <summary>Размеры и материалы этого исполнения</summary>
-                {[
-                  ['dimensions', 'Размеры'],
-                  ['materials', 'Материалы'],
-                ].map(([key, label]) => (
+                {VARIANT_SPECS.map(([key, label]) => (
                   <div key={key} className="admin-spec">
                     <label>
                       {label}
                       <input
                         value={variant[key].value}
                         onChange={(e) =>
-                          setVariant((v) => ({ [key]: { ...v[key], value: e.target.value } }))
+                          setVariant((v) => ({
+                            [key]: { ...v[key], value: e.target.value } satisfies SpecInput,
+                          }))
                         }
                       />
                     </label>
@@ -239,17 +255,7 @@ export function ProductVariants({ form, patch, setEditing, busy, uploadTo }) {
         className="admin__ghost"
         onClick={() =>
           patch({
-            variants: [
-              ...form.variants,
-              {
-                id: '',
-                name: '',
-                swatch: '',
-                images: [],
-                dimensions: { value: '', approved: false },
-                materials: { value: '', approved: false },
-              },
-            ],
+            variants: [...form.variants, emptyVariant()],
           })
         }
       >
@@ -260,7 +266,7 @@ export function ProductVariants({ form, patch, setEditing, busy, uploadTo }) {
 }
 
 /** Товар — образцы материалов для «Характеристик» */
-export function ProductMaterials({ form, patch, setEditing, busy, uploadTo }) {
+export function ProductMaterials({ form, patch, updateForm, busy, uploadTo }: ProductSectionProps) {
   return (
     <section className="admin-field">
       <h3>Материалы</h3>
@@ -270,11 +276,11 @@ export function ProductMaterials({ form, patch, setEditing, busy, uploadTo }) {
       </p>
       <div className="admin-materials">
         {form.materialSwatches.map((item, i) => {
-          const setItem = (update) =>
-            setEditing((prev) => {
-              const next = [...prev.form.materialSwatches]
+          const setItem = (update: Partial<MaterialForm>) =>
+            updateForm((current) => {
+              const next = [...current.materialSwatches]
               next[i] = { ...next[i], ...update }
-              return { ...prev, form: { ...prev.form, materialSwatches: next } }
+              return { ...current, materialSwatches: next }
             })
           return (
             <article key={i} className="admin-material">
@@ -337,7 +343,7 @@ export function ProductMaterials({ form, patch, setEditing, busy, uploadTo }) {
 }
 
 /** Товар — документы: паспорта, сертификаты (PDF или фото) */
-export function ProductDocuments({ form, patch, setEditing, busy, uploadTo }) {
+export function ProductDocuments({ form, patch, updateForm, busy, uploadTo }: ProductSectionProps) {
   return (
     <section className="admin-field">
       <h3>Документы</h3>
@@ -363,11 +369,11 @@ export function ProductDocuments({ form, patch, setEditing, busy, uploadTo }) {
                 e.target.value = ''
                 if (!file) return
                 await uploadTo(file, (url) =>
-                  setEditing((prev) => {
-                    const next = [...prev.form.documents]
+                  updateForm((current) => {
+                    const next = [...current.documents]
                     const format = /\.pdf$/i.test(file.name) ? 'PDF' : 'Изображение'
                     next[i] = { ...next[i], url, format }
-                    return { ...prev, form: { ...prev.form, documents: next } }
+                    return { ...current, documents: next }
                   }),
                 )
               }}

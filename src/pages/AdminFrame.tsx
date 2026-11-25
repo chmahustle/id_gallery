@@ -1,4 +1,10 @@
-import { useEffect, useRef, useState } from 'react'
+import {
+  useEffect,
+  useRef,
+  useState,
+  type PointerEvent as ReactPointerEvent,
+  type WheelEvent as ReactWheelEvent,
+} from 'react'
 import { createPortal } from 'react-dom'
 import {
   FRAME_DEFAULT,
@@ -8,22 +14,33 @@ import {
   readFrame,
   stripFrame,
   withFrame,
+  type ImageFrame,
 } from '../lib/imageFrame'
-import { FRAMES } from './adminFrames'
+import { FRAMES, type FrameAspect } from './adminFrames'
 import './AdminFrame.css'
 
-const clamp = (value, min, max) => Math.min(max, Math.max(min, value))
+const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value))
 const STAGE_W = 560
 const STAGE_H = 420
 
 /** Размер рамки окна: вписать пропорцию в STAGE_W × STAGE_H */
-function stageSize(ratio) {
+function stageSize(ratio: number) {
   return ratio >= STAGE_W / STAGE_H
     ? { width: STAGE_W, height: Math.round(STAGE_W / ratio) }
     : { width: Math.round(STAGE_H * ratio), height: STAGE_H }
 }
 
-function FramedImage({ src, frame, ratio, width }) {
+function FramedImage({
+  src,
+  frame,
+  ratio,
+  width,
+}: {
+  src: string
+  frame: ImageFrame
+  ratio: number
+  width: number
+}) {
   return (
     <span className="admin-frame__box" style={{ width, aspectRatio: String(ratio) }}>
       <img src={src} alt="" draggable={false} style={frameStyle(frame)} />
@@ -35,13 +52,28 @@ function FramedImage({ src, frame, ratio, width }) {
  * Окно «Кадр»: рамка в пропорциях сайта, фото двигается мышью или
  * пальцем, ползунок приближает. Справа — то же фото в других рамках.
  */
-function FrameDialog({ src, aspects, start, onApply, onClose }) {
+type Size = { w: number; h: number }
+type Drag = { x: number; y: number; frame: ImageFrame; kx: number; ky: number }
+
+function FrameDialog({
+  src,
+  aspects,
+  start,
+  onApply,
+  onClose,
+}: {
+  src: string
+  aspects: FrameAspect[]
+  start?: ImageFrame | null
+  onApply: (src: string) => void
+  onClose: () => void
+}) {
   const base = stripFrame(src)
-  const [frame, setFrame] = useState(() => readFrame(src) || start || FRAME_DEFAULT)
+  const [frame, setFrame] = useState<ImageFrame>(() => readFrame(src) || start || FRAME_DEFAULT)
   const [active, setActive] = useState(0)
-  const [natural, setNatural] = useState(null)
-  const dragRef = useRef(null)
-  const dialogRef = useRef(null)
+  const [natural, setNatural] = useState<Size | null>(null)
+  const dragRef = useRef<Drag | null>(null)
+  const dialogRef = useRef<HTMLDivElement>(null)
   const aspect = aspects[active] || aspects[0]
   const size = stageSize(aspect.ratio)
 
@@ -52,7 +84,7 @@ function FrameDialog({ src, aspects, start, onApply, onClose }) {
   }, [base])
 
   useEffect(() => {
-    const onKey = (event) => {
+    const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose()
     }
     window.addEventListener('keydown', onKey)
@@ -64,7 +96,7 @@ function FrameDialog({ src, aspects, start, onApply, onClose }) {
    * Сколько процентов точки кадра даёт сдвиг на 1px: снимок cover выходит
    * за рамку на overflow, а приближение вокруг точки добавляет (zoom − 1).
    */
-  function perPixel(axis) {
+  function perPixel(axis: 'x' | 'y') {
     if (!natural) return 0
     const box = axis === 'x' ? size.width : size.height
     const cover = Math.max(size.width / natural.w, size.height / natural.h)
@@ -73,7 +105,7 @@ function FrameDialog({ src, aspects, start, onApply, onClose }) {
     return span > 0.5 ? 100 / span : 0
   }
 
-  function onPointerDown(event) {
+  function onPointerDown(event: ReactPointerEvent<HTMLDivElement>) {
     event.preventDefault()
     event.currentTarget.setPointerCapture(event.pointerId)
     dragRef.current = {
@@ -85,7 +117,7 @@ function FrameDialog({ src, aspects, start, onApply, onClose }) {
     }
   }
 
-  function onPointerMove(event) {
+  function onPointerMove(event: ReactPointerEvent<HTMLDivElement>) {
     const drag = dragRef.current
     if (!drag) return
     setFrame({
@@ -95,19 +127,19 @@ function FrameDialog({ src, aspects, start, onApply, onClose }) {
     })
   }
 
-  function onWheel(event) {
+  function onWheel(event: ReactWheelEvent<HTMLDivElement>) {
     setFrame((prev) => ({
       ...prev,
       zoom: clamp(prev.zoom - event.deltaY * 0.002, ZOOM_MIN, ZOOM_MAX),
     }))
   }
 
-  const zoomBy = (step) =>
+  const zoomBy = (step: number) =>
     setFrame((prev) => ({ ...prev, zoom: clamp(prev.zoom + step, ZOOM_MIN, ZOOM_MAX) }))
   const canMove = perPixel('x') > 0 || perPixel('y') > 0
 
   /* где лежит всё фото целиком относительно рамки — бледно за её краями */
-  let ghost = null
+  let ghost: { left: number; top: number; width: number; height: number } | null = null
   if (natural) {
     const cover = Math.max(size.width / natural.w, size.height / natural.h)
     const fx = frame.x / 100
@@ -260,7 +292,26 @@ function FrameDialog({ src, aspects, start, onApply, onClose }) {
  * Кнопка «Кадр» под фото в админке. aspects — рамки сайта, где стоит фото
  * (FRAMES.* или [{ label, ratio }]); onChange получает адрес с кадром.
  */
-export function FrameButton({ src, aspects = FRAMES.card43, start, onChange, disabled, short }) {
+type FrameButtonProps = {
+  src: string
+  /** рамки сайта или функция, которая их измерит при открытии окна */
+  aspects?: FrameAspect[] | (() => FrameAspect[])
+  /** кадр, с которого окно начинает, если в адресе кадра нет */
+  start?: ImageFrame | null | (() => ImageFrame | null)
+  onChange: (src: string) => void
+  disabled?: boolean
+  /** короткая подпись «Кадр» — для маленьких превью */
+  short?: boolean
+}
+
+export function FrameButton({
+  src,
+  aspects = FRAMES.card43,
+  start,
+  onChange,
+  disabled,
+  short,
+}: FrameButtonProps) {
   const [open, setOpen] = useState(false)
   if (!src) return null
   const framed = Boolean(readFrame(src))

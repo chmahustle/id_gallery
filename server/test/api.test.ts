@@ -152,7 +152,9 @@ describe.skipIf(!started)('API сервера', () => {
       const data = await response.json()
       expect(response.status).toBe(200)
       expect(data.url).toMatch(/^\/uploads\/admin-\d+-[a-f0-9]+\.png$/)
-      await fs.rm(path.resolve('uploads', path.basename(data.url)), { force: true })
+      await fs.rm(path.join(process.env.UPLOAD_DIR || 'uploads', path.basename(data.url)), {
+        force: true,
+      })
     })
 
     it('не принимает html', async () => {

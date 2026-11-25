@@ -12,6 +12,14 @@ export const pool = new Pool({
   connectionString: DATABASE_URL,
 })
 
+/*
+ * Обрыв простаивающего соединения (база перезапустилась или выключается)
+ * не должен ронять сервер: пул сам откроет новое соединение при запросе.
+ */
+pool.on('error', (err) => {
+  console.error('[db] соединение с базой прервано:', err.message)
+})
+
 /** Запрос к базе; строки ответа — любой формы, если тип не указан */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function query<R extends QueryResultRow = any>(
