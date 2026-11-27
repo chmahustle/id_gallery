@@ -18,6 +18,8 @@ export type InteriorRecord = {
   /** Точки товаров на фото: x, y — проценты от исходного кадра */
   hotspots?: InteriorHotspot[]
   published?: boolean
+  /** Интерьер из кода удалён в админке: скрыт везде, его можно вернуть */
+  deleted?: boolean
 }
 
 export const codeInteriors: readonly InteriorSelection[] = interiors.map((item) => ({ ...item }))

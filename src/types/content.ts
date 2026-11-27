@@ -196,6 +196,8 @@ export type Product = {
   materialSwatches?: ProductMaterial[]
   /** Цена из админки; на сайте не показывается, пока нет решения о ценах */
   price?: string
+  /** Место цены по возрастанию (1 — самая низкая): посетителям вместо цены, для сортировки */
+  priceRank?: number
   /** Демонстрационный товар (src/data/demoProducts.ts, VITE_DEMO_DATA) */
   demo?: boolean
   popularity?: number

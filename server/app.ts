@@ -16,12 +16,11 @@ import {
   isValidSession,
   sessionCookieOptions,
 } from './auth.js'
-import brandsRouter from './brands.js'
 import brandRecordsRouter from './brandRecords.js'
 import contentRouter from './content.js'
 import productsRouter from './products.js'
 import uploadsRouter from './uploads.js'
-import mediaRouter, { UPLOAD_ROOT } from './media.js'
+import { UPLOAD_ROOT } from './media.js'
 import newsRouter from './news.js'
 import textsRouter from './texts.js'
 import usersRouter from './users.js'
@@ -153,9 +152,7 @@ export function createApp() {
   })
 
   app.use('/api/texts', textsRouter)
-  app.use('/api/media', mediaRouter)
   app.use('/api/news', newsRouter)
-  app.use('/api/brands', brandsRouter)
   app.use('/api/account', usersRouter)
   app.use('/api/content', contentRouter)
   app.use('/api/products', productsRouter)

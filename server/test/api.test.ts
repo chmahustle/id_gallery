@@ -194,6 +194,26 @@ describe.skipIf(!started)('API сервера', () => {
       expect((await find({ cookie })).data.price).toBe('100000')
     })
 
+    it('посетителю вместо цен — их порядок для сортировки', async () => {
+      const put = (slug: string, price: string) =>
+        send('PUT', `/api/products/${slug}`, { data: { ...product, price }, published: true }, { cookie })
+      expect((await put('test-cheap', '50 000 ₸')).status).toBe(200)
+      expect((await put('test-pricey', '1,2 млн ₸')).status).toBe(200)
+      expect((await put('test-on-request', 'по запросу')).status).toBe(200)
+      const items: { slug: string; data: { price?: string; priceRank?: number } }[] = (
+        await (await fetch(`${base}/api/products`)).json()
+      ).items
+      const rank = (slug: string) => items.find((item) => item.slug === slug)?.data
+      expect(rank('test-cheap')).toMatchObject({ priceRank: 1 })
+      expect(rank('test-sofa')).toMatchObject({ priceRank: 2 })
+      expect(rank('test-pricey')).toMatchObject({ priceRank: 3 })
+      expect(rank('test-on-request')?.priceRank).toBeUndefined()
+      expect(items.some((item) => 'price' in item.data)).toBe(false)
+      for (const slug of ['test-cheap', 'test-pricey', 'test-on-request']) {
+        await send('DELETE', `/api/products/${slug}`, undefined, { cookie })
+      }
+    })
+
     it('не сохраняет товар без названия', async () => {
       const response = await send(
         'PUT',

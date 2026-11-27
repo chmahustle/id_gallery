@@ -61,11 +61,6 @@ export const homeBannerImages = {
     ),
     objectPosition: '50% 42%',
   } satisfies HomeBannerImage,
-  catalog: {
-    src: '/images/interior-01.png',
-    srcSet: bannerSrcSet('/images/interior-01.png'),
-    objectPosition: '50% 38%',
-  } satisfies HomeBannerImage,
   interiors: {
     src: '/images/interior-03.png',
     srcSet: bannerSrcSet('/images/interior-03.png'),

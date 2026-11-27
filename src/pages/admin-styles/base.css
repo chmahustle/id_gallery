@@ -142,3 +142,35 @@
   flex-wrap: wrap;
   gap: 0.6rem;
 }
+
+/*
+ * Кнопка-значок (AdminIconButton): корзина — удалить, карандаш — изменить.
+ * sm — в ряду со стрелками ↑ ↓: цвет и размер как у соседних кнопок.
+ * md — отдельная: светлая, удаление — красной рамкой и значком.
+ */
+.admin-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.admin .admin-icon-btn.admin-icon-btn--md {
+  flex: none;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-ink);
+}
+
+.admin .admin-icon-btn.admin-icon-btn--md.admin-icon-btn--delete {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.admin .admin-icon-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}

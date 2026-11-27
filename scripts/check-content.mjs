@@ -31,7 +31,7 @@ const CTA_SEE_MODELS_ALLOW = [
   join(srcRoot, 'components', 'catalog', 'CategoryCard.css'),
   join(srcRoot, 'pages', 'DevUi.tsx'),
   join(srcRoot, 'features', 'brands', 'BrandPage.tsx'),
-  join(srcRoot, 'pages', 'ProductPage.jsx'),
+  join(srcRoot, 'pages', 'ProductPage.tsx'),
 ]
 
 /** Внешние хотлинки картинок: src / background url() / поля image* на http(s) */
@@ -234,7 +234,7 @@ if (process.env.NODE_ENV === 'production' && process.env.RELEASE === '1') {
     process.exit(1)
   }
 
-  const productPagePath = join(srcRoot, 'pages', 'ProductPage.jsx')
+  const productPagePath = join(srcRoot, 'pages', 'ProductPage.tsx')
   const productPageText = readFileSync(productPagePath, 'utf8')
   const demoNeedles = [
     'BX-0211',
@@ -245,14 +245,14 @@ if (process.env.NODE_ENV === 'production' && process.env.RELEASE === '1') {
   for (const needle of demoNeedles) {
     if (productPageText.includes(needle)) {
       console.error(
-        `check:content failed: демо-характеристика «${needle}» захардкожена в ProductPage.jsx (должна быть только в data/products.ts за флагом showProductPlaceholders)`,
+        `check:content failed: демо-характеристика «${needle}» захардкожена в ProductPage.tsx (должна быть только в data/products.ts за флагом showProductPlaceholders)`,
       )
       process.exit(1)
     }
   }
   if (!productPageText.includes('showProductPlaceholders')) {
     console.error(
-      'check:content failed: ProductPage.jsx не проверяет showProductPlaceholders перед демо-блоками',
+      'check:content failed: ProductPage.tsx не проверяет showProductPlaceholders перед демо-блоками',
     )
     process.exit(1)
   }

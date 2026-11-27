@@ -7,10 +7,18 @@ import { brands } from './brands'
  * новые добавляются в конец, скрытые убираются из списка.
  */
 
+/**
+ * Запись бренда из админки: поля бренда сайта, подборки на его странице
+ * (featuredSlugs — товары, interiorSlugs — интерьеры) и другие поля.
+ */
 export type AdminBrandRecord = {
   slug: string
   published: boolean
-  data: Partial<Brand>
+  data: Partial<Brand> & {
+    featuredSlugs?: string[]
+    interiorSlugs?: string[]
+    [key: string]: unknown
+  }
 }
 
 /** Бренды из кода — копии до правок, для «вернуть версию из кода» */

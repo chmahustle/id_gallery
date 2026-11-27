@@ -27,7 +27,9 @@ import { InteriorsPage } from '../features/interiors/InteriorsPage'
 import { ServicesHero, servicesBlockComponents } from '../features/services/PodborPage'
 import { ShowroomsPage } from '../features/showrooms/ShowroomsPage'
 import { MaterialsPage } from '../features/materials/MaterialsPage'
+import { AccountPage } from '../features/account/AccountPage'
 import { RequestConsultation } from '../features/request/RequestConsultation'
+import { RequestPage } from '../features/request/RequestPage'
 import { RoomsPage } from '../features/rooms/RoomsPage'
 import { BrandsListBody } from '../pages/Brands'
 import { TradePage } from '../features/trade/TradePage'
@@ -135,6 +137,13 @@ export function getPageConfigs(): PageConfig[] {
       label: 'Каталоги и материалы',
       path: '/materials',
       render: () => <MaterialsPage />,
+    },
+    { group: 'Кабинет', label: 'Личный кабинет', path: '/account', render: () => <AccountPage /> },
+    {
+      group: 'Запрос стоимости',
+      label: 'Запрос стоимости',
+      path: '/request?type=offer',
+      render: () => <RequestPage />,
     },
     {
       group: 'Запись',

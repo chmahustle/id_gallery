@@ -10,9 +10,13 @@ export default defineConfig({
     cssMinify: 'esbuild',
   },
   server: {
+    /*
+     * changeOrigin: false — сервер видит адрес страницы (localhost:5173), а не свой.
+     * Иначе защита от запросов с чужих сайтов отклоняет вход и сохранение в админке.
+     */
     proxy: {
-      '/api': 'http://localhost:3001',
-      '/uploads': 'http://localhost:3001',
+      '/api': { target: 'http://localhost:3001', changeOrigin: false },
+      '/uploads': { target: 'http://localhost:3001', changeOrigin: false },
     },
   },
 })

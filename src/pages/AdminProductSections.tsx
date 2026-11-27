@@ -8,6 +8,7 @@ import {
   type SpecInput,
   type VariantForm,
 } from './adminProductForm'
+import { AdminIconButton } from './AdminIconButton'
 
 /*
  * Блоки формы товара (вкладка «Товары»). Все получают одно и то же:
@@ -76,13 +77,12 @@ export function ProductPhotos({ form, patch, updateForm, busy, uploadTo }: Produ
               >
                 →
               </button>
-              <button
-                type="button"
-                className="admin__danger"
+              <AdminIconButton
+                icon="delete"
+                size="sm"
+                label={`Удалить фото ${i + 1}`}
                 onClick={() => patch({ images: form.images.filter((_, j) => j !== i) })}
-              >
-                Убрать
-              </button>
+              />
             </div>
           </li>
         ))}
@@ -177,15 +177,14 @@ export function ProductVariants({ form, patch, updateForm, busy, uploadTo }: Pro
                         }))
                       }
                     />
-                    <button
-                      type="button"
-                      aria-label="Убрать фото"
+                    <AdminIconButton
+                      icon="delete"
+                      size="sm"
+                      label="Убрать фото"
                       onClick={() =>
                         setVariant((v) => ({ images: v.images.filter((_, k) => k !== j) }))
                       }
-                    >
-                      ×
-                    </button>
+                    />
                   </span>
                 ))}
                 <label className="admin-finish__add-photo">
@@ -239,14 +238,12 @@ export function ProductVariants({ form, patch, updateForm, busy, uploadTo }: Pro
               </details>
             </div>
 
-            <button
-              type="button"
-              className="admin__danger admin-finish__remove"
-              aria-label="Убрать исполнение"
+            <AdminIconButton
+              icon="delete"
+              className="admin-finish__remove"
+              label="Убрать исполнение"
               onClick={() => patch({ variants: form.variants.filter((_, j) => j !== i) })}
-            >
-              ×
-            </button>
+            />
           </article>
         )
       })}
@@ -313,16 +310,14 @@ export function ProductMaterials({ form, patch, updateForm, busy, uploadTo }: Pr
                   onChange={(e) => setItem({ note: e.target.value })}
                 />
               </div>
-              <button
-                type="button"
-                className="admin__danger admin-finish__remove"
-                aria-label="Убрать материал"
+              <AdminIconButton
+                icon="delete"
+                className="admin-finish__remove"
+                label="Убрать материал"
                 onClick={() =>
                   patch({ materialSwatches: form.materialSwatches.filter((_, j) => j !== i) })
                 }
-              >
-                ×
-              </button>
+              />
             </article>
           )
         })}
@@ -379,13 +374,11 @@ export function ProductDocuments({ form, patch, updateForm, busy, uploadTo }: Pr
               }}
             />
           </label>
-          <button
-            type="button"
-            className="admin__danger"
+          <AdminIconButton
+            icon="delete"
+            label="Удалить документ"
             onClick={() => patch({ documents: form.documents.filter((_, j) => j !== i) })}
-          >
-            Убрать
-          </button>
+          />
         </div>
       ))}
       <button

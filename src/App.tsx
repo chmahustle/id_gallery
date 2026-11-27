@@ -1,0 +1,101 @@
+import { lazy, Suspense } from 'react'
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import NavTracker from './components/NavTracker'
+import { RequestModalHost } from './features/request-modal/RequestModalHost'
+import { SeoManager } from './content/SeoManager'
+import { UserAuthProvider } from './auth/UserAuthContext'
+import { CartProvider } from './cart/CartContext'
+import { SelectionProvider } from './selection/SelectionContext'
+import { CompareProvider } from './compare/CompareContext'
+import { ContentProvider } from './content/ContentContext'
+import { NewsProvider } from './news/NewsContext'
+import Home from './pages/Home'
+import Catalog from './pages/Catalog'
+import ProductPage from './pages/ProductPage'
+import Brands from './pages/Brands'
+import BrandDetail from './pages/BrandDetail'
+import About from './pages/About'
+import Account from './pages/Account'
+import Contact from './pages/Contact'
+import Request from './pages/Request'
+import Contacts from './pages/Contacts'
+import Partners from './pages/Partners'
+import News from './pages/News'
+import NewsDetail from './pages/NewsDetail'
+import Interiors from './pages/Interiors'
+import InteriorDetail from './pages/InteriorDetail'
+import Showrooms from './pages/Showrooms'
+import ServicesPodbor from './pages/ServicesPodbor'
+import Rooms from './pages/Rooms'
+import Compare from './pages/Compare'
+import Materials from './pages/Materials'
+import Career from './pages/Career'
+import Room from './pages/Room'
+import { DevUi } from './pages/DevUi'
+
+/* админка грузится только при открытии /admin — посетителям сайта она не нужна */
+const Admin = lazy(() => import('./pages/Admin'))
+
+const isDev = import.meta.env.DEV
+
+export default function App() {
+  return (
+    <ContentProvider>
+      <NewsProvider>
+        <UserAuthProvider>
+          <CartProvider>
+            <SelectionProvider>
+              <CompareProvider>
+                <BrowserRouter>
+                  <NavTracker />
+                  <RequestModalHost />
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/catalog" element={<Catalog />} />
+                    <Route path="/catalog/:categorySlug" element={<Catalog />} />
+                    <Route path="/product/:productSlug" element={<ProductPage />} />
+                    <Route
+                      path="/services"
+                      element={<Navigate to="/services/podbor" replace />}
+                    />
+                    <Route path="/services/podbor" element={<ServicesPodbor />} />
+                    <Route path="/rooms" element={<Rooms />} />
+                    <Route path="/compare" element={<Compare />} />
+                    <Route path="/materials" element={<Materials />} />
+                    <Route path="/career" element={<Career />} />
+                    <Route path="/rooms/:roomSlug" element={<Room />} />
+                    <Route path="/brands" element={<Brands />} />
+                    <Route path="/brands/:brandSlug" element={<BrandDetail />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/interiors" element={<Interiors />} />
+                    <Route path="/interiors/:interiorSlug" element={<InteriorDetail />} />
+                    <Route path="/showrooms" element={<Showrooms />} />
+                    <Route path="/trade" element={<Partners />} />
+                    <Route path="/partners" element={<Navigate to="/trade" replace />} />
+                    <Route path="/news" element={<News />} />
+                    <Route path="/news/:newsSlug" element={<NewsDetail />} />
+                    <Route path="/contact" element={<Contact />} />
+                    <Route path="/contacts" element={<Contacts />} />
+                    <Route path="/account" element={<Account />} />
+                    <Route path="/request" element={<Request />} />
+                    <Route
+                      path="/admin"
+                      element={
+                        <Suspense fallback={null}>
+                          <Admin />
+                        </Suspense>
+                      }
+                    />
+                    {isDev ? <Route path="/dev/ui" element={<DevUi />} /> : null}
+                    <Route path="*" element={<Navigate to="/" replace />} />
+                  </Routes>
+                  <SeoManager />
+                </BrowserRouter>
+              </CompareProvider>
+            </SelectionProvider>
+          </CartProvider>
+        </UserAuthProvider>
+      </NewsProvider>
+    </ContentProvider>
+  )
+}

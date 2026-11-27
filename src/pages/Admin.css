@@ -361,6 +361,71 @@
   background: var(--color-snow);
 }
 
+.admin-news-gallery {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.admin-news-gallery legend {
+  padding: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.admin-news-gallery__list {
+  display: grid;
+  gap: 0.85rem;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.admin-news-gallery__item {
+  display: grid;
+  gap: 0.45rem;
+  align-content: start;
+}
+
+/* фото — блок-кнопка «Заменить», а не подпись поля формы */
+.admin-news-gallery .admin-photo {
+  display: block;
+  aspect-ratio: 4 / 3;
+}
+
+.admin-news-gallery__actions {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.admin-news-gallery__remove {
+  margin-left: auto;
+}
+
+.admin-news-gallery__actions button:not(.admin-icon-btn) {
+  padding: 0.35rem 0.7rem;
+  border: 1px solid var(--color-border-strong);
+  background: transparent;
+  color: var(--color-ink);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.admin-news-list__actions {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+}
+
+.admin-news-gallery__actions button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
 .admin-news-form__check {
   display: flex !important;
   align-items: center;
@@ -441,27 +506,6 @@
   margin: 0;
   font-size: 0.9rem;
   color: var(--color-ink);
-}
-
-.admin-news-list__actions {
-  display: grid;
-  gap: 0.4rem;
-}
-
-.admin-news-list__actions button {
-  padding-left: 0.85rem;
-  padding-right: 0.85rem;
-  border: 1px solid var(--color-border-strong);
-  background: transparent;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.admin-news-list__actions .admin__danger {
-  border-color: var(--color-error);
-  color: var(--color-error);
 }
 
 @media (max-width: 720px) {

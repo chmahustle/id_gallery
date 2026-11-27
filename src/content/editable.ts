@@ -2,7 +2,13 @@ import { aboutApproach, aboutCopy, aboutListHero } from '../data/about'
 import { brands, brandsPage } from '../data/brands'
 import { catalogCopy } from '../data/categories'
 import { materialsCopy } from '../data/materials'
-import { consultationCopy, serviceDirections } from '../data/request-page'
+import { accountListHero, accountPageCopy, accountProBanner } from '../data/account-page'
+import {
+  consultationCopy,
+  requestAsideImage,
+  requestPageCopy,
+  serviceDirections,
+} from '../data/request-page'
 import { roomsCopy } from '../data/rooms'
 import { showroomsCopy, showroomsListHero, showroomsVisitBanner } from '../data/showrooms'
 import { seoPages } from '../data/seo'
@@ -298,6 +304,27 @@ for (const brand of brands) {
   add(g, 'materials.tab.docs', 'Вкладка документов — название', copy, 'docsTitle')
   add(g, 'materials.request.title', 'Запрос материалов — заголовок', copy, 'requestTitle')
   add(g, 'materials.request.text', 'Запрос материалов — текст', copy, 'requestText')
+}
+
+/* —— Личный кабинет —— */
+{
+  const g = 'Кабинет'
+  const copy = accountPageCopy as unknown as Target
+  add(g, 'account.hero.image', 'Первый экран — фото', accountListHero, 'image')
+  add(g, 'account.hero.title', 'Первый экран — заголовок', copy, 'heroTitle')
+  add(g, 'account.hero.lead', 'Первый экран — подзаголовок', copy, 'heroLead')
+  add(g, 'account.pro.title', 'Для профессионалов — заголовок', copy, 'proTitle')
+  add(g, 'account.pro.text', 'Для профессионалов — текст', copy, 'proText')
+  add(g, 'account.pro.image', 'Для профессионалов — фото', accountProBanner, 'image')
+}
+
+/* —— Запрос стоимости —— */
+{
+  const g = 'Запрос стоимости'
+  const copy = requestPageCopy as unknown as Target
+  add(g, 'request.offer.title', 'Страница — заголовок', copy, 'heroTitle')
+  add(g, 'request.offer.lead', 'Страница — подзаголовок', copy, 'heroLead')
+  add(g, 'request.offer.image', 'Фото рядом с формой', requestAsideImage, 'image')
 }
 
 /* —— Запись на консультацию —— */

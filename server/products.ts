@@ -9,6 +9,7 @@ import {
   productDataSchema,
   recordBodySchema,
 } from '../src/content/schemas.ts'
+import { priceRanks } from '../src/lib/price.ts'
 
 /**
  * Товары из админки. data — объект товара в формате сайта (тип Product).
@@ -46,14 +47,21 @@ function validate(
 router.get('/', async (req, res, next) => {
   try {
     const { rows } = await query(`SELECT slug, published, data FROM products ORDER BY created_at`)
-    /* цены на сайте не показываются — посетителям API их не отдаёт */
+    /*
+     * Цены на сайте не показываются: посетителям API отдаёт вместо цены
+     * только её место по возрастанию (priceRank) — для сортировки каталога.
+     */
     const admin = await isValidSession(req.cookies?.[SESSION_COOKIE])
     const items = rows.map(rowToItem)
-    if (!admin) {
-      for (const item of items) {
-        if (item.data && typeof item.data === 'object') delete item.data.price
-      }
-    }
+    const ranks = priceRanks(items.map((item) => item.data?.price))
+    items.forEach((item, index) => {
+      if (!item.data || typeof item.data !== 'object') return
+      delete item.data.priceRank
+      if (admin) return
+      delete item.data.price
+      const rank = ranks[index]
+      if (rank != null) item.data.priceRank = rank
+    })
     res.json({ items })
   } catch (err) {
     next(err)

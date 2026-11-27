@@ -51,6 +51,9 @@ CREATE TABLE IF NOT EXISTS news_articles (
 
 CREATE INDEX IF NOT EXISTS news_articles_sort_idx ON news_articles (sort_date DESC NULLS LAST, id DESC);
 
+/* кнопку события можно скрыть, не стирая её текст и ссылку */
+ALTER TABLE news_articles ADD COLUMN IF NOT EXISTS show_cta BOOLEAN NOT NULL DEFAULT true;
+
 CREATE TABLE IF NOT EXISTS brands (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL UNIQUE,

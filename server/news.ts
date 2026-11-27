@@ -3,7 +3,9 @@ import path from 'node:path'
 import { Router } from 'express'
 import multer from 'multer'
 import { isAllowedType, storedName } from './uploadName.js'
+import type { PoolClient } from 'pg'
 import { news as defaultNews } from '../src/content.js'
+import { demoNews } from '../src/data/demoNews.ts'
 import { requireAuth } from './auth.js'
 import { query } from './db.js'
 import { UPLOAD_ROOT, ensureUploadsDir } from './media.js'
@@ -86,39 +88,62 @@ function rowToArticle(row: Record<string, any>) {
     body: body.filter((p) => typeof p === 'string' && p.trim()),
     ctaLabel: row.cta_label || null,
     ctaHref: row.cta_href || null,
+    showCta: row.show_cta !== false,
     externalUrl: row.external_url || null,
     videoUrl: row.video_url || null,
     published: Boolean(row.published),
   }
 }
 
+type SeedArticle = {
+  slug: string
+  title: string
+  date: string
+  category: string
+  excerpt: string
+  image?: string
+  images?: unknown[]
+  body?: unknown[]
+  ctaLabel?: string
+  ctaHref?: string
+  externalUrl?: string
+  videoUrl?: string
+}
+
+async function insertSeed(client: PoolClient, list: SeedArticle[]) {
+  for (const item of list) {
+    await client.query(
+      `INSERT INTO news_articles (
+        slug, title, date, category, excerpt, image, images_json, body_json,
+        cta_label, cta_href, external_url, video_url, published, sort_date
+      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,true,$13)
+      ON CONFLICT (slug) DO NOTHING`,
+      [
+        item.slug,
+        item.title,
+        item.date,
+        item.category,
+        item.excerpt,
+        item.image || '',
+        JSON.stringify(item.images || []),
+        JSON.stringify(item.body || []),
+        item.ctaLabel || null,
+        item.ctaHref || null,
+        item.externalUrl || null,
+        item.videoUrl || null,
+        parseRuDate(item.date),
+      ],
+    )
+  }
+}
+
+/** Демо-стенд для заказчика: те же флаги, что и у сайта */
+const demoData = ['true', '1'].includes(String(process.env.VITE_DEMO_DATA ?? '').toLowerCase())
+
 async function ensureSeeded() {
-  await runOnceSeed('news_seeded', async (client) => {
-    for (const item of defaultNews) {
-      await client.query(
-        `INSERT INTO news_articles (
-          slug, title, date, category, excerpt, image, images_json, body_json,
-          cta_label, cta_href, external_url, video_url, published, sort_date
-        ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,true,$13)
-        ON CONFLICT (slug) DO NOTHING`,
-        [
-          item.slug,
-          item.title,
-          item.date,
-          item.category,
-          item.excerpt,
-          item.image || '',
-          JSON.stringify(item.images || []),
-          JSON.stringify(item.body || []),
-          item.ctaLabel || null,
-          item.ctaHref || null,
-          item.externalUrl || null,
-          item.videoUrl || null,
-          parseRuDate(item.date),
-        ],
-      )
-    }
-  })
+  await runOnceSeed('news_seeded', (client) => insertSeed(client, defaultNews))
+  /* демо-события — один раз: удалённые в админке не возвращаются */
+  if (demoData) await runOnceSeed('news_demo_seeded', (client) => insertSeed(client, demoNews))
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -168,6 +193,7 @@ function normalizePayload(body: Record<string, any> | undefined, { partial = fal
   const externalUrl = String(body?.externalUrl ?? body?.external_url ?? '').trim() || null
   const videoUrl = String(body?.videoUrl ?? body?.video_url ?? '').trim() || null
   const published = body?.published === undefined ? true : Boolean(body.published)
+  const showCta = body?.showCta === undefined ? true : Boolean(body.showCta)
 
   if (!partial) {
     if (!title) {
@@ -212,6 +238,7 @@ function normalizePayload(body: Record<string, any> | undefined, { partial = fal
     body: paragraphs,
     ctaLabel,
     ctaHref,
+    showCta,
     externalUrl,
     videoUrl,
     published,
@@ -269,8 +296,8 @@ router.post('/', requireAuth, async (req, res, next) => {
     const { rows } = await query(
       `INSERT INTO news_articles (
         slug, title, date, category, excerpt, image, images_json, body_json,
-        cta_label, cta_href, external_url, video_url, published, sort_date
-      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14)
+        cta_label, cta_href, external_url, video_url, published, sort_date, show_cta
+      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)
       RETURNING *`,
       [
         data.slug,
@@ -287,6 +314,7 @@ router.post('/', requireAuth, async (req, res, next) => {
         data.videoUrl,
         data.published,
         data.sortDate,
+        data.showCta,
       ],
     )
     res.status(201).json({ item: rowToArticle(rows[0]) })
@@ -316,6 +344,7 @@ router.put('/:id', requireAuth, async (req, res, next) => {
       externalUrl: req.body?.externalUrl ?? current.rows[0].external_url,
       videoUrl: req.body?.videoUrl ?? current.rows[0].video_url,
       published: req.body?.published !== undefined ? req.body.published : current.rows[0].published,
+      showCta: req.body?.showCta !== undefined ? req.body.showCta : current.rows[0].show_cta,
     })
 
     const { rows } = await query(
@@ -323,8 +352,8 @@ router.put('/:id', requireAuth, async (req, res, next) => {
         slug = $1, title = $2, date = $3, category = $4, excerpt = $5,
         image = $6, images_json = $7, body_json = $8,
         cta_label = $9, cta_href = $10, external_url = $11, video_url = $12,
-        published = $13, sort_date = $14, updated_at = now()
-       WHERE id = $15
+        published = $13, sort_date = $14, show_cta = $15, updated_at = now()
+       WHERE id = $16
        RETURNING *`,
       [
         data.slug,
@@ -341,6 +370,7 @@ router.put('/:id', requireAuth, async (req, res, next) => {
         data.videoUrl,
         data.published,
         data.sortDate,
+        data.showCta,
         id,
       ],
     )

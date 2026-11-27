@@ -3,6 +3,7 @@ export type {
   BrandAuthor,
   BrandCatalog,
   BrandDetailFocus,
+  BrandEntry,
   Category,
   CharacteristicField,
   ContentStatus,

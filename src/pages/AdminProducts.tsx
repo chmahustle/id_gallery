@@ -21,6 +21,7 @@ import {
   ProductPhotos,
   ProductVariants,
 } from './AdminProductSections'
+import { AdminIconButton } from './AdminIconButton'
 import './AdminEditor.css'
 
 /**
@@ -410,14 +411,21 @@ export default function AdminProducts({ onMessage, intent, onIntentDone }: Admin
           <button type="button" disabled={busy} onClick={() => void save()}>
             {busy ? 'Сохранение…' : 'Сохранить товар'}
           </button>
-          {row && row.source !== 'code' ? (
+          {row?.source === 'admin' ? (
+            <AdminIconButton
+              icon="delete"
+              label="Удалить товар"
+              disabled={busy}
+              onClick={() => void removeRecord(row)}
+            />
+          ) : row && row.source !== 'code' ? (
             <button
               type="button"
               className="admin__danger"
               disabled={busy}
               onClick={() => void removeRecord(row)}
             >
-              {row.source === 'admin' ? 'Удалить товар' : 'Вернуть версию из кода'}
+              Вернуть версию из кода
             </button>
           ) : null}
           {!editing.isNew ? (
